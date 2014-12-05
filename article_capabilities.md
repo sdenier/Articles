@@ -11,46 +11,116 @@ Dans l'article précédent, nous avons expliqué comment la story map n'était p
 - est-ce que mon projet marche dans la réalité ?
 - est-ce qu'on a identifié les problèmes clés ?
 - comment procéder pour tester au mieux les idées ?
-- combien investir ?
+- combien et comment investir ?
 
-Avec la story map, ceci se traduisait dans les questions suivantes :
+Avec la story map, ceci se traduisait par les questions suivantes :
 
 - est-ce que la story map correspond à la liste des fonctionnalités ? Qu'est-ce qui va rentrer dans le périmètre final ?
 - combien ça va coûter ?
 
-Ce qui amenait immanquablement à des incompréhensions et des discussions commerciales sur le mode forfait. Il s'agit de questions qui semblent importantes, mais qui ne correspondent en fait pas à la collaboration que nous souhaitons mettre en place avec nos porteurs. 
+Ce qui amenait immanquablement à des incompréhensions et des discussions commerciales sur le mode forfait. Il s'agit de questions qui semblent importantes, mais qui ne correspondent en fait pas à la collaboration que nous souhaitons mettre en place avec les porteurs de projet. Pour autant, nous faisions avec et arrivions à fournir les réponses demandées.
 
 ## Petite histoire qui n'a pas marché et nous a poussé à changer
 
-Pour autant, nous faisions avec et arrivions à fournir les réponses demandées.
+Jusqu'au jour où nous sommes tombés sur un os : un accompagnement agile d'un projet industriel de recherche et développement. Ce projet était au stade du démarrage, avec des partenaires très matures chacun dans leur domaine (industrie lourde, startup, laboratoire de recherche publique) et bien évidemment des méthodes de travail différentes. Etant sollicités sur la planification de ce projet en mode agile, nous sommes partis de façon classique sur une story map. Mais il s'est vite révélé que celle-ci ne servirait à rien car elle était inadaptée à la taille du projet, à la maturité des participants, à leur mode d'organisation, et n'apportait pas de réponses pertinentes aux questions posées par les participants.
 
-Jusqu'au jour où nous sommes tombés sur un os : un accompagnement vers l'agilité d'un projet industriel recherche&développement avec plusieurs partenaires public-privé. Pour les aider dans la planification, nous sommes donc partis sur une story map. Mais il s'est vite révélé que celle-ci ne servirait à rien car elle était inadaptée à la taille du projet et à son niveau de maturité, et n'apportait pas de réponses aux questions posées par les participants.
+Imaginez passer la journée à recadrer les participants, expliquer une approche centrée sur les utilisateurs, quand certains ont des problématiques de recherche en tête, d'autres des problématiques de prototype industriel, le tout dérivant en une sorte de "comité de pilotage" qui ne dit pas son nom. Vous comprendrez vite que vous faites fausse route.
 
 ## La solution qui nous sauve la vie
 
-Par hasard, c'est peu après ce premier échec que j'ai (re)découvert le blog de Liz Keogh et en particulier cet article nommé [Capability-based Planning and Lightweight Analysis](http://lizkeogh.com/2013/09/05/capability-based-planning-and-lightweight-analysis/). Et ce fut une révélation, une méthode miracle dans notre cas (et dans quelques autres)(3).
+Par hasard, c'est peu après ce premier échec que j'ai (re)découvert le blog de Liz Keogh et en particulier cet article nommé [Capability-based Planning and Lightweight Analysis](http://lizkeogh.com/2013/09/05/capability-based-planning-and-lightweight-analysis/). Et cet article fut un véritable révélateur, nous apportant des idées et des méthodes pour aborder ce projet et de nombreux autres. Les sessions suivantes de notre projet d'accompagnement furent nettement plus positives et productives juste en s'essayant à quelques principes.
 
-Il serait compliqué de résumer toutes les idées de Liz, par ailleurs rassemblées dans sa thématique [Embracing Uncertainty](http://lizkeogh.com/embracing-uncertainty/) ainsi que les idées exposées par Dan North dans sa série sur [Deliberate Discovery](http://dannorth.net/2010/08/30/introducing-deliberate-discovery/). On se contentera donc des points essentiels de la méthode, mais les lectures ci-dessus sont vivement recommandées pour leur richesse et leur aspect didactique (attention, il y en a pour quelques heures si vous plongez dedans !).
+Le but de cet article n'est pas de présenter toutes les idées de Liz, rassemblées dans sa thématique [Embracing Uncertainty](http://lizkeogh.com/embracing-uncertainty/) ainsi que celles exposées par Dan North dans sa série sur [Deliberate Discovery](http://dannorth.net/2010/08/30/introducing-deliberate-discovery/). Ces lectures sont cependant vivement recommandées pour leur richesse, leur aspect didactique et pour comprendre d'où viennent ces idées (attention, il y en a pour quelques heures si vous plongez dedans !). Nous allons plutôt présenter comment nous exploitons ces idées dans notre approche de découverte d'un projet.
 
-- réflexion portée sur les capacités et non les activités : c'est-à-dire sur la capacité du système à aider/supporter son utilisateur. On est dans l'expression du besoin et d'une solution possible, pas dans la fonctionnalité
-- mise en valeur de l'aspect différentiant, mais aussi des pré-requis essentiels : on se concentre sur la valeur et l'essentiel
-- focus sur le(s) stakeholder(s) et leur problème : il n'attendent pas forcément des réponses fonctionnelles !
+## Découverte de projet : comment démarrer ?
 
-Mais l'aspect le plus intéressant et révélateur de cette méthode est son échelle de complexité ou ignorance. D'abord parce qu'elle met l'accent sur le non-dit des projets en mode forfait : 
+### Vision des acteurs
 
-(3) Il faut bien sûr se méfier des miracles, mais de temps en temps il est permis d'y croire. Surtout quand cela soutient la tension dramatique d'un article.
+Comme pour la story map, nous commençons par une vision globale. Le but est ici de faire un tour rapide de toutes les personnes impactées par le projet et de noter comment ou pourquoi elles seraient impactées.
 
-## Quelques leçons tirées de cette solution
+- le(s) porteur(s) de projet (*primary stakeholder*) défend la vision du projet : l'idée qui apporte une nouvelle valeur et qu'il faut donc réaliser.
+- les acteurs secondaires (*secondary or incidental stakeholders*) ont des besoins ou buts qui peuvent être impactés par le projet. Le projet peut améliorer, maintenir voire même dégrader ces besoins, mais pas au point où cela deviendrait bloquant pour la réussite du projet.
+
+Les acteurs secondaires regroupent en fait de nombreux profils, parmi lesquels on peut trouver les utilisateurs du système, les intervenants financiers, acteurs en amont ou en aval, et aussi les concurrents. On s'intéressera en particulier aux acteurs pour lesquels négliger les besoins ou buts conduiraient à l'échec du projet.
+
+### Découverte et cartographie des capacités
+
+La vision nous sert à identifier les acteurs les plus importants pour la réussite du projet. Pour chacun, nous pouvons explorer comment il travaille, quels artefacts il produit ou utilise, comment il interagit avec les autres acteurs. Ce travail esquisse les contours du système et de ses utilisateurs à travers les besoins, les interactions, les problèmes de chacun.
+
+Mais pour pouvoir représenter le système pour tout le monde et le discuter, nous exprimons en fait les capacités du système. La capacité d'un système indique que tel besoin ou but est bien pris en compte, sans rentrer dans le détail de la fonctionnalité ou de la solution : on parlera de la capacité à supporter tel problème, telle activité, sans être obligé de figer une fonctionnalité.
+
+La vision du porteur de projet doit apparaître dans les capacités du système.
+
+Il est tentant de décrire une capacité comme une fonctionnalité : l'exemple aide les participants à se mettre d'accord sur ce qu'ils veulent dire. Cependant, j'essaie si possible de remonter à un niveau d'expression plus abstrait dans l'image globale. Ainsi on ne fige pas une fonctionnalité, on laisse la porte ouverte à d'autres solutions pour cette capacité, une fois que l'expérience aura apporté d'autres aspects.
+
+A ce stade il est fréquent de faire des allers-retours pour reformuler, scinder ou fusionner des capacités. Il est aussi facile de commencer à identifier certaines dépendances entre capacités, typiquement des dépendances de flux. EXEMPLE
+
+Cette méthode s'adapte très bien à tout système : il suffit d'adapter le niveau d'abstraction des capacités au type et à la taille du système. Sur un petit projet, une capacité serait très proche d'une fonctionnalité utilisateur. Mais sur les gros projets (comme notre projet R&D), il est fréquent que les capacités soient à l'échelle de sous-systèmes réalisés par différents acteurs (et qui peuvent faire eux-mêmes l'objet d'une cartographie si besoin). Le fait de s'arrêter à des capacités d'un système, quelque soit sa taille, permet de ne pas tomber dans le piège du catalogue de fonctionnalités à la story map. On cherche avant tout à faire une carte complète, même si elle est peu détaillée.
+
+Avec ces règles, il est fréquent que la carte initiale du système tienne en une dizaine de capacités. Un tableau blanc et des feutres, ou bien quelques post-its sont donc largement suffisants pour réaliser l'atelier.
+
+
+### Identification de la valeur et du risque des capacités
+
+Nous pouvons rentrer dans le vif du sujet, là où la méthode de Liz Keogh prend tout son sel. Suite à cette cartographie, nous avons un ensemble de capacités représentant notre projet : parmi celles-ci, certaines sont des *commodities*, c'est-à-dire qu'elles sont nécessaires au fonctionnement du système sans être innovantes. D'autres sont classées *spoilers* voire *differentiators*. Ce sont celles qui vont faire la différence pour le projet. La vision du projet est en particulier un différentiateur. Si cela ne semble pas assez différentiant, creusez encore : la différence n'est pas nécessairement exprimé par une nouvelle fonctionnalité, mais par une façon différente d'enchaîner des flux, par un business model alternatif…
+
+DEVELOPPER UN PETIT PEU SUR COMMO vs SPOIL vs DIFF
+
+Il n'y a pas de règle pour noter la valeur d'une capacité
+
+
+Vient ensuite la seconde étape, qui consiste à évaluer le risque de développer chaque capacité. La notion de risque est souvent abordé dans les projets agiles, mais par nature le risque est incertain voire inconnu - comment évaluer quelque chose que l'on ne connaît pas ? La solution de Liz Keogh est élégante, en proposant une échelle sur un critère objectif et simple, compréhensible par tout le monde : elle consiste à s'auto-évaluer sur "ce qu'on ne connaît pas". Liz propose 5 niveaux (de 1 à 5, ou de A à E, ce n'est pas important). Il n'y a pas d'interprétation rigoureuse des niveaux, mais les suivants aident à comprendre :
+
+1. tout le monde dans l'équipe sait faire (la connaissance est partagé par tout le monde)
+2. une personne dans l'équipe a déjà réalisé ce type de capacité (la connaissance est présente mais pas encore partagée)
+3. une personne dans l'entreprise a déjà réalisé ce type de capacité (c'est donc une personne clé, ce qui a des implications sur sa disponibilité, le besoin de formation)
+4. personne dans l'entreprise n'a fait cela, mais d'autres entreprises le font - il faudra donc peut–être passer par leur expertise, la formation, l'achat de composant pour acquérir la capacité (il peut s'agir de concurrents !)
+5. personne à notre connaissance n'a fait cela - on est dans le domaine de la R&D
+
+C'est certainement l'aspect le plus intéressant de la méthode de Liz. En tant que professionnels, nous sommes formés à toujours donner une réponse au client. Pourtant l'informatique est bien un domaine où il est difficile de tout connaître. Cette échelle vous encourage à être honnête avec vous-même et votre porteur de projet : les points durs se cachent derrière votre ignorance, donc identifier et reconnaître ceux-ci au plus vite vous permettra de progresser plus vite vers la conclusion du projet.
+
+
+### Passer du plan aux étapes
+
+Croiser la valeur différentiante et les risques des capacités nous permet de facilement dresser un plan d'attaque. Comme noté par Dan North, le point le plus critique de votre projet est ce que vous ne savez pas. Or, par principe, le point différentiant de votre projet est celui que personne n'a jamais fait : vous ne savez donc pas combien ça va coûter et si ça va marcher.
+
+Echelonner les risques : une seule capacité risquée et différentiante
+
+Si pas différentiant --> alternatives moins risquées
+
+Chemin critique pour par exemple prototype rapide/démonstration de valeur
+
+Itérer sur les étapes précédentes : capacités, valeur, risque
+
+
+
+## Quelques leçons tirées de la cartographie par capacité
 
 Pour bien comprendre les différences avec notre façon de faire précédente, il est utile de bien pointer les différences avec certains principes du story mapping basique.
 
+
+Agile Cargo cult : quand on applique à la lettre les principes et les méthodes de l'agilité, sans comprendre d'où ils viennent, sans les adapter au contexte, au final en ne retirant aucun bénéfice de ces principes.
+
+
+
 Pratiques courantes vs challenges apportées par la méthode (cf concepts.md)
+
+story map vs capability red: when, why?
+
 
 ## Changer encore et toujours notre vision de l'agilité
 
 Ouverture : changer encore et toujours nos méthodes agiles/notre vision de l'agilité
 
+forecast vs estimation : savoir se projeter (confusion entre exactitude/justesse et précision/(in)certitude)
+
+Mais l'aspect le plus intéressant et révélateur de cette méthode est son échelle de complexité ou ignorance. D'abord parce qu'elle met l'accent sur le non-dit des projets en mode forfait : 
+
 
 Quelle proposition faisons-nous au porteur ? Comment répondre à ces questions
 
 Sortir sa tête des méthodes et métriques "standards"
+
+Notre approche "problem-oriented"
+
+http://mikehadlow.blogspot.co.uk/2014/03/coconut-headphones-why-agile-has-failed.html
