@@ -12,14 +12,14 @@ PAS DE RAPPEL SUR LE PRINCIPE D'UNE STORY MAP? (uniformiser le vocabulaire)
 
 Les porteurs de projet qui viennent nous voir sont à la recherche d'expertise sur la partie technique et fonctionnelle de leur projet aussi bien que sur la planification pour mener à bien un produit minimum viable. 
 
-Les porteurs de projet arrivent avec des maturités différentes vis-à-vis de leur projet. Certains vivent dans le domaine depuis des années et se lancent sur une idée mûrement réfléchie. D'autres se lancent dans l'aventure et découvrent la problématique en même temps qu'ils proposent des solutions. Nous en avons vu arrivés dans nos locaux avec des cahiers de charge denses et illisibles, tandis que d'autres avaient toutes leurs idées en tête et s'adaptaient très vite à nos méthodes de travail.
+Les porteurs de projet arrivent avec des maturités différentes vis-à-vis de leur projet. Certains vivent dans le domaine depuis des années et se lancent sur une idée mûrement réfléchie. D'autres se lancent dans l'aventure et découvrent la problématique en même temps qu'ils proposent des solutions. Nous en avons vu arriver dans nos locaux avec des cahiers de charges denses et illisibles, tandis que d'autres avaient toutes leurs idées en tête et s'adaptaient très vite à nos méthodes de travail.
 
 Nous avions donc besoin d'une méthode pour nous aider à découvrir rapidement un projet et à encadrer les clients lors des phases de découverte. La story map semblait un outil intéressant pour cela. De plus, en utilisant cet outil, nous avons une chance d'être actif dans la recherche d'informations (a contrario d'une lecture d'un cahier des charges, plus passive et fastidieuse), donc de dénicher des points obscurs, interpeller le porteur de projets et le faire sortir de ses habitudes, et d'exposer de futurs clients à nos méthodes :
 
 - format workshop favorisant la discussion entre participants ;
-- post-its pour garder les idées concises et essentielles ;
+- post-it pour garder les idées concises et essentielles ;
 - focus sur les utilisateurs ;
-- priorisation et construction des lots dynamique, en groupe…
+- priorisation et construction des lots dynamiques, en groupe…
 - vision complète et amélioration incrémentale pour favoriser le raffinement des points clés.
 
 Sur le papier, la story map a donc tout pour plaire. Pourtant notre expérience avec les story maps en découverte de projet s'est révélée très hétérogène voire paradoxale. Parfois cela marchait bien, révélant les différents aspects du projet. Régulièrement le résultat ne semblait pas à la hauteur des efforts fournis lors de la session. Et dans au moins deux cas, la story map s'est révélée complètement inadaptée ou a fini en quasi-désastre. Or c'est une étape structurante dans la vie d'un projet, d'autant plus qu'il s'agit souvent du premier contact entre l'équipe technique et le porteur de projet. Il est donc frustrant de commencer par une session de travail qui ne marche pas à 100%.
@@ -50,7 +50,7 @@ La granularité des activités et cas d'utilisation étaient très variables au 
 
 ### Granularité hétérogène entre différentes story maps
 
-La granularité entre différentes story maps étaient aussi très hétérogènes. Cela n'est pas surprenant, mais ce qui était exprimé comme une activité (recouvrant plusieurs cas d'utilisations) dans un projet était simplement décrit comme un cas d'utilisation dans un projet plus important, car il était impossible de rentrer dans le détail. Il y avait donc nécessairement une perte d'information entre les deux qui dérangeait pour juger sereinement de la portée d'une activité.
+La granularité entre différentes story maps était aussi très hétérogène. Cela n'est pas surprenant, mais ce qui était exprimé comme une activité (recouvrant plusieurs cas d'utilisations) dans un projet était simplement décrit comme un cas d'utilisation dans un projet plus important, car il était impossible de rentrer dans le détail. Il y avait donc nécessairement une perte d'information entre les deux qui dérangeait pour juger sereinement de la portée d'une activité.
 
 ### L'effet rush
 
@@ -70,7 +70,7 @@ Le format story map permet difficilement de mettre l'accent sur des problématiq
 
 ### La story map ne rend pas compte des points à explorer
 
-Les doutes ou besoins exprimés par le porteur ou par l'équipe n'apparaissaient pas clairement. Les zones d'ombre n'étant pas clairement identifiées, certaines décisions pouvaient sembler figer dans le marbre. Entre autre, les problèmes d'ordre technique étaient souvent évacués au motif que le sujet était prématuré (1) et qu'il fallait se concentrer sur le fonctionnel.
+Les doutes ou besoins exprimés par le porteur ou par l'équipe n'apparaissaient pas clairement. Les zones d'ombre n'étant pas clairement identifiées, certaines décisions pouvaient sembler figer dans le marbre. Entre autres, les problèmes d'ordre technique étaient souvent évacués au motif que le sujet était prématuré (1) et qu'il fallait se concentrer sur le fonctionnel.
 
 ### La story map fige le périmètre des fonctionnalités
 
@@ -84,7 +84,7 @@ Malgré ces inconvénients, nous croyons quand même dans la valeur de la story 
 
 *Equipe technique :*
 
-- nous avons une première vue de fonctionnalités minimales, nous pouvons commencer au plus vite pour fournir un PMV ;
+- nous avons une première vue de fonctionnalités minimales, nous pouvons commencer au plus vite pour fournir un PMV.
 - quand voulez-vous commencer ?
 
 *Porteur de projet :*
@@ -92,7 +92,7 @@ Malgré ces inconvénients, nous croyons quand même dans la valeur de la story 
 - est-ce que la story map correspond à la liste des fonctionnalités ? Qu'est-ce qui va rentrer dans le périmètre final ?
 - combien ça va coûter ?
 
-Bizarrement, cette dernière question provoquait toujours chez nous une sensation de malaise. Une story map ne permet pas de fournir une meilleure estimation qu'une autre méthode (tout au plus favorise-t-elle la comparaison pour un chiffrage relatif)(2). Il nous manquait toujours des informations cruciales au moment du chiffrage pour être serein. Au final, nous nous sentions piégés dans les vieilles habitudes de chiffrage du cahier des charges.
+Bizarrement, cette dernière question provoquait toujours chez nous une sensation de malaise. Une story map ne permet pas de fournir une meilleure estimation qu'une autre méthode (tout au plus favorise-t-elle la comparaison pour un chiffrage relatif) (2). Il nous manquait toujours des informations cruciales au moment du chiffrage pour être serein. Au final, nous nous sentions piégés dans les vieilles habitudes de chiffrage du cahier des charges.
 
 De plus, la story map ne nous offrait pas toujours une vision claire sur la prochaine étape : peut-on commencer tout de suite ? Y a-t-il d'autres étapes non techniques à valider d'abord ?
 
