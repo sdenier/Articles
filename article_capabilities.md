@@ -15,7 +15,7 @@ Dans l'article précédent, nous avons expliqué comment la story map n'était p
 
 Avec la story map, ceci se traduisait par les questions suivantes :
 
-- est-ce que la story map correspond à la liste des fonctionnalités ? Qu'est-ce qui va rentrer dans le périmètre final ?
+- est-ce que la story map correspond à la liste des fonctionnalités qui vont être implémentées ? Qu'est-ce qui va rentrer dans le périmètre final ?
 - combien ça va coûter ?
 
 Ce qui amenait immanquablement à des incompréhensions et des discussions commerciales sur le mode forfait. Il s'agit de questions qui semblent importantes, mais qui ne correspondent en fait pas à la collaboration que nous souhaitons mettre en place avec les porteurs de projet. Pour autant, nous faisions avec et arrivions à fournir les réponses demandées.
@@ -82,21 +82,30 @@ C'est certainement l'aspect le plus intéressant de la méthode de Liz. En tant 
 
 ### Passer du plan aux étapes
 
-Croiser la valeur différenciante et les risques des capacités nous permet de facilement dresser un plan d'attaque. Comme noté par Dan North, le point le plus critique de votre projet est ce que vous ne savez pas. Or, par principe, le point différenciant de votre projet est celui que personne n'a jamais fait : vous ne savez donc pas combien ça va coûter et si ça va marcher.
+Croiser la valeur différenciante et les risques des capacités nous permet de facilement dresser un plan d'attaque. Comme noté par Dan North, le point le plus critique de votre projet est ce que vous ne savez pas. Or, par principe, le point différenciant de votre projet est celui que personne n'a jamais fait : vous ne savez donc pas combien ça va coûter ni si ça va marcher.
 
-Echelonner les risques : une seule capacité risquée et différenciante
+Cela tombe bien. Comme vous ne voulez probablement pas prendre tous les risques d'un seul coup, pourquoi ne pas commencer par l'aspect de votre projet qui apporte la valeur et qui peut en même temps faire échouer le projet ?
 
-Si pas différenciant --> alternatives moins risquées
+Si votre capacité différenciante n'est pas notée comme risquée, rediscutez-la. Peut-être est-elle mal exprimée pour que les gens perçoivent le risque. Peut-être la vraie différence et le risque sont-ils dissimulés dans un certain aspect de la capacité, qu'il faut alors mettre en avant, extraire comme une capacité à part entière.
 
-Chemin critique pour par exemple prototype rapide/démonstration de valeur
+Il arrive aussi que la capacité différenciante apparaisse trop compliquée pour être aboutie en une fois. Dans ce cas il peut être possible de redécouper celle-ci en capacités moins différenciantes mais plus faciles à atteindre.
 
-Itérer sur les étapes précédentes : capacités, valeur, risque
+Si vous avez plusieurs capacités différenciantes et risquées, essayez de les échelonner pour ne pas avoir plusieurs problèmes sur le feu. Il peut y avoir des priorités ou des dépendances entre capacité qui ordonneront les étapes.
 
+Et si certaines capacités nécessaires à votre projet sont risquées sans être différentiantes, posez-vous la question de faire baisser le risque sur cet aspect : se contenter d'une version allégée de la capacité, acheter un système tout prêt, proposer des solutions alternatives pour satisfaire la capacité.
+
+En répétant cette analyse sur les capacités, leur valeur et leur risque, les étapes de votre projet se dessinent peu à peu : chaque étape vise à éliminer un risque tout en apportant une nouvelle valeur. Vous concentrez votre effort sur l'essentiel. Les commodités et les "nice to have" sont limités au strict minimum.
+
+Une autre façon de challenger votre plan d'attaque est de se fixer des rendez-vous réguliers pour démontrer la valeur de votre projet. Jusqu'à quand pouvez-vous vous engager pour livrer une nouvelle démonstration ?
+
+Le maître mot est : qu'est-ce que vous pensez pouvoir livrer la prochaine fois qui permette de tester la valeur du projet ? Quelle est la prochaine étape ?
+
+NB: capacité en parallèle, bootstrap sur des projets plus compliqués (valeur intermédiaire)
 
 
 ## Quelques leçons tirées de la cartographie par capacité
 
-Pour bien comprendre les différences avec notre façon de faire précédente, il est utile de bien pointer les différences avec certains principes du story mapping basique.
+Pour bien comprendre les différences avec notre façon de faire précédente, il est utile de revenir sur les différences avec les story maps classiques.
 
 
 Agile Cargo cult : quand on applique à la lettre les principes et les méthodes de l'agilité, sans comprendre d'où ils viennent, sans les adapter au contexte, au final en ne retirant aucun bénéfice de ces principes.
