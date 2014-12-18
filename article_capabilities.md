@@ -95,24 +95,58 @@ Reconsidérez votre cartographie des capacités : comment pouvez-vous la réalis
 
 En répétant cette analyse sur les capacités, leur valeur et leur risque, les étapes de votre projet se dessinent peu à peu : chaque étape vise à éliminer un risque tout en apportant une nouvelle valeur. Vous concentrez votre effort sur l'essentiel. Les commodités et les "nice to have" sont limités au strict minimum, tant que les risques essentiels ne sont pas cernés et maîtrisés.
 
-Une autre façon de challenger votre plan d'attaque est de se fixer des rendez-vous réguliers pour démontrer la valeur de votre projet. Quelle est la prochaine étape ? Quelle valeur pensez-vous pouvoir démontrer la prochaine fois ? Jusqu'à quand êtes-vous confiants ?
+Une autre façon de challenger votre plan d'attaque est de se fixer des rendez-vous réguliers pour démontrer la valeur de votre projet. Quelle est la prochaine étape ? Quelle valeur pensez-vous pouvoir démontrer la prochaine fois ? Quand vous pouvez décrire de quoi sera capable la prochaine version du système et que vous êtes confiants dans votre capacité de le réaliser, alors vous êtes prêts pour démarrer le projet !
+
 
 
 ## Quelques leçons tirées de la cartographie par capacité
 
-Pour bien comprendre les différences avec notre façon de faire précédente, il est utile de revenir sur les différences avec les story maps classiques.
+Pour bien comprendre les apports de cette méthode, il est utile de revenir sur quelques différences avec l'approche par story map.
+
+### Les utilisateurs ne représentent que la partie visible des acteurs du projet
+
+Dans le cadre d'une story map, l'accent est souvent mis sur les utilisateurs qui seront amenés à utiliser le système, au détriment d'autres acteurs plus "passifs" mais dont l'implication dans le projet peut être déterminante.
+
+TROUVER UN EXEMPLE ? (est-il important de s'occuper des capacités Facebook du projet pour le community manager tandis que l'impact du projet sur le directeur de production est ignoré).
+
+Un focus trop rapide sur les utilisateurs entraîne facilement un focus sur les fonctionnalités, ce qui se fait au détriment de l'analyse des besoins et de la recherche de solutions. Le niveau de détails est trop bas pour s'imprégner des enjeux et des problématiques du projet.
+
+La vision du projet, avec sa proposition de valeur mais aussi son impact sur les acteurs, est à cultiver dès le début : balayer tous les acteurs du projet, essayer de comprendre leurs besoins, leur attitude et leur impact sur le projet, si celui-ci sert leurs intérêts ou bien peut être un frein. Cette analyse a aussi pour but de ne pas fixer d'oeillères sur ce qu'il faut réaliser : le but est de satisfaire au maximum les besoins de chaque acteur du projet. La solution ne passe pas forcément par une liste de fonctionnalités !
 
 
-Agile Cargo cult : quand on applique à la lettre les principes et les méthodes de l'agilité, sans comprendre d'où ils viennent, sans les adapter au contexte, au final en ne retirant aucun bénéfice de ces principes.
+### Le focus doit être sur les capacités à résoudre des problèmes, pas sur les fonctionnalités
+
+Un focus trop rapide sur les fonctionnalités lors d'une story map peut avoir des effets négatifs lors de la réalisation du projet.
+
+- le besoin de la fonctionnalité est peu approfondie ; il ne reste qu'une description superficielle de la fonctionnalité, de laquelle il est difficile de repartir ou revenir en sources si on cherche une solution alternative
+- la liste des fonctionnalités de la story map apparaît parfois comme un périmètre, à la manière d'un cahier des charges
+- la granularité des fonctionnalités peut être très hétérogène et leur description aussi : les "petites" fonctionnalités auront tendance à être plus détaillées que les grosses, car plus évidentes ; conjointement la complexité des grosses peut être masquée par le manque de détails dans leur description
+- des notions de valeur et de coût sont parfois utilisées pour aider à la priorisation des fonctionnalités. Ces notions posent des problèmes de définition (s'agit-il de la valeur en tant que nouveauté ou nécessité ? Quelle est l'échelle pour l'estimation du coût : story points, jour-hommes ? Se focaliser sur ces estimations peut masquer des problèmes de dépendances (la fonctionnalité X n'est pas jugée très intéressante, pourtant une sous-partie est nécessaire à une autre partie valorisable).
+
+Bref, la story map peut donner une fausse impression de complétude, à la manière d'un cahier des charges, avec différents lots de fonctionnalités à réaliser définis à l'avance. En cas de problème lors de la réalisation, le champ d'action pour rétablir le projet peut être limité car les acteurs auront du mal à sortir des rails de la story map.
+
+Tout projet propose une vision différente par rapport à l'existant. Mais il existe plusieurs façons de réaliser cette vision. L'important est donc de ne pas avoir d'oeillères sur le chemin de la réalisation. En exprimant les futures "capacités" du système, vous savez que vous devez chercher une solution pour remplir cette capacité. Mais les moyens de satisfaire sont multiples et peuvent être plus facilement remises en cause en cours de projet ()recherche d'options, de solutions alternatives). En prenant une approche centrée sur le problème, il y a moins de risque de passer du temps sur les détails d'une solution (la fonctionnalité) au détriment d'autres possibilités. En cas d'échec avec une solution, on pourra revenir à la capacité fondamentale (quel est le problème, le besoin ? comment y répondre ?). Le terme de capacité permet aussi plus facilement d'aborder les aspects non fonctionnels du système (la robustesse, performance...)
+
+### La planification est basée sur le dérisquage et la réalisation du projet
+
+trop souvent chemin critique, MVP interprétés comme plan à suivre, liste de fonctionnalités à délivrer.
+
+### L'estimation est une projection d'expert, pas une collection de chiffrage ni un moyen de pilotage
 
 
 
-Pratiques courantes vs challenges apportées par la méthode (cf concepts.md)
+## story map vs capability red : when, why?
 
-story map vs capability red : when, why?
+Story map = super pour récapituler la vision de ce qu'on veut réaliser, la réordonner, préparer les détail des prochaines itérations, quand la vision du projet est à peu près stable (au moins jusqu'au prochain lot).
+
+Capability map = découvrir un projet, organiser les premières itérations (type spike, démo, proto), éventuellement préparer des story maps pour décrire des futures itérations, recentrer un projet sur ses fondamentaux.
 
 
 ## Changer encore et toujours notre vision de l'agilité
+
+
+malheureusement, les outils proposés par l'agilité = maturité de l'équipe et du projet pour donner leur pleine mesure. Rien ne remplace l'expérience, mais on a besoin d'autres approches moins codifiées dès qu'il s'agit d'aborder un nouveau domaine.
+
 
 Ouverture : changer encore et toujours nos méthodes agiles/notre vision de l'agilité
 
@@ -126,5 +160,7 @@ Quelle proposition faisons-nous au porteur ? Comment répondre à ces questions
 Sortir sa tête des méthodes et métriques "standards"
 
 Notre approche "problem-oriented"
+
+Agile Cargo cult : quand on applique à la lettre les principes et les méthodes de l'agilité, sans comprendre d'où ils viennent, sans les adapter au contexte, au final en ne retirant aucun bénéfice de ces principes.
 
 http://mikehadlow.blogspot.co.uk/2014/03/coconut-headphones-why-agile-has-failed.html
