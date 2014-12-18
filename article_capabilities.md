@@ -127,9 +127,29 @@ Bref, la story map peut donner une fausse impression de complétude, à la mani�
 
 Tout projet propose une vision différente par rapport à l'existant. Mais il existe plusieurs façons de réaliser cette vision. L'important est donc de ne pas avoir d'oeillères sur le chemin de la réalisation. En exprimant les futures "capacités" du système, vous savez que vous devez chercher une solution pour remplir cette capacité. Mais les moyens de satisfaire sont multiples et peuvent être plus facilement remises en cause en cours de projet ()recherche d'options, de solutions alternatives). En prenant une approche centrée sur le problème, il y a moins de risque de passer du temps sur les détails d'une solution (la fonctionnalité) au détriment d'autres possibilités. En cas d'échec avec une solution, on pourra revenir à la capacité fondamentale (quel est le problème, le besoin ? comment y répondre ?). Le terme de capacité permet aussi plus facilement d'aborder les aspects non fonctionnels du système (la robustesse, performance...)
 
-### La planification est basée sur le dérisquage et la réalisation du projet
+### La planification est basée sur le dérisquage et la vie du projet
 
-trop souvent chemin critique, MVP interprétés comme plan à suivre, liste de fonctionnalités à délivrer.
+La pratique courante issue des story maps et des méthodologies agiles est de prioriser les stories par rapport à leur valeur et leur coût estimé, pour les placer dans l'ordre dans le backlog. La notion de chemin critique, voire de MVP, est parfois abordée mais pas nécessairement approfondie. Le backlog ressemble alors à une liste de fonctionnalités à développer.
+
+- la priorisation liée aux dépendances est souvent masquée dans cette approche (même s'il est nécessaire de le prendre en compte), cela peut rendre la repriorisation complexe
+- si on tombe sur une story mal estimée en cours de sprint, des décalages se créent dans le suivi de charge pour résoudre le problème, ce qui peut être pertubant pour une équipe mal rôdée ; l'équipe prend du "retard", qui ne peut pas être rattrapé sauf à sacrifier le périmètre etc
+- même tard en fin de projet, on peut tomber sur une story complexe, mal estimée, qui rend difficile la vision sur la fin du projet
+- en bref, le suivi se base sur un plan (même léger) et il peut se créer un ressenti de retard ou de travail mal fait à cause des sacrifices faits par rapport au plan (fonctionnalité ou qualité)
+- erreur fondamentale : moins on connaît de chose sur un aspect du projet, moins on sera pertinent sur son estimation, plus on prend des risques à s'engager sur cet aspect (or les plans par story mapping & co tendent malgré tout à un engagement, simplement mal formalisé)
+
+En se focalisant sur les risques de faire échouer le projet ainsi que sur l'aspect "valeur différentiante", l'accent est mis sur un point essentiel : trouver la prochaine étape pour démontrer la valeur du projet, avant de passer à la suivante. L'approche est centrée sur la réalisation de la vision, la résolution des problèmes rencontrés, plutôt que sur cocher une liste de fonctionnalités "faites".
+
+
+NB: note sur le rythme. Un des fondamentaux des méthodes agiles est d'imprimer un rythme soutenable via les sprints ?
+
+
+A VOIR CI-DESSOUS
+- un tri naturel se fait pour éliminer les choses risquées et de peu valeur (recherche de solutions alternatives à moindre risque)
+- en cas de problème bloquant avec un risque majeur, on échoue plus vite, on gaspille donc moins de ressources
+- pour cette démarche il est important d'être honnête avec soi-même et de dire qu'on ne sait pas faire ; c'est pourquoi une échelle de valeur nominale (complexité/risque de Keogh) est intéressante : elle ne pousse pas à donner une "quantité"
+- on distingue la planification (au sens purement déroulement du projet, étapes de résolution d'un problème), de l'estimation/gestion des ressources
+- on devient plus acteur dans le déroulement du projet (et moins réalisateur de la solution)
+
 
 ### L'estimation est une projection d'expert, pas une collection de chiffrage ni un moyen de pilotage
 
@@ -146,6 +166,8 @@ Capability map = découvrir un projet, organiser les premières itérations (typ
 
 
 malheureusement, les outils proposés par l'agilité = maturité de l'équipe et du projet pour donner leur pleine mesure. Rien ne remplace l'expérience, mais on a besoin d'autres approches moins codifiées dès qu'il s'agit d'aborder un nouveau domaine.
+
+loup dans la bergerie
 
 
 Ouverture : changer encore et toujours nos méthodes agiles/notre vision de l'agilité
