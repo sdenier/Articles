@@ -66,9 +66,6 @@ Nous pouvons rentrer dans le vif du sujet, là où la méthode de Liz Keogh pren
 
 DEVELOPPER UN PETIT PEU SUR COMMO vs SPOIL vs DIFF
 
-Il n'y a pas de règle pour noter la valeur d'une capacité
-
-
 Vient ensuite la seconde étape, qui consiste à évaluer le risque de développer chaque capacité. La notion de risque est souvent abordée dans les projets agiles, mais par nature le risque est incertain voire inconnu - comment évaluer quelque chose que l'on ne connaît pas ? La solution de Liz Keogh est élégante, en proposant une échelle sur un critère objectif et simple, compréhensible par tout le monde : elle consiste à s'auto-évaluer sur "ce qu'on ne connaît pas". Liz propose 5 niveaux (de 1 à 5, ou de A à E, ce n'est pas important). Il n'y a pas d'interprétation rigoureuse des niveaux, mais les suivants aident à comprendre :
 
 1. tout le monde dans l'équipe sait faire (la connaissance est partagée par tout le monde)
@@ -77,30 +74,28 @@ Vient ensuite la seconde étape, qui consiste à évaluer le risque de développ
 4. personne dans l'entreprise n'a fait cela, mais d'autres entreprises le font - il faudra donc peut–être passer par leur expertise, la formation, l'achat de composants pour acquérir la capacité (il peut s'agir de concurrents !)
 5. personne à notre connaissance n'a fait cela - on est dans le domaine de la R&D
 
-C'est certainement l'aspect le plus intéressant de la méthode de Liz. En tant que professionnels, nous sommes formés à toujours donner une réponse au client. Pourtant l'informatique est bien un domaine où il est difficile de tout connaître. Cette échelle vous encourage à être honnête avec vous-même et votre porteur de projet : les points durs se cachent derrière votre ignorance, donc identifier et reconnaître ceux-ci au plus vite vous permettra de progresser plus vite vers la conclusion du projet.
+C'est certainement l'aspect le plus intéressant de la méthode de Liz. En tant que professionnels, nous sommes formés à toujours donner une réponse au client. Pourtant l'informatique est bien un domaine où il est difficile de tout connaître. Cette échelle vous encourage à être honnête avec vous-même et votre porteur de projet : les points durs se cachent derrière votre ignorance, donc identifier et reconnaître ceux-ci vous permettra de progresser plus vite vers la conclusion du projet.
 
 
 ### Passer du plan aux étapes
 
-Croiser la valeur différenciante et les risques des capacités nous permet de facilement dresser un plan d'attaque. Comme noté par Dan North, le point le plus critique de votre projet est ce que vous ne savez pas. Or, par principe, le point différenciant de votre projet est celui que personne n'a jamais fait : vous ne savez donc pas combien ça va coûter ni si ça va marcher.
+Croiser la valeur différenciante et les risques des capacités nous permet de dresser un plan d'attaque. Comme noté par [Dan North](http://dannorth.net/2010/08/30/introducing-deliberate-discovery/), si vous réfléchissez à des projets passés et notez tout ce qui a pu gêner leur réalisation, le frein principal aura été tout ce que vous ignoriez au début et n'avez pu prévoir : ces technologies que vous avez apprises en cours de route, ces fausses pistes qui semblaient prometteuses, ces changements d'objectifs liés de à nouvelles opportunités, et tous les accidents de parcours qui ont affecté la vie de projets. Suivant son principe de *Deliberate Discovery*, plus vite on détecte et attaque les points incertains d'un projet, plus l'équipe sera capable de se projeter, plus les risques de dérive du projet diminuent.
 
-Cela tombe bien. Comme vous ne voulez probablement pas prendre tous les risques d'un seul coup, pourquoi ne pas commencer par l'aspect de votre projet qui apporte la valeur et qui peut en même temps faire échouer le projet ?
+Par nature, le point différenciant de votre projet est celui que personne n'a jamais fait : vous ne savez donc pas combien cela va coûter ni si cela va marcher. Cela tombe bien. Comme vous ne voulez probablement pas prendre tous les risques d'un seul coup, pourquoi ne pas commencer par l'aspect de votre projet qui apporte la valeur et qui peut en même temps faire échouer le projet ?
 
-Si votre capacité différenciante n'est pas notée comme risquée, rediscutez-la. Peut-être est-elle mal exprimée pour que les gens perçoivent le risque. Peut-être la vraie différence et le risque sont-ils dissimulés dans un certain aspect de la capacité, qu'il faut alors mettre en avant, extraire comme une capacité à part entière.
+Reconsidérez votre cartographie des capacités : comment pouvez-vous la réaliser en cherchant la valeur et en éliminant les risques ? Peut-être le projet est-il assez simple pour être réalisé en une fois. Plus probablement, il y a beaucoup d'inconnus au tableau et vous avez besoin de planifier votre projet par étape.
 
-Il arrive aussi que la capacité différenciante apparaisse trop compliquée pour être aboutie en une fois. Dans ce cas il peut être possible de redécouper celle-ci en capacités moins différenciantes mais plus faciles à atteindre.
+- Il arrive que la capacité différenciante apparaisse trop compliquée pour être aboutie en une fois. Dans ce cas il peut être possible de redécouper celle-ci en capacités moins différenciantes mais plus faciles à atteindre.
 
-Si vous avez plusieurs capacités différenciantes et risquées, essayez de les échelonner pour ne pas avoir plusieurs problèmes sur le feu. Il peut y avoir des priorités ou des dépendances entre capacité qui ordonneront les étapes.
+- Si votre capacité différenciante n'est pas notée comme risquée, rediscutez-la. Peut-être est-elle mal exprimée pour que les gens perçoivent le risque. Peut-être la vraie différence et le risque sont-ils dissimulés dans un certain aspect de la capacité, qu'il faut alors mettre en avant, extraire comme une capacité à part entière.
 
-Et si certaines capacités nécessaires à votre projet sont risquées sans être différentiantes, posez-vous la question de faire baisser le risque sur cet aspect : se contenter d'une version allégée de la capacité, acheter un système tout prêt, proposer des solutions alternatives pour satisfaire la capacité.
+- Si vous avez plusieurs capacités différenciantes et risquées, essayez de les échelonner pour ne pas avoir plusieurs problèmes sur le feu. Il peut y avoir des priorités ou des dépendances entre capacité qui ordonneront les étapes.
 
-En répétant cette analyse sur les capacités, leur valeur et leur risque, les étapes de votre projet se dessinent peu à peu : chaque étape vise à éliminer un risque tout en apportant une nouvelle valeur. Vous concentrez votre effort sur l'essentiel. Les commodités et les "nice to have" sont limités au strict minimum.
+- Et si certaines capacités nécessaires à votre projet sont risquées sans être différentiantes, posez-vous la question de faire baisser le risque sur cet aspect : se contenter d'une version allégée de la capacité, acheter un système tout prêt, proposer des solutions alternatives pour satisfaire la capacité.
 
-Une autre façon de challenger votre plan d'attaque est de se fixer des rendez-vous réguliers pour démontrer la valeur de votre projet. Jusqu'à quand pouvez-vous vous engager pour livrer une nouvelle démonstration ?
+En répétant cette analyse sur les capacités, leur valeur et leur risque, les étapes de votre projet se dessinent peu à peu : chaque étape vise à éliminer un risque tout en apportant une nouvelle valeur. Vous concentrez votre effort sur l'essentiel. Les commodités et les "nice to have" sont limités au strict minimum, tant que les risques essentiels ne sont pas cernés et maîtrisés.
 
-Le maître mot est : qu'est-ce que vous pensez pouvoir livrer la prochaine fois qui permette de tester la valeur du projet ? Quelle est la prochaine étape ?
-
-NB: capacité en parallèle, bootstrap sur des projets plus compliqués (valeur intermédiaire)
+Une autre façon de challenger votre plan d'attaque est de se fixer des rendez-vous réguliers pour démontrer la valeur de votre projet. Quelle est la prochaine étape ? Quelle valeur pensez-vous pouvoir démontrer la prochaine fois ? Jusqu'à quand êtes-vous confiants ?
 
 
 ## Quelques leçons tirées de la cartographie par capacité
