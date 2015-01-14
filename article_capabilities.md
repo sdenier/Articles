@@ -166,28 +166,28 @@ Story map = super pour récapituler la vision de ce qu'on veut réaliser, la ré
 
 Capability map = découvrir un projet, organiser les premières itérations (type spike, démo, proto), éventuellement préparer des story maps pour décrire des futures itérations, recentrer un projet sur ses fondamentaux.
 
-
 ## Changer encore et toujours notre vision de l'agilité
 
+Agile Cargo cult / Band wagon : quand on applique à la lettre les principes et les méthodes de l'agilité, sans comprendre d'où ils viennent, sans les adapter au contexte, au final en ne retirant aucun bénéfice de ces principes.
+
+http://mikehadlow.blogspot.co.uk/2014/03/coconut-headphones-why-agile-has-failed.html
 
 malheureusement, les outils proposés par l'agilité = maturité de l'équipe et du projet pour donner leur pleine mesure. Rien ne remplace l'expérience, mais on a besoin d'autres approches moins codifiées dès qu'il s'agit d'aborder un nouveau domaine.
 
-loup dans la bergerie
+
+
+
+Notre approche "problem-oriented"
+
+Mais l'aspect le plus intéressant et révélateur de cette méthode est son échelle de complexité ou ignorance. D'abord parce qu'elle met l'accent sur le non-dit des projets en mode forfait : 
+
+Quelle proposition faisons-nous au porteur ? Comment répondre à ses questions ? Forecast vs estimation
+
+- on devient plus acteur dans le déroulement du projet (et moins réalisateur de la solution)
+
+
 
 
 Ouverture : changer encore et toujours nos méthodes agiles/notre vision de l'agilité
 
-forecast vs estimation : savoir se projeter (confusion entre exactitude/justesse et précision/(in)certitude)
-
-Mais l'aspect le plus intéressant et révélateur de cette méthode est son échelle de complexité ou ignorance. D'abord parce qu'elle met l'accent sur le non-dit des projets en mode forfait : 
-
-
-Quelle proposition faisons-nous au porteur ? Comment répondre à ces questions
-
-Sortir sa tête des méthodes et métriques "standards"
-
-Notre approche "problem-oriented"
-
-Agile Cargo cult : quand on applique à la lettre les principes et les méthodes de l'agilité, sans comprendre d'où ils viennent, sans les adapter au contexte, au final en ne retirant aucun bénéfice de ces principes.
-
-http://mikehadlow.blogspot.co.uk/2014/03/coconut-headphones-why-agile-has-failed.html
+Chacun ses défauts lié à sa formation, son expérience, son histoire personnel. Cette solution convient à notre problème, peut-être pas au vôtre. Gardez l'esprit ouvert.
