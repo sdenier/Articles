@@ -1,12 +1,10 @@
 # Découverte et amorçage de projet : la planification par capacités et risques
 
-## TLDR
-
-Les méthodes agiles demandent une certaine maturité du projet et de l'équipe avant de donner leur pleine mesure. Comment faire pour démarrer au mieux un projet dans ce cadre ? Comment bien utiliser certains concepts et méthodes ? Comment cela peut aider dans les approches agiles classiques ?
+Face à un porteur de projet en phase de démarrage, nous avons besoin d'outils pour 1) comprendre son idée et sa valeur, 2) structurer son approche pour tester au mieux son idée. Dans notre expérience, l'approche story map demande en fait une certaine maturité des process agiles et du domaine pour être pleinement efficace. Nous explorons dans cet article une approche plus terre-à-terre et pragmatique, identifiant avant tout la valeur et le risque d'un projet pour obtenir un démarrage efficace.
 
 ## Qu'attend-on de nous ?
 
-Dans l'article précédent, nous avons expliqué comment la story map n'était pas l'outil le plus adapté pour découvrir et planifier un nouveau projet. Bien que favorisant la discussion, le focus sur les activités des utilisateurs et la planification des lots de fonctionnalité ne permet pas d'aborder les questions fondamentales à ce stade :
+Dans l'article précédent, nous avons expliqué comment la story map n'était pas l'outil le plus adapté pour découvrir et planifier un nouveau projet. Bien que favorisant la discussion, le focus sur les activités des utilisateurs et la planification des lots de fonctionnalité ne permet pas d'aborder les questions fondamentales du porteur de projet à ce stade :
 
 - est-ce que mon projet marche dans la réalité ?
 - est-ce qu'on a identifié les problèmes clés ?
@@ -15,20 +13,20 @@ Dans l'article précédent, nous avons expliqué comment la story map n'était p
 
 Avec la story map, ceci se traduisait par les questions suivantes :
 
-- est-ce que la story map correspond à la liste des fonctionnalités qui vont être implémentées ? Qu'est-ce qui va rentrer dans le périmètre final ?
-- combien ça va coûter ?
+- Est-ce que la story map correspond à la liste des fonctionnalités ? Qu'est-ce qui va rentrer dans le périmètre final ?
+- Combien ça va coûter ?
 
-Ce qui amenait immanquablement à des incompréhensions et des discussions commerciales sur le mode forfait. Il s'agit de questions qui semblent importantes, mais qui ne correspondent en fait pas à la collaboration que nous souhaitons mettre en place avec les porteurs de projet. Pour autant, nous faisions avec et arrivions à fournir les réponses demandées.
+Ce qui amenait immanquablement à des incompréhensions et des discussions commerciales sur le forfait de développement. Il s'agit de questions qui semblent importantes, mais qui ne correspondent en fait pas à la collaboration que nous souhaitons mettre en place avec les porteurs de projet. Pour autant, nous faisions avec et arrivions à fournir les réponses demandées.
 
 ## Petite histoire qui n'a pas marché et nous a poussé à changer
 
-Jusqu'au jour où nous sommes tombés sur un os : un accompagnement agile d'un projet industriel de recherche et développement. Ce projet était au stade du démarrage, avec des partenaires très matures chacun dans leur domaine (industrie lourde, start-up, laboratoire de recherche publique) et bien évidemment des méthodes de travail différentes. Etant sollicités sur la planification de ce projet en mode agile, nous sommes partis de façon classique sur une story map. Mais il s'est vite révélé que celle-ci ne servirait à rien car elle était inadaptée à la taille du projet, à la maturité des participants, à leur mode d'organisation, et n'apportait pas de réponses pertinentes aux questions posées par les participants.
+Jusqu'au jour où nous sommes tombés sur un accompagnement agile d'un projet industriel de recherche et développement. Ce projet était au stade du démarrage, avec des partenaires expérimentés chacun dans leur domaine (industrie lourde, start-up, laboratoire de recherche publique) et bien évidemment des méthodes de travail différentes. Etant sollicités sur la planification de ce projet en mode agile, nous sommes partis de façon classique sur une story map. Mais il s'est vite révélé que celle-ci ne servirait à rien car elle était inadaptée à la taille du projet, à la maturité des participants, à leur mode d'organisation, et n'apportait pas de réponses pertinentes aux questions posées par les participants.
 
-Imaginez passer la journée à recadrer les participants, expliquer une approche centrée sur les utilisateurs, quand certains ont des problématiques de recherche en tête, d'autres des problématiques de prototype industriel, le tout dérivant en une sorte de "comité de pilotage" qui ne dit pas son nom. Vous comprendrez vite que vous faites fausse route.
+Imaginez passer la journée à recadrer les participants, expliquer une approche centrée sur les utilisateurs, quand certains ont des problématiques de recherche en tête, d'autres des problèmes de développement industriel, le tout dérivant en une sorte de "comité de pilotage" qui ne dit pas son nom. Vous comprendrez vite que vous faites fausse route.
 
-## La solution qui nous sauve la vie
+## La solution qui sauve la vie
 
-Par hasard, c'est peu après ce premier échec que j'ai (re)découvert le blog de Liz Keogh et en particulier cet article nommé [Capability-based Planning and Lightweight Analysis](http://lizkeogh.com/2013/09/05/capability-based-planning-and-lightweight-analysis/). Et cet article fut un véritable révélateur, nous apportant des idées et des méthodes pour aborder ce projet et de nombreux autres. Les sessions suivantes de notre projet d'accompagnement furent nettement plus positives et productives juste en s'essayant à quelques principes.
+Par hasard, c'est peu après ce premier échec que j'ai (re)découvert le blog de Liz Keogh et en particulier cet article nommé [Capability-based Planning and Lightweight Analysis](http://lizkeogh.com/2013/09/05/capability-based-planning-and-lightweight-analysis/). Et cet article fut une bouée de secours, nous apportant des idées et des méthodes pour aborder ce projet et de nombreux autres. Les sessions suivantes de notre projet d'accompagnement furent nettement plus positives et productives juste en s'essayant à quelques principes.
 
 Le but de cet article n'est pas de présenter toutes les idées de Liz, rassemblées dans sa thématique [Embracing Uncertainty](http://lizkeogh.com/embracing-uncertainty/) ainsi que celles exposées par Dan North dans sa série sur [Deliberate Discovery](http://dannorth.net/2010/08/30/introducing-deliberate-discovery/). Ces lectures sont cependant vivement recommandées pour leur richesse, leur aspect didactique et pour comprendre d'où viennent ces idées (attention, il y en a pour quelques heures si vous plongez dedans !). Nous allons plutôt présenter comment nous exploitons ces idées dans notre approche de découverte d'un projet.
 
@@ -38,7 +36,7 @@ Le but de cet article n'est pas de présenter toutes les idées de Liz, rassembl
 
 Comme pour la story map, nous commençons par une vision globale. Le but est ici de faire un tour rapide de toutes les personnes impactées par le projet et de noter comment ou pourquoi elles seraient impactées.
 
-- le(s) porteur(s) de projet (*primary stakeholder*) défend la vision du projet : l'idée qui apporte une nouvelle valeur et qu'il faut donc réaliser.
+- le(s) porteur(s) de projet (*primary stakeholder*) défend la vision du projet : l'idée qui apporte une nouvelle valeur et qu'il faut donc réaliser. Ce sont ceux qui bénéficient le plus de l'idée.
 - les acteurs secondaires (*secondary or incidental stakeholders*) ont des besoins ou buts qui peuvent être impactés par le projet. Le projet peut améliorer, maintenir voire même dégrader ces besoins, mais pas au point où cela deviendrait bloquant pour la réussite du projet.
 
 Les acteurs secondaires regroupent en fait de nombreux profils, parmi lesquels on peut trouver les utilisateurs du système, les intervenants financiers, acteurs en amont ou en aval, et aussi les concurrents. On s'intéressera en particulier aux acteurs pour lesquels négliger les besoins ou buts conduiraient à l'échec du projet.
