@@ -47,24 +47,27 @@ La vision nous sert à identifier les acteurs les plus importants pour la réuss
 
 Mais pour pouvoir représenter le système pour tout le monde et le discuter, nous exprimons en fait les capacités du système. Cette dernière indique que tel besoin ou but est bien pris en compte, sans rentrer dans le détail de la fonctionnalité ou de la solution : on parlera de la capacité à supporter tel problème, telle activité, sans être obligé de figer une fonctionnalité.
 
-La vision du porteur de projet doit apparaître dans les capacités du système.
+PRENDRE UN EXEMPLE (RM TOOL, ENV PICTURE ?)
 
-Il est tentant de décrire une capacité comme une fonctionnalité : l'exemple aide les participants à se mettre d'accord sur ce qu'ils veulent dire. Cependant, j'essaie si possible de remonter à un niveau d'expression plus abstrait dans l'image globale. Ainsi on ne fige pas une fonctionnalité, on laisse la porte ouverte à d'autres solutions pour cette capacité, une fois que l'expérience aura apporté d'autres aspects.
+*La vision du porteur de projet doit apparaître dans les capacités du système.*
 
-A ce stade il est fréquent de faire des allers-retours pour reformuler, scinder ou fusionner des capacités. Il est aussi facile de commencer à identifier certaines dépendances entre capacités, typiquement des dépendances de flux. EXEMPLE
+Il est tentant de décrire une capacité comme une fonctionnalité : l'exemple aide les participants à se mettre d'accord sur ce qu'ils veulent dire. Cependant, une fois les idées clarifiées, j'essaie si possible de remonter à un niveau d'expression plus abstrait dans l'image globale. Ainsi on ne fige pas une fonctionnalité, on laisse la porte ouverte à d'autres solutions pour cette capacité, une fois que l'expérience aura apporté d'autres aspects.
 
-Cette méthode s'adapte très bien à tout système : il suffit d'adapter le niveau d'abstraction des capacités au type et à la taille du système. Sur un petit projet, une capacité serait très proche d'une fonctionnalité utilisateur. Mais sur les gros projets (comme notre projet R&D), il est fréquent que les capacités soient à l'échelle de sous-systèmes réalisés par différents acteurs (et qui peuvent faire eux-mêmes l'objet d'une cartographie si besoin). Le fait de s'arrêter à des capacités d'un système, quel que soit sa taille, permet de ne pas tomber dans le piège du catalogue de fonctionnalités à la story map. On cherche avant tout à faire une carte complète, même si elle est peu détaillée.
+A ce stade il est fréquent de faire des allers-retours pour reformuler, scinder ou fusionner des capacités. Il est aussi facile de commencer à identifier certaines dépendances entre capacités, typiquement des dépendances de flux.
 
-Avec ces règles, il est fréquent que la carte initiale du système tienne en une dizaine de capacités. Un tableau blanc et des feutres, ou bien quelques post-it sont donc largement suffisants pour réaliser l'atelier.
+EXEMPLE
 
+En fonction de la taille et du type du projet, il est facile d'adapter l'approche en faisant varier le niveau d'abstraction des capacités. Sur un petit projet, une capacité sera très proche d'une fonctionnalité utilisateur. Mais sur les gros projets (comme notre projet R&D), il est fréquent que les capacités soient à l'échelle de sous-systèmes réalisés par différents acteurs (et qui peuvent faire eux-mêmes l'objet d'une cartographie si besoin). Le fait de s'arrêter à des capacités d'un système, quel que soit sa taille, permet de ne pas tomber dans le piège du catalogue de fonctionnalités à la story map. On cherche avant tout à faire une carte complète, même si elle est peu détaillée.
+
+Avec ces règles, il est fréquent que la carte initiale du système tienne en une dizaine de capacités. Un tableau blanc et des feutres, ou bien quelques post-it sont donc largement suffisants pour réaliser l'analyse.
 
 ### Identification de la valeur et du risque des capacités
 
-Nous pouvons rentrer dans le vif du sujet, là où la méthode de Liz Keogh prend tout son sel. Suite à cette cartographie, nous avons un ensemble de capacités représentant notre projet : parmi celles-ci, certaines sont des *commodités*, c'est-à-dire qu'elles sont nécessaires au fonctionnement du système sans être innovantes. D'autres sont classées *spoilers* ou *différenciateurs*. Ce sont celles qui vont faire la différence pour le projet. La vision du projet est en particulier un différenciateur. Si cela ne semble pas assez différenciant, creusez encore : la différence n'est pas nécessairement exprimé par une nouvelle fonctionnalité, mais par une façon différente d'enchaîner des flux, par un business model alternatif…
+Nous pouvons rentrer dans le vif du sujet, là où la méthode de Liz Keogh prend tout son sel. Suite à cette cartographie, nous avons un ensemble de capacités représentant notre projet : parmi celles-ci, certaines sont des *commodités*, c'est-à-dire qu'elles sont nécessaires au fonctionnement du système sans être innovantes. D'autres sont classées *différenciateurs*. Ce sont celles qui vont faire la différence du projet par rapport à d'autres solutions. La vision du projet est en particulier un différenciateur. Si cela ne semble pas assez différenciant, creusez encore : la différence n'est pas nécessairement exprimé par une nouvelle fonctionnalité, mais par une façon différente d'enchaîner des flux, par un business model alternatif…
 
-DEVELOPPER UN PETIT PEU SUR COMMO vs SPOIL vs DIFF (exemples)
+DEVELOPPER UN PETIT PEU SUR COMMO vs SPOIL vs DIFF (exemples rmtool)
 
-Vient ensuite la seconde étape, qui consiste à évaluer le risque de développer chaque capacité. La notion de risque est souvent abordée dans les projets agiles, mais par nature le risque est incertain voire inconnu - comment évaluer quelque chose que l'on ne connaît pas ? La solution de Liz Keogh est élégante, en proposant une échelle sur un critère objectif et simple, compréhensible par tout le monde : elle consiste à s'auto-évaluer sur "ce qu'on ne connaît pas". Liz propose 5 niveaux, où 1 est le degré minimal ("on maîtrise complètement le sujet") et 5 le maximal ("on ne sait rien sur le sujet"). Il n'y a pas de définition rigoureuse pour chaque niveau, mais les interprétations suivantes peuvent guider votre choix :
+Vient ensuite la seconde étape, qui consiste à évaluer le risque de développer chaque capacité. La notion de risque est souvent abordée dans les projets agiles, mais par nature le risque est incertain voire inconnu - et comment évaluer quelque chose que l'on ne connaît pas ? La solution de Liz Keogh est élégante, en proposant une échelle sur un critère simple, accessible à tout le monde : elle consiste à s'auto-évaluer sur son ignorance, "ce qu'on ne connaît pas". Liz propose 5 niveaux, où 1 est le niveau minimal ("on maîtrise complètement le sujet") et 5 le maximal ("on ne sait rien sur le sujet"). Il n'y a pas de définition rigoureuse pour chaque niveau, mais les interprétations suivantes peuvent guider votre choix :
 
 1. tout le monde sait faire cela ; cela fait partie des bases du métier
 2. c'est un sujet connu dans le métier, au moins une personne dans l'équipe le connaît
@@ -72,12 +75,13 @@ Vient ensuite la seconde étape, qui consiste à évaluer le risque de développ
 4. personne dans l'entreprise n'a fait cela, mais d'autres entreprises le font ; il faudra donc peut–être passer par leur expertise, la formation, l'achat de composants pour acquérir la capacité (il peut s'agir de concurrents !)
 5. personne à notre connaissance n'a fait cela ; cela implique a minima une phase exploratoire, voire de la pure R&D.
 
-C'est certainement l'aspect le plus intéressant de la méthode de Liz. En tant que professionnels, nous sommes formés à toujours donner une réponse au client. Pourtant l'informatique est bien un domaine où il est difficile de tout connaître. Cette échelle vous encourage à être honnête avec vous-même et votre porteur de projet : les points durs se cachent derrière votre ignorance, donc identifier et reconnaître ceux-ci vous permettra de progresser plus vite vers la conclusion du projet.
+*Bien sûr, plus vous estimez que le niveau de risque est fort, plus il y a d'incertitudes sur les problèmes que vous allez rencontrer, moins une estimation est pertinente et plus vous devez avoir une approche exploratoire.* 
 
+C'est certainement l'aspect le plus intéressant de la méthode de Liz. En tant que professionnels, nous sommes formés à toujours donner une réponse au client. Pourtant l'informatique est bien un domaine où il est difficile de tout connaître. Cette échelle vous encourage à être honnête avec vous-même et votre porteur de projet : les points durs se cachent derrière votre ignorance, donc identifier et reconnaître ceux-ci vous permettra de progresser plus vite vers la conclusion du projet.
 
 ### Passer du plan aux étapes
 
-Croiser la valeur différenciante et les risques des capacités nous permet de dresser un plan d'attaque. Comme noté par [Dan North](http://dannorth.net/2010/08/30/introducing-deliberate-discovery/), si vous réfléchissez à des projets passés et notez tout ce qui a pu gêner leur réalisation, le frein principal aura été tout ce que vous ignoriez au début et n'avez pu prévoir : ces technologies que vous avez apprises en cours de route, ces fausses pistes qui semblaient prometteuses, ces changements d'objectifs liés de à nouvelles opportunités, et tous les accidents de parcours qui ont affecté la vie de projets. Suivant son principe de *découverte délibérée*, plus vite on détecte et attaque les points incertains d'un projet, plus l'équipe sera capable de se projeter sur la réalisation, plus les risques de dérive diminuent.
+Croiser la valeur différenciante et les risques des capacités nous permet de dresser un plan d'attaque. Comme noté par [Dan North](http://dannorth.net/2010/08/30/introducing-deliberate-discovery/), si vous réfléchissez à des projets passés et notez tout ce qui a pu gêner leur réalisation, le frein principal aura été tout ce que vous ignoriez au début et n'avez pu prévoir : ces technologies que vous avez apprises en cours de route, ces fausses pistes qui semblaient prometteuses, ces changements d'objectifs liés de à nouvelles opportunités, et tous les accidents de parcours qui ont affecté la vie du projet. Suivant son principe de *découverte délibérée*, plus vite on détecte et attaque les points incertains d'un projet, plus l'équipe sera capable de se projeter sur la réalisation, plus les risques de dérive diminuent.
 
 Par nature, le point différenciant de votre projet est celui que personne n'a jamais fait : vous ne savez donc pas combien cela va coûter ni si cela va marcher. Cela tombe bien. Comme vous ne voulez probablement pas prendre tous les risques d'un seul coup, pourquoi ne pas commencer par l'aspect de votre projet qui apporte la valeur et qui peut en même temps faire échouer le projet ?
 
@@ -89,13 +93,11 @@ Reconsidérez votre cartographie des capacités : comment pouvez-vous la réalis
 
 - Si vous avez plusieurs capacités différenciantes et risquées, essayez de les échelonner pour ne pas avoir plusieurs problèmes sur le feu. Il peut y avoir des priorités ou des dépendances entre capacité qui ordonneront les étapes.
 
-- Et si certaines capacités nécessaires à votre projet sont risquées sans être différentiantes, posez-vous la question de faire baisser le risque sur cet aspect : se contenter d'une version allégée de la capacité, acheter un système tout prêt, proposer des solutions alternatives pour satisfaire la capacité.
+- Et si certaines capacités nécessaires à votre projet sont risquées sans être différenciantes, posez-vous la question de faire baisser le risque sur cet aspect : se contenter d'une version allégée de la capacité, acheter un système tout prêt, proposer des solutions alternatives pour satisfaire la capacité.
 
-En répétant cette analyse sur les capacités, leur valeur et leur risque, les étapes de votre projet se dessinent peu à peu : chaque étape vise à éliminer un risque tout en apportant une nouvelle valeur. Vous concentrez votre effort sur l'essentiel. Les commodités et les "nice to have" sont limités au strict minimum, tant que les risques essentiels ne sont pas cernés et maîtrisés.
+En répétant cette analyse sur les capacités, leur valeur et leur risque, les étapes de votre projet se dessinent peu à peu : chaque étape vise à éliminer un risque tout en apportant une nouvelle valeur. Vous concentrez votre effort sur l'essentiel. Les commodités et les fonctionnalités accessoires sont limités au strict minimum, tant que les risques essentiels ne sont pas cernés et maîtrisés.
 
-Une autre façon de challenger votre plan d'attaque est de se fixer des rendez-vous réguliers pour démontrer la valeur de votre projet. Quelle est la prochaine étape ? Quelle valeur pensez-vous pouvoir démontrer la prochaine fois ? Quand vous pouvez décrire de quoi sera capable la prochaine version du système et que vous êtes confiants dans votre capacité de le réaliser, alors vous êtes prêts pour démarrer le projet !
-
-
+Un autre principe pour préparer votre plan d'attaque est de fixer des rendez-vous réguliers pour démontrer la valeur de votre projet. Quelle est la prochaine étape ? Quelle valeur pensez-vous pouvoir démontrer la prochaine fois ? Quand vous pouvez décrire de quoi sera capable la prochaine version du système et que vous êtes confiants dans votre capacité de le réaliser, alors vous êtes prêts pour démarrer le projet !
 
 ## Quelques leçons tirées de la cartographie par capacité
 
