@@ -64,11 +64,11 @@ Nous pouvons rentrer dans le vif du sujet, là où la méthode de Liz Keogh pren
 
 DEVELOPPER UN PETIT PEU SUR COMMO vs SPOIL vs DIFF (exemples)
 
-Vient ensuite la seconde étape, qui consiste à évaluer le risque de développer chaque capacité. La notion de risque est souvent abordée dans les projets agiles, mais par nature le risque est incertain voire inconnu - comment évaluer quelque chose que l'on ne connaît pas ? La solution de Liz Keogh est élégante, en proposant une échelle sur un critère objectif et simple, compréhensible par tout le monde : elle consiste à s'auto-évaluer sur "ce qu'on ne connaît pas". Liz propose 5 niveaux. Il n'y a pas de définition rigoureuse pour chaque niveau, mais les interprétations suivantes peuvent guider votre choix :
+Vient ensuite la seconde étape, qui consiste à évaluer le risque de développer chaque capacité. La notion de risque est souvent abordée dans les projets agiles, mais par nature le risque est incertain voire inconnu - comment évaluer quelque chose que l'on ne connaît pas ? La solution de Liz Keogh est élégante, en proposant une échelle sur un critère objectif et simple, compréhensible par tout le monde : elle consiste à s'auto-évaluer sur "ce qu'on ne connaît pas". Liz propose 5 niveaux, où 1 est le degré minimal ("on maîtrise complètement le sujet") et 5 le maximal ("on ne sait rien sur le sujet"). Il n'y a pas de définition rigoureuse pour chaque niveau, mais les interprétations suivantes peuvent guider votre choix :
 
-1. tout le monde sait faire cela ; cela fait partie des standards de l'industrie
-2. plusieurs personnes ont déjà fait cela dans notre équipe ; la compétence est là même si elle n'est pas partagée par tout le monde
-3. une personne a déjà fait cela dans l'entreprise (c'est donc une personne clé, ce qui a des implications sur sa disponibilité, le besoin de formation)
+1. tout le monde sait faire cela ; cela fait partie des bases du métier
+2. c'est un sujet connu dans le métier, au moins une personne dans l'équipe le connaît
+3. au moins une personne dans l'entreprise a déjà fait cela, ou bien a accès à une expertise sur le sujet (la connaissance n'est pas acquise mais reste accessible)
 4. personne dans l'entreprise n'a fait cela, mais d'autres entreprises le font ; il faudra donc peut–être passer par leur expertise, la formation, l'achat de composants pour acquérir la capacité (il peut s'agir de concurrents !)
 5. personne à notre connaissance n'a fait cela ; cela implique a minima une phase exploratoire, voire de la pure R&D.
 
