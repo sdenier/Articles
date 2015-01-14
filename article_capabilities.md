@@ -1,4 +1,4 @@
-# Découverte et amorçage de projet : la planification par capacités et risques
+# Découverte et amorçage de projet : planifier des capacités et des risques
 
 Face à un porteur de projet en phase de démarrage, nous avons besoin d'outils pour 1) comprendre son idée et sa valeur, 2) structurer son approche pour tester au mieux son idée. Dans notre expérience, l'approche story map demande en fait une certaine maturité des process agiles et du domaine pour être pleinement efficace. Nous explorons dans cet article une approche plus terre-à-terre et pragmatique, identifiant avant tout la valeur et le risque d'un projet pour obtenir un démarrage efficace.
 
@@ -63,7 +63,7 @@ Avec ces règles, il est fréquent que la carte initiale du système tienne en u
 
 ### Identification de la valeur et du risque des capacités
 
-Nous pouvons rentrer dans le vif du sujet, là où la méthode de Liz Keogh prend tout son sel. Suite à cette cartographie, nous avons un ensemble de capacités représentant notre projet : parmi celles-ci, certaines sont des *commodités*, c'est-à-dire qu'elles sont nécessaires au fonctionnement du système sans être innovantes. D'autres sont classées *différenciateurs*. Ce sont celles qui vont faire la différence du projet par rapport à d'autres solutions. La vision du projet est en particulier un différenciateur. Si cela ne semble pas assez différenciant, creusez encore : la différence n'est pas nécessairement exprimé par une nouvelle fonctionnalité, mais par une façon différente d'enchaîner des flux, par un business model alternatif…
+Nous pouvons rentrer dans le vif du sujet, là où la méthode de Liz Keogh prend tout son sens. Suite à cette cartographie, nous avons un ensemble de capacités représentant notre projet : parmi celles-ci, certaines sont des *commodités*, c'est-à-dire qu'elles sont nécessaires au fonctionnement du système sans être innovantes. D'autres sont classées *différenciateurs*. Ce sont celles qui vont faire la différence du projet par rapport à d'autres solutions. La vision du projet est en particulier un différenciateur. Si cela ne semble pas assez différenciant, creusez encore : la différence n'est pas nécessairement exprimé par une nouvelle fonctionnalité, mais par une façon différente d'enchaîner des flux, par un business model alternatif…
 
 DEVELOPPER UN PETIT PEU SUR COMMO vs SPOIL vs DIFF (exemples rmtool)
 

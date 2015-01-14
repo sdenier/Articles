@@ -1,6 +1,6 @@
 # Découverte et amorçage de projet : le problème avec les story maps
 
-Tout projet commence par une phase d'élaboration et de maturation des idées, que ce soit sur la problématique et les objectifs, le financement, le commercial, et bien sûr la technique. L'équipe technique se retrouve alors confrontée à la question de la réalisation : que doit-on faire, quels sont les délais, combien ça va coûter ? Un des outils mis en avant pour planifier un projet en mode agile est la story map. Or notre expérience avec les story maps s'est révélée très hétérogène voire paradoxale. En particulier elle n'est pas forcément pertinente pour répondre aux questions essentielles en début de projet : combien investir et quelle est la prochaine étape ? Cet article fouille quelques-uns des défauts constatés avec l'approche story map, avant d'aborder la prochaine fois une autre approche basée sur les capacités et les risques.
+Tout projet commence par une phase d'élaboration et de maturation des idées, que ce soit sur la problématique et les objectifs, le financement, le commercial, et bien sûr la technique. L'équipe technique se retrouve alors confrontée à la question de la réalisation : que doit-on faire, quels sont les délais, combien ça va coûter ? Un des outils mis en avant pour planifier un projet en mode agile est la story map. Or notre expérience avec les story maps s'est révélée très hétérogène voire paradoxale. En effet elle n'est pas forcément pertinente pour répondre aux questions essentielles en début de projet : combien investir et quelle est la prochaine étape ? Cet article fouille quelques-uns des défauts constatés avec l'approche story map, avant d'aborder la prochaine fois une autre approche basée sur les capacités et les risques.
 
 ## Petit rappel : ce qu'est une story map
 
@@ -19,7 +19,7 @@ La story map est un processus itératif : les activités et cas d'utilisation so
 
 Les porteurs de projet qui viennent nous voir sont à la recherche d'expertise sur la partie technique et fonctionnelle de leur projet aussi bien que sur la planification pour mener à bien un produit minimum viable. 
 
-Ces porteurs arrivent avec des maturités différentes vis-à-vis de leur projet. Certains vivent dans le domaine depuis des années et se lancent sur une idée mûrement réfléchie. D'autres se lancent dans l'aventure et découvrent la problématique en même temps qu'ils proposent des solutions. Nous en avons vu arriver dans nos locaux avec des cahiers de charges denses et illisibles, tandis que d'autres avaient toutes leurs idées en tête et s'adaptaient très vite à nos méthodes de travail.
+Ces porteurs arrivent avec des maturités différentes vis-à-vis de leur projet. Certains vivent dans le domaine depuis des années et se lancent sur une idée mûrement réfléchie. D'autres se lancent dans l'aventure et découvrent la problématique en même temps qu'ils proposent des solutions. Nous en avons vu arriver dans nos locaux avec des cahiers des charges denses et illisibles, tandis que d'autres avaient toutes leurs idées en tête et s'adaptaient très vite à nos méthodes de travail.
 
 Nous avions donc besoin d'une méthode pour nous aider à découvrir rapidement un projet et à encadrer les clients lors des phases de découverte. La story map semblait un outil intéressant pour cela. De plus, en utilisant cet outil, nous avons une chance d'être actif dans la recherche d'informations (a contrario d'une lecture d'un cahier des charges, plus passive et fastidieuse), donc de dénicher des points obscurs, interpeller le porteur de projets et le faire sortir de ses habitudes, et d'exposer de futurs clients à nos méthodes :
 
@@ -74,7 +74,7 @@ Le format story map permet difficilement de mettre l'accent sur des problématiq
 
 ### La story map ne rend pas compte des points à explorer
 
-Les doutes ou besoins exprimés par le porteur ou par l'équipe n'apparaissent pas nécessairement. Les zones d'ombre n'étant pas clairement identifiées, certaines décisions semblent figer dans le marbre. Entre autres, les problèmes d'ordre technique sont souvent évacués au motif que le sujet est prématuré et qu'il faut se concentrer sur le fonctionnel. C'est bien sûr souvent vrai, mais cela n'empêche pas de prendre en compte un problème technique fondamental dans la découverte d'un projet.
+Les doutes ou besoins exprimés par le porteur ou par l'équipe n'apparaissent pas nécessairement. Les zones d'ombres n'étant pas clairement identifiées, certaines décisions semblent figer dans le marbre. Entre autres, les problèmes d'ordre technique sont souvent évacués au motif que le sujet est prématuré et qu'il faut se concentrer sur le fonctionnel. C'est bien sûr souvent vrai, mais cela n'empêche pas de prendre en compte un problème technique fondamental dans la découverte d'un projet.
 
 ### La story map fige le périmètre des fonctionnalités
 
