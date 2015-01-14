@@ -4,7 +4,16 @@ Tout projet commence par une phase d'élaboration et de maturation des idées, q
 
 ## Petit rappel : ce qu'est une story map
 
-DECRIRE LE PRINCIPE D'UNE STORY MAP (rappel du vocabulaire)
+Une story map est un atelier rassemblant différents acteurs d'un projet (PO, utilisateurs, développeurs) en vue de planifier les futures fonctionnalités du système. Elle se déroule suivant les étapes ci-dessous :
+
+1. décrire la vision du projet ;
+2. identifier les acteurs en lien avec le projet (parties prenantes, utilisateurs, bénéficiaires…) et leurs besoins ;
+3. lister les activités de chaque acteur ;
+4. pour chaque activité, identifier des cas d'utilisation ;
+5. classer les cas d'utilisation par lots, suivant des critères de nécessité et de valeur.
+
+La story map est un processus itératif : les activités et cas d'utilisation sont raffinés au fur et à mesure de l'atelier. A l'issue du processus, les cas d'utilisation seront déclinés en stories pour décrire les fonctionnalités et rentreront dans le backlog suivant la priorité décidée par les lots.
+
 
 ## La story map comme outil de découverte d'un projet ?
 
@@ -39,7 +48,7 @@ Pourquoi donc cela ne marche pas toujours comme prévu ? Plusieurs problèmes r�
 
 Il est parfois difficile d'expliquer la nuance entre activité, cas d'utilisation ou fonctionnalité, face à des clients qui découvrent la méthode. De plus ces concepts doivent être calibrés en fonction de la taille du projet. Souvent une activité est d'abord exprimée comme une fonctionnalité ; il faut ensuite la reformuler de façon plus abstraite en cours de session, quand la confusion s'installe entre activité et fonctionnalité.
 
-### Granularité hétérogène des activités et fonctionnalités
+### Granularité hétérogène des activités et cas d'utilisation
 
 La granularité des activités et cas d'utilisation est très variable au sein d'une story map. A la manière de la [loi de futilité de Parkinson](http://fr.wikipedia.org/wiki/Loi_de_futilité_de_Parkinson), des aspects "simples" de la story map se retrouvent au même niveau d'expression que des aspects complexes, entretenant une certaine confusion sur les points durs du projet. En essayant de balayer toutes les activités du projet, les aspects les plus difficiles ne sont pas nécessairement les plus approfondis.
 
@@ -57,7 +66,7 @@ Clairement, la story map n'a jamais marché quand nous avons essayé sur de gros
 
 ### Le focus "utilisateur" n'est pas forcément adapté
 
-Le porteur de projet a normalement identifié les utilisateurs du projet quand il vient nous voir. Mais suivant le stade du projet, ce n'est pas forcément pertinent : il peut être tout aussi important de se concentrer sur d'autres parties prenantes, non utilisatrices, mais qui seraient impactées par le projet et pourraient y mettre un terme.
+Même si la story map est censée abordée tous les acteurs concernés par le projet, le focus sur les activités et les interactions avec le système conduit naturellement à mettre l'accent sur les seuls utilisateurs. Mais suivant le stade du projet, ce n'est pas forcément pertinent : il peut être tout aussi important de se concentrer sur d'autres parties prenantes, non utilisatrices, mais qui seraient impactées par le projet et pourraient y mettre un terme.
 
 ### La story map rend difficilement compte des aspects techniques
 
@@ -69,7 +78,7 @@ Les doutes ou besoins exprimés par le porteur ou par l'équipe n'apparaissent p
 
 ### La story map fige le périmètre des fonctionnalités
 
-Malgré toutes les précautions et les règles de bonne conduite, le résultat le plus tangible d'une story map est la liste des fonctionnalités attendues, ce qui a tendance à figer le périmètre trop tôt.
+Malgré toutes les précautions et les règles de bonne conduite, le résultat le plus tangible d'une story map est la liste des cas d'utilisation, qui se transforment vite en liste des fonctionnalités attendues, ce qui a tendance à figer le périmètre trop tôt.
 
 
 ## Le vrai problème avec les story maps : les attentes contrariées
