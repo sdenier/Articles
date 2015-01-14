@@ -1,8 +1,6 @@
 # Découverte et amorçage de projet : le problème avec les story maps
 
-Tout projet commence par une phase d'élaboration et de maturation des idées, que ce soit sur la problématique et les objectifs, le financement, le commercial, et bien sûr la technique. L'équipe technique se retrouve alors confrontée à la question de la réalisation : que doit-on réaliser, quels sont les délais, combien ça va coûter ? Un des outils mis en avant pour planifier un projet en mode agile est la story map. Or notre expérience avec les story maps s'est révélée très hétérogène voire paradoxale. En particulier elle n'est pas forcément pertinente pour répondre aux questions essentielles en début de projet : combien investir et quelle est la prochaine étape ? Cet article fouille quelques-uns des défauts constatés avec l'approche story map, avant d'aborder la prochaine fois une autre approche basée sur les capacités et les risques.
-
-*La story map reste un outil intéressant pour planifier le déroulement du projet quand celui-ci devient plus mature.*
+Tout projet commence par une phase d'élaboration et de maturation des idées, que ce soit sur la problématique et les objectifs, le financement, le commercial, et bien sûr la technique. L'équipe technique se retrouve alors confrontée à la question de la réalisation : que doit-on faire, quels sont les délais, combien ça va coûter ? Un des outils mis en avant pour planifier un projet en mode agile est la story map. Or notre expérience avec les story maps s'est révélée très hétérogène voire paradoxale. En particulier elle n'est pas forcément pertinente pour répondre aux questions essentielles en début de projet : combien investir et quelle est la prochaine étape ? Cet article fouille quelques-uns des défauts constatés avec l'approche story map, avant d'aborder la prochaine fois une autre approche basée sur les capacités et les risques.
 
 ## Petit rappel : ce qu'est une story map
 
@@ -24,8 +22,6 @@ Nous avions donc besoin d'une méthode pour nous aider à découvrir rapidement 
 
 Sur le papier, la story map a donc tout pour plaire. Pourtant notre expérience avec les story maps en découverte de projet s'est révélée très hétérogène voire paradoxale. Parfois cela marchait bien, révélant les différents aspects du projet. Régulièrement le résultat ne semblait pas à la hauteur des efforts fournis lors de la session. Et dans au moins deux cas, la story map s'est révélée complètement inadaptée. Or c'est une étape structurante dans la vie d'un projet, d'autant plus qu'il s'agit souvent du premier contact entre l'équipe technique et le porteur de projet. Il est donc frustrant de commencer par une session de travail qui ne marche pas à 100%.
 
-A DEVELOPPER SUR LES ECHECS (EXEMPLES ?)
-
 ## Même joueur essaye encore
 
 En bon agilistes, nous avons essayé d'adapter l'outil et ses règles pour rendre les story maps plus faciles à gérer, plus pertinentes pour tout le monde : essayer d'extraire les besoins de chaque acteur, garder un haut niveau d'abstraction pour les activités, recadrer dès qu'on s'attarde trop sur le détail, faire exprimer aux participants leur flot de travail…
@@ -37,23 +33,19 @@ Malgré cette adaptation au fil de l'eau, les story maps se finissaient souvent 
 
 ## Les problèmes des story maps en découverte de projet
 
-Pourquoi donc cela ne marchait pas toujours comme prévu ? Plusieurs problèmes étaient récurrents lors de nos sessions de travail.
-
-
-PBM EXPRESSION : passé ou présent (choisir le présent, sauf exemple concret)
-
+Pourquoi donc cela ne marche pas toujours comme prévu ? Plusieurs problèmes récurrents peuvent apparaître.
 
 ### Les concepts : activité, cas d'utilisation, fonctionnalité ?
 
-Il nous était difficile d'expliquer la nuance entre activité, cas d'utilisation ou fonctionnalité, face à des clients qui découvraient la méthode. Nous devions recalibrer ces concepts en fonction de la portée du projet. Souvent l'expression d'une activité commençait comme celle d'une fonctionnalité ; nous devions la reformuler de façon plus abstraite en cours de session, quand la confusion s'installait entre activité et fonctionnalité.
+Il est parfois difficile d'expliquer la nuance entre activité, cas d'utilisation ou fonctionnalité, face à des clients qui découvrent la méthode. De plus ces concepts doivent être calibrés en fonction de la taille du projet. Souvent une activité est d'abord exprimée comme une fonctionnalité ; il faut ensuite la reformuler de façon plus abstraite en cours de session, quand la confusion s'installe entre activité et fonctionnalité.
 
 ### Granularité hétérogène des activités et fonctionnalités
 
-La granularité des activités et cas d'utilisation étaient très variables au sein d'une story map. A la manière de la [loi de futilité de Parkinson](http://fr.wikipedia.org/wiki/Loi_de_futilité_de_Parkinson), des aspects "simples" de la story map se retrouvaient au même niveau d'expression que des aspects complexes, entretenant une certaine confusion sur la complexité. En essayant de balayer toutes les activités du projet, nous ne pouvions pas passer autant de temps que nécessaire sur les aspects les plus difficiles.
+La granularité des activités et cas d'utilisation est très variable au sein d'une story map. A la manière de la [loi de futilité de Parkinson](http://fr.wikipedia.org/wiki/Loi_de_futilité_de_Parkinson), des aspects "simples" de la story map se retrouvent au même niveau d'expression que des aspects complexes, entretenant une certaine confusion sur les points durs du projet. En essayant de balayer toutes les activités du projet, les aspects les plus difficiles ne sont pas nécessairement les plus approfondis.
 
 ### Granularité hétérogène entre différentes story maps
 
-La granularité entre différentes story maps était aussi très hétérogène. Cela n'est pas surprenant, mais ce qui pour un "petit" projet était décrit comme une activité, recouvrant plusieurs cas d'utilisations, était exprimé comme un simple cas d'utilisation pour un projet plus important, car il était impossible de rentrer dans les détails. Il y avait donc nécessairement une perte d'information entre les deux qui dérangeait pour juger sereinement de la complexité d'une activité.
+La granularité entre différentes story maps est aussi très hétérogène. Cela n'est pas surprenant, mais ce qui pour un "petit" projet est décrit comme une activité, recouvrant plusieurs cas d'utilisations, peut s'exprimer comme un simple cas d'utilisation pour un projet plus important, car il est impossible de rentrer dans les détails. Il y a donc nécessairement une perte d'information entre les deux, ce qui est perturbant quand on doit juger de la complexité d'une activité.
 
 ### L'effet rush
 
@@ -73,7 +65,7 @@ Le format story map permet difficilement de mettre l'accent sur des problématiq
 
 ### La story map ne rend pas compte des points à explorer
 
-Les doutes ou besoins exprimés par le porteur ou par l'équipe n'apparaissaient pas clairement. Les zones d'ombre n'étant pas clairement identifiées, certaines décisions pouvaient sembler figer dans le marbre. Entre autres, les problèmes d'ordre technique étaient souvent évacués au motif que le sujet était prématuré et qu'il fallait se concentrer sur le fonctionnel. C'est bien sûr souvent vrai, mais cela n'empêche pas de prendre en compte un problème technique fondamental dans la découverte d'un projet.
+Les doutes ou besoins exprimés par le porteur ou par l'équipe n'apparaissent pas nécessairement. Les zones d'ombre n'étant pas clairement identifiées, certaines décisions semblent figer dans le marbre. Entre autres, les problèmes d'ordre technique sont souvent évacués au motif que le sujet est prématuré et qu'il faut se concentrer sur le fonctionnel. C'est bien sûr souvent vrai, mais cela n'empêche pas de prendre en compte un problème technique fondamental dans la découverte d'un projet.
 
 ### La story map fige le périmètre des fonctionnalités
 
