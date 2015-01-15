@@ -14,6 +14,8 @@ Une story map est un atelier rassemblant différents acteurs d'un projet (PO, ut
 
 La story map est un processus itératif : les activités et cas d'utilisation sont raffinés au fur et à mesure de l'atelier. A l'issue du processus, les cas d'utilisation seront déclinés en stories pour décrire les fonctionnalités et rentreront dans le backlog suivant la priorité décidée par les lots.
 
+Si vous ignorez tout des story maps et que vous voulez lire la suite de cet article, je vous recommande ["The new user story backlog is a map"](http://www.agileproductdesign.com/blog/the_new_backlog.html). Vous en saurez plus sur l'origine de l'idée, les étapes à suivre, et l'usage que l'on peut en faire en gestion de projet agile.
+
 
 ## La story map comme outil de découverte d'un projet ?
 
