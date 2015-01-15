@@ -74,10 +74,13 @@ http://mikehadlow.blogspot.co.uk/2014/03/coconut-headphones-why-agile-has-failed
 
 malheureusement, les outils proposés par l'agilité = maturité de l'équipe et du projet pour donner leur pleine mesure. Rien ne remplace l'expérience, mais on a besoin d'autres approches moins codifiées dès qu'il s'agit d'aborder un nouveau domaine.
 
+Aux origines des approches agiles (XP), il y avait la volonté de mettre en place un cadre de communication qui évitait les échanges toxiques et non-constructifs entre les utilisateurs et les équipes techniques. En un sens, les premières méthodes agiles étaient là autant pour "protéger" l'équipe et lui permettre d'être productive que pour favoriser la communication. C'est pourquoi certaines méthodes ont un côté très cadré, au point que certaines équipes semblent sectaires par rapport à leurs règles. Au point qu'elles peuvent sembler isolées, derrière des murs de verre - et le risque est grand dans ce cas que la communication passe mal. La relation client-équipe passe alors par l'intermédiaire du backlog. Nous ne privilégions pas forcément cette approche en début de projet, car la communication, l'identification de problèmes et la recherche de solutions en commun prime sur les autres aspects à ce stade. L'engagement dans un processus plus orienté story map peut venir plus tard, quand l'équipe aura atteint la maturité sur le domaine et les enjeux et les problèmes. Elle permettra alors un suivi des étapes du projet à la vue de tous.
 
+Une erreur fondamentale est de voir l'équipe technique comme de simples exécutants, sans force de proposition.
 
+Approche moins structurée qu'une story map, mais c'est justement son intérêt : fournir une approche avec un très faible niveau d'entrée, ne nécessitant pas une expérience de certains concepts "diffus" (Persona, ), le concept de "capacité" étant souple chacun mettant ce qu'il veut derrière les "capacités". L'essentiel étant d'échanger pour identifier les problèmes et trouver des solutions.
 
-Notre approche "problem-oriented"
+Notre approche "problem-oriented" : on veut faire plus que réaliser un projet, on veut d'abord aider les porteurs à identifier des problèmes, valider des idées, trouver des solutions.
 
 Mais l'aspect le plus intéressant et révélateur de cette méthode est son échelle de complexité ou ignorance. D'abord parce qu'elle met l'accent sur le non-dit des projets en mode forfait : 
 
