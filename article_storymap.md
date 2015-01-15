@@ -107,3 +107,10 @@ Bien sûr, il ne s'agit pas de remettre en cause la story map comme outil de pla
 
 [^1]: Sur le sujet délicat des estimations, comment les faire, les exploiter intelligemment et les éviter quand ce n'est pas utile, je recommande Dan North ([The Perils of Estimation](http://dannorth.net/2009/07/01/the-perils-of-estimation/), [Introducing Deliberate Discovery](http://dannorth.net/2010/08/30/introducing-deliberate-discovery/)) et aussi tout ce qui touche au mouvement NoEstimates. Mais c'est un autre sujet.
 
+<div itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+  <img itemprop="image" src="http://www.gravatar.com/avatar/58778f8cc14e8a484568a663266c3029.png" alt="Simon Denier">
+  <a href="mailto:simon+blog@sogilis.com"><span itemprop="name" rel="author"><i class="fa fa-user" /> Simon Denier</span></a>
+  <a href="http://twitter.com/simondenier"><span class="share-link-twitter" rel="twitter"><i class="fa fa-twitter" /> simondenier</span></a>
+  <a href="https://github.com/sdenier"><span rel="github"><i class="fa fa-github" /> sdenier</span></a>
+  <a href="https://plus.google.com/100056946931947086533?rel=author"><span class="share-link-google-plus" rel="gplus"><i class="fa fa-google-plus" /> +SimonDenier</span></a>
+</div>
