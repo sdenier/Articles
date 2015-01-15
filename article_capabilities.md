@@ -4,7 +4,7 @@ Face à un porteur de projet en phase de démarrage, nous avons besoin d'outils 
 
 ## Qu'attend-on de nous ?
 
-Dans l'article précédent, nous avons expliqué comment la story map n'était pas l'outil le plus adapté pour découvrir et planifier un nouveau projet. Bien que favorisant la discussion, le focus sur les activités des utilisateurs et la planification des lots de fonctionnalité ne permet pas d'aborder les questions fondamentales du porteur de projet à ce stade :
+Dans l'article précédent, nous avons expliqué comment la story map n'était pas l'outil le plus adapté pour découvrir et planifier un nouveau projet. Bien que favorisant la discussion, le focus sur les activités des utilisateurs et les lots de fonctionnalité ne permet pas d'aborder les questions fondamentales du porteur de projet à ce stade :
 
 - est-ce que mon projet marche dans la réalité ?
 - est-ce qu'on a identifié les problèmes clés ?
@@ -13,8 +13,8 @@ Dans l'article précédent, nous avons expliqué comment la story map n'était p
 
 Avec la story map, ceci se traduisait par les questions suivantes :
 
-- Est-ce que la story map correspond à la liste des fonctionnalités ? Qu'est-ce qui va rentrer dans le périmètre final ?
-- Combien ça va coûter ?
+- est-ce que la story map correspond à la liste des fonctionnalités ? Qu'est-ce qui va rentrer dans le périmètre final ?
+- combien ça va coûter ?
 
 Ce qui amenait immanquablement à des incompréhensions et des discussions commerciales sur le forfait de développement. Il s'agit de questions qui semblent importantes, mais qui ne correspondent en fait pas à la collaboration que nous souhaitons mettre en place avec les porteurs de projet. Pour autant, nous faisions avec et arrivions à fournir les réponses demandées.
 
@@ -26,7 +26,7 @@ Imaginez passer la journée à recadrer les participants, expliquer une approche
 
 ## La solution qui sauve la vie
 
-Par hasard, c'est peu après ce premier échec que j'ai (re)découvert le blog de Liz Keogh et en particulier cet article nommé [Capability-based Planning and Lightweight Analysis](http://lizkeogh.com/2013/09/05/capability-based-planning-and-lightweight-analysis/). Et cet article fut une bouée de secours, nous apportant des idées et des méthodes pour aborder ce projet et de nombreux autres. Les sessions suivantes de notre projet d'accompagnement furent nettement plus positives et productives juste en s'essayant à quelques principes.
+Par hasard, c'est peu après cet échec que j'ai (re)découvert le blog de Liz Keogh et en particulier un article nommé [Capability-based Planning and Lightweight Analysis](http://lizkeogh.com/2013/09/05/capability-based-planning-and-lightweight-analysis/). Et cet article fut une bouée de secours, nous apportant des idées et des méthodes pour aborder ce projet et de nombreux autres. Les sessions suivantes de notre projet d'accompagnement furent nettement plus positives et productives juste en s'essayant à quelques principes.
 
 Le but de cet article n'est pas de présenter toutes les idées de Liz, rassemblées dans sa thématique [Embracing Uncertainty](http://lizkeogh.com/embracing-uncertainty/) ainsi que celles exposées par Dan North dans sa série sur [Deliberate Discovery](http://dannorth.net/2010/08/30/introducing-deliberate-discovery/). Ces lectures sont cependant vivement recommandées pour leur richesse, leur aspect didactique et pour comprendre d'où viennent ces idées (attention, il y en a pour quelques heures si vous plongez dedans !). Nous allons plutôt présenter comment nous exploitons ces idées dans notre approche de découverte d'un projet.
 
@@ -85,8 +85,6 @@ Vient ensuite la seconde étape, qui consiste à évaluer le risque de développ
 3. au moins une personne dans l'entreprise a déjà fait cela, ou bien a accès à une expertise sur le sujet (la connaissance n'est pas acquise mais reste accessible)
 4. personne dans l'entreprise n'a fait cela, mais d'autres entreprises le font ; il faudra donc peut–être passer par leur expertise, la formation, l'achat de composants pour acquérir la capacité (il peut s'agir de concurrents !)
 5. personne à notre connaissance n'a fait cela ; cela implique a minima une phase exploratoire, voire de la pure R&D.
-
-*Bien sûr, plus vous estimez que le niveau de risque est fort, plus il y a d'incertitudes sur les problèmes que vous allez rencontrer, moins une estimation est pertinente et plus vous devez avoir une approche exploratoire.* 
 
 C'est certainement l'aspect le plus intéressant de la méthode de Liz. En tant que professionnels, nous sommes formés à toujours donner une réponse au client. Pourtant l'informatique est bien un domaine où il est difficile de tout connaître. Cette échelle vous encourage à être honnête avec vous-même et votre porteur de projet : les points durs se cachent derrière votre ignorance, donc identifier et reconnaître ceux-ci vous permettra de progresser plus vite vers la conclusion du projet.
 
