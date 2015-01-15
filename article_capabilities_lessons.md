@@ -1,3 +1,4 @@
+# Découverte et amorçage de projet : quelques leçons en plus
 
 ## Quelques leçons tirées de la cartographie par capacité
 
@@ -43,6 +44,9 @@ La pratique courante issue des story maps et des méthodologies agiles est de pr
 En se focalisant sur les risques de faire échouer le projet ainsi que sur la valeur différenciante, l'accent est mis sur un point essentiel : trouver la prochaine étape la plus sûre et la plus rapide pour démontrer la valeur du projet, avant de passer à la suivante. L'approche est centrée sur la réalisation de la vision, la résolution des problèmes rencontrés, plutôt que de cocher une liste de fonctionnalités.
 
 ### L'estimation est une projection d'expert, pas une collection de chiffrage ni un moyen de pilotage
+
+
+*Bien sûr, plus vous estimez que le niveau de risque est fort, plus il y a d'incertitudes sur les problèmes que vous allez rencontrer, moins une estimation est pertinente et plus vous devez avoir une approche exploratoire.* 
 
 
 forecast vs estimation : savoir se projeter (confusion entre exactitude/justesse et précision/(in)certitude)
