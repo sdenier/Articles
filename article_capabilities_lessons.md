@@ -1,42 +1,42 @@
-# Découverte et amorçage de projet : quelques leçons en plus
+# Découverte et amorçage de projet : qu'avons-nous appris de la planification par capacités ?
+
+XXX
 
 ## Quelques leçons tirées de la cartographie par capacité
 
-Pour bien comprendre les apports de cette méthode, il est utile de revenir sur quelques défauts constatés par expérience dans l'approche story map.
+Il est utile de revenir sur quelques défauts constatés avec l'approche story map et de comparer avec la pertinence apportée par la cartographie des capacités.
 
 ### Les utilisateurs ne représentent que la partie visible des acteurs du projet
 
-Dans le cadre d'une story map, l'accent est souvent mis sur les utilisateurs qui seront amenés à utiliser le système, au détriment d'autres acteurs plus "passifs" mais dont l'implication dans le projet peut être déterminante.
+Dans le cadre d'une story map, l'accent est mis sur les activités et les cas d'utilisation du système. Cela peut conduire à se focaliser sur les utilisateurs principaux du système, au détriment d'autres acteurs moins en vue mais dont l'implication dans le projet peut être déterminante. Il m'est déjà arrivé de collaborer à un développement web pour lequel nous avions fixé des pré-requis pour les navigateurs des clients. Mais nous nous sommes rendus compte bien tardivement que certains collègues n'avaient alors plus accès à l'application, car leur machine n'était pas évolutive et que les pré-requis étaient trop hauts !
 
-TROUVER UN EXEMPLE ? (est-il important de s'occuper des capacités Facebook du projet pour le community manager tandis que l'impact du projet sur le directeur de production est ignoré).
-
-Un focus trop rapide sur les utilisateurs entraîne facilement un focus sur les fonctionnalités, ce qui se fait au détriment de l'analyse des besoins et de la recherche de solutions. Le niveau de détails est trop bas pour s'imprégner des enjeux et des problématiques du projet.
+Un focus trop rapide sur les utilisateurs entraîne facilement un focus sur les fonctionnalités, ce qui se fait au détriment de l'analyse des besoins et de la recherche de solutions. Le niveau de détails est trop bas pour s'imprégner des enjeux et des problématiques du projet. Plus important encore, cela peut [induire en erreur](http://lizkeogh.com/2010/02/02/theyre-not-user-stories/) sur l'acteur et le besoin réel auquel répond la fonctionnalité.
 
 La vision du projet, avec sa proposition de valeur mais aussi son impact sur les acteurs, est à cultiver dès le début : balayer tous les acteurs du projet, essayer de comprendre leurs besoins, leur attitude et leur impact sur le projet, si celui-ci sert leurs intérêts ou bien peut être un frein. Cette analyse a aussi pour but de ne pas se fixer d'oeillères sur ce qu'il faut réaliser : le but est de satisfaire au maximum les besoins de chaque acteur du projet. La solution ne passe pas forcément par une liste de fonctionnalités !
 
 ### Le focus doit être sur les capacités à résoudre des problèmes, pas sur les fonctionnalités
 
-Un focus trop rapide sur les fonctionnalités, typique en story map, peut avoir des effets négatifs lors de la réalisation du projet.
+Le focus trop rapide sur les fonctionnalités peut aussi avoir des effets négatifs lors de la réalisation du projet.
 
 - Le besoin de la fonctionnalité est peu approfondie ; il ne reste qu'une description superficielle de la fonctionnalité, de laquelle il est difficile de repartir ou revenir en sources si on cherche une solution alternative.
 - La liste des fonctionnalités de la story map apparaît parfois comme un périmètre, à la manière d'un cahier des charges. Beaucoup de choses peuvent encore changer en cours de projet.
 - La granularité des fonctionnalités peut être très hétérogène et leur description aussi : les "petites" fonctionnalités auront tendance à être plus détaillées que les grosses, car plus évidentes ; conjointement la complexité des grosses peut être masquée par le manque de détails dans leur description.
 - des notions de valeur et de coût sont parfois utilisées pour aider à la priorisation des fonctionnalités. Ces notions posent des problèmes de définition (s'agit-il de la valeur en tant que nouveauté ou nécessité ? Quelle est l'échelle pour l'estimation du coût : *story points*, jour-hommes ? Se focaliser sur ces estimations peut masquer des problèmes de dépendances (la fonctionnalité X n'est pas jugée très intéressante, pourtant une sous-partie est nécessaire à une autre partie valorisable).
 
-Bref, la story map peut donner une fausse impression de complétude, à la manière d'un cahier des charges, avec différents lots de fonctionnalités à réaliser définis à l'avance. En cas de problème lors de la réalisation, le champ d'action pour rétablir le projet peut être limité car les acteurs auront du mal à sortir des rails de la story map.
+Bref, la story map peut donner une fausse impression de complétude, à la manière d'un cahier des charges, avec différents lots de fonctionnalités définis à l'avance. En cas de problème lors de la réalisation, le champ d'action pour rétablir le projet peut être limité car les acteurs auront du mal à sortir des rails de la story map.
 
-Tout projet propose une vision différente par rapport à l'existant. Mais il existe plusieurs façons de réaliser cette vision. L'important est donc de ne pas avoir d'oeillères sur le chemin de la réalisation.
+Tout projet propose une vision différente par rapport à l'existant. Mais il existe plusieurs façons de réaliser cette vision. L'important est donc de ne pas avoir d'oeillères sur le chemin de la réalisation. Parler de capacités doit permettre de se concentrer sur le problème et le besoin à résoudre.
 
 - En prenant une approche centrée sur le problème, il y a moins de risque de passer du temps sur les détails d'une solution (la fonctionnalité) au détriment d'autres possibilités.
 - En exprimant les futures "capacités" du système, vous savez que vous devez chercher une solution pour satisfaire ces capacités. Les moyens de les satisfaire sont multiples et peuvent être remises en cause en cours de projet (nouvelles options, solutions alternatives et moins coûteuses). Le terme de capacité permet aussi plus facilement d'aborder les aspects non fonctionnels du système (robustesse, performance...)
 - En cas d'échec avec une solution, il est plus facile de repartir de la capacité que d'une fonctionnalité (quel est le problème, le besoin ? comment y répondre ?)
 
-### La planification est basée sur le dérisquage et la vie du projet
+### La planification est basée sur le dérisquage et la valorisation du projet
 
 La pratique courante issue des story maps et des méthodologies agiles est de prioriser les stories par rapport à leur valeur et leur coût estimé, pour les placer dans l'ordre dans le backlog. La notion de chemin critique, voire de MVP, est parfois abordée mais pas nécessairement approfondie. Le backlog ressemble alors à une liste de fonctionnalités à développer.
 
-- Le suivi se base sur la réalisation d'un plan (même s'il est léger) et il peut se créer un ressenti de retard ou de travail mal fait à cause des sacrifices faits par rapport au plan (fonctionnalité ou qualité).
-- La priorisation liée aux dépendances entre fonctionnalités est souvent masquée dans cette approche (même s'il est nécessaire de la prendre en compte), cela peut rendre la repriorisation complexe.
+- Le suivi se base alors sur la réalisation d'un plan (même s'il est léger) et il peut se créer un ressenti de retard ou de travail mal fait à cause des sacrifices faits par rapport au plan (fonctionnalité ou qualité).
+- La priorisation liée aux dépendances entre fonctionnalités est souvent masquée dans cette approche ; cela peut rendre la repriorisation complexe.
 - Si une fonctionnalité se révèle mal estimée en cours de sprint, des décalages lié à la résolution des problèmes se créent dans le suivi de charge, ce qui peut être perturbant pour une équipe mal rôdée ; l'équipe prend du "retard", qui ne peut être rattrapé sauf à changer le périmètre.
 - Même tard en fin de projet, on peut tomber sur une exigence complexe, mal estimée, qui rend difficile la vision sur la fin du projet.
 - Plus on est ignorant sur un aspect du projet, moins on sera pertinent pour son estimation, plus on prend des risques à s'engager. Or les plans type story map tendent malgré tout à un engagement, même peu formalisé.
