@@ -97,7 +97,7 @@ Malgré ces inconvénients, nous croyions quand même dans la valeur de la story
 - Est-ce que la story map correspond à la liste des fonctionnalités ? Qu'est-ce qui va rentrer dans le périmètre final ?
 - Combien ça va coûter ?
 
-Bizarrement, cette dernière question provoquait toujours chez nous une sensation de malaise. Une story map ne permet pas de fournir une meilleure estimation qu'une autre méthode (tout au plus favorise-t-elle la comparaison pour un chiffrage relatif *). Il nous manquait toujours des informations cruciales au moment du chiffrage pour être serein. Au final, nous nous sentions piégés dans les vieilles habitudes de chiffrage du cahier des charges. De plus, la story map ne nous offrait pas toujours une vision claire sur la prochaine étape : peut-on commencer tout de suite ? Y a-t-il d'autres étapes non techniques à valider d'abord ?
+Bizarrement, cette dernière question provoquait toujours chez nous une sensation de malaise. Une story map ne permet pas de fournir une meilleure estimation qu'une autre méthode (tout au plus favorise-t-elle la comparaison pour un chiffrage relatif [^1]). Il nous manquait toujours des informations cruciales au moment du chiffrage pour être serein. Au final, nous nous sentions piégés dans les vieilles habitudes de chiffrage du cahier des charges. De plus, la story map ne nous offrait pas toujours une vision claire sur la prochaine étape : peut-on commencer tout de suite ? Y a-t-il d'autres étapes non techniques à valider d'abord ?
 
 ## La story map est-elle utile ?
 
@@ -105,7 +105,5 @@ On dit "si tu as un marteau dans la tête, alors toutes les vis ressemblent à u
 
 Bien sûr, il ne s'agit pas de remettre en cause la story map comme outil de planification de projet, quand celui-ci devient plus mature, que le périmètre des fonctionnalités se dessine et que les priorités sont identifiées. Simplement, elle ne peut pas venir trop tôt lors de la découverte d'un projet, car elle risque de figer des décisions sur les fonctionnalités à un moment où celles-ci sont encore méconnues. Nous verrons dans le prochain article une approche qui se focalise sur les capacités et les risques du projet, afin de trouver une organisation plus pragmatique du développement.
 
-(*) Sur le sujet délicat des estimations, comment les faire, les exploiter intelligemment et les éviter quand ce n'est pas utile, je recommande Dan North et aussi tout ce qui touche au mouvement NoEstimates. Mais c'est un autre sujet.
+[^1]: Sur le sujet délicat des estimations, comment les faire, les exploiter intelligemment et les éviter quand ce n'est pas utile, je recommande Dan North ([The Perils of Estimation](http://dannorth.net/2009/07/01/the-perils-of-estimation/), [Introducing Deliberate Discovery](http://dannorth.net/2010/08/30/introducing-deliberate-discovery/)) et aussi tout ce qui touche au mouvement NoEstimates. Mais c'est un autre sujet.
 
-http://dannorth.net/2009/07/01/the-perils-of-estimation/
-http://dannorth.net/2010/08/30/introducing-deliberate-discovery/
