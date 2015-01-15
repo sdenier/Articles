@@ -108,4 +108,8 @@ Reconsidérez votre cartographie des capacités : comment pouvez-vous la réalis
 
 En répétant cette analyse sur les capacités, leur valeur et leur risque, les étapes de votre projet se dessinent peu à peu : chaque étape vise à éliminer un risque tout en apportant une nouvelle valeur. Vous concentrez votre effort sur l'essentiel. Les commodités et les fonctionnalités accessoires sont limités au strict minimum, tant que les risques essentiels ne sont pas cernés et maîtrisés.
 
+## Après la cartographie, place à l'action…
+
 Un autre principe pour préparer votre plan d'attaque est de fixer des rendez-vous réguliers pour démontrer la valeur de votre projet. Quelle est la prochaine étape ? Quelle valeur pensez-vous pouvoir démontrer la prochaine fois ? Quand vous pouvez décrire de quoi sera capable la prochaine version du système et que vous êtes confiants dans votre capacité de le réaliser, alors vous êtes prêts pour démarrer le projet !
+
+Après cette présentation générale de la méthode, nous verrons la prochaine fois quelques leçons issues de notre expérience. Nous pourrons les comparer avec l'approche story map et voir comment cela affecte notre vision de l'accompagnement agile.
