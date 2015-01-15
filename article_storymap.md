@@ -68,7 +68,7 @@ Clairement, la story map n'a jamais marché quand nous avons essayé sur de gros
 
 ### Le focus "utilisateur" n'est pas forcément adapté
 
-Même si la story map est censée abordée tous les acteurs concernés par le projet, le focus sur les activités et les interactions avec le système conduit naturellement à mettre l'accent sur les seuls utilisateurs. Mais suivant le stade du projet, ce n'est pas forcément pertinent : il peut être tout aussi important de se concentrer sur d'autres parties prenantes, non utilisatrices, mais qui seraient impactées par le projet et pourraient y mettre un terme.
+Même si la story map est censée aborder tous les acteurs concernés par le projet, le focus sur les activités et les interactions avec le système conduit naturellement à mettre l'accent sur les seuls utilisateurs. Mais suivant le stade du projet, ce n'est pas forcément pertinent : il peut être tout aussi important de se concentrer sur d'autres parties prenantes, non utilisatrices, mais qui seraient impactées par le projet et pourraient y mettre un terme.
 
 ### La story map rend difficilement compte des aspects techniques
 
@@ -76,7 +76,7 @@ Le format story map permet difficilement de mettre l'accent sur des problématiq
 
 ### La story map ne rend pas compte des points à explorer
 
-Les doutes ou besoins exprimés par le porteur ou par l'équipe n'apparaissent pas nécessairement. Les zones d'ombres n'étant pas clairement identifiées, certaines décisions semblent figer dans le marbre. Entre autres, les problèmes d'ordre technique sont souvent évacués au motif que le sujet est prématuré et qu'il faut se concentrer sur le fonctionnel. C'est bien sûr souvent vrai, mais cela n'empêche pas de prendre en compte un problème technique fondamental dans la découverte d'un projet.
+Les doutes ou besoins exprimés par le porteur ou par l'équipe n'apparaissent pas nécessairement. Les zones d'ombres n'étant pas clairement identifiées, certaines décisions semblent figées dans le marbre. Entre autres, les problèmes d'ordre technique sont souvent évacués au motif que le sujet est prématuré et qu'il faut se concentrer sur le fonctionnel. C'est bien sûr souvent vrai, mais cela n'empêche pas de prendre en compte un problème technique fondamental dans la découverte d'un projet.
 
 ### La story map fige le périmètre des fonctionnalités
 
