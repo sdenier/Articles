@@ -47,25 +47,36 @@ La vision nous sert à identifier les acteurs les plus importants pour la réuss
 
 Mais pour pouvoir représenter le système pour tout le monde et le discuter, nous exprimons en fait les capacités du système. Cette dernière indique que tel besoin ou but est bien pris en compte, sans rentrer dans le détail de la fonctionnalité ou de la solution : on parlera de la capacité à supporter tel problème, telle activité, sans être obligé de figer une fonctionnalité.
 
-PRENDRE UN EXEMPLE (RM TOOL, ENV PICTURE ?)
+- La capacité de visualiser des métriques
+- La capacité de gérer un planning
+- La capacité de comparer des produits entre eux
+- La capacité de commander des billets en ligne
 
-*La vision du porteur de projet doit apparaître dans les capacités du système.*
+Plus la capacité est importante et différenciante pour l'acteur, plus il est intéressant de la discuter et d'être spécifique dans son intitulé. Plus la capacité est standard (une "commodité"), moins il est nécessaire de passer du temps dessus. Par exemple, la capacité à commenter sur des sites internet est généralement survolé, car il existe des solutions toutes prêtes - à moins, bien sûr, que le projet porte justement sur une nouvelle approche des commentaires.
 
-Il est tentant de décrire une capacité comme une fonctionnalité : l'exemple aide les participants à se mettre d'accord sur ce qu'ils veulent dire. Cependant, une fois les idées clarifiées, j'essaie si possible de remonter à un niveau d'expression plus abstrait dans l'image globale. Ainsi on ne fige pas une fonctionnalité, on laisse la porte ouverte à d'autres solutions pour cette capacité, une fois que l'expérience aura apporté d'autres aspects.
+Il est tentant de décrire une capacité comme une fonctionnalité : l'exemple aide les participants à se mettre d'accord sur ce qu'ils veulent dire. Cependant, une fois les idées clarifiées, j'essaie si possible de remonter à un niveau d'expression plus abstrait. Ainsi on ne fige pas une fonctionnalité, on laisse la porte ouverte à d'autres solutions pour cette capacité, une fois que d'autres aspects auront enrichi notre connaissance du projet.
 
-A ce stade il est fréquent de faire des allers-retours pour reformuler, scinder ou fusionner des capacités. Il est aussi facile de commencer à identifier certaines dépendances entre capacités, typiquement des dépendances de flux.
+A ce stade il est fréquent de faire des allers-retours pour reformuler, scinder ou fusionner des capacités. Il est aussi facile de commencer à identifier certaines dépendances entre capacités.
 
-EXEMPLE
+> Pour la capacité "visualiser des métriques", nous allons avoir besoin de données ? D'où viennent-elles ?  
+> Notre analyste tient à jour un fichier excel des produits avec les mesures.  
+> Nous allons donc avoir besoin d'une capacité à importer des données, ou bien avons-nous une autre solution ?
 
-En fonction de la taille et du type du projet, il est facile d'adapter l'approche en faisant varier le niveau d'abstraction des capacités. Sur un petit projet, une capacité sera très proche d'une fonctionnalité utilisateur. Mais sur les gros projets (comme notre projet R&D), il est fréquent que les capacités soient à l'échelle de sous-systèmes réalisés par différents acteurs (et qui peuvent faire eux-mêmes l'objet d'une cartographie si besoin). Le fait de s'arrêter à des capacités d'un système, quel que soit sa taille, permet de ne pas tomber dans le piège du catalogue de fonctionnalités à la story map. On cherche avant tout à faire une carte complète, même si elle est peu détaillée.
+En fonction de la taille et du type du projet, il est facile d'adapter l'approche en faisant varier le niveau d'abstraction des capacités. Sur un petit projet, une capacité sera très proche d'une fonctionnalité utilisateur. Mais sur les gros projets (comme notre projet R&D), il est fréquent que les capacités soient à l'échelle de sous-systèmes réalisés par différents acteurs (et qui peuvent faire eux-mêmes l'objet d'une cartographie si besoin). J'ai ainsi noté une fois la capacité de démontrer un "prototype architecturale" (re-découpé en plusieurs capacités) car c'était une étape importante dans la vie du projet. Le fait de s'arrêter à des capacités d'un système, quel que soit sa taille, permet de ne pas tomber dans le piège du catalogue de fonctionnalités à la story map. On cherche avant tout à faire une carte complète, même si elle est peu détaillée.
 
 Avec ces règles, il est fréquent que la carte initiale du système tienne en une dizaine de capacités. Un tableau blanc et des feutres, ou bien quelques post-it sont donc largement suffisants pour réaliser l'analyse.
 
 ### Identification de la valeur et du risque des capacités
 
-Nous pouvons rentrer dans le vif du sujet, là où la méthode de Liz Keogh prend tout son sens. Suite à cette cartographie, nous avons un ensemble de capacités représentant notre projet : parmi celles-ci, certaines sont des *commodités*, c'est-à-dire qu'elles sont nécessaires au fonctionnement du système sans être innovantes. D'autres sont classées *différenciateurs*. Ce sont celles qui vont faire la différence du projet par rapport à d'autres solutions. La vision du projet est en particulier un différenciateur. Si cela ne semble pas assez différenciant, creusez encore : la différence n'est pas nécessairement exprimé par une nouvelle fonctionnalité, mais par une façon différente d'enchaîner des flux, par un business model alternatif…
+Nous pouvons rentrer dans le vif du sujet, là où la méthode de Liz Keogh prend tout son sens. Suite à cette cartographie, nous avons un ensemble de capacités représentant notre projet : parmi celles-ci, certaines sont des *commodités*, c'est-à-dire qu'elles sont nécessaires au fonctionnement du système sans être innovantes. D'autres sont classées *différenciateurs*. Ce sont celles qui vont faire la différence du projet par rapport à d'autres solutions. Vous pouvez aussi identifier des *spoilers* : cette fonctionnalité innovante du concurrent qui marche tellement bien qu'elle devient obligatoire pour intéresser le marché (autrement dit, un spoiler est un différenciateur en train de devenir une commodité).
 
-DEVELOPPER UN PETIT PEU SUR COMMO vs SPOIL vs DIFF (exemples rmtool)
+Prenons un système de suivi de compétition :
+
+- différentiateur : le suivi des concurrents avec mixage GPS et caméra embarquée
+- commodité : la sortie des résultats officiels
+- spoiler : une fonction de replay après la course
+
+La vision du projet est bien sûr un différenciateur. Si cela ne semble pas assez différenciant, creusez encore : la différence n'est pas nécessairement exprimée par une nouvelle fonctionnalité, mais par une façon différente d'enchaîner des activités, par un modèle de business alternatif…
 
 Vient ensuite la seconde étape, qui consiste à évaluer le risque de développer chaque capacité. La notion de risque est souvent abordée dans les projets agiles, mais par nature le risque est incertain voire inconnu - et comment évaluer quelque chose que l'on ne connaît pas ? La solution de Liz Keogh est élégante, en proposant une échelle sur un critère simple, accessible à tout le monde : elle consiste à s'auto-évaluer sur son ignorance, "ce qu'on ne connaît pas". Liz propose 5 niveaux, où 1 est le niveau minimal ("on maîtrise complètement le sujet") et 5 le maximal ("on ne sait rien sur le sujet"). Il n'y a pas de définition rigoureuse pour chaque niveau, mais les interprétations suivantes peuvent guider votre choix :
 
