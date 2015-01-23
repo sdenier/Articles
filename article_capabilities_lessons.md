@@ -43,7 +43,9 @@ La pratique courante issue des story maps et des méthodologies agiles est de pr
 
 En se focalisant sur les risques de faire échouer le projet ainsi que sur la valeur différenciante, l'accent est mis sur un point essentiel : trouver la prochaine étape la plus sûre et la plus rapide pour démontrer la valeur du projet, avant de passer à la suivante. L'approche est centrée sur la réalisation de la vision, la résolution des problèmes rencontrés, plutôt que de cocher une liste de fonctionnalités.
 
-### L'estimation est une projection d'expert, pas une collection de chiffrage ni un moyen de pilotage
+### L'estimation est une projection d'expert, pas une collection de chiffres ni un moyen de pilotage
+
+TODO
 
 
 *Bien sûr, plus vous estimez que le niveau de risque est fort, plus il y a d'incertitudes sur les problèmes que vous allez rencontrer, moins une estimation est pertinente et plus vous devez avoir une approche exploratoire.* 
@@ -56,45 +58,45 @@ forecast vs estimation : savoir se projeter (confusion entre exactitude/justesse
 - pour cette démarche il est important d'être honnête avec soi-même et de dire qu'on ne sait pas faire ; c'est pourquoi une échelle de valeur nominale (complexité/risque de Keogh) est intéressante : elle ne pousse pas à donner une "quantité"
 - on distingue la planification (au sens purement déroulement du projet, étapes de résolution d'un problème), de l'estimation/gestion des ressources
 
+Quand on vous demande une estimation, soyez précis sur le fait que ce n'est pas un engagement. Juste un instrument pour juger de la pertinence. L'engagement est sur la capacité à apporter des bonnes réponses à l'idée portée par le client.
+
+
 ### Quand passer à l'étape suivante ?
 
 Risque de rester dans le vague, le flou, l'abstrait. Il faut pouvoir prendre des actions concrètes à l'issue, pour la prochaine étape. En même temps,  pas besoin de creuser loin le détail, il suffit d'avoir assez d'éléments pour cette prochaine étape, anticiper un peu les suivantes, et pouvoir dire stop si besoin.
 
 ### Le porteur de projet a déjà un cahier des charges, un backlog, des idées toutes prêtes
 
-Stop ! La démarche ci-dessus doit normalement pousser tout le monde à remettre en cause des fonctionnalités prématurées, à proposer d'autres solutions. Si le porteur insiste pour inclure une fonctionnalité dans votre cartographie, comment pouvez-vous la ré-exprimer comme une capacité, en gardant la fonctionnalité comme un exemple de solution concrète pour cette capacité ?
+Stop ! La démarche ci-dessus doit normalement pousser tout le monde à remettre en cause des fonctionnalités prématurées, à proposer d'autres solutions. Si le porteur insiste pour inclure une fonctionnalité dans votre cartographie, comment pouvez-vous la ré-exprimer comme une capacité, en gardant la fonctionnalité comme un exemple de solution concrète pour cette capacité ? Comme proposé par Liz, demandez au porteur "pourquoi" il veut cette fonctionnalité et jusqu'à remonter aux besoins pour pouvoir exprimer la capacité.
 
-## story map vs capability red : when, why?
+## Story map ou capacités : quand et pourquoi ?
 
-Story map = super pour récapituler la vision de ce qu'on veut réaliser, la réordonner, préparer les détail des prochaines itérations, quand la vision du projet est à peu près stable (au moins jusqu'au prochain lot).
+TODO
 
 Capability map = découvrir un projet, organiser les premières itérations (type spike, démo, proto), éventuellement préparer des story maps pour décrire des futures itérations, recentrer un projet sur ses fondamentaux.
 
-## Changer encore et toujours notre vision de l'agilité
+ L'engagement dans un processus orienté story map vient plus tard, quand l'équipe a atteint la maturité sur le domaine, ses enjeux et ses problèmes. Elle permettra alors un suivi des étapes du projet à la vue de tous.
 
-Agile Cargo cult / Band wagon : quand on applique à la lettre les principes et les méthodes de l'agilité, sans comprendre d'où ils viennent, sans les adapter au contexte, au final en ne retirant aucun bénéfice de ces principes.
-
-http://mikehadlow.blogspot.co.uk/2014/03/coconut-headphones-why-agile-has-failed.html
-
-malheureusement, les outils proposés par l'agilité = maturité de l'équipe et du projet pour donner leur pleine mesure. Rien ne remplace l'expérience, mais on a besoin d'autres approches moins codifiées dès qu'il s'agit d'aborder un nouveau domaine.
-
-Aux origines des approches agiles (XP), il y avait la volonté de mettre en place un cadre de communication qui évitait les échanges toxiques et non-constructifs entre les utilisateurs et les équipes techniques. En un sens, les premières méthodes agiles étaient là autant pour "protéger" l'équipe et lui permettre d'être productive que pour favoriser la communication. C'est pourquoi certaines méthodes ont un côté très cadré, au point que certaines équipes semblent sectaires par rapport à leurs règles. Au point qu'elles peuvent sembler isolées, derrière des murs de verre - et le risque est grand dans ce cas que la communication passe mal. La relation client-équipe passe alors par l'intermédiaire du backlog. Nous ne privilégions pas forcément cette approche en début de projet, car la communication, l'identification de problèmes et la recherche de solutions en commun prime sur les autres aspects à ce stade. L'engagement dans un processus plus orienté story map peut venir plus tard, quand l'équipe aura atteint la maturité sur le domaine et les enjeux et les problèmes. Elle permettra alors un suivi des étapes du projet à la vue de tous.
-
-Une erreur fondamentale est de voir l'équipe technique comme de simples exécutants, sans force de proposition.
-
-Approche moins structurée qu'une story map, mais c'est justement son intérêt : fournir une approche avec un très faible niveau d'entrée, ne nécessitant pas une expérience de certains concepts "diffus" (Persona, ), le concept de "capacité" étant souple chacun mettant ce qu'il veut derrière les "capacités". L'essentiel étant d'échanger pour identifier les problèmes et trouver des solutions.
-
-Notre approche "problem-oriented" : on veut faire plus que réaliser un projet, on veut d'abord aider les porteurs à identifier des problèmes, valider des idées, trouver des solutions.
-
-Mais l'aspect le plus intéressant et révélateur de cette méthode est son échelle de complexité ou ignorance. D'abord parce qu'elle met l'accent sur le non-dit des projets en mode forfait : 
-
-Quelle proposition faisons-nous au porteur ? Comment répondre à ses questions ? Forecast vs estimation
-
-- on devient plus acteur dans le déroulement du projet (et moins réalisateur de la solution)
+Story map = super pour récapituler la vision de ce qu'on veut réaliser, la réordonner, préparer les détail des prochaines itérations, quand la vision du projet est à peu près stable (au moins jusqu'au prochain lot).
 
 
+## Changer encore et toujours notre approche de l'agilité
 
+Aux origines des approches agiles, il y avait la volonté de mettre en place un cadre de communication qui évitait les échanges toxiques et non-constructifs entre les utilisateurs et les équipes techniques. En un sens, les premières méthodes agiles étaient là autant pour "protéger" l'équipe et lui permettre d'être productive que pour favoriser la communication. Encore aujourd'hui, certaines méthodes ont un côté très cadré voire cérémonieux.
 
-Ouverture : changer encore et toujours nos méthodes agiles/notre vision de l'agilité
+De façon générale, les méthodes agiles sont là pour aider au déroulement régulier du projet, qu'il soit court ou long. Mais tout le monde a vécu un jour ou l'autre cette expérience : copier une approche qui "a marché" ailleurs. Et quand ça ne marche pas, recommencer en expliquant que la méthode n'a pas été bien suivie. Dans le pire des cas, on arrive à [l'agilité Cargo Cult](http://mikehadlow.blogspot.co.uk/2014/03/coconut-headphones-why-agile-has-failed.html), où l'équipe se déclare agile parce qu'elle applique toutes les règles, mais sans en tirer les bénéfices car elle n'a pas su s'adapter à son contexte.
 
-Chacun ses défauts lié à sa formation, son expérience, son histoire personnel. Cette solution convient à notre problème, peut-être pas au vôtre. Gardez l'esprit ouvert.
+Ce qui est rarement dit sur les méthodes agiles, c'est qu'elles demandent souvent une bonne maturité sur le domaine du projet pour être 100% effective. Rien n'est plus plaisant que de travailler sur un projet complexe mais où chaque itération réussit son objectif, car les enjeux sont maîtrisés, les processus de décision évidents, le Product Owner bien informé et réactif.
+
+Mais quand nous avons affaire à de nouveaux domaines inconnus pour nous, ces éléments sont loins d'être acquis : l'équipe cherche le bon niveau de communication, les zones d'ombre sont nombreuses, les enjeux encore mal identifiés. Il est tentant, et rassurant, pour l'équipe comme pour le porteur de se retrancher derrière un process, un contrat, un cahier des charges…
+
+De même, les outils agiles comme la story map semblent souvent simples, voire triviaux en apparence, mais demande une bonne expérience pour être bien menée. Amener des nouveaux venus à utiliser ce type d'outil dès les premiers contacts rend les choses complexes !
+
+C'est pourquoi choisir une approche moins structurée que la story map, comme la planification par capacité, est intéressant. Le niveau d'entrée est faible, car n'imposant pas différents concepts hiérarchisés (activité, cas d'utilisation, fonctionnalité) : la "capacité" résume ces concepts tout étant suffisamment souple pour que chacun se l'approprie. A ce stade, l'essentiel pour nous est d'échanger sur le projet. L'équipe technique peut être aussi force de proposition dans la réalisation du projet, et pas une simple exécutante [^1].
+
+Mais dans l'approche de Liz Keogh, l'aspect le plus intéressant et révélateur est certainement la prise en considération de sa propre ignorance et des risques associés. D'abord parce qu'elle met l'accent sur le non-dit des projets au forfait, typique des SSII : sur quelles bases, sur quelles estimations la proposition de forfait a-t-elle été faite ? Quels risques ont été prises en compte (réponse : très peu, voire aucun) ? Comment l'équipe va-t-elle gérer et communiquer sur ces risques (réponse : pas prévue, la communication sera gérée en cas de crise) ?
+
+Pour un porteur de projet, notre première proposition est donc un accompagnement. Nous voulons aider le porteur à identifier les problèmes, valider ses idées, trouver des pistes de solution. 
+(et cela ne marche pas toujours). De même, la réponse que nous lui apportons n'est pas forcément une estimation de son projet mais plutôt une projection : que pouvons-nous faire, quelle est la prochaine étape ? Nous sommes ainsi acteur dans le déroulement du projet, et non pas les simples exécutants d'une solution.
+
+[^1]: c'est bien sûr valable pour n'importe quelle équipe se réclamant d'une approche agile, pas seulement pour nous.
