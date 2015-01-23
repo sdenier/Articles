@@ -43,23 +43,13 @@ La pratique courante issue des story maps et des méthodologies agiles est de pr
 
 En se focalisant sur les risques de faire échouer le projet ainsi que sur la valeur différenciante, l'accent est mis sur un point essentiel : trouver la prochaine étape la plus sûre et la plus rapide pour démontrer la valeur du projet, avant de passer à la suivante. L'approche est centrée sur la réalisation de la vision, la résolution des problèmes rencontrés, plutôt que de cocher une liste de fonctionnalités.
 
-### L'estimation est une projection d'expert, pas une collection de chiffres ni un moyen de pilotage
+### Traiter l'estimation comme une projection, pas un engagement
 
-TODO
+Bien que l'on sorte du cadre strict de la planification, l'estimation du coût d'un projet est la suite logique pour un porteur. Là encore, Dan North en a très bien décrit les enjeux et les écueils dans [The Perils of Estimation](http://dannorth.net/2009/07/01/the-perils-of-estimation/) et même proposé son idée dans [Blink Estimation](http://dannorth.net/2013/08/08/blink-estimation/).
 
+Sans rentrer dans le détail de ce débat (voir tout ce qui concerne le *No Estimates*), la méthode de Liz apporte son petit grain de sel aux estimations. En effet, plus vous estimez que le niveau de risque est fort, plus il y a d'inconnus sur les problèmes que vous allez rencontrer, et plus votre estimation sera incertaine. Jusqu'au point où une estimation n'est plus pertinente et où vous devez avoir une approche vraiment exploratoire.
 
-*Bien sûr, plus vous estimez que le niveau de risque est fort, plus il y a d'incertitudes sur les problèmes que vous allez rencontrer, moins une estimation est pertinente et plus vous devez avoir une approche exploratoire.* 
-
-
-forecast vs estimation : savoir se projeter (confusion entre exactitude/justesse et précision/(in)certitude)
-
-
-- en cas de problème bloquant avec un risque majeur, on échoue plus vite, on gaspille donc moins de ressources
-- pour cette démarche il est important d'être honnête avec soi-même et de dire qu'on ne sait pas faire ; c'est pourquoi une échelle de valeur nominale (complexité/risque de Keogh) est intéressante : elle ne pousse pas à donner une "quantité"
-- on distingue la planification (au sens purement déroulement du projet, étapes de résolution d'un problème), de l'estimation/gestion des ressources
-
-Quand on vous demande une estimation, soyez précis sur le fait que ce n'est pas un engagement. Juste un instrument pour juger de la pertinence. L'engagement est sur la capacité à apporter des bonnes réponses à l'idée portée par le client.
-
+Plus simplement, la question de l'estimation peut être traitée par l'équipe comme une projection dans l'avenir. Quelle horizon se donne-t-elle pour trouver une solution à ce problème ? Est-elle confiante dans cette horizon ? Si besoin, l'équipe peut renforcer sa confiance en utilisant le poker planning, mais l'estimation de doit se transformer en chiffrage de fonctionnalités à la carte.
 
 ### Quand passer à l'étape suivante ?
 
