@@ -1,6 +1,6 @@
 # Découverte et amorçage de projet : qu'avons-nous appris de la planification par capacités ?
 
-XXX
+INTRO
 
 ## Quelques leçons tirées de la cartographie par capacité
 
@@ -59,15 +59,12 @@ Risque de rester dans le vague, le flou, l'abstrait. Il faut pouvoir prendre des
 
 Stop ! La démarche ci-dessus doit normalement pousser tout le monde à remettre en cause des fonctionnalités prématurées, à proposer d'autres solutions. Si le porteur insiste pour inclure une fonctionnalité dans votre cartographie, comment pouvez-vous la ré-exprimer comme une capacité, en gardant la fonctionnalité comme un exemple de solution concrète pour cette capacité ? Comme proposé par Liz, demandez au porteur "pourquoi" il veut cette fonctionnalité et jusqu'à remonter aux besoins pour pouvoir exprimer la capacité.
 
-## Story map ou capacités : quand et pourquoi ?
 
-TODO
+## Capacités ou Story map : quand et pourquoi ?
 
-Capability map = découvrir un projet, organiser les premières itérations (type spike, démo, proto), éventuellement préparer des story maps pour décrire des futures itérations, recentrer un projet sur ses fondamentaux.
+La planification par capacités nous est utile pour découvrir un projet, organiser les premières itérations, produire des prototypes de démonstration, mais aussi pour préparer les story maps des futures lots, ou recentrer un projet sur ses fondamentaux.
 
- L'engagement dans un processus orienté story map vient plus tard, quand l'équipe a atteint la maturité sur le domaine, ses enjeux et ses problèmes. Elle permettra alors un suivi des étapes du projet à la vue de tous.
-
-Story map = super pour récapituler la vision de ce qu'on veut réaliser, la réordonner, préparer les détail des prochaines itérations, quand la vision du projet est à peu près stable (au moins jusqu'au prochain lot).
+Quand l'équipe a acquis plus de maturité sur le domaine, ses enjeux et ses problèmes, il peut être intéressant d'engager un processus orienté story map. Celle-ci permet de récapituler la vision de ce qu'on veut réaliser, la réordonner, préparer les détail des prochaines itérations, quand la vision du projet s'est stabilisé (au moins jusqu'au prochain lot). Elle permettra alors un suivi des étapes du projet à la vue de tous.
 
 
 ## Changer encore et toujours notre approche de l'agilité
