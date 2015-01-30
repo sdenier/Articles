@@ -1,10 +1,10 @@
 # Découverte et amorçage de projet : le problème avec les story maps
 
-Tout projet commence par une phase d'élaboration et de maturation des idées, que ce soit sur la problématique et les objectifs, le financement, la commercialisation, et bien sûr la technique. L'équipe technique se retrouve alors confrontée à la question de la réalisation : que doit-on faire, quels sont les délais, combien ça va coûter ? Un des outils mis en avant pour planifier un projet en mode agile est la story map. Or notre expérience avec cet outil s'est révélée très hétérogène voire paradoxale. En effet, elle n'est pas forcément pertinente pour répondre aux questions essentielles en début de projet : combien investir et quelle est la prochaine étape ? Ce premier article fouille quelques-uns des défauts constatés avec l'approche story map, avant d'aborder la prochaine fois une autre approche basée sur les capacités et les risques.
+Tout projet commence par une phase d'élaboration et de maturation des idées, que ce soit sur la problématique et les objectifs, le financement, la commercialisation, et bien sûr la technique. L'équipe technique se retrouve alors confrontée à la question de la réalisation : que doit-on faire, quels sont les délais, combien ça va coûter ? Un des outils mis en avant pour planifier un projet en mode agile est la story map. Or notre expérience avec cet outil s'est révélée très hétérogène voire paradoxale. En effet, elle n'est pas forcément pertinente pour répondre aux questions essentielles en tout début de projet : combien investir et quelle est la prochaine étape ? Ce premier article fouille quelques-uns des défauts constatés avec l'approche story map, avant d'aborder la prochaine fois une autre approche basée sur les capacités et les risques.
 
 ## Petit rappel : ce qu'est une story map
 
-Une story map est un atelier rassemblant différents acteurs d'un projet (<abbr title="Product Owner">PO</abbr>, utilisateurs, développeurs) en vue de planifier les futures fonctionnalités du système. Elle se déroule suivant les étapes ci-dessous :
+Une story map est un atelier rassemblant différents acteurs d'un projet (*Product Owner*, utilisateurs, développeurs) en vue de planifier les futures fonctionnalités du système. Elle se déroule suivant les étapes ci-dessous :
 
 1. décrire la vision du projet
 2. identifier les acteurs en lien avec le projet (parties prenantes, utilisateurs, bénéficiaires…) et leurs besoins
@@ -23,28 +23,28 @@ Les porteurs de projet qui viennent nous voir sont à la recherche d'expertise s
 
 Ces porteurs arrivent avec des maturités différentes vis-à-vis de leur projet. Certains travaillent dans le domaine depuis des années et se lancent sur une idée mûrement réfléchie. D'autres s'engagent dans l'aventure et découvrent la problématique en même temps qu'ils proposent des solutions. Lors des premiers rendez-vous, nous voyons arriver des porteurs avec des cahiers des charges denses et illisibles, tandis que d'autres ont toutes leurs idées en tête et s'adaptent très vite à nos méthodes de travail.
 
-Nous avions donc besoin d'une méthode pour nous aider à découvrir rapidement un projet et à encadrer les clients lors des phases de découverte. La story map semblait un outil intéressant pour cela. De plus, en utilisant cet outil, nous avions une chance d'être actif dans la recherche d'informations (a contrario d'une lecture d'un cahier des charges, plus passive et fastidieuse), donc de dénicher des points obscurs, interpeller le porteur de projets et le faire sortir de ses habitudes, et d'exposer de futurs clients à nos méthodes :
+Nous avions donc besoin **d'une méthode pour nous aider à découvrir rapidement un projet et à encadrer les clients lors des phases de découverte.** La story map semblait un outil intéressant pour cela. De plus utiliser cet outil nous donnaient une chance d'être actif dans la recherche d'informations, a contrario de la lecture d'un cahier des charges, plus passive et fastidieuse. Cela nous permettait de dénicher plus facilement des points obscurs - interpeller le porteur de projets et le faire sortir de ses habitudes - et d'exposer de futurs clients à nos méthodes :
 
-- format workshop favorisant la discussion entre participants
-- post-it pour garder les idées concises et essentielles
+- atelier favorisant la discussion entre participants
+- post-its pour garder les idées concises et essentielles
 - focus sur les utilisateurs
 - priorisation et construction des lots dynamiques, en groupe…
 - vision complète et amélioration incrémentale pour favoriser le raffinement des points clés
 
-Sur le papier, la story map avait donc tout pour plaire. Mais notre expérience avec les story maps en découverte de projet s'est révélée très hétérogène voire paradoxale. Parfois cela marchait bien, révélant les différents aspects du projet. Régulièrement, le résultat ne semblait pas à la hauteur des efforts fournis lors de la session. Dans au moins deux cas, la story map s'est révélée complètement inadaptée. Pourtant, c'est une étape structurante dans la vie d'un projet, d'autant plus qu'il s'agit souvent du premier contact entre l'équipe technique et le porteur de projet. Il est donc frustrant de commencer par une session de travail qui ne marche pas à 100%.
+Sur le papier, la story map avait donc tout pour plaire. **Mais notre expérience avec les story maps en découverte de projet s'est révélée très hétérogène voire paradoxale.** Parfois cela marchait bien, révélant les différents aspects du projet. Régulièrement, le résultat ne semblait pas à la hauteur des efforts fournis lors de la session. Dans au moins deux cas, la story map s'est révélée complètement inadaptée. Pourtant, c'est une étape structurante dans la vie d'un projet, d'autant plus qu'il s'agit souvent du premier contact entre l'équipe technique et le porteur de projet. Il est donc frustrant de commencer par une session de travail qui ne marche pas bien.
 
 ## Même joueur essaie encore
 
 En bons agilistes, nous avons essayé d'adapter l'outil et ses règles pour rendre les story maps plus faciles à gérer, plus pertinentes pour tout le monde : essayer d'extraire les besoins de chaque acteur, garder un haut niveau d'abstraction pour les activités, recadrer dès qu'on s'attarde trop sur le détail, faire exprimer aux participants leur flot de travail…
 
-Malgré cette adaptation au fil de l'eau, les story maps se finissaient souvent pour nous sur les constats suivant :
+Malgré ces adaptations au fil de l'eau, les story maps se finissaient souvent pour nous sur les constats suivant :
 
 - c'est usant, voire stressant, et malgré nos efforts nous n'étions pas sûr d'avoir une vision correcte du projet !
 - d'une story map à l'autre, le niveau d'expression et d'abstraction était très différent et ne permettait pas la même exploitation des résultats : tel aspect évoqué par les participants n'apparaissait pas clairement dans la story map, tel autre manquait de précision et entraînait des incompréhensions et des décisions mal ajustées…
 
 ## Les problèmes des story maps en découverte de projet
 
-Pourquoi donc cela ne marche pas toujours comme prévu ? Plusieurs problèmes récurrents peuvent apparaître.
+Pourquoi donc cela ne marche pas toujours comme souhaité ? Plusieurs problèmes récurrents peuvent apparaître.
 
 ### Les concepts : activité, cas d'utilisation, fonctionnalité ?
 
@@ -64,7 +64,7 @@ Afin de profiter au maximum de la présence des participants, nous faisions des 
 
 ### C'est difficile sur de gros projets
 
-Clairement, la story map n'a jamais marché quand nous avons essayé sur de gros projets. Cela demande encore plus de maturité, de temps de découverte du domaine. Le focus sur les activités et les cas d'utilisation n'est pas au bon niveau pour découvrir ces projets.
+Clairement, l'atelier story map n'a jamais marché quand nous avons essayé sur de gros projets. Cela demande encore plus de maturité, de temps de découverte du domaine. Le focus sur les activités et les cas d'utilisation n'est pas au bon niveau pour découvrir ces projets.
 
 ### Le focus « utilisateur » n'est pas forcément adapté
 
@@ -85,11 +85,11 @@ Malgré toutes les précautions et les règles de bonne conduite, le résultat l
 
 ## Le vrai problème avec les story maps : les attentes contrariées
 
-Malgré ces inconvénients, nous croyions quand même dans la valeur de la story map à ce stade car elle permet avant tout la discussion et l'échange. Mais alors, pourquoi la story map peut-elle se montrer vraiment inadaptée dans cette phase du projet ? Tout simplement parce que les résultats et les attentes liés à ce travail peuvent être radicalement différents des deux côtés.
+Malgré ces inconvénients, nous croyons quand même dans la valeur de la story map à ce stade car elle permet avant tout la discussion et l'échange. Mais alors, pourquoi la story map peut-elle se montrer vraiment inadaptée dans cette phase du projet ? Face au même résultat, les deux côtés peuvent avoir des questions et des attentes très différentes, par exemple :
 
 *Equipe technique*
 
-- Nous avons une première vue de fonctionnalités minimales, nous pouvons commencer au plus vite pour fournir un <abbr title="Produit Minimum Viable">PMV</abbr>.
+- Nous avons une première vue de fonctionnalités minimales, nous pouvons commencer au plus vite pour fournir un produit minimum viable.
 - Quand voulez-vous commencer ?
 
 *Porteur de projet*
@@ -97,15 +97,15 @@ Malgré ces inconvénients, nous croyions quand même dans la valeur de la story
 - Est-ce que la story map correspond à la liste des fonctionnalités ? Qu'est-ce qui va rentrer dans le périmètre final ?
 - Combien ça va coûter ?
 
-Bizarrement, cette dernière question provoquait toujours chez nous une sensation de malaise. Une story map ne permet pas de fournir une meilleure estimation qu'une autre méthode (tout au plus favorise-t-elle la comparaison pour un chiffrage relatif [^1]). Il nous manquait toujours des informations cruciales au moment du chiffrage pour être serein. Au final, nous nous sentions piégés dans les vieilles habitudes de chiffrage du cahier des charges. De plus, la story map ne nous offrait pas toujours une vision claire sur la prochaine étape : peut-on commencer tout de suite ? Y a-t-il d'autres étapes non techniques à valider d'abord ?
+Bizarrement, cette dernière question provoquait toujours chez nous une sensation de malaise. Une story map ne permet pas de fournir une meilleure estimation qu'une autre méthode (tout au plus favorise-t-elle la comparaison pour un chiffrage relatif [^1]). Il nous manquait toujours des informations cruciales au moment du chiffrage pour être serein. **Au final, nous nous sentions piégés dans les vieilles habitudes de chiffrage du cahier des charges.** De plus, la story map ne nous offrait pas toujours une vision claire sur la prochaine étape : peut-on commencer tout de suite ? Y a-t-il d'autres étapes non techniques à valider d'abord ?
 
 ## La story map est-elle utile ?
 
-On dit « si tu as un marteau dans la tête, alors toutes les vis ressemblent à un clou ». Quand on a un bel outil en main, il est facile de regarder tous les problèmes par son prisme, même quand il est inadapté à la situation. C'est ce qui se passe avec la story map pour la découverte d'un projet. Elle ne permet bien souvent pas de répondre aux questions essentielles du porteur de projet en phase de découverte : est-ce que mon projet marche dans la réalité ? Est-ce qu'on a identifié les problèmes clés ? Combien investir et comment procéder pour tester au mieux les idées ?
+On dit « si tu as un marteau dans la tête, alors toutes les vis ressemblent à un clou ». Quand on a un bel outil en main, il est facile de regarder tous les problèmes par son prisme, même quand il est inadapté à la situation. C'est ce qui se passe avec la story map pour la découverte d'un projet. **Elle ne permet bien souvent pas de répondre aux questions essentielles du porteur de projet en phase de découverte** : est-ce que mon projet marche dans la réalité ? Est-ce qu'on a identifié les problèmes clés ? Combien investir et comment procéder pour tester au mieux les idées ?
 
-Bien sûr, il ne s'agit pas de remettre en cause la story map comme outil de planification de projet, quand celui-ci devient plus mature, que le périmètre des fonctionnalités se dessine et que les priorités sont identifiées. Simplement, elle ne peut pas venir trop tôt lors de la découverte d'un projet, car elle risque de figer des décisions sur les fonctionnalités à un moment où celles-ci sont encore méconnues. Nous verrons dans le prochain article une approche qui se focalise sur les capacités et les risques du projet, afin de trouver une organisation plus pragmatique du développement.
+Bien sûr, il ne s'agit pas de remettre en cause la story map comme outil de planification de projet, quand celui-ci devient plus mature, que le périmètre des fonctionnalités se dessine et que les priorités sont identifiées. Simplement, elle ne peut pas venir trop tôt dans la découverte d'un projet, car **elle risque de figer des décisions sur les fonctionnalités à un moment où celles-ci sont encore méconnues.** Nous verrons dans le prochain article une approche qui se focalise sur les capacités et les risques du projet, afin de trouver une organisation plus pragmatique du développement.
 
-[^1]: Sur le sujet délicat des estimations, comment les faire, les exploiter intelligemment et les éviter quand ce n'est pas utile, je recommande Dan North ([The Perils of Estimation](http://dannorth.net/2009/07/01/the-perils-of-estimation/), [Blink Estimation](http://dannorth.net/2013/08/08/blink-estimation/)) et aussi tout ce qui touche au mouvement NoEstimates. Mais c'est un autre sujet.
+[^1]: A propos des estimations, comment les faire, les exploiter intelligemment et les éviter quand ce n'est pas utile, je recommande Dan North ([The Perils of Estimation](http://dannorth.net/2009/07/01/the-perils-of-estimation/), [Blink Estimation](http://dannorth.net/2013/08/08/blink-estimation/)) et aussi tout ce qui touche au mouvement NoEstimates. Mais c'est un autre sujet.
 
 <div itemprop="author" itemscope="" itemtype="http://schema.org/Person">
   <img itemprop="image" src="http://www.gravatar.com/avatar/58778f8cc14e8a484568a663266c3029.png" alt="Simon Denier">
