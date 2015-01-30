@@ -105,7 +105,7 @@ On dit « si tu as un marteau dans la tête, alors toutes les vis ressemblent à
 
 Bien sûr, il ne s'agit pas de remettre en cause la story map comme outil de planification de projet, quand celui-ci devient plus mature, que le périmètre des fonctionnalités se dessine et que les priorités sont identifiées. Simplement, elle ne peut pas venir trop tôt lors de la découverte d'un projet, car elle risque de figer des décisions sur les fonctionnalités à un moment où celles-ci sont encore méconnues. Nous verrons dans le prochain article une approche qui se focalise sur les capacités et les risques du projet, afin de trouver une organisation plus pragmatique du développement.
 
-[^1]: Sur le sujet délicat des estimations, comment les faire, les exploiter intelligemment et les éviter quand ce n'est pas utile, je recommande Dan North ([The Perils of Estimation](http://dannorth.net/2009/07/01/the-perils-of-estimation/), [Introducing Deliberate Discovery](http://dannorth.net/2010/08/30/introducing-deliberate-discovery/)) et aussi tout ce qui touche au mouvement NoEstimates. Mais c'est un autre sujet.
+[^1]: Sur le sujet délicat des estimations, comment les faire, les exploiter intelligemment et les éviter quand ce n'est pas utile, je recommande Dan North ([The Perils of Estimation](http://dannorth.net/2009/07/01/the-perils-of-estimation/), [Blink Estimation](http://dannorth.net/2013/08/08/blink-estimation/)) et aussi tout ce qui touche au mouvement NoEstimates. Mais c'est un autre sujet.
 
 <div itemprop="author" itemscope="" itemtype="http://schema.org/Person">
   <img itemprop="image" src="http://www.gravatar.com/avatar/58778f8cc14e8a484568a663266c3029.png" alt="Simon Denier">
