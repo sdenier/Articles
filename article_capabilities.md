@@ -88,6 +88,10 @@ Vient ensuite la seconde étape, qui consiste à évaluer le risque lié à chaq
 
 Quand un client nous pose une question, il est parfois difficile de formuler une réponse quand on est soi-même incertain. En tant que professionnels, ne pas être capable de répondre précisément (combien ça va coûter, combien de temps pour développer telle fonctionnalité) apparaît comme un aveu d'incompétence. Pourtant l'informatique est bien un domaine où il est difficile de tout connaître. Cette évaluation vous encourage à être honnête avec vous-même et votre porteur de projet : les points durs se cachent derrière votre ignorance, donc identifier et reconnaître ceux-ci vous permettra de progresser plus vite vers la conclusion du projet. C'est certainement l'aspect le plus intéressant de la méthode de Liz.
 
+<img src="./capabilities.001.png">
+
+> Quelques mots-clés pour décrire les capacités, des flèches pour indiquer les dépendances principales, des chiffres pour indiquer le risque… La discussion peut commencer ! Cette commodité risquée à 4 peut-elle être simplifiée ou remplacée ? Quelle priorité donnée au spoiler ? Quelle relation entre ces deux différentiateurs qui semblent indépendants ? Peut-on en choisir celui qui a le plus de valeur ?
+
 ### Passer de la carte aux étapes de réalisation
 
 Comme noté par [Dan North](http://dannorth.net/2010/08/30/introducing-deliberate-discovery/), si vous réfléchissez à des projets passés et notez tout ce qui a pu gêner leur réalisation, le frein principal aura été tout ce que vous ignoriez au début et n'avez pu prévoir : ces technologies que vous avez apprises en cours de route, ces fausses pistes qui semblaient prometteuses, ces changements d'objectifs liés de à nouvelles opportunités, et tous les accidents de parcours qui ont affecté la vie du projet. Suivant son principe de *découverte délibérée*, plus vite on détecte et attaque les points incertains d'un projet, plus l'équipe sera capable de se projeter sur la réalisation, plus les risques de dérive diminuent.
