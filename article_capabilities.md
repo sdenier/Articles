@@ -1,26 +1,26 @@
 # Découverte et amorçage de projet : planifier des capacités et des risques
 
-Face à un porteur de projet en phase de démarrage, nous avons besoin d'outils pour 1) comprendre son idée et sa valeur, 2) structurer son approche pour tester au mieux son idée. Dans notre expérience, l'approche story map demande en fait une certaine maturité des process agiles et du domaine pour être pleinement efficace. Nous explorons dans cet article une approche plus terre-à-terre et pragmatique, identifiant avant tout la valeur et le risque d'un projet pour obtenir un démarrage efficace.
+Face à un porteur de projet en phase de démarrage, nous avons besoin d'outils pour 1) comprendre son idée et sa valeur, 2) structurer son approche pour développer et tester au mieux son idée. Dans notre expérience, l'approche story map demande en fait une certaine maturité des process agiles et du domaine pour être pleinement efficace. Nous explorons dans cet article une approche plus terre-à-terre et pragmatique, identifiant avant tout la valeur et le risque d'un projet pour obtenir un démarrage efficace.
 
 ## Qu'attend-on de nous ?
 
 Dans l'article précédent, nous avons expliqué pourquoi la story map n'était pas l'outil le plus adapté pour découvrir et planifier un nouveau projet. Bien que favorisant la discussion, le focus sur les activités des utilisateurs et les lots de fonctionnalité ne permet pas d'aborder les questions fondamentales du porteur de projet à ce stade :
 
-- est-ce que mon projet marche dans la réalité ?
-- est-ce qu'on a identifié les problèmes clés ?
-- comment procéder pour tester au mieux les idées ?
+- la valeur proposée par le projet est-elle bien identifiée ?
+- est-ce qu'on a repéré les problèmes clés ?
+- comment procéder pour développer et tester au mieux les idées ?
 - combien et comment investir ?
 
-Avec la story map, ceci se traduisait par les questions suivantes :
+A l'issue d'une story map, ceci se traduit malheureusement souvent par les questions suivantes :
 
 - est-ce que la story map correspond à la liste des fonctionnalités ? Qu'est-ce qui va rentrer dans le périmètre final ?
 - combien ça va coûter ?
 
-Ce qui amenait immanquablement à des incompréhensions et des discussions commerciales sur le forfait de développement. Il s'agit de questions qui semblent importantes, mais qui ne correspondent en fait pas à la collaboration que nous souhaitons mettre en place avec les porteurs de projet. Pour autant, nous faisions avec et arrivions à fournir les réponses demandées.
+Ce qui amène immanquablement à des incompréhensions et des discussions commerciales sur le forfait de développement. Ces questions qui semblent importantes ne rendent pas service à un projet en phase de démarrage, car elles figent trop les attentes. Ce n'est pas le genre de collaboration que nous souhaitons mettre en place avec les porteurs de projet. Pour autant, nous faisions avec et arrivions à fournir les réponses demandées.
 
 ## Petite histoire qui n'a pas marché et nous a poussé à changer
 
-Jusqu'au jour où nous sommes tombés sur un accompagnement agile d'un projet industriel de recherche et développement. Ce projet était au stade du démarrage, avec des partenaires expérimentés chacun dans leur domaine (industrie lourde, start-up, laboratoire de recherche publique) et bien évidemment des méthodes de travail différentes. Etant sollicités sur la planification de ce projet en mode agile, nous sommes partis de façon classique sur une story map. Mais il s'est vite révélé que celle-ci ne servirait à rien car elle était inadaptée à la taille du projet, à la maturité des participants, à leur mode d'organisation, et n'apportait pas de réponses pertinentes aux questions posées par les participants.
+Jusqu'au jour où nous avons accompagné un projet industriel de recherche et développement. Ce projet était au stade du démarrage, avec des partenaires expérimentés chacun dans leur domaine (industrie lourde, start-up, laboratoire de recherche publique) et bien évidemment des méthodes de travail différentes. Etant sollicités sur la planification de ce projet en mode agile, nous sommes partis de façon classique sur une story map. Mais il s'est vite révélé que celle-ci ne servirait à rien car elle était inadaptée à la taille du projet, à la maturité des partenaires, à leur mode d'organisation, et n'apportait pas de réponses pertinentes aux questions posées par les participants.
 
 Imaginez passer la journée à recadrer les participants, expliquer une approche centrée sur les utilisateurs, quand certains ont des problématiques de recherche en tête, d'autres des problèmes de développement industriel, le tout dérivant en une sorte de « comité de pilotage » qui ne dit pas son nom. Vous comprendrez vite que vous faites fausse route.
 
@@ -110,7 +110,7 @@ En répétant cette analyse sur les capacités, leur valeur et leur risque, les 
 
 Un autre principe pour préparer votre plan d'attaque est de fixer des rendez-vous réguliers pour démontrer la valeur de votre projet. Quelle est la prochaine étape ? Quelle valeur pensez-vous pouvoir démontrer la prochaine fois ? Quand vous pouvez décrire de quoi sera capable la prochaine version du système et que vous êtes confiants dans votre capacité de le réaliser, alors vous êtes prêts pour démarrer le projet !
 
-Après cette présentation générale de la méthode, nous verrons dans le prochain article quelques leçons issues de notre expérience. Nous pourrons les comparer avec l'approche story map et voir comment cela affecte notre vision de l'accompagnement agile.
+Après cette présentation générale de la méthode, nous verrons dans le prochain article quelques leçons issues de notre expérience. Nous pourrons les comparer avec <a href="http://blog.sogilis.com/post/109977013776/decouverte-et-amorcage-de-projet-le-probleme">l'approche story map</a> et voir comment cela affecte notre vision de l'accompagnement agile.
 
 <div itemprop="author" itemscope="" itemtype="http://schema.org/Person">
   <img itemprop="image" src="http://www.gravatar.com/avatar/58778f8cc14e8a484568a663266c3029.png" alt="Simon Denier">
