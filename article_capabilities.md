@@ -26,7 +26,7 @@ Imaginez passer la journée à recadrer les participants, expliquer une approche
 
 ## La solution qui sauve la vie
 
-Par hasard, c'est peu après cet échec que j'ai (re)découvert le blog de Liz Keogh et en particulier un article nommé [Capability-based Planning and Lightweight Analysis](http://lizkeogh.com/2013/09/05/capability-based-planning-and-lightweight-analysis/). Et cet article fut une bouée de secours, nous apportant des idées et des méthodes pour aborder ce projet et de nombreux autres. Les sessions suivantes de notre projet d'accompagnement furent nettement plus positives et productives juste en s'essayant à quelques principes.
+Par hasard, c'est peu après cet échec que j'ai (re)découvert le blog de Liz Keogh et en particulier son article intitulé [Capability-based Planning and Lightweight Analysis](http://lizkeogh.com/2013/09/05/capability-based-planning-and-lightweight-analysis/). Et cet article fut une bouée de secours, nous apportant des idées et des méthodes pour aborder ce projet et de nombreux autres. Les sessions suivantes de notre projet d'accompagnement furent nettement plus positives et productives juste en s'essayant à quelques principes.
 
 Le but de cet article n'est pas de présenter toutes les idées de Liz, rassemblées dans sa thématique [Embracing Uncertainty](http://lizkeogh.com/embracing-uncertainty/) ainsi que celles exposées par Dan North dans sa série sur [Deliberate Discovery](http://dannorth.net/2010/08/30/introducing-deliberate-discovery/). Ces lectures sont cependant vivement recommandées pour leur richesse, leur aspect didactique et pour comprendre d'où viennent ces idées (attention, il y en a pour quelques heures si vous plongez dedans !). Nous allons plutôt présenter comment nous exploitons ces idées dans notre approche de découverte d'un projet.
 
@@ -36,10 +36,10 @@ Le but de cet article n'est pas de présenter toutes les idées de Liz, rassembl
 
 Comme pour la story map, nous commençons par une vision globale. Le but est ici de faire un tour rapide de toutes les personnes impactées par le projet et de noter comment ou pourquoi elles seraient impactées.
 
-- Le(s) porteur(s) de projet (*primary stakeholder*) défend la vision du projet : l'idée qui apporte une nouvelle valeur et qu'il faut donc réaliser. Ce sont ceux qui bénéficient le plus de l'idée.
-- Les acteurs secondaires (*secondary or incidental stakeholders*) ont des besoins ou buts qui peuvent être impactés par le projet. Le projet peut améliorer, maintenir voire même dégrader ces besoins, mais pas au point où cela deviendrait bloquant.
+- Le porteur de projet (*primary stakeholder*) a la vision du projet : l'idée qui apporte une nouvelle valeur et qu'il faut donc réaliser. C'est lui qui va défendre le projet, prendre les décisions, car il espère en tirer un bénéfice.
+- Les acteurs secondaires (*secondary or incidental stakeholders*) ont des besoins ou buts que le projet va impacter. Ils peuvent se sentir concernés (ou non) par la vision du projet. Mais si jamais le projet devenait gênant pour leurs propres besoins, cela deviendrait un point de blocage. Bien qu'ils ne soient pas moteurs du projet, il faut donc prendre en compte leurs besoins.
 
-Les acteurs secondaires regroupent en fait de nombreux profils, parmi lesquels on peut trouver les utilisateurs du système, les intervenants financiers, acteurs en amont ou en aval, et aussi les concurrents. On s'intéressera en particulier aux acteurs pour lesquels négliger les besoins ou buts conduiraient à l'échec du projet.
+Les acteurs secondaires regroupent de nombreux profils. La majorité des futurs utilisateurs du système sont en fait des acteurs secondaires. On peut trouver aussi les intervenants financiers, des acteurs en amont ou en aval, ou encore les concurrents. On s'intéressera en particulier aux acteurs pour lesquels négliger les besoins ou buts conduiraient à l'échec du projet.
 
 ### Découverte et cartographie des capacités
 
