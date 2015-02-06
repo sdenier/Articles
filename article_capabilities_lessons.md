@@ -50,16 +50,18 @@ Sans rentrer dans le détail de ce débat (voir tout ce qui concerne le [No Esti
 
 Plus simplement, la question de l'estimation peut être traitée par l'équipe comme une projection dans l'avenir. Quelle horizon se donne-t-elle pour trouver une solution à ce problème ? Et quelle confiance a-t-elle dans cette horizon ? Si l'équipe n'est pas confiante, comment réduire le risque ? Si besoin, l'équipe peut renforcer son opinion en utilisant le poker planning, mais l'estimation ne doit pas se transformer en chiffrage de fonctionnalités à la carte.
 
-### Le porteur de projet a déjà un cahier des charges, un backlog, des idées toutes prêtes
+### Et si le porteur de projet a déjà un cahier des charges, un backlog, des idées toutes prêtes…
 
-Stop ! La démarche ci-dessus doit normalement pousser tout le monde à remettre en cause des fonctionnalités prématurées, à proposer d'autres solutions. Si le porteur insiste pour inclure une fonctionnalité dans votre cartographie, comment pouvez-vous la ré-exprimer comme une capacité, en gardant la fonctionnalité comme un exemple de solution concrète pour cette capacité ? Comme proposé par Liz, demandez au porteur "pourquoi" il veut cette fonctionnalité et jusqu'à remonter aux besoins pour pouvoir exprimer la capacité.
+Stop ! La démarche ci-dessus doit normalement pousser tout le monde à remettre en cause des fonctionnalités prématurées, à proposer d'autres solutions. Si le porteur insiste pour inclure une fonctionnalité dans votre cartographie, comment pouvez-vous la réexprimer comme une capacité, en gardant la fonctionnalité comme un exemple de solution concrète pour cette capacité ? Comme proposé par Liz, demandez au porteur **pourquoi** il veut cette fonctionnalité et jusqu'à remonter aux besoins pour pouvoir exprimer la capacité.
 
 
-## Capacités ou Story map : quand et pourquoi ?
+## Obsolète, la story map ?
 
-La planification par capacités nous est utile pour découvrir un projet, organiser les premières itérations, produire des prototypes de démonstration, mais aussi pour préparer les story maps des futures lots, ou recentrer un projet sur ses fondamentaux.
+Comme noté dans le premier article, la story map pose problème dans notre contexte de découverte de projet, où le domaine est souvent nouveau pour l'équipe et les pratiques agiles inconnues des porteurs de projet. La planification par capacités est plus abordable et nous permet de découvrir plus rapidement les fondamentaux d'un projet naissant, mais aussi d'organiser les premières itérations, produire des prototypes de démonstration, prévoir les prochaines étapes - et pourquoi pas servir de base à une story map qui détaillera plus les fonctionnalités.
 
-Quand l'équipe a acquis plus de maturité sur le domaine, ses enjeux et ses problèmes, il peut être intéressant d'engager un processus orienté story map. Celle-ci permet de récapituler la vision de ce qu'on veut réaliser, la réordonner, préparer les détail des prochaines itérations, quand la vision du projet s'est stabilisé (au moins jusqu'au prochain lot). Elle permettra alors un suivi des étapes du projet à la vue de tous.
+Quand l'équipe a acquis plus de maturité sur le domaine, ses enjeux et ses problèmes, il peut être intéressant d'engager un processus orienté story map. Celle-ci permet de récapituler la vision de ce qu'on veut réaliser, la réordonner, préparer les détail des prochaines itérations, quand la vision du projet s'est stabilisé. Elle permettra alors un suivi des étapes du projet à la vue de tous, lot par lot.
+
+Peut-on complètement se passer de la story map ? Je crois que oui. Comme noté par Dan North, des [équipes incroyablement efficaces](http://dannorth.net/2013/01/15/accelerating-agile/) se sont construites en dehors de la culture agile classique, simplement en appliquant du bon sens dans leurs pratiques. La planification par capacités n'est qu'une des pratiques supportant ce type d'approche.
 
 
 ## Changer encore et toujours notre approche de l'agilité
