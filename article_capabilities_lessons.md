@@ -50,10 +50,6 @@ Sans rentrer dans le détail de ce débat (voir tout ce qui concerne le [No Esti
 
 Plus simplement, la question de l'estimation peut être traitée par l'équipe comme une projection dans l'avenir. Quelle horizon se donne-t-elle pour trouver une solution à ce problème ? Et quelle confiance a-t-elle dans cette horizon ? Si l'équipe n'est pas confiante, comment réduire le risque ? Si besoin, l'équipe peut renforcer son opinion en utilisant le poker planning, mais l'estimation ne doit pas se transformer en chiffrage de fonctionnalités à la carte.
 
-### Quand passer à l'étape suivante ?
-
-Risque de rester dans le vague, le flou, l'abstrait. Il faut pouvoir prendre des actions concrètes à l'issue, pour la prochaine étape. En même temps,  pas besoin de creuser loin le détail, il suffit d'avoir assez d'éléments pour cette prochaine étape, anticiper un peu les suivantes, et pouvoir dire stop si besoin.
-
 ### Le porteur de projet a déjà un cahier des charges, un backlog, des idées toutes prêtes
 
 Stop ! La démarche ci-dessus doit normalement pousser tout le monde à remettre en cause des fonctionnalités prématurées, à proposer d'autres solutions. Si le porteur insiste pour inclure une fonctionnalité dans votre cartographie, comment pouvez-vous la ré-exprimer comme une capacité, en gardant la fonctionnalité comme un exemple de solution concrète pour cette capacité ? Comme proposé par Liz, demandez au porteur "pourquoi" il veut cette fonctionnalité et jusqu'à remonter aux besoins pour pouvoir exprimer la capacité.
