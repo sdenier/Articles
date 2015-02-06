@@ -1,10 +1,8 @@
 # Découverte et amorçage de projet : qu'avons-nous appris de la planification par capacités ?
 
-INTRO
+Dans ce dernier article, nous allons repartir des [problèmes rencontrés avec les story maps](http://blog.sogilis.com/post/109977013776/decouverte-et-amorcage-de-projet-le-probleme) et voir comment la planification par capacités apporte des réponses plus pertinentes dans notre contexte. Cette rétrospective nous permettra de voir que l'essentiel n'est pas dans la méthode de Liz, mais bien dans sa façon d'approcher et de prioriser les problèmes - favoriser [« les individus et leurs interactions plus que les processus et les outils »](http://www.agilemanifesto.org/iso/fr/). Ceci nous mènera naturellement à une petite réflexion sur notre approche de l'agilité avec nos porteurs de projet.
 
 ## Quelques leçons tirées de la cartographie par capacité
-
-Il est utile de revenir sur quelques défauts constatés avec l'approche story map et de comparer avec la pertinence apportée par la cartographie des capacités.
 
 ### Les utilisateurs ne représentent que la partie visible des acteurs du projet
 
@@ -49,7 +47,7 @@ Bien que l'on sorte du cadre strict de la planification, l'estimation du coût d
 
 Sans rentrer dans le détail de ce débat (voir tout ce qui concerne le *No Estimates*), la méthode de Liz apporte son petit grain de sel aux estimations. En effet, plus vous estimez que le niveau de risque est fort, plus il y a d'inconnus sur les problèmes que vous allez rencontrer, et plus votre estimation sera incertaine. Jusqu'au point où une estimation n'est plus pertinente et où vous devez avoir une approche vraiment exploratoire.
 
-Plus simplement, la question de l'estimation peut être traitée par l'équipe comme une projection dans l'avenir. Quelle horizon se donne-t-elle pour trouver une solution à ce problème ? Est-elle confiante dans cette horizon ? Si besoin, l'équipe peut renforcer sa confiance en utilisant le poker planning, mais l'estimation de doit se transformer en chiffrage de fonctionnalités à la carte.
+Plus simplement, la question de l'estimation peut être traitée par l'équipe comme une projection dans l'avenir. Quelle horizon se donne-t-elle pour trouver une solution à ce problème ? Est-elle confiante dans cette horizon ? Si besoin, l'équipe peut renforcer sa confiance en utilisant le poker planning, mais l'estimation ne doit pas se transformer en chiffrage de fonctionnalités à la carte.
 
 ### Quand passer à l'étape suivante ?
 
@@ -79,11 +77,9 @@ Mais quand nous avons affaire à de nouveaux domaines inconnus pour nous, ces é
 
 De même, les outils agiles comme la story map semblent souvent simples, voire triviaux en apparence, mais demande une bonne expérience pour être bien menée. Amener des nouveaux venus à utiliser ce type d'outil dès les premiers contacts rend les choses complexes !
 
-C'est pourquoi choisir une approche moins structurée que la story map, comme la planification par capacité, est intéressant. Le niveau d'entrée est faible, car n'imposant pas différents concepts hiérarchisés (activité, cas d'utilisation, fonctionnalité) : la "capacité" résume ces concepts tout étant suffisamment souple pour que chacun se l'approprie. A ce stade, l'essentiel pour nous est d'échanger sur le projet. L'équipe technique peut être aussi force de proposition dans la réalisation du projet, et pas une simple exécutante [^1].
+C'est pourquoi choisir une approche moins structurée que la story map, comme la planification par capacité, est intéressant. Le niveau d'entrée est faible, car n'imposant pas différents concepts hiérarchisés (activité, cas d'utilisation, fonctionnalité) : la "capacité" résume ces concepts tout étant suffisamment souple pour que chacun se l'approprie. A ce stade, l'essentiel pour nous est d'échanger sur le projet. L'équipe technique peut être aussi force de proposition dans la réalisation du projet, et pas une simple exécutante.
 
 Mais dans l'approche de Liz Keogh, l'aspect le plus intéressant et révélateur est certainement la prise en considération de sa propre ignorance et des risques associés. D'abord parce qu'elle met l'accent sur le non-dit des projets au forfait, typique des SSII : sur quelles bases, sur quelles estimations la proposition de forfait a-t-elle été faite ? Quels risques ont été prises en compte (réponse : très peu, voire aucun) ? Comment l'équipe va-t-elle gérer et communiquer sur ces risques (réponse : pas prévue, la communication sera gérée en cas de crise) ?
 
 Pour un porteur de projet, notre première proposition est donc un accompagnement. Nous voulons aider le porteur à identifier les problèmes, valider ses idées, trouver des pistes de solution. 
 (et cela ne marche pas toujours). De même, la réponse que nous lui apportons n'est pas forcément une estimation de son projet mais plutôt une projection : que pouvons-nous faire, quelle est la prochaine étape ? Nous sommes ainsi acteur dans le déroulement du projet, et non pas les simples exécutants d'une solution.
-
-[^1]: c'est bien sûr valable pour n'importe quelle équipe se réclamant d'une approche agile, pas seulement pour nous.
