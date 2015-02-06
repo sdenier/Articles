@@ -66,6 +66,12 @@ Peut-on complètement se passer de la story map ? Je crois que oui. Comme noté 
 
 ## Changer encore et toujours notre approche de l'agilité
 
+Deux idées :
+
+- on était trop dogmatique/suiveur sur un outil, on s'est planté, il faut sortir des rails et revenir aux fondamentaux des principes
+- le risque, l'inconnu est un paramètre essentiel de n'importe quel projet, en particulier type startup, c'est pourquoi nous voulons le remettre au centre de notre approche ; notre métier n'est pas de développer des fonctionnalités, mais d'accompagner les porteurs à travers ces étapes en proposant des solutions à moindre risque.
+
+
 Aux origines des approches agiles, il y avait la volonté de mettre en place un cadre de communication qui évitait les échanges toxiques et non-constructifs entre les utilisateurs et les équipes techniques. En un sens, les premières méthodes agiles étaient là autant pour "protéger" l'équipe et lui permettre d'être productive que pour favoriser la communication. Encore aujourd'hui, certaines méthodes ont un côté très cadré voire cérémonieux.
 
 De façon générale, les méthodes agiles sont là pour aider au déroulement régulier du projet, qu'il soit court ou long. Mais tout le monde a vécu un jour ou l'autre cette expérience : copier une approche qui "a marché" ailleurs. Et quand ça ne marche pas, recommencer en expliquant que la méthode n'a pas été bien suivie. Dans le pire des cas, on arrive à [l'agilité Cargo Cult](http://mikehadlow.blogspot.co.uk/2014/03/coconut-headphones-why-agile-has-failed.html), où l'équipe se déclare agile parce qu'elle applique toutes les règles, mais sans en tirer les bénéfices car elle n'a pas su s'adapter à son contexte.
