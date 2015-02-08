@@ -88,3 +88,11 @@ Mais dans l'approche de Liz Keogh, l'aspect le plus intéressant et révélateur
 
 Pour un porteur de projet, notre première proposition est donc un accompagnement. Nous voulons aider le porteur à identifier les problèmes, valider ses idées, trouver des pistes de solution. 
 (et cela ne marche pas toujours). De même, la réponse que nous lui apportons n'est pas forcément une estimation de son projet mais plutôt une projection : que pouvons-nous faire, quelle est la prochaine étape ? Nous sommes ainsi acteur dans le déroulement du projet, et non pas les simples exécutants d'une solution.
+
+<div itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+  <img itemprop="image" src="http://www.gravatar.com/avatar/58778f8cc14e8a484568a663266c3029.png" alt="Simon Denier">
+  <a href="mailto:simon+blog@sogilis.com"><span itemprop="name" rel="author"><i class="fa fa-user" /> Simon Denier</span></a>
+  <a href="http://twitter.com/simondenier"><span class="share-link-twitter" rel="twitter"><i class="fa fa-twitter" /> simondenier</span></a>
+  <a href="https://github.com/sdenier"><span rel="github"><i class="fa fa-github" /> sdenier</span></a>
+  <a href="https://plus.google.com/100056946931947086533?rel=author"><span class="share-link-google-plus" rel="gplus"><i class="fa fa-google-plus" /> +SimonDenier</span></a>
+</div>
