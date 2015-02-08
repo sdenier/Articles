@@ -1,10 +1,15 @@
 # Découverte et amorçage de projet : planifier des capacités et des risques
 
-Face à un porteur de projet en phase de démarrage, nous avons besoin d'outils pour 1) comprendre son idée et sa valeur, 2) structurer son approche pour développer et tester au mieux son idée. Dans notre expérience, l'approche story map demande une certaine maturité des process agiles et du domaine pour être pleinement efficace. Nous explorons dans cet article une approche plus terre-à-terre et pragmatique, identifiant avant tout la valeur et le risque dans un projet pour obtenir un démarrage efficace.
+Face à un porteur de projet en phase de démarrage, nous avons besoin d'outils pour :
+
+1. comprendre son idée et sa valeur,
+2. structurer son approche pour développer et tester au mieux son idée.
+
+Dans notre expérience, l'approche story map demande une certaine maturité des process agiles et du domaine pour être pleinement efficace. Nous explorons dans cet article une approche plus terre-à-terre et pragmatique, identifiant avant tout la valeur et le risque dans un projet pour obtenir un démarrage efficace.
 
 ## Qu'attend-on de nous ?
 
-Dans l'article précédent, nous avons expliqué pourquoi la story map n'était pas l'outil le plus adapté pour découvrir et planifier un nouveau projet. Bien que favorisant la discussion, le focus sur les activités des utilisateurs et les lots de fonctionnalité ne permet pas d'aborder les questions fondamentales du porteur de projet à ce stade :
+Dans [l'article précédent](http://blog.sogilis.com/post/109977013776/decouverte-et-amorcage-de-projet-le-probleme), nous avons expliqué pourquoi la story map n'était pas l'outil le plus adapté pour découvrir et planifier un nouveau projet. Bien que favorisant la discussion, le focus sur les activités des utilisateurs et les lots de fonctionnalité ne permet pas d'aborder les questions fondamentales du porteur de projet à ce stade :
 
 - la valeur proposée par le projet est-elle bien identifiée ?
 - est-ce qu'on a repéré les problèmes clés ?
@@ -16,7 +21,7 @@ A l'issue d'une story map, ceci se traduit malheureusement souvent par les quest
 - est-ce que la story map correspond à la liste des fonctionnalités ? Qu'est-ce qui va rentrer dans le périmètre final ?
 - combien ça va coûter ?
 
-Ce qui amène immanquablement à des incompréhensions et des discussions commerciales sur le forfait de développement. **Ces questions ne rendent pas service à un projet en phase de démarrage, car elles figent trop les attentes.** Ce n'est pas le genre de collaboration que nous souhaitons mettre en place avec les porteurs de projet. Pour autant, nous faisions avec et arrivions à fournir les réponses demandées.
+Ce qui amène immanquablement à des incompréhensions et des discussions commerciales sur le forfait de développement. **Ces questions ne rendent pas service à un projet en phase de démarrage, car elles figent trop les attentes.** Ce n'est pas le genre de collaboration que nous souhaitons mettre en place avec les porteurs de projet. Pour autant, par le passé, nous faisions avec et arrivions à fournir les réponses demandées.
 
 ## Petite histoire qui n'a pas marché et nous a poussé à changer
 
@@ -54,7 +59,7 @@ La vision nous sert à identifier les acteurs les plus importants pour la réuss
 
 Plus la capacité est importante et différenciante pour l'acteur, plus il est intéressant d'en discuter et d'être spécifique dans son intitulé. Plus la capacité est standard (une « commodité »), moins il est nécessaire de passer du temps dessus. Par exemple, la capacité à commenter sur des sites Internet est généralement survolé, car il existe des solutions toutes prêtes - à moins, bien sûr, que le projet porte justement sur une nouvelle approche des commentaires.
 
-Il est tentant de décrire une capacité comme une fonctionnalité : l'exemple aide les participants à se mettre d'accord sur ce qu'ils veulent dire. Cependant, une fois les idées clarifiées, j'essaie si possible de remonter à un niveau d'expression plus abstrait. Ainsi on ne fige pas une fonctionnalité et on laisse la porte ouverte à d'autres solutions.
+Il est tentant de décrire une capacité comme une fonctionnalité : l'exemple aide les participants à se mettre d'accord sur ce qu'ils veulent dire. Cependant, une fois les idées clarifiées, j'essaie si possible de remonter à un niveau d'expression plus abstrait. Ainsi, on ne fige pas une fonctionnalité et on laisse la porte ouverte à d'autres solutions.
 
 A ce stage, il est fréquent de faire des allers-retours pour reformuler, scinder ou fusionner des capacités. Il est aussi facile de commencer à identifier certaines dépendances entre capacités.
 
@@ -76,14 +81,14 @@ Prenons un système de suivi de compétition :
 - commodité : la sortie des résultats officiels
 - spoiler : une fonction de replay après la course
 
-**Logiquement, la vision du projet se concrétise dans un différenciateur.** Si cela ne semble pas assez différenciant, creusez encore : la différence n'est pas nécessairement exprimée par une nouvelle fonctionnalité, mais par une nouvelle approche des activités, par un modèle de business alternatif…
+**Logiquement, la vision du projet se concrétise dans un différenciateur.** Si cela ne semble pas assez différenciant, creusez encore : la différence n'est pas nécessairement exprimée par une nouvelle fonctionnalité, mais par une nouvelle approche des activités, un modèle de business alternatif…
 
-Vient ensuite la seconde étape, qui consiste à évaluer le risque lié à chaque capacité. Cette notion est souvent abordée dans les projets agiles, mais le risque est quelque chose que par nature vous ne maîtrisez pas - et même il peut s'agir de risque dont vous ignorez l'existence au début du projet ! Comment alors évaluer quelque chose qui est incertain ou inconnu ? La solution de Liz Keogh est élégante, accessible à tout le monde : elle consiste à **s'auto-évaluer sur son ignorance, « ce qu'on ne connaît pas ».** Liz propose une échelle à cinq niveaux d'ignorance, où 1 est le niveau minimal (« on maîtrise complètement le sujet ») et 5 le maximal (« on ne sait rien sur le sujet »). Il n'y a pas de définition rigoureuse pour chaque niveau, mais les interprétations suivantes peuvent vous aider.
+Vient ensuite la seconde étape, qui consiste à évaluer le risque lié à chaque capacité. Cette notion est souvent abordée dans les projets agiles, mais le risque est quelque chose que par nature vous ne maîtrisez pas - et il peut même  s'agir de risque dont vous ignorez l'existence au début du projet ! Comment alors évaluer quelque chose qui est incertain ou inconnu ? La solution de Liz Keogh est élégante, accessible à tout le monde : elle consiste à **s'auto-évaluer sur son ignorance, « ce qu'on ne connaît pas ».** Liz propose une échelle à cinq niveaux d'ignorance, où 1 est le niveau minimal (« on maîtrise complètement le sujet ») et 5 le maximal (« on ne sait rien sur le sujet »). Il n'y a pas de définition rigoureuse pour chaque niveau, mais les interprétations suivantes peuvent vous aider.
 
-1. Tout le monde sait faire cela ; cela fait partie des bases du métier.
-2. C'est un sujet connu dans le métier, au moins une personne dans l'équipe le connaît.
+1. Tout le monde sait faire cela ; c'est une des bases du métier.
+2. C'est un sujet commun dans le métier, au moins une personne dans l'équipe le connaît.
 3. Au moins une personne dans l'entreprise a déjà fait cela, ou bien a accès à une expertise sur le sujet (la connaissance n'est pas acquise mais reste accessible).
-4. Personne dans l'entreprise n'a fait cela, mais d'autres entreprises le font ; il faudra donc peut–être passer par leur expertise, la formation, l'achat de composants pour acquérir la capacité (il peut s'agir de concurrents).
+4. Personne dans l'entreprise n'a fait cela, mais d'autres entreprises le font ; il faudra donc peut-être passer par leur expertise, la formation, l'achat de composants pour acquérir la capacité (il peut s'agir de concurrents).
 5. Personne à notre connaissance n'a fait cela ; cela implique a minima une phase exploratoire, voire de la pure R&D.
 
 Quand un client pose une question, il est parfois difficile de formuler une réponse quand on est soi-même incertain. En tant que professionnels, ne pas être capable de répondre précisément (combien ça va coûter, combien de temps pour développer telle fonctionnalité) apparaît comme un aveu d'incompétence. Pourtant l'informatique est bien un domaine où il est difficile de tout connaître. Cette évaluation vous encourage à être honnête avec vous-même et votre porteur de projet : **les points durs se cachent derrière votre ignorance, donc identifier et reconnaître ceux-ci vous permettra de progresser plus vite vers la conclusion du projet.** C'est certainement l'aspect le plus intéressant de la méthode de Liz.
@@ -100,7 +105,7 @@ Par nature, la capacité différenciante du projet est celle que personne n'a ja
 
 Croiser la valeur différenciante et les risques des capacités nous permet donc de dresser un plan d'attaque. Reconsidérez votre cartographie des capacités : comment pouvez-vous la réaliser en cherchant la valeur et en éliminant les risques ? Peut-être le projet est-il assez simple pour être réalisé en une fois. Plus probablement, il y a beaucoup d'inconnus au tableau et vous avez besoin de planifier votre projet par étape.
 
-- Il arrive que la capacité différenciante apparaisse trop compliquée pour être aboutie en une fois. Dans ce cas il peut être possible de redécouper celle-ci en capacités moins différenciantes mais plus faciles à atteindre.
+- Il arrive que la capacité différenciante apparaisse trop compliquée pour être aboutie en une fois. Dans ce cas, il peut être possible de redécouper celle-ci en capacités moins différenciantes mais plus faciles à atteindre.
 
 - Si votre capacité différenciante n'est pas notée comme risquée, rediscutez-la. Peut-être est-elle mal exprimée pour que les gens perçoivent le risque. Peut-être la vraie différence et le risque sont-ils dissimulés dans un certain aspect de la capacité, qu'il faut alors mettre en avant, extraire comme une capacité à part entière.
 
