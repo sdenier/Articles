@@ -2,6 +2,7 @@
 
 Dans ce dernier article, nous allons revoir les [problèmes rencontrés avec les story maps](http://blog.sogilis.com/post/109977013776/decouverte-et-amorcage-de-projet-le-probleme) et expliquer comment la planification par capacités apporte des réponses plus pertinentes dans notre contexte. Cette rétrospective nous montrera que l'essentiel n'est pas dans la méthode de Liz, mais bien dans sa façon d'approcher et de prioriser les problèmes - favoriser [« les individus et leurs interactions plus que les processus et les outils »](http://www.agilemanifesto.org/iso/fr/). Ceci nous mènera naturellement à une petite réflexion sur notre approche de l'agilité avec nos porteurs de projet.
 
+[[MORE]]
 
 ## Quelques leçons tirées de la cartographie par capacité
 
@@ -27,8 +28,8 @@ Bref, la story map peut donner une fausse impression de complétude, à la mani�
 Tout projet propose une vision différente par rapport à l'existant. Mais il existe plusieurs façons de réaliser cette vision. L'important est donc de ne pas avoir d'oeillères sur le chemin de la réalisation. Parler de capacités doit permettre de se concentrer sur le problème et le besoin à résoudre.
 
 - En prenant une approche centrée sur le problème, il y a moins de risque de passer du temps sur les détails d'une solution (la fonctionnalité) au détriment d'autres possibilités.
-- En exprimant les futures *capacités* du système, vous savez que vous devez chercher une solution pour satisfaire ces capacités. Les moyens de les satisfaire sont multiples et peuvent être remises en cause en cours de projet (nouvelles options, solutions alternatives et moins coûteuses). Le terme de capacité permet aussi plus facilement d'aborder les aspects non fonctionnels du système (robustesse, performance...)
-- En cas d'échec avec une solution, il est plus facile de repartir de la capacité que d'une fonctionnalité (quel est le problème, le besoin ? Comment y répondre ?)
+- En exprimant les futures *capacités* du système, vous savez que vous devez chercher une solution pour satisfaire ces capacités. Les moyens de les satisfaire sont multiples et peuvent être remises en cause en cours de projet (nouvelles options, solutions alternatives et moins coûteuses). Le terme de capacité permet aussi plus facilement d'aborder les aspects non fonctionnels du système (robustesse, performance...).
+- En cas d'échec avec une solution, il est plus facile de repartir de la capacité que d'une fonctionnalité (quel est le problème, le besoin ? Comment y répondre ?).
 
 ### La planification est basée sur le dérisquage et la valorisation du projet, pas sur la priorisation par estimation
 
@@ -59,7 +60,7 @@ Stop ! La démarche ci-dessus doit normalement pousser tout le monde à remettre
 
 Comme noté dans le premier article, la story map pose problème dans notre contexte de découverte de projet, où le domaine est souvent nouveau pour l'équipe et les pratiques agiles inconnues des porteurs de projet. La planification par capacités est plus abordable et nous permet de découvrir plus rapidement les fondamentaux d'un projet naissant, mais aussi d'organiser les premières itérations, produire des prototypes de démonstration, prévoir les prochaines étapes - et pourquoi pas servir de base à une story map qui détaillera plus les fonctionnalités.
 
-Quand l'équipe a acquis plus de maturité sur le domaine, ses enjeux et ses problèmes, il peut être intéressant d'engager un processus orienté story map. Celle-ci permet de récapituler la vision de ce qu'on veut réaliser, la réordonner, préparer les détail des prochaines itérations, quand la vision du projet s'est stabilisé. Elle permettra alors un suivi des étapes du projet à la vue de tous, lot par lot.
+Quand l'équipe a acquis plus de maturité sur le domaine, ses enjeux et ses problèmes, il peut être intéressant d'engager un processus orienté story map. Celle-ci permet de récapituler la vision de ce qu'on veut réaliser, la réordonner, préparer les détails des prochaines itérations, quand la vision du projet s'est stabilisée. Elle permettra alors un suivi des étapes du projet à la vue de tous, lot par lot.
 
 Peut-on complètement se passer de la story map ? Je crois que oui. Comme noté par Dan North, des [équipes très efficaces](http://dannorth.net/2013/01/15/accelerating-agile/) se sont construites en dehors de la culture agile classique, simplement en appliquant du bon sens dans leurs pratiques. La planification par capacités n'est qu'une des pratiques supportant ce type d'approche.
 
@@ -82,9 +83,9 @@ C'est pourquoi choisir une approche moins structurée que la story map, comme la
 
 ### La culture de l'accompagnement
 
-Mais dans l'approche de Liz Keogh, l'aspect le plus intéressant et révélateur est certainement la prise en considération de sa propre ignorance et des risques associés. D'abord parce qu'elle met l'accent sur le non-dit des projets au forfait, typique des SSII : sur quelles bases et quelles estimations la proposition de forfait a-t-elle été faite ? Quels risques ont été prises en compte ? Comment l'équipe va-t-elle gérer et communiquer sur ces risques ? En règle générale, les risques ne sont considérés que comme un facteur multiplicateur dans l'estimation (car le temps est court pour faire une proposition) et les risques seront gérés comme ils arrivent, et parfois dans l'urgence de la crise.
+Mais dans l'approche de Liz Keogh, l'aspect le plus intéressant et révélateur est certainement la prise en considération de sa propre ignorance et des risques associés. D'abord parce qu'elle met l'accent sur le non-dit des projets au forfait, typique des SSII : sur quelles bases et quelles estimations la proposition de forfait a-t-elle été faite ? Quels risques ont été pris en compte ? Comment l'équipe va-t-elle gérer et communiquer sur ces risques ? En règle générale, les risques ne sont considérés que comme un facteur multiplicateur dans l'estimation (car le temps est court pour faire une proposition) et les risques seront gérés comme ils arrivent, et parfois dans l'urgence de la crise.
 
-Le risque, l'inconnu est un paramètre essentiel de n'importe quel projet, en particulier pour une startup. C'est pourquoi nous voulons le mettre au centre de notre approche. Pour un porteur de projet, notre première proposition est donc un accompagnement. Notre métier n'est pas que de développer des fonctionnalités, mais d'accompagner les porteurs à travers des étapes en proposant des solutions à moindre risque (et cela ne marche pas toujours). La réponse que nous apportons n'est donc pas forcément une estimation de son projet mais plutôt une projection : que pouvons-nous faire, quelle est la prochaine étape ?
+Le risque, l'inconnu est un paramètre essentiel de n'importe quel projet, en particulier pour une start-up. C'est pourquoi nous voulons le mettre au centre de notre approche. Pour un porteur de projet, notre première proposition est donc un accompagnement. Notre métier n'est pas que de développer des fonctionnalités, mais d'accompagner les porteurs à travers des étapes en proposant des solutions à moindre risque (et cela ne marche pas toujours). La réponse que nous apportons n'est donc pas forcément une estimation de son projet mais plutôt une projection : que pouvons-nous faire, quelle est la prochaine étape ?
 
 <div itemprop="author" itemscope="" itemtype="http://schema.org/Person">
   <img itemprop="image" src="http://www.gravatar.com/avatar/58778f8cc14e8a484568a663266c3029.png" alt="Simon Denier">
