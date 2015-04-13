@@ -1,14 +1,14 @@
 # Git in 5 Minutes: 3 Lessons to Understand the Git Model and Do Everything with It
 
-Git has a reputation for being a geeky tool with a steep learning curve, a <abbr title="Command Line Interface">CLI</abbr> including lots of options, and more concepts (staging, remote, push/pull, ...) to start with than classic revision control tools.
+Git has a reputation for being a geeky tool with a steep learning curve, including a <abbr title="Command Line Interface">CLI</abbr> with lots of options, and more concepts (staging, remote, push/pull, ...) to start with than classic revision control tools.
 
-I have a theory that once you get a grasp of what model git uses and how it performs action on it, git becomes trivial and learning git is much easier because you start to think like git to perform some revision actions. SAY… you start to play with git commands to …. and you can always dive later in git manual to discover that somebody already had the use case and there is an option which does exactly what you want in one shot (example ?)
+But git has actually a simple conceptual model and does not attempt to hide it as implementation details. Learning this model and what can be done by git upon will greatly speed up your apprenticeship of the tool.
 
-Contrary to most SCM, git does not hide its model, because it is simple and robust. So the best way to work with git is to have a good understanding of what the git model is, what git can do/compute on this model, and what each git command actually performs. You don’t need a low-level, precise understanding, just a basic one, pretty conceptual. This article is dedicated to give you quick keys in learning this model.
+In other words, you will start to think like git, and finding or mixing the right commands becomes much easier, occasionally diving into the online help to get the right option.
 
-> You know what a SCM, a commit, a branch are (say you use SVN), but you never made the jump to git because you think it is too hard to learn for your needs? Then this article is for you.
-> 
-> On the contrary, if you have no previous knowledge of SCM and are looking for a place to learn git, maybe you should just [try git] (https://try.github.io/levels/1/challenges/1) and come back later.
+To understand how the git model works, you just need to grasp the concepts of snapshots, graph, and changesets.
+
+> You already use another revision tool but think git is too hard to learn for your needs. Continue the reading, you might be surprised! However, if you have never used such a tool before and have no idea what this is for, why not [try git] (https://try.github.io/levels/1/challenges/1) and come back when you know the basic commands but feel like you don't fully grasp what is going on.
 
 ## Git Stores Snapshots (aka Commits) of your Project
 
