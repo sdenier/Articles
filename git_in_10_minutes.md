@@ -1,4 +1,4 @@
-# Git in 10 Minutes: 3 Lessons to Understand the Git Model and Do Everything with It
+# Git in 10 Minutes: 3 Concepts to Understand the Git Model and Do Everything with It
 
 Git has a reputation for being a geeky tool with a steep learning curve, including a <abbr title="Command Line Interface">CLI</abbr> with lots of options, and more concepts (staging, remote, push/pull, ...) to start with than classic revision control tools.
 
@@ -18,7 +18,17 @@ The reason it starts from the project root folder is that you should always save
 
 With this guarantee, we can be sure that checking out a commit will give us that exact state we saved, be it a release version, a buggy one which needs a fix, or a work in progress.
 
-## Git Stores Relationships between Commits (aka History) as a Graph
+## Git Represents Relationships between Commits (aka History) as a Graph
+
+In any revision control system, commits do not exist in isolation but are linked through a parent-child relationship, which remembers where a commit comes from (what was the previous state before the commit).
+
+So you can start to view the history of your project as a line of successive states. The above figure presents a common representation of history in a git repository, where the arrow indicates that node X knows that its parent is node Y (in git, parent commits do not know about their children).
+
+When two commits share the same parent, you start to have divergent branches. Each line can continue to grow in concurrent ways.
+
+When time has come to merge two branches together, git creates a commit with two parents. The result is that the history is now a directed graph of commits.
+
+The concept of graph to represent the history of a project seems like pretty intuitive, even an obvious choice. You might be surprised by the fact that not all revision control tools use a graph as a first class representation. For example, Subversion works with independent directory-trees to represent branches and only stores branch/merge as meta-data: the lack of a full graph representation leads to some problematic merge cases.
 
 ## Git Can Compute Changes between any Two Commits of your Project
 
