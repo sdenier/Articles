@@ -1,4 +1,4 @@
-# Git in 5 Minutes: 3 Lessons to Understand the Git Model and Do Everything with It
+# Git in 10 Minutes: 3 Lessons to Understand the Git Model and Do Everything with It
 
 Git has a reputation for being a geeky tool with a steep learning curve, including a <abbr title="Command Line Interface">CLI</abbr> with lots of options, and more concepts (staging, remote, push/pull, ...) to start with than classic revision control tools.
 
