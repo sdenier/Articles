@@ -12,11 +12,11 @@ To understand how the git model works, you just need to grasp the concepts of sn
 
 ## Git Stores Snapshots (aka Commits) of your Project
 
-is a Snapshot of the Full Project
+We start with an easy one. A commit is snapshot of all files in your project, starting from the root. In other words, it is a copy of all tracked files at the time of creating the commit.
 
-This one is super easy, you probably already know it.
+The reason it starts from the project root folder is that you should always save a consistent version of your project, including related changes across all subfolders (and not forgetting one in the process).
 
-commit action = new snapshot
+With this guarantee, we can be sure that checking out a commit will give us that exact state we saved, be it a release version, a buggy one which needs a fix, or a work in progress.
 
 ## Git Stores Relationships between Commits (aka History) as a Graph
 
