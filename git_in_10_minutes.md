@@ -8,7 +8,7 @@ In other words, you will start to think like git, and finding or mixing the righ
 
 To understand how the git model works, you just need to grasp the concepts of snapshots, graph, and changesets.
 
-> You already use another revision tool but think git is too hard to learn for your needs. Continue the reading, you might be surprised! However, if you have never used such a tool before and have no idea what this is for, why not [try git] (https://try.github.io/levels/1/challenges/1) and come back when you know the basic commands but feel like you don't fully grasp what is going on.
+> If you are already used to other revision tools but think git is too hard to learn for your needs, then continue reading, you might be surprised! However, if you have never used a revision tool before, why not [try git] (https://try.github.io/levels/1/challenges/1) first? Come back when you have played with the basic commands but want a better grasp about what is going on.
 
 ## Git Stores Snapshots (aka Commits) of your Project
 
