@@ -67,7 +67,17 @@ A patch file will register the following information:
 
 Git needs only to match the target files, line positions and textual context to make the changes described by the patch. In other words, it does not care whether a file from the snapshot but untouched by changes should be necessary or not. Even more, it does not care if other sections of the file have changed too. So it is easy for Git to copy changes from a commit on top of a different snapshot, provided context has not changed too much (otherwise, Git will detect and notify conflicts).
 
-What does it mean to compute a changes using the graph
+### Changesets Anytime Anywhere
+
+Things start to become interesting when you know that Git can compute changesets (and patch files) on the fly between any two states of your project. That means not only how to transform commit A into its child commit B, but also:
+
+- the transformation from any ancestor of B to B itself
+- the transformation from branch X to a parallel branch Y
+- or, why not, the reverse transformation from B to its parent A or an ancestor (to cancel a change for example)
+
+In other words, Git is super effective in computing state transformations and applying such transformations elsewhere (well, All RCS are the same, but some are more effective than others).
+
+Now that we know how Git can use changesets, we can start to think like Git and see how its commands operate on the history graph.
 
 ## Git Commands in Action
 
