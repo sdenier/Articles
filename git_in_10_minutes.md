@@ -77,17 +77,19 @@ Things start to become interesting when you know that Git can compute changesets
 
 In other words, Git is super effective in computing state transformations and applying such transformations elsewhere (well, All RCS are the same, but some are more effective than others).
 
-Now that we know how Git can use changesets, we can start to think like Git and see how its commands operate on the history graph.
-
 ## Git Commands in Action
+
+Now that we know how Git can use changesets, we can start to think like Git and see how its commands operate on your project.
 
 ### Updating the Working Copy (Switching between Branches, Pulling)
 
-If you never thought about that, the working copy is also a state of your project. More precisely, this is the state you are currently editing. And this state mirrors your latest commit in HEAD (minus your local modifications). Which means that Git can compute the difference between your HEAD and any given commit, then apply the transformation to update your working copy. This is what happens when you checkout another branch, or pull a remote branch.
+When you switch to another branch, or update your current branch, you change your local working copy. But the working copy actually mirrors your latest commit in HEAD (minus local modifications). Which means that Git can compute the difference between your HEAD and any given commit, then apply the transformation to update your working copy.
 
-More to that: Git could simply delete and rewrite whole fresh files, but this would be too costly. Instead it patches files. One benefit is that you can easily keep some local changes (typical use case is you start to fix something, then realize it would be better to do it in another existing branch).
+Think about it: to change your working copy, Git could simply wipe out previous files and dump fresh new files. But for big projects with thousands of files, this would be way too costly. Instead it patches local files, which means it only changes what needs to be updated to mirror the new state.
 
-Did you notice how you can switch to a different branch without losing local modifications? That is because Git only updates (patches) files which need to change (Git does not delete all your local files to replace them with a fresh copy from the snapshot, that would cost too much). Of course, this does not always work as if Git must patch a section which has local changes, it will just forbid the action or create a conflict (otherwise you might lose your local changes).
+There is an added benefit with this strategy. Have you noticed that you can switch to a different branch without losing local modifications? That is because Git will leave such files untouched if it does not need to patch them. This comes in handy when you start to fix something in your current branch, then realize it would be better to do it in another existing branch before committing.
+
+But what happens if Git must patch a file section which already has local changes? It will just forbid the action, otherwise you would lose your changes since Git would have overwritten them before they are versionned.
 
 ### Cherry-picking
 
