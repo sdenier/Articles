@@ -105,6 +105,16 @@ Cherry-picking really embodies the whole changeset/patch everywhere principle:
 
 ### Rebasing
 
+Rebasing (be it a batch rebase or an interactive one) is not much more complicated once you understand cherry-pick. Basically, for a rebase, Git computes changesets for each commit you want to move, pushes them in a stack (from last to first) ; then it pops each changeset from the stack to apply it in the same order they appear in history, effectively reproducing this history elsewhere.
+
+The big difference is how you move/copy things around, and for the interactive rebase the actions you can perform on commits during the process.
+
+cherry-pick, you copy from history to current head
+rebase, you move some commits from current head to a different location
+
+
+About recurrent conflicts?
+
 ### Merging
 
 ## Advanced: what about Conflicts?
