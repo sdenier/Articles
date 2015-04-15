@@ -83,6 +83,12 @@ Now that we know how Git can use changesets, we can start to think like Git and 
 
 ### Updating the Working Copy (Switching between Branches, Pulling)
 
+If you never thought about that, the working copy is also a state of your project. More precisely, this is the state you are currently editing. And this state mirrors your latest commit in HEAD (minus your local modifications). Which means that Git can compute the difference between your HEAD and any given commit, then apply the transformation to update your working copy. This is what happens when you checkout another branch, or pull a remote branch.
+
+More to that: Git could simply delete and rewrite whole fresh files, but this would be too costly. Instead it patches files. One benefit is that you can easily keep some local changes (typical use case is you start to fix something, then realize it would be better to do it in another existing branch).
+
+Did you notice how you can switch to a different branch without losing local modifications? That is because Git only updates (patches) files which need to change (Git does not delete all your local files to replace them with a fresh copy from the snapshot, that would cost too much). Of course, this does not always work as if Git must patch a section which has local changes, it will just forbid the action or create a conflict (otherwise you might lose your local changes).
+
 ### Cherry-picking
 
 ### Rebasing
