@@ -40,15 +40,15 @@ But more importantly, the history graph allows us to compute the difference betw
 
 When you create a commit B from commit A, you create a new snapshot. But you can also see it as an incremental evolution upon the previous commit. This contribution brought by the commit makes a group of indivisible changes, which is called a changeset.
 
-![Snapshot and changeset](changeset.png)
+![Snapshot and Changeset](changeset.png)
 *A snapshot stores the full state, independent of history. A changeset only records what has changed.*
 
 ### What Is in a Changeset? And What to Do With It?
 
-The interesting bit about changesets is that they can be used as blueprint to copy the changes brought by B elsewhere. This is possible because a changeset can be generated to contain just enough information about the transformation.
+The interesting bit about changesets is that they can be used as blueprint to copy the changes brought by B elsewhere. This is possible because a changeset contain just enough information about the transformation.
 
 ![Applying a Changeset](changeset_applied.png)
-*Changeset will only modify files bar and zorg from commit F. It does not care that foo file from B is absent from F or that there is a yyy file.*
+*Changeset will only modify files bar and zorg from commit F. It does not care that foo file from B is absent or that there is a yyy file.*
 
 Git, for example, see changes at the level of lines in text files. When you view a patch in Git (which is the textual representation of a changeset), you see something like that:
 
@@ -80,11 +80,15 @@ A patch file will register the following information:
 - which file is impacted by the change (`app/scripts/Results.js`)
 - where is the next change section in the file (`@@ -8,18 +8,20 @@`)
 - lines removed by the change, prefixed by **-**
-- lines added by the change, prefixed by **+** (changed lines appear as removed then added)
+- lines added by the change, prefixed by **+**
+- as a result, changed lines appear as removed (old version) then added (new version)
 - *unchanged* context lines before/after/between changed lines
 - and so on for all sections and all files in the changeset
 
 Git needs only to match the target files, line positions and textual context to make the changes described by the patch. In other words, it does not care about files from the snapshot which are untouched by changes. Even more, it does not care if other sections of the file have changed too. So it is easy for Git to copy changes from a commit on top of a different snapshot, provided context has not changed too much (otherwise, Git will detect and notify conflicts).
+
+![Conflict with Changeset](changeset_conflict.png)
+*Changeset can update bar file, even if there is already a change in another place. But it can not update zorg file automatically, as the local context for the patch has changed. It will let you resolve the conflict.*
 
 ### Changesets Anytime Anywhere
 
