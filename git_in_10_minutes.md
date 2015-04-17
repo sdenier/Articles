@@ -6,7 +6,7 @@ But Git has actually a simple conceptual model and does not attempt to hide it a
 
 To begin with your apprenticeship of the Git model, you just need the concepts of snapshots, graph, and changesets.
 
-> If you are already used to other revision tools but think Git is too hard to learn for your needs, then continue reading, you might be surprised! However, if you have never used a revision tool before, why not [try Git] (https://try.Github.io/levels/1/challenges/1) first? Come back when you have played with the basic commands but want a better grasp about what is going on.
+> If you have already used other revision tools but think Git is too hard to learn for your needs, this article is for you! However, if you have never used a revision tool before, why not [try Git] (https://try.Github.io/levels/1/challenges/1) first? Come back when you have played with the basic commands but want a better grasp about what is going on.
 
 ## Git Stores Snapshots (aka Commits) of your Project
 
@@ -111,11 +111,11 @@ Now that we know how Git can use changesets, we can start to think like Git and 
 
 When you switch to another branch, or update your current branch, you change your local working copy. But the working copy actually mirrors your latest commit in HEAD (minus local modifications). Which means that Git can compute the difference between your HEAD and any given commit, then apply the transformation to update your working copy.
 
-Think about it: to change your working copy, Git could simply wipe out previous files and dump fresh new files. But for big projects with thousands of files, this would be way too costly. Instead it patches local files, which means it only changes what needs to be updated to mirror the new state.
+Think about it: to change your working copy, Git could simply wipe out previous files and dump fresh new files. But for big projects with thousands of files, this would be way too costly. Instead it patches local files, which implies it only changes what needs to be updated to mirror the new state.
 
 There is an added benefit with this strategy. Have you noticed that you can switch to a different branch without losing local modifications? That is because Git will leave such files untouched if it does not need to patch them. This comes in handy when you start to fix something in your current branch, then realize it would be better to do it in another existing branch before committing.
 
-But what happens if Git must patch a file section which already has local changes? It will just forbid the action, otherwise you would lose your changes since Git would have overwritten them before they are versionned.
+But what happens if Git must patch a file section which already has local changes? It will just forbid the action, otherwise you would lose your changes before you have a chance to commit them.
 
 ### Cherry-picking
 
