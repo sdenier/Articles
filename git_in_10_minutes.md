@@ -12,18 +12,24 @@ To begin with your apprenticeship of the Git model, you just need the concepts o
 
 We start with an easy one. A commit is snapshot of all files in your project, starting from the root. In other words, it is a copy of all tracked files at the time of creating the commit.
 
-The reason it starts from the project root folder is that you should always save a consistent version of your project, including related changes across all subfolders (and not forgetting one in the process).
+The reason it starts from the project root folder is that you should save a consistent version of your project, including related changes across all subfolders (and not forgetting one in the process).
 
 With this guarantee, we can be sure that checking out a commit will give us that exact state we saved, be it a release version, a buggy one which needs a fix, or a work in progress.
+
+![Commit as Project Snapshot](snapshot.png)
+*Commit A points to a snapshot of all project files. Even if you only change the foo file to create a version v3, Git will remember that you want zorg in version 1 and bar in version 2 for this snapshot.*
 
 ## Git Represents Relationships between Commits (aka History) as a Graph
 
 In any revision control system, commits do not exist in isolation but are linked through a parent-child relationship, which remembers where a commit comes from (what was the previous state before the commit).
 
-So you can start to view the history of your project as a line of successive states. The above figure presents a common representation of history in a Git repository, where the arrow indicates that node X knows that its parent is node Y (in Git, parent commits do not know about their children).
+![Commit History as Graph](graph.png)
+So you can start to view the history of your project as a line of successive states. The above figure presents a common representation of history in a Git repository, where the arrow indicates that commit B **knows** that its parent is commit A (in Git, parent commits do not know about their children, so the arrow points "backward"). In the same manner, commit C knows its parent B, and by transitivity its grandparent A...
 
+![Branches in a Graph](graph_branch.png)
 When two commits share the same parent, you start to have divergent branches. Each line can continue to grow in concurrent ways.
 
+![Branch Merge in a Graph](graph_merge.png)
 When time has come to merge two branches together, Git creates a commit with two parents. The result is that the history is now a directed graph of commits.
 
 The concept of graph to represent the history of a project seems like pretty intuitive, even an obvious choice. You might be surprised by the fact that not all revision control tools use a graph as a first class representation. For example, Subversion works with independent directory-trees to represent branches and only stores branch/merge as meta-data: the lack of a full graph representation leads to some problematic merge cases.
