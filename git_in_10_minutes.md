@@ -2,11 +2,9 @@
 
 Git has a reputation for being a geeky tool with a steep learning curve, including a <abbr title="Command Line Interface">CLI</abbr> with lots of options, and more concepts (staging, remote, push/pull, ...) to start with than classic revision control tools.
 
-But Git has actually a simple conceptual model and does not attempt to hide it as implementation details. Learning this model and what can be done by Git upon will greatly speed up your apprenticeship of the tool.
+But Git has actually a simple conceptual model and does not attempt to hide it as implementation details. Learning this model and how Git operates on it will greatly speed up your apprenticeship of the tool. In other words, you will start to think like Git, and then finding or mixing commands will become much easier, with the occasional dive into the online help to get the right option.
 
-In other words, you will start to think like Git, and finding or mixing the right commands becomes much easier, occasionally diving into the online help to get the right option.
-
-To understand how the Git model works, you just need to grasp the concepts of snapshots, graph, and changesets.
+To begin with your apprenticeship of the Git model, you just need the concepts of snapshots, graph, and changesets.
 
 > If you are already used to other revision tools but think Git is too hard to learn for your needs, then continue reading, you might be surprised! However, if you have never used a revision tool before, why not [try Git] (https://try.Github.io/levels/1/challenges/1) first? Come back when you have played with the basic commands but want a better grasp about what is going on.
 
