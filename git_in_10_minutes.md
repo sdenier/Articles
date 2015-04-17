@@ -17,7 +17,7 @@ The reason it starts from the project root folder is that you should save a cons
 With this guarantee, we can be sure that checking out a commit will give us that exact state we saved, be it a release version, a buggy one which needs a fix, or a work in progress.
 
 ![Commit as Project Snapshot](snapshot.png)
-*Commit A points to a snapshot of all project files. Even if you only change the foo file to create a version v3, Git will remember that you want zorg in version 1 and bar in version 2 for this snapshot.*
+*Commit A points to a snapshot of all project files. Even if you only change the foo file to create a version v3 in commit A, Git will remember that you want zorg in version 1 and bar in version 2 for this snapshot.*
 
 ## Git Represents Relationships between Commits (aka History) as a Graph
 
@@ -34,15 +34,21 @@ When time has come to merge two branches together, Git creates a commit with two
 
 The concept of graph to represent the history of a project seems like pretty intuitive, even an obvious choice. You might be surprised by the fact that not all revision control tools use a graph as a first class representation. For example, Subversion works with independent directory-trees to represent branches and only stores branch/merge as meta-data: the lack of a full graph representation leads to some problematic merge cases.
 
-But more importantly, the history graph allows us to compute the difference between any two states - which leads us to the next concept: changes.
+But more importantly, the history graph allows us to compute the difference between any two states - which leads us to the next concept: changeset.
 
 ## Git Can Compute Changes between any Two Commits of your Project
 
 When you create a commit B from commit A, you create a new snapshot. But you can also see it as an incremental evolution upon the previous commit. This contribution brought by the commit makes a group of indivisible changes, which is called a changeset.
 
-### What to Do with Changesets and Patch Files
+![Snapshot and changeset](changeset.png)
+*A snapshot stores the full state, independent of history. A changeset only records what has changed.*
+
+### What Is in a Changeset? And What to Do With It?
 
 The interesting bit about changesets is that they can be used as blueprint to copy the changes brought by B elsewhere. This is possible because a changeset can be generated to contain just enough information about the transformation.
+
+![Applying a Changeset](changeset_applied.png)
+*Changeset will only modify files bar and zorg from commit F. It does not care that foo file from B is absent from F or that there is a yyy file.*
 
 Git, for example, see changes at the level of lines in text files. When you view a patch in Git (which is the textual representation of a changeset), you see something like that:
 
@@ -69,7 +75,7 @@ A patch file will register the following information:
 - *unchanged* context lines after the changes
 - and so on for all sections and all files in the changeset
 
-Git needs only to match the target files, line positions and textual context to make the changes described by the patch. In other words, it does not care whether a file from the snapshot but untouched by changes should be necessary or not. Even more, it does not care if other sections of the file have changed too. So it is easy for Git to copy changes from a commit on top of a different snapshot, provided context has not changed too much (otherwise, Git will detect and notify conflicts).
+Git needs only to match the target files, line positions and textual context to make the changes described by the patch. In other words, it does not care about files from the snapshot which are untouched by changes. Even more, it does not care if other sections of the file have changed too. So it is easy for Git to copy changes from a commit on top of a different snapshot, provided context has not changed too much (otherwise, Git will detect and notify conflicts).
 
 ### Changesets Anytime Anywhere
 
@@ -105,7 +111,7 @@ Cherry-picking really embodies the whole changeset/patch everywhere principle:
 2. Git computes the changeset for the given commit
 3. Git tries to apply the changeset in the context of your current branch
 4. If it succeeds, it will create a new commit with the content and the metadata of the source commit (author, message, original timestamp)
-5. It if fails because the context has changed, it will produce a conflict which you can resolve.
+5. It if fails because the context has changed, it will produce a conflict, which you can resolve.
 
 ### Rebasing
 
