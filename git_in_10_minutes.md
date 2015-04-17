@@ -52,27 +52,36 @@ The interesting bit about changesets is that they can be used as blueprint to co
 
 Git, for example, see changes at the level of lines in text files. When you view a patch in Git (which is the textual representation of a changeset), you see something like that:
 
-    diff --git a/git_in_10_minutes.md b/git_in_10_minutes.md
-    index 08f09c4..95b778a 100644
-    --- a/git_in_10_minutes.md
-    +++ b/git_in_10_minutes.md
-    @@ -18,7 +18,17 @@ With this guarantee, we can be sure that checking out a commit will give us that exact state we saved, be it a release version, a buggy one which needs a fix, or a work in progress. 
+    diff --git a/app/scripts/Results.js b/app/scripts/Results.js
+    index 98d5f30..ade6329 100644
+    --- a/app/scripts/Results.js
+    +++ b/app/scripts/Results.js
+    @@ -8,18 +8,20 @@ angular.module('golive')
+     
+    -    var polling;
+    +    var previousStatus = dataSource.status,
+    +        polling;
+     
+         function pollData() {
+    -      var previousStatus = dataSource.status;
+           dataSource.status = 'polling';
+           return $http.get(dataSource.url).success(function(data) {
+             stage.name = data.name;
+             dataSource.status = previousStatus;
+    +      }).error(function() {
+    +        dataSource.status = 'error';
+           });
+         }
 
-    -## Git Stores Relationships between Commits (aka History) as a Graph
-    +## Git Represents Relationships between Commits (aka History) as a Graph
-    +
-    ## Git Can Compute Changes between any Two Commits of your Project
-
-To see this in action, just run ```git diff HEAD HEAD~1``` in a repository. It will show you the changes between your latest commit and the previous one, directly in patch format.
+To see this in action, just run ```git diff HEAD~1 HEAD``` in a repository. It will show you the changes between your latest commit and the previous one, directly in patch format.
 
 A patch file will register the following information:
 
-- which file is impacted by the change
-- at which lines start the next change section
-- *unchanged* context lines before the changes
-- lines removed by the change, prefixed by *-*
-- lines added by the change, prefixed by *+* (changed line are removed then added)
-- *unchanged* context lines after the changes
+- which file is impacted by the change (`app/scripts/Results.js`)
+- where is the next change section in the file (`@@ -8,18 +8,20 @@`)
+- lines removed by the change, prefixed by **-**
+- lines added by the change, prefixed by **+** (changed lines appear as removed then added)
+- *unchanged* context lines before/after/between changed lines
 - and so on for all sections and all files in the changeset
 
 Git needs only to match the target files, line positions and textual context to make the changes described by the patch. In other words, it does not care about files from the snapshot which are untouched by changes. Even more, it does not care if other sections of the file have changed too. So it is easy for Git to copy changes from a commit on top of a different snapshot, provided context has not changed too much (otherwise, Git will detect and notify conflicts).
