@@ -92,13 +92,16 @@ Git needs only to match the target files, line positions and textual context to 
 
 ### Changesets Anytime Anywhere
 
-Things start to become interesting when you know that Git can compute changesets (and patch files) on the fly between any two states of your project. That means not only how to transform commit A into its child commit B, but also:
+Things start to become interesting when you know that Git can compute changesets (and patch files) on the fly between any two commits of your project. That means not only how to transform commit A into its child commit B, but also:
 
-- the transformation from any ancestor of B to B itself
-- the transformation from branch X to a parallel branch Y
-- or, why not, the reverse transformation from B to its parent A or an ancestor (to cancel a change for example)
+- the transformation from B to its grandchild D (in green below)
+- the transformation from branch F to parallel branch D (in blue)
+- or, why not, the reverse transformation from F to its parent E (in red, to cancel a change for example)
 
-In other words, Git is super effective in computing state transformations and applying such transformations elsewhere (well, All RCS are the same, but some are more effective than others).
+![](graph_diff.png)
+*You can read the `git diff` form as `git diff [from] X [to] Y`.*
+
+In other words, Git is super effective in computing state transformations and applying such transformations elsewhere (well, most RCS can do the same, but some are more effective than others).
 
 ## Git Commands in Action
 
