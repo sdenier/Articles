@@ -122,14 +122,17 @@ But what happens if Git must patch a file section which already has local change
 
 ### Cherry-picking
 
-You make a cherry-pick when you want to retrieve in your current branch some commits and changes from another branch, but do not want to retrieve all changes from this branch. It is typically used for bug fix or small chores, when you really need this one atomic change but can not afford to merge a branch.
+You make a cherry-pick when you want to retrieve some commits and changes from another branch, but do all changes. It is typically used for bug fix or small chores, when you really need this one change but can not afford to merge the whole branch.
 
-Cherry-picking really embodies the whole changeset/patch everywhere principle:
+![Cherry-Pick some Commits](cherrypick.png)
+*With `git cherry-pick B D`, you can copy changes from commits B and D into your current branch, without the change introduced by C. Notice that B' and D' are new commits: they just have the same data as their source but are independent otherwise.*
 
-1. you ask Git to cherry-pick a commit (or a series of commits)
-2. Git computes the changeset for the given commit
-3. Git tries to apply the changeset in the context of your current branch
-4. If it succeeds, it will create a new commit with the content and the metadata of the source commit (author, message, original timestamp)
+Cherry-picking really embodies the whole changeset everywhere principle.
+
+1. You ask Git to cherry-pick a commit (or a series of commits).
+2. Git computes the changeset for the given commit.
+3. Git tries to apply the changeset in the context of your current branch.
+4. If it succeeds, it will create a new commit with the content and the metadata of the source commit (author, message, original timestamp).
 5. It if fails because the context has changed, it will produce a conflict, which you can resolve.
 
 ### Rebasing
