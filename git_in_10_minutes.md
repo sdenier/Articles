@@ -135,6 +135,8 @@ Cherry-picking really embodies the whole changeset everywhere principle.
 4. If it succeeds, it will create a new commit with the content and the metadata of the source commit (author, message, original timestamp).
 5. It if fails because the context has changed, it will produce a conflict, which you can resolve.
 
+![](rebase.gif)
+
 ### Rebasing
 
 Rebasing (be it a batch one or an interactive one) is not much more complicated once you understand cherry-pick. With cherry-pick, you copy commits from another branch onto your current head. With rebase, you copy commits from your current head onto another branch (then you move your current branch to the rebased commits).
@@ -145,7 +147,7 @@ Here is the course of action when you launch a rebase:
 2. It pushes them in a stack, from last one to first.
 3. It pops each changeset from the stack and apply it in the same order they appear in history, effectively reproducing this history elsewhere.
 4. When performing an interactive rebase, Git will also apply the action you selected for the commit (pick, edit, squash...).
-5. If a conflict appears when applying a changeset, Git stops and asks you to resolve the conflict before continuing or cancel the rebase.
+5. If a conflict appears when applying a changeset, Git stops and asks you to resolve the conflict before continuing or cancelling the rebase.
 
 With this workflow in mind, it is easy to understand two fringe cases which deter some people to use rebase: orphan commits coming back (for example, after a merge) and recurring conflicts during rebase.
 
@@ -153,7 +155,7 @@ With this workflow in mind, it is easy to understand two fringe cases which dete
 
 Although rebasing is often explained as moving commits around, it is best to understand it as copying commits. In the figure below, commits C' and D'  carries the data of C and D, but have a different ancestry: following Git rules, they are not strictly the same as C and D. If no other reference (branch, tag) points to C and D commits, they become orphan and can be garbage collected by Git later. Otherwise, they stay around and can come back to haunt you later if people are unaware of how rebase works (i.e., they merge the old branch with C and D into the new branch).
 
-![Rebase and Orphan Commits](rebase.png)
+![Rebase and Orphan Commits](rebase_orphan.png)
 *Rebasing creates new commits from the source ones, changing the ancestry. But source commits stay around and can come back as duplicate changes if someone keeps a reference on them.*
 
 #### Recurring Conflicts
