@@ -205,4 +205,4 @@ For a detailed example and explanation of how this strategy works better than ot
 
 ## Conclusion
 
-A bit more to learn (like how Git manages branches and tags as labels on the graph, how commits are actually immutable, and what happens with new/discarded commits, Git fetch/push/pull)
+Three concepts - snapshot, graph, and changeset - are more than enough to start understanding how Git works on a daily basis. Of course, this is not intended as a full lesson of Git internals - for example, we only brushed how Git manages HEAD, branches or tags as references in the graph. But just the above explanations for basic and not-so-basic commands should give you an idea of how to reason with Git. Now go practice!
