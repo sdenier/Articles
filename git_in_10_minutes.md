@@ -32,7 +32,7 @@ When two commits share the same parent, you start to have divergent branches. Ea
 ![Branch Merge in a Graph](graph_merge.png)
 When time has come to merge two branches together, Git creates a commit with two parents. The result is that the history is now a directed graph of commits.
 
-The concept of graph to represent the history of a project seems like pretty intuitive, even an obvious choice. You might be surprised by the fact that not all revision control tools use a graph as a first class representation. For example, Subversion works with independent directory-trees to represent branches and only stores branch/merge as meta-data: the lack of a full graph representation leads to some problematic merge cases.
+The concept of graph to represent the history of a project seems like pretty intuitive, even an obvious choice. You might be surprised by the fact that not all revision control tools use a graph as a first class representation. For example, Subversion works with independent directory-trees to represent branches and only stores branch/merge as meta-data: the lack of a full graph representation makes it difficult to follow merge history in SVN.
 
 But more importantly, the history graph allows us to compute the difference between any two states - which leads us to the next concept: changeset.
 
@@ -189,11 +189,19 @@ With the above concepts, we have a simple plan for the merge operation.
 
 #### More Than One Ancestor?
 
-The above example represents the basic and intuitive case. But as merges can be performed multiple times in the history of two branches, you can stumble upon more complex cases.
+The example above represents the most basic scenario. But as merges can be performed multiple times in the history of two branches, you can stumble upon less intuitive cases. Then the notion of **latest** common ancestor becomes important.
 
-Branch X contains all changes brought by X-Y-Z, as well as changes from A-B. We only need the difference from A to X to bring back the branch. We take the latest common ancestor A as merge base. Diffing against A could produce conflicts which have already been solved in the merge commit xxx.
+![](merge_ancestors.png)
+*If we take the changeset from common ancestor B to G, it contains changes from D and G, but also from C through the previous merge E. But we do not want C changes since they are already in F. Instead, if we take the changeset from **latest** common ancestor C to G, we only have D and G changes, as well as the optional conflict resolution in E, all consolidated in the G snapshot.*
 
-The real complex case involves criss-cross merges i.e., when both branches have been merged reciprocally but in non symmetric ways (visually, merge lines cross each other). Then, you have multiple recent common ancestors (this is the case where revision tools such as Subversion, or even Mercurial, fails). Git resolves this case with the so-called "recursive merge strategy", which computes a virtual common ancestor (a virtual merge of common ancestors). For a detailed example and explanation of how this strategy works better than others, I highly recommend this [blog post and the reference links](http://codicesoftware.blogspot.com/2011/09/merge-recursive-strategy.html) by the guys from Plastic SCM. You can also see the discussion in the man page of [git-merge-base](http://git-scm.com/docs/git-merge-base) for the difference between a 3-way merge and an octopus merge.
+More complex scenarios arise when merged branches start to cross each other, as in the demonstrative criss-cross merge. Then you can have multiple latest common ancestors.
+
+![](merge_crisscross.png)
+*Both C and D commits can be considered as latest common ancestors of G and H. If you take the diff from D to H, you get changes from C (through E) and H, but C is already in G. If you take the diff from C to H, you get changes from D and H, but D is already in G through F. The solution is to create a virtual merge of C+D and to compute changes against it, which yields changes from E and H only.*
+
+Most revision tools fail to handle such cases correctly (Subversion cancels the merge by screaming "missing revisions" and let you handle the case manually; Mercurial makes an arbitrary choice among common ancestors). Git resolves this case with the so-called *recursive merge strategy*, which computes a virtual common ancestor (a virtual merge of common ancestors).
+
+For a detailed example and explanation of how this strategy works better than others, I highly recommend this [blog post and the reference links](http://codicesoftware.blogspot.com/2011/09/merge-recursive-strategy.html) by the guys from Plastic SCM. You can also see the discussion in the man page of [git-merge-base](http://git-scm.com/docs/git-merge-base) for the difference between common ancestors in a 3-way merge and in an octopus merge.
 
 ## Conclusion
 
