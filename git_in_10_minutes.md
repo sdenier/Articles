@@ -172,9 +172,28 @@ For someone who is just learning the rebase process, resolving a conflict at eac
 
 ### Merging
 
-## Advanced: what about Conflicts?
+Merging is conceptually a bit more complex as we need a fourth concept to explain it: the merge base or latest common ancestor. The latest common ancestor is the point where both branches have diverged for the last time. To merge, we need to bring back changes which have appeared in the divergent branch since the split.
 
-http://codicesoftware.blogspot.com/2011/09/merge-recursive-strategy.html
+![](merge_step1.png)
+*Since commit E is a snapshot and already contains changes brought by D, we just need to compute the difference (changeset) between the common ancestor B and commit E. Contrary to rebase which copies commit history, merge only takes into account consolidated changes from the latest commit/snapshot.*
+
+With the above concepts, we have a simple plan for the merge operation.
+
+1. Find the latest common ancestor between the two branches.
+2. Computes the changeset between the common ancestor and merged branch.
+3. Apply the changeset on current head.
+4. Let user resolve conflicts if need be.
+5. Create a merge commit with the two merge heads as parents.
+
+![](merge_step2.png)
+
+#### More Than One Ancestor?
+
+The above example represents the basic and intuitive case. But as merges can be performed multiple times in the history of two branches, you can stumble upon more complex cases.
+
+Branch X contains all changes brought by X-Y-Z, as well as changes from A-B. We only need the difference from A to X to bring back the branch. We take the latest common ancestor A as merge base. Diffing against A could produce conflicts which have already been solved in the merge commit xxx.
+
+The real complex case involves criss-cross merges i.e., when both branches have been merged reciprocally but in non symmetric ways (visually, merge lines cross each other). Then, you have multiple recent common ancestors (this is the case where revision tools such as Subversion, or even Mercurial, fails). Git resolves this case with the so-called "recursive merge strategy", which computes a virtual common ancestor (a virtual merge of common ancestors). For a detailed example and explanation of how this strategy works better than others, I highly recommend this [blog post and the reference links](http://codicesoftware.blogspot.com/2011/09/merge-recursive-strategy.html) by the guys from Plastic SCM. You can also see the discussion in the man page of [git-merge-base](http://git-scm.com/docs/git-merge-base) for the difference between a 3-way merge and an octopus merge.
 
 ## Conclusion
 
