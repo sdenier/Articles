@@ -103,3 +103,6 @@ For a detailed example and explanation of how this strategy works better than ot
 These three concepts - snapshot, graph, and changeset - are enough to start understanding how Git works on a daily basis. Of course, this is not intended as a full lesson of Git internals - for example, we only skimmed over how Git manages HEAD, branches or tags as references in the graph. But just the above explanations for basic and not-so-basic commands should give you an idea of how to reason with Git.
 
 Now you should just go practice with your project. One good advice is to have a Git repository browser (such as the default `gitk` or GitX) open in the background. These browsers can show you a visualization of your commit graph. By refreshing the visualization after each command, you can often see how Git has transformed your history.
+
+![](gitk_rebase.png)
+*The above gitk screenshot shows a before/after state of a repository following a rebase. The two MIN/MAX commits above `tp7-start` tag have been rebased on top of `functions-and-more` in the `tp7` branch. In this view, you can still see the old commits, which are now orphaned, and the two new commits, which are just copies of the old ones.*
