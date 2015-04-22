@@ -4,9 +4,11 @@ Git has a reputation for being a geeky tool with a steep learning curve, includi
 
 But Git has actually a simple conceptual model and does not attempt to hide it as implementation details. Learning this model and how Git operates on it will greatly speed up your apprenticeship of the tool. In other words, you will start to think like Git, and then finding or mixing commands will become much easier, with the occasional dive into the online help to get the right option.
 
+[[MORE]]
+
 To begin with your apprenticeship of the Git model, you just need the concepts of snapshots, graph, and changesets.
 
-> If you have already used other revision tools but think Git is too hard to learn for your needs, this article is for you! However, if you have never used a revision tool before, why not [try Git] (https://try.Github.io/levels/1/challenges/1) first? Come back when you have played with the basic commands but want a better grasp about what is going on.
+> If you have already used other revision tools but think Git is too hard to learn for your needs, this article is for you! However, if you have never used a revision tool before, why not [try Git](https://try.Github.io/levels/1/challenges/1) first? Come back when you have played with the basic commands but want a better grasp about what is going on.
 
 ## Git Stores Snapshots (aka Commits) of your Project
 
@@ -106,3 +108,11 @@ In other words, Git is super effective in computing state transformations and ap
 ## A Conceptual Model to Understand Git in Action
 
 This brief introduction to three concepts of revision tools is enough to understand the essentials of Git. In the next article we will put this knowledge in action to explain how some Git commands operate on your project.
+
+<div itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+  <img itemprop="image" src="http://www.gravatar.com/avatar/58778f8cc14e8a484568a663266c3029.png" alt="Simon Denier">
+  <a href="mailto:simon+blog@sogilis.com"><span itemprop="name" rel="author"><i class="fa fa-user" /> Simon Denier</span></a>
+  <a href="http://twitter.com/simondenier"><span class="share-link-twitter" rel="twitter"><i class="fa fa-twitter" /> simondenier</span></a>
+  <a href="https://github.com/sdenier"><span rel="github"><i class="fa fa-github" /> sdenier</span></a>
+  <a href="https://plus.google.com/100056946931947086533?rel=author"><span class="share-link-google-plus" rel="gplus"><i class="fa fa-google-plus" /> +SimonDenier</span></a>
+</div>
