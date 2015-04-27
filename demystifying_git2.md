@@ -22,7 +22,7 @@ You make a cherry-pick when you want to retrieve some commits and changes from a
 
 _With `git cherry-pick B D`, you can copy changes from commits B and D into your current branch, without the change introduced by C. Notice that B’ and D’ are new commits: they just have the same data as their source but are independent otherwise._
 
-![](https://36.media.tumblr.com/6a23a581e1932175e2c1c519192d6b84/tumblr_inline_nn7e8uZ6MF1szbtyb_540.png)
+![](https://lh6.googleusercontent.com/-mCH6lljn2JI/VT5e0zYzqwI/AAAAAAAAC9Q/T3qNwT6FG4s/w200-h350-no/cherrypick.gif)
 
 Cherry-picking really embodies the whole changeset everywhere principle.
 
@@ -48,15 +48,15 @@ Here is the course of action when you launch a rebase:
 
 With this workflow in mind, it is easy to understand two fringe cases which deter some people to use rebase: orphan commits coming back (for example, after a merge) and recurring conflicts during rebase.
 
-### Orphan Commits
+### Advanced Git: Orphan Commits
 
-Although rebasing is often explained as moving commits around, it is best to understand it as copying commits. In the figure below, commits C’ and D’  carries the data of C and D, but have a different ancestry: following Git rules, they are not strictly the same as C and D. If no other reference (branch, tag) points to C and D commits, they become orphan and can be garbage collected by Git later. Otherwise, they stay around and can come back to haunt you later if people are unaware of how rebase works (i.e., they merge the old branch with C and D into the new branch).
+Although rebasing is often explained as moving commits around, it is best to understand it as copying commits. In the figure below, commits C’ and D’  carries the data of C and D, but have a different ancestry: following Git rules, they are not strictly the same as C and D. If no other reference (branch, tag) points to C and D commits, they become orphan and can be garbage collected by Git later. Otherwise, they stay around and can come back to haunt you later if people are unaware of how rebase works (for example, if they merge the old branch with C and D into the new branch).
 
-_Rebasing creates new commits from the source ones, changing the ancestry. But source commits stay around and can come back as duplicate changes if someone keeps a reference on them._
+_Rebasing creates new commits C' and D' from the source C and D, changing the ancestry from B to E. But source commits stay around and can come back as duplicates if someone keeps a reference on them._
 
 ![](https://36.media.tumblr.com/5b23f531b1f9769e6451f578abd1910b/tumblr_inline_nn7eb8HeGW1szbtyb_540.png)
 
-### Recurring Conflicts
+### Advanced Git: Recurring Conflicts
 
 Take the three commits above B, C, and D. That means the C changeset expects a context as in B and D changeset expects a context as in C. Now start a rebase with commits C and D on another branch:
 
@@ -86,11 +86,11 @@ With the above concepts, we have a simple plan for the merge operation.
 
 ![](https://40.media.tumblr.com/b75b74d376b4600e0b8045b31329a873/tumblr_inline_nn7h819aHb1szbtyb_540.png)
 
-### More Than One Ancestor?
+### Advanced Git: More Than One Ancestor?
 
 The example above represents the most basic scenario. But as merges can be performed multiple times in the history of two branches, you can stumble upon less intuitive cases. Then the notion of **latest** common ancestor becomes important.
 
-_If we take the changeset from common ancestor B to G, it contains changes from D and G, but also from C through the previous merge E. But we do not want C changes since they are already in F. Instead, if we take the changeset from **latest** common ancestor C to G, we only have D and G changes, as well as the optional conflict resolution in E, all consolidated in the G snapshot._
+_If we take the changeset from common ancestor B to G, it contains changes from D and G, but also from C through the previous merge E. But we do not want C changes since they are already in F. Instead, if we take the changeset from **latest** common ancestor C to G, it only contains changes from D, E, and G, consolidated in G snapshot._
 
 ![](https://40.media.tumblr.com/a48b1b30698de0add452473fd8f5d540/tumblr_inline_nn7ee7XY1c1szbtyb_540.png)
 

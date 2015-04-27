@@ -16,7 +16,7 @@ The reason it starts from the project root folder is that you should save a cons
 
 With this guarantee, we can be sure that checking out a commit will give us that exact state we saved, be it a release version, a buggy one which needs a fix, or a work in progress.
 
-_Commit A points to a snapshot of all project files. Even if you only change the foo file to create a version v3 in commit A, Git will remember that you want zorg in version 1 and bar in version 2 for this snapshot._
+_Commit A points to a snapshot of all project files (files bar, foo, and zorg). Even if you only change the foo file (in yellow) to create a version v3 in commit A, Git will remember that you want zorg file in version 1 and bar file in version 2 for this snapshot._
 
 ![](https://36.media.tumblr.com/25b5bfcc2f53de00929a66e127ddc654/tumblr_inline_nn7cyqEALF1szbtyb_540.png)
 
@@ -38,21 +38,21 @@ When time has come to merge two branches together, Git creates a commit with two
 
 The concept of graph to represent the history of a project seems like pretty intuitive, even an obvious choice. You might be surprised by the fact that not all revision control tools use a graph as a first class representation. For example, Subversion works with independent directory-trees to represent branches and only stores branch/merge as meta-data: the lack of a full graph representation makes it difficult to follow merge history in SVN.
 
-But more importantly, the history graph allows us to compute the difference between any two states - which leads us to the next concept: changeset.
+But more importantly, the history graph allows us to compute the difference between two states - which leads us to the next concept: changeset.
 
 ## Git Can Compute Changes between any Two Commits of your Project
 
 When you create a commit B from commit A, you create a new snapshot. But you can also see it as an incremental evolution upon the previous commit. This contribution brought by the commit makes a group of indivisible changes, which is called a changeset.
 
-_A snapshot stores the full state, independent of history. A changeset only records what has changed._
+_A snapshot stores the full state, independent of history: B commit points to files bar, foo, and zorg. A changeset only records what has changed: B changeset describes local patches (in yellow) in bar and zorg files. Both concepts are actually interchangeable and can be used to model the history graph._
 
-![](https://40.media.tumblr.com/44608ff3d19dee93f3c2da4ce2d63b3b/tumblr_inline_nn7d33ROnU1szbtyb_540.png)
+![](https://lh5.googleusercontent.com/-qvs8v8QQj2k/VT5NwyslI_I/AAAAAAAAC80/5Mj3vau2I7I/w483-h220-no/changeset.png)
 
 ### What Is in a Changeset? And What to Do With It?
 
 The interesting bit about changesets is that they can be used as blueprint to copy the changes brought by B elsewhere. This is possible because a changeset contain just enough information about the transformation.
 
-_Changeset will only modify files bar and zorg inside commit F. It does not care that foo file from B is absent or that there is a yyy file._
+_Applying the B changeset onto commit F will only modify files bar and zorg. It does not care that unmodified foo file from B is absent in F or that there is a yyy file in F._
 
 ![](https://40.media.tumblr.com/d3a81a93baa464d2b044313674d7914e/tumblr_inline_nn7d3kbpAT1szbtyb_540.png)
 
