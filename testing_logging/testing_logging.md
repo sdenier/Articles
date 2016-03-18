@@ -41,17 +41,30 @@ Basically, testing (with automated tests) can also help with some tasks describe
 - system validation: does it behave as expected when I run a sample case?
 - bad behavior diagnosis: where does my system fail and why?
 
-Great supporters of testing practices know that there is much more to tests than that (things like requirements by use case, design driven by tests, safety harness for refactoring), but this is out of our current focus.
-
-One common assumption about tests is that you should have a pyramid of tests at different levels of abstraction (although this is a highly debated topic): a few high level tests with end users (costly to run), lots of unit tests at the base.
-
-In any case, some of your [tests should run fast](https://pragprog.com/magazines/2012-01/unit-tests-are-first) to provide you with quick feedbacks about your codebase health. Typically these are unit tests, and they provide you with feedback about the current unit you are working on:
+But proponents of testing practices know that there is much more to tests than that:
 
 - I have written the test before: does the code I have written match the test expectations?
 - I have refactored this part of the code: did I break anything from the requirements?
 - I have updated some tests due to changes in requirements, bug identication: where did the system broke and how should I start fixing it?
 
-By running fast tests, I can stay focused on what I am doing and gain lots of confidence. I can change it easily, see I break something as soon as it happened (thus quickly fix it); or try a quick something to see how it impacts the behavior, iteratively building my knowledge into an issue.
+Depending on my task, I have a very different use of the test report:
+
+- typically when programming incrementally with a test-first feature, I expect to see some red in my report, but in general I do not need the details. I continue to code until I make it green.
+- while refactoring, I expect only some green (or some temporary red if it goes a bit beyond refactoring) in my reporter. Refactoring cycles should be fast (as fast as a few seconds in my edit-save-run tests cycle) and while it is green, I don't care much about what is green. Which means, a simple green indicator, telling me all my tests are "OK" is enough.
+- while running into unexpected situations (i.e., I see some red when I did not expect it), I want to stop right now and have a quick feedback about what is wrong: which test, where is in the code? Mostly, I just want to focus on that at this point.
+
+Such use patterns have two implications on tests:
+
+- some of your [tests should run fast](https://pragprog.com/magazines/2012-01/unit-tests-are-first), especially when the edit-save-test cycle is less than 10 seconds (can happen).
+- compared to log events, test reports should be much more focused. I need only the minimal information to tell me it is ok to continue or that something is wrong in some place.
+
+Now comes the real bummer. What happens when we mix output on stdout with a command line test tool while running fast tests: lots and lots of noisy log events which pollutes your test report and can sometimes hides the essential information (likes what has failed) into a sea of unrelated events.
+
+The rest of this article will be a small how-to guide about properly mixing test and log so that you get the right feedback out of each other when you need.
+
+
+Not a good solution: the /dev/null logger
+-----------------------------------------
 
 
 Problems when mixing testing and logging
