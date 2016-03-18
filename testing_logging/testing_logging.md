@@ -33,8 +33,25 @@ On larger systems, another interesting data to add is some kind of context infor
 Notice how I left out some concerns, like where should the output go (answer: to stdout, let your infrastructure [stores it somewhere](http://12factor.net/logs)) and how to format the output (answer: as json, let another tool like [bunyan](https://github.com/trentm/node-bunyan) formats the output when you want to consume it).
 
 
-Getting Feedback with Testing
------------------------------
+Getting Feedback with Automated Testing
+---------------------------------------
+
+Basically, testing (with automated tests) can also help with some tasks described above:
+
+- system validation: does it behave as expected when I run a sample case?
+- bad behavior diagnosis: where does my system fail and why?
+
+Great supporters of testing practices know that there is much more to tests than that (things like requirements by use case, design driven by tests, safety harness for refactoring), but this is out of our current focus.
+
+One common assumption about tests is that you should have a pyramid of tests at different levels of abstraction (although this is a highly debated topic): a few high level tests with end users (costly to run), lots of unit tests at the base.
+
+In any case, some of your [tests should run fast](https://pragprog.com/magazines/2012-01/unit-tests-are-first) to provide you with quick feedbacks about your codebase health. Typically these are unit tests, and they provide you with feedback about the current unit you are working on:
+
+- I have written the test before: does the code I have written match the test expectations?
+- I have refactored this part of the code: did I break anything from the requirements?
+- I have updated some tests due to changes in requirements, bug identication: where did the system broke and how should I start fixing it?
+
+By running fast tests, I can stay focused on what I am doing and gain lots of confidence. I can change it easily, see I break something as soon as it happened (thus quickly fix it); or try a quick something to see how it impacts the behavior, iteratively building my knowledge into an issue.
 
 
 Problems when mixing testing and logging
