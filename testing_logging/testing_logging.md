@@ -18,60 +18,127 @@ Both are rather complementary, which does not mean you want to use both all the 
 Getting Feedback with Logging
 -----------------------------
 
-While running an application, a good use of logging might help me with the following tasks:
+While running an application, a good use of logging helps with the following tasks:
 
-- a validation of your system: does it behave as expected when I run a sample case?
-- an exploratory goal: how does my system behave when I try to run an edge case?
-- a diagnosis of a bad behavior: what is happening which leads the system to an unexpected behavior?
+- validation: does it behave as expected when I run a sample case?
+- exploration: how does my system behave when I try to run an edge case?
+- diagnosis: what leads the system to this unexpected behavior?
 
-Basically, logging produces a trace of events, which allows me to reconstruct what has happened. But depending on the case, I might not want the same level of details. Typically debugging a bad behavior might require much finer events and data.
+Basically, logging produces a trace of events, which allows one to reconstruct what has happened. But depending on the case, I might not want the same level of details. Typically debugging a bad behavior might require much finer events and data.
 
 That is one the main property to look at and think of when using a logging tool: the level with which to log information. Let's take a look at [bunyan default log levels](https://github.com/trentm/node-bunyan#levels: Fatal > Error > Warning > Info > Debug > Trace. Bunyan defaults is to output anything equal or above the Info level, which is fine for production. When debugging, you might want to switch the log level to Debug or Trace for example.
 
-On larger systems, another interesting data to add is some kind of context information. This context can indicate clearly where is the system does the event come from. And, more interestingly, it allows one to filter such context when consuming the log. Maybe you only want log events from some parts of the system, or you don't want some events from a noisy module which has no relation to your current concern. Bunyan does help here with a command-line option for filtering. But I also like the approach of [node debug](https://github.com/visionmedia/debug), which is easy to use and provide nice options (although, as its name implies, I would keep it mostly for debugging purpose, and not for as a general loggin tool).
+```
+// setting log level through environment in bunyan
+bunyan.createLogger({
+    name: 'myApp',
+    level(process.env.LOGLEVEL || 'info')	})
+```
+
+On larger systems, another interesting data to add is some kind of context information. This context can indicate clearly where is the system does the event come from. And, more interestingly, it allows one to filter such context when consuming the log. Maybe you only want log events from some parts of the system, or you don't want some events from a noisy module which has no relation to your current concern. Bunyan does help here with a command-line option for filtering. But I also like the approach of [node debug](https://github.com/visionmedia/debug), which is easy to use and provide nice options (although, as its name implies, I would keep it mostly for debugging purpose, and not for as a general logging tool).
+
+```
+OUTPUT SAMPLE
+```
+
 
 Notice how I left out some concerns, like where should the output go (answer: to stdout, let your infrastructure [stores it somewhere](http://12factor.net/logs)) and how to format the output (answer: as json, let another tool like [bunyan](https://github.com/trentm/node-bunyan) formats the output when you want to consume it).
 
 
-Getting Feedback with Automated Testing
+Getting Feedback with Automated Tests
 ---------------------------------------
 
-Basically, testing (with automated tests) can also help with some tasks described above:
+Basically, automated tests can also help with some of the tasks described above:
 
 - system validation: does it behave as expected when I run a sample case?
 - bad behavior diagnosis: where does my system fail and why?
 
 But proponents of testing practices know that there is much more to tests than that:
 
-- I have written the test before: does the code I have written match the test expectations?
+- I have written the test before: does the new code match the test expectations?
 - I have refactored this part of the code: did I break anything from the requirements?
-- I have updated some tests due to changes in requirements, bug identication: where did the system broke and how should I start fixing it?
+- I have updated some tests due to a bug, changes in requirements: where did the system broke and how should I start fixing it?
 
 Depending on my task, I have a very different use of the test report:
 
-- typically when programming incrementally with a test-first feature, I expect to see some red in my report, but in general I do not need the details. I continue to code until I make it green.
-- while refactoring, I expect only some green (or some temporary red if it goes a bit beyond refactoring) in my reporter. Refactoring cycles should be fast (as fast as a few seconds in my edit-save-run tests cycle) and while it is green, I don't care much about what is green. Which means, a simple green indicator, telling me all my tests are "OK" is enough.
+- typically when programming incrementally with a test-first feature, I expect to see some red color in my report, but in general I do not need the details. I continue coding until I make it green.
+- while refactoring, I expect only green color (or some temporary red if it goes a bit beyond refactoring) in my reporter. Refactoring cycles should be fast (as fast as a few seconds in my edit-save-run tests cycle) and while it is green, I don't care much about the what. A simple green indicator, telling me all my tests are OK is enough.
 - while running into unexpected situations (i.e., I see some red when I did not expect it), I want to stop right now and have a quick feedback about what is wrong: which test, where is in the code? Mostly, I just want to focus on that at this point.
 
 Such use patterns have two implications on tests:
 
-- some of your [tests should run fast](https://pragprog.com/magazines/2012-01/unit-tests-are-first), especially when the edit-save-test cycle is less than 10 seconds (can happen).
-- compared to log events, test reports should be much more focused. I need only the minimal information to tell me it is ok to continue or that something is wrong in some place.
+- some of your [tests should run fast](https://pragprog.com/magazines/2012-01/unit-tests-are-first), especially when the edit-save-test cycle is less a matter of seconds.
+- compared to log events, test reports should be much more focused. I need only the minimal information to tell me it is ok to continue or that something is wrong somewhere.
 
-Now comes the real bummer. What happens when we mix output on stdout with a command line test tool while running fast tests: lots and lots of noisy log events which pollutes your test report and can sometimes hides the essential information (likes what has failed) into a sea of unrelated events.
+But what happens when we mix log outputs and test outputs: lots and lots of log events which noisifies your test report. The more your codebase grows, the more tests you have, the faster they run, the more events you get and the more likely to lose the essential information (likes what has failed) into a sea of events. Having to scroll up pages of logs just to get back the stack trace of the failing test is no fun.
 
 The rest of this article will be a small how-to guide about properly mixing test and log so that you get the right feedback out of each other when you need.
 
 
-Not a good solution: the /dev/null logger
+Not a good idea: the /dev/null logger
 -----------------------------------------
 
+A naive solution would be to use some kind of "null pattern" logger: just discard any log output since they tend to disturb test reports. This is really easy: just instantiate your logger on the fly and inject it into your code. For example with bunyan:
 
-Problems when mixing testing and logging
---------------------------------------------------------
+```
+bunyan.createLogger({
+  name: 'nullLogger',
+  streams: [{
+    path: '/dev/null'
+  }]
+});
+```
 
-- test feedback can be drowned by log
-- use dependency injection to inject a custom logger for testing
-- nullify log while testing - not a good idea
-- customizing the log level for testing: DI, env config
-- temporarily disabling logging
+This is what we need while we run in green mode, or while it is obvious while a test fails. However, if you need more information about the test circumstances leading to failures, you will be blind. Worse, you may have set up an error handler in your code which redirects any error to your log. While developing new tests and code, your tests can fail for no obvious reason, but you won't get any feedback since errors are discarded.
+
+```
+EXAMPLE of invisible failure (error log in handler)
+```
+
+
+Customizing the log level for tests
+---------------------------------------------
+
+Once we have realized we don't want all regular log events but still want errors to appear, the solution is obvious. Just use the right log level.
+
+```
+let logger = bunyan.createLogger({
+    name: 'testLogger',
+    level('error')	})
+// inject logger in your modules while testing
+```
+
+Any regular, expected events will be discarded in your tests, leaving just the test report. Only the unexpected errors will appear, which is a good source of information for debugging.
+
+But in some cases this is not enough. You might need more regular data about the circumstances leading to the test failure. Why not having a control about the level of logging when something bad happens?
+
+```
+let logger = bunyan.createLogger({
+    name: 'testLogger',
+    level(process.env.LOGLEVEL || 'error')})
+// inject logger in your modules while testing
+```
+
+This way your test report are not disturbed by the log. On the contrary, log events should only appear when something ran amiss, as a mean to further diagnose failure.
+
+*Log appearance should equate test failures.*
+
+This leads to our last refinement case. Say you have an explicit test for your error handler, checking it properly catches the error. Since this is expected behavior, do you want to see the error log in your report?
+
+```
+SAMPLE test error
+```
+
+Of course not, it would once again pollute your test report and nullify the above principle, making the test report harder to interpret (is something wrong or not?). Once again, the solution in this case is to temporarily disable log output while running the test by decreasing/increasing the log level.
+
+```
+SAMPLE log disable
+```
+
+Conclusion
+---------------
+
+- Set your log level to error by default in your tests
+- Use/Inject a logger with a default level of error in your tests: you won't be drowned/annoyed by the regular logs, but you will still get the right feedback when some unexpected error happens.
+- Make the log level customizable in the test. When debugging a test, you might want to temporarily increase the volume of information to INFO, DEBUG.
+- For the purists, if you write test to test against errors, you might want to temporarily disable logging around the test. This way you don't get the false signal that something is wrong because a error log flashed in your test report - since it is expected.
