@@ -1,5 +1,59 @@
-Testing and Logging: Maximize your Feedback for Development
-===========================================================
+Mixing Testing and Logging for a Better Developer Experience
+============================================================
+
+People love a great article about a new programming paradigm/vision/motto which change the way you architect/develop/maintain your system. This is not one of those articles. I am gonna talk about the stupid daily life of a programmer - and those problems you don't hear so much about because they seem so dull and obvious: getting the right feedback through tests and logs.
+
+
+Getting the Right Feedback with Logging
+---------------------------------------
+
+What to do with [logging](https://en.wikipedia.org/wiki/Logfile)? A log produces a trace of events, which allows one to reconstruct what has happened. Good practices tell you to have events at different levels of granularity. I especially like the ones from [bunyan](https://github.com/trentm/node-bunyan#levels) on this topic. Shameless copy-paste from the doc:
+
+> "fatal": The service/app is going to stop or become unusable now. An operator should definitely look into this soon.
+> "error": Fatal for a particular request, but the service/app continues servicing other requests. An operator should look at this soon(ish).
+> "warn": A note on something that should probably be looked at by an operator eventually.
+> "info": Detail on regular operation.
+> "debug": Anything else, i.e. too verbose to be included in "info" level.
+> "trace": Logging from external libraries used by your app or very detailed application logging.
+
+While developing my system, I might use log events to:
+
+- validate its behavior: do I get the expected trace?
+- explore how it behaves when running an edge case
+- diagnose what leads to an unexpected behavior
+
+But depending on the case, I want different levels of details about the behavior of my system. The default one is "info", since it traces all regular operations. It should be good enough when validating or exploring the system - with the occasional look at debug level when one wants to check finer details. Meanwhile, when debugging, I might run anywhere between the error level (because there is too much noise otherwise) and the debug or trace level (because I want maximum details about what led to this bad behavior).
+
+The important ability here is filtering events, either through a predefined level (all events below being discarded) or, even more interestingly, through a post-mortem filter which takes the full trace but only outputs the chosen events.
+
+Let's take a look at bunyan again. I can configure a stream to output events at or above a level given by the environment (I could actually configure different streams with different levels).
+
+```
+// setting log level through environment in bunyan
+bunyan.createLogger({
+    name: 'myApp',
+    level(process.env.LOGLEVEL || 'info')
+})
+```
+
+Pretty easy right?
+
+
+
+
+On larger systems, another interesting data to add is some kind of context information. This context can indicate clearly where is the system does the event come from. And, more interestingly, it allows one to filter such context when consuming the log. Maybe you only want log events from some parts of the system, or you don't want some events from a noisy module which has no relation to your current concern. Bunyan does help here with a command-line option for filtering. But I also like the approach of [node debug](https://github.com/visionmedia/debug), which is easy to use and provide nice options (although, as its name implies, I would keep it mostly for debugging purpose, and not for as a general logging tool).
+
+
+
+
+
+So far, so good. That was rather down-to-earth. Notice I did not talk about where to put the log, how to rotate files etc. This is [not your app concern](http://12factor.net/logs). It should just dump on your standard output and let the infrastructure manages it. This, however, will have some impact on how we work with the next practice - testing.
+
+
+
+
+Old
+---
 
 Developers know that having feedback loops in your development process is crucial to go forward. Such feedback loops exist at different scales and different times in a project life: milestone and delivery, sprint and iteration, daily meetups.
 
@@ -32,7 +86,8 @@ That is one the main property to look at and think of when using a logging tool:
 // setting log level through environment in bunyan
 bunyan.createLogger({
     name: 'myApp',
-    level(process.env.LOGLEVEL || 'info')	})
+    level(process.env.LOGLEVEL || 'info')	
+})
 ```
 
 On larger systems, another interesting data to add is some kind of context information. This context can indicate clearly where is the system does the event come from. And, more interestingly, it allows one to filter such context when consuming the log. Maybe you only want log events from some parts of the system, or you don't want some events from a noisy module which has no relation to your current concern. Bunyan does help here with a command-line option for filtering. But I also like the approach of [node debug](https://github.com/visionmedia/debug), which is easy to use and provide nice options (although, as its name implies, I would keep it mostly for debugging purpose, and not for as a general logging tool).
@@ -104,7 +159,8 @@ Once we have realized we don't want all regular log events but still want errors
 ```
 let logger = bunyan.createLogger({
     name: 'testLogger',
-    level('error')	})
+    level('error')	
+})
 // inject logger in your modules while testing
 ```
 
@@ -115,7 +171,8 @@ But in some cases this is not enough. You might need more regular data about the
 ```
 let logger = bunyan.createLogger({
     name: 'testLogger',
-    level(process.env.LOGLEVEL || 'error')})
+    level(process.env.LOGLEVEL || 'error')
+})
 // inject logger in your modules while testing
 ```
 
