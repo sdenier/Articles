@@ -26,14 +26,34 @@ But depending on the case, I want different levels of details about the behavior
 
 The important ability here is filtering events, either through a predefined level (all events below being discarded) or, even more interestingly, through a post-mortem filter which takes the full trace but only outputs the chosen events.
 
-Let's take a look at bunyan again. I can configure a stream to output events at or above a level given by the environment (I could actually configure different streams with different levels).
+Let's take a look at bunyan again. I can configure a stream to output events at or above a level given by the `LOGLEVEL` environment variable.
 
 ```
-// setting log level through environment in bunyan
-bunyan.createLogger({
+  bunyan.createLogger({
     name: 'myApp',
-    level(process.env.LOGLEVEL || 'info')
-})
+    level: process.env.LOGLEVEL
+  })
+
+$ LOGLEVEL=info npm start
+
+13:49:45.726Z  INFO mw: Server listening on http://:::3000
+13:49:47.163Z  INFO mw: Handler send requestStatus (context=printers, message={"command":"requestStatus"})
+13:49:47.171Z  WARN mw: PrintingStopped - Item marked in error (context=printers)
+13:50:21.910Z  INFO mw: GET /printers -> Status 200 (context=restApp)
+13:50:35.349Z ERROR mw: Can not get, Id unknown 10 (context=restApp)
+    Error: Can not get, Id unknown 10
+13:50:35.351Z  WARN mw: GET /productions/10 -> Status 404 (context=restApp)
+```
+
+Or I can use the bunyan CLI to filter log output on the command line.
+
+```
+$ npm start | bunyan --level warn
+
+13:49:47.171Z  WARN mw: PrintingStopped - Item marked in error (context=printers)
+13:50:35.349Z ERROR mw: Can not get, Id unknown 10 (context=restApp)
+    Error: Can not get, Id unknown 10
+13:50:35.351Z  WARN mw: GET /productions/10 -> Status 404 (context=restApp)
 ```
 
 Pretty easy right?
