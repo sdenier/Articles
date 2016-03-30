@@ -58,17 +58,36 @@ $ npm start | bunyan --level warn
 
 Pretty easy right?
 
+On larger systems, I also like to add some context data to each event - basically where it does come from. It allows one to filter by context when consuming the log. Maybe you only want log events from some parts of the system, or you do not want those events from a noisy module which has no relation to your current concern.
+
+Again, one can use the bunyan CLI to filter log output on the fly.
+
+```
+  const log = bunyanLogger.child({
+    context: 'restApp'
+  });
+
+$ npm start | bunyan --condition 'this.context == "restApp"'
+
+13:50:21.910Z  INFO mw: GET /printers -> Status 200 (context=restApp)
+13:50:35.349Z ERROR mw: Can not get, Id unknown 10 (context=restApp)
+    Error: Can not get, Id unknown 10
+13:50:35.351Z  WARN mw: GET /productions/10 -> Status 404 (context=restApp)
+```
+
+With respect to this idea of partitioning your log output so that they are easier to filter, I also like the approach of [node debug](https://github.com/visionmedia/debug) (although, as its name implies, I would keep it for debugging purpose).
+
+```
+  const debug = require('debug')('restApp')
+
+  debug('GET %s', route)
+
+$ DEBUG=restApp npm start
+restApp GET /printers
+```
 
 
-
-On larger systems, another interesting data to add is some kind of context information. This context can indicate clearly where is the system does the event come from. And, more interestingly, it allows one to filter such context when consuming the log. Maybe you only want log events from some parts of the system, or you don't want some events from a noisy module which has no relation to your current concern. Bunyan does help here with a command-line option for filtering. But I also like the approach of [node debug](https://github.com/visionmedia/debug), which is easy to use and provide nice options (although, as its name implies, I would keep it mostly for debugging purpose, and not for as a general logging tool).
-
-
-
-
-
-So far, so good. That was rather down-to-earth. Notice I did not talk about where to put the log, how to rotate files etc. This is [not your app concern](http://12factor.net/logs). It should just dump on your standard output and let the infrastructure manages it. This, however, will have some impact on how we work with the next practice - testing.
-
+That was rather down-to-earth. Notice I did not talk about where to put the log, how to rotate files etc. This is [not your app concern](http://12factor.net/logs): it should just dump events on standard output and let the infrastructure manages it. This, however, can have some impact on our next practice - testing.
 
 
 
