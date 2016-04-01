@@ -240,14 +240,12 @@ Then running the test would produce an error output in the log. However, since t
 ```
 
 
+Final Guidelines
+----------------
 
+What to keep of this stuff? Just follow those basic principles next time.
 
-Conclusion
-----------
-
-Follow those basic principles:
-
-- Use log levels accordingly
+- Do log system events and use log levels accordingly.
+- Make the log level customizable (through environment or other means). When debugging the system or the tests, you might want to temporarily increase or decrease the volume of information.
 - Use a logger with a default level of error in your tests: you won't be drowned/annoyed by the regular logs, but you will still get the right feedback when some unexpected error happens.
-- Make the log level customizable in the test. When debugging a test, you might want to temporarily increase the volume of information to INFO, DEBUG.
-- For the purists, if you write test to test against errors, you might want to temporarily disable logging around the test. This way you don't get the false signal that something is wrong because a error log flashed in your test report - since it is expected.
+- If you write tests for error cases, you might want to temporarily disable logging. This way you do not get the false signal that something is wrong because an error log flashed in your test report.
