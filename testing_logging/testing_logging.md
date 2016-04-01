@@ -240,23 +240,6 @@ Then running the test would produce an error output in the log. However, since t
 ```
 
 
-Old Intro
----------
-
-Developers know that having feedback loops in your development process is crucial to go forward. Such feedback loops exist at different scales and different times in a project life: milestone and delivery, sprint and iteration, daily meetups.
-
-This post focuses on testing and logging practices, both providing fast feedback to the developer at the smallest detail level. Because, some of your [tests should run fast](https://pragprog.com/magazines/2012-01/unit-tests-are-first), and second, you do [log](http://12factor.net/logs) what your system is doing.
-
-As you run often or even continuously, fast feedback also implies you get quite a lot of data in your terminal. This can represent a lot of noise: not all test results and log lines may be relevant, especially when you focus on exploring and fixing an issue.
-
-Typically you do not use testing and logging for the same tasks, although there is some overlapping:
-
-- testing is for functional and design feedback (if you practice TDD)
-- logging is for operational feedback
-
-Both are rather complementary, which does not mean you want to use both all the times. So here we are: practical advice about mixing testing and logging to try and get good feedback during development.
-
-
 Getting Feedback with Automated Tests
 -------------------------------------
 
