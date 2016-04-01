@@ -1,13 +1,13 @@
 Mixing Testing and Logging for a Better Developer Experience
 ============================================================
 
-People love a great article about a new programming paradigm/vision/motto which change the way you architect/develop/maintain your system. This is not one of those articles. I am gonna talk about the stupid daily life of a programmer - and those problems you don't hear so much about because they seem so dull and obvious: getting the right feedback through tests and logs.
+People love a great article about a new programming paradigm/vision/motto which change the way you architect/develop/maintain your system. This is not one of those articles. I am gonna talk about the stupid daily life of a programmer - and the problems you don't hear so much about because they seem so dull and obvious: getting the right feedback through logs and tests.
 
 
 Getting the Right Feedback with Logging
 ---------------------------------------
 
-What to do with [logging](https://en.wikipedia.org/wiki/Logfile)? A log produces a trace of events, which allows one to reconstruct what has happened. Good practices tell you to have events at different levels of granularity. I especially like the ones from [bunyan](https://github.com/trentm/node-bunyan#levels) on this topic. Shameless copy-paste from the doc:
+What to do with [logging](https://en.wikipedia.org/wiki/Logfile)? A log is a trace of events, which allows one to reconstruct what has happened. Good practices tell you to have events at different levels of granularity. I especially like the ones from [bunyan](https://github.com/trentm/node-bunyan#levels) on this topic. Shameless copy-paste from the doc:
 
 > "fatal": The service/app is going to stop or become unusable now. An operator should definitely look into this soon.
 > "error": Fatal for a particular request, but the service/app continues servicing other requests. An operator should look at this soon(ish).
@@ -18,7 +18,7 @@ What to do with [logging](https://en.wikipedia.org/wiki/Logfile)? A log produces
 
 While developing my system, I might use log events to:
 
-- validate its behavior: do I get the expected trace?
+- validate its behavior: do I get a consistent trace, with events as expected?
 - explore how it behaves when running an edge case
 - diagnose what leads to an unexpected behavior
 
@@ -75,7 +75,7 @@ $ npm start | bunyan --condition 'this.context == "restApp"'
 13:50:35.351Z  WARN mw: GET /productions/10 -> Status 404 (context=restApp)
 ```
 
-With respect to this idea of partitioning your log output so that they are easier to filter, I also like the approach of [node debug](https://github.com/visionmedia/debug) (although, as its name implies, I would keep it for debugging purpose).
+In any case, partitioning your log output to ease filtering is a good idea. I like the approach of [node debug](https://github.com/visionmedia/debug) (although, as its name implies, I would keep it for debugging purpose).
 
 ```
   const debug = require('debug')('restApp')
@@ -87,17 +87,15 @@ restApp GET /printers
 ```
 
 
-That was rather down-to-earth. Notice I did not talk about where to put the log, how to rotate files etc. This is [not your app concern](http://12factor.net/logs): it should just dump events on standard output and let the infrastructure manages it. This, however, can have some impact on our next practice - testing.
+That was rather down-to-earth. Notice I did not discuss where to put the log, how to rotate files etc. This is [not your app concern](http://12factor.net/logs): it should just dump events on standard output and let the infrastructure manages it. This, however, can have some impact on our next practice - testing.
 
 
-Getting the Right Feedback with Automated Tests ?
--------------------------------------------------
+Getting the Right Feedback with Automated Tests?
+------------------------------------------------
 
 This is actually quite a hard topic. I will not discuss here the way to design your tests, how they should be independent (or not), how to have good failure messages... I will simply focus on how I use the test report in my console, and how it interacts with log output.
 
-Sometimes I just want a basic feedback from my tests, something like a GREEN/RED status, because I am performing an health check, or refactoring my code.
-
-Let's try to run some tests naively, with logger default settings.
+Sometimes I just want a basic feedback from my tests, something like a GREEN/RED status, because I am performing an health check, or refactoring my code. Let's try to run some tests naively, with logger default settings.
 
 ```
 $ npm test
@@ -122,7 +120,7 @@ Started
 Finished in 0.347 seconds
 ```
 
-For 52 specifications, I got 68 lines of output, mostly logs, which I don't really care about right now. Given my [tests are fast](https://pragprog.com/magazines/2012-01/unit-tests-are-first), I would like to run them in watch mode. This would have the further inconvenience to flood my console with log output whenever I save a file and the tests run.
+For 52 specifications, I got 68 lines of output, mostly logs, which I don't really care about right now. Given my [tests are fast](https://pragprog.com/magazines/2012-01/unit-tests-are-first), I also would like to run them in watch mode. This would have the further inconvenience to flood my console with log output whenever I save a file and the tests run.
 
 Now let's say I can omit all log outputs.
 
@@ -137,9 +135,7 @@ Started
 Finished in 0.26 seconds
 ```
 
-Nice and clear message: all is right on the front line. This is much better, and I can now use my watch mode to run tests continuously, without the noise of log output.
-
-Having a lean test report is also beneficial when you run into problems. When a test fails unexpectedly, I want to have the failure and the stack trace right in front fo my eyes, not having to scroll up pages and pages of logs.
+Nice and clear message: all is right on the front line. This is much better, and I can now use my watch mode to run tests continuously, without the noise of log output. Having a lean test report is also beneficial when you run into problems. When a test fails unexpectedly, I want to have the failure and the stack trace right in front fo my eyes, not having to scroll up pages and pages of logs.
 
 We could easily jump to the conclusion a null logger is the perfect tool to use in tests - one which redirects all output to `/dev/null`.
 
@@ -159,9 +155,9 @@ Customizing the Log Level for Tests
 
 However, there may be good reasons to not discard all outputs while running your tests. Sometimes the stack trace is not enough and you want more data about the current run from, guess what, the log.
 
-> You might argue that your IDE formats test results for you, outside of any consideration for the log. Yet there is still some cases where you want to look at the log produced by a test - debugging is one such case.
+> You might argue that your IDE formats test results for you, already filtering log noise. Yet there is still some cases where you want to look at the log produced by a test - debugging is one such case.
 
-The second reason is that you might have an error handler in your system: it could log the error then recover the bad case. With a null logger, the error would be swallowed and you will never get to see it in your test report. This can easily lead to lead to head scratching or debugging nightmare as you have a failing test without the most basic cue that something went wrong somewhere in your system.
+The second reason is that you might have an error handler in your system: it could log the error then recover the bad case. With a null logger, the error would be swallowed and you will never get to see it in your test report. This can easily lead to head scratching or debugging nightmare as you have a failing test without the most basic cue that something went wrong somewhere in your system.
 
 ```
   try {
@@ -188,7 +184,7 @@ In other words, *by default, log events should equate test failures*.
 $ npm test
 
 Started
-....{"name":"testLogger","level":50,"err":{"message":"Unexpected token u","name":"SyntaxError","time":"2016-03-30T17:15:56.173Z","v":0}
+....{"name":"testLogger","level":50,"err":{"name":"SyntaxError","message":"Unexpected token u","time":"2016-03-30T17:15:56.173Z","v":0}
 F...............................................
 
 Failures:
@@ -207,7 +203,7 @@ In the above example, my test fails on its assertion. But the root cause can eas
 A Last Small Refinement
 -----------------------
 
-To cover the code, we could have a test case for error handling, checking that the error is recovered. Let's take the following sample and its accompanying test.
+To cover our codebase, we could have a test case for error handling, checking that the error is recovered. Let's take the following sample and its accompanying test.
 
 ```
   function resilientParse(body)
@@ -245,7 +241,7 @@ Final Guidelines
 
 What to keep of this stuff? Just follow those basic principles next time.
 
-- Do log system events and use log levels accordingly.
+- Do log your system events and use log levels accordingly.
 - Make the log level customizable (through environment or other means). When debugging the system or the tests, you might want to temporarily increase or decrease the volume of information.
 - Use a logger with a default level of error in your tests: you won't be drowned/annoyed by the regular logs, but you will still get the right feedback when some unexpected error happens.
 - If you write tests for error cases, you might want to temporarily disable logging. This way you do not get the false signal that something is wrong because an error log flashed in your test report.
