@@ -92,6 +92,84 @@ So our inline comments system should be able to track lines between changesets a
 Solution
 --------
 
+The first thing to recognize is that we do not deal with a single diff (or changeset) but at least two:
+
+- the current (or original) diff from the pull request, on which comments were made
+- the new diff from the pull request, after the update, which contains both updated changes and untouched original changes
+
+Also, let index each content line by its offset in the diff. For starter, it looks like it is the right thing to do in order to link an inline comment to its line: we know that inline comment @ line 4 goes to line 4 in the unidiff.
+
+Let's start with the following content, for which we create a pull request to insert a line between A4 and A5.
+
+```
+  A1
+  A2
+  A3
+  A4
+  A5
+```
+
+So the original unidiff, with offsets, for the pull request looks like:
+
+```
+1   A1
+2   A2
+3   A3
+4   A4
+5 + B1
+6   A5
+```
+
+After review, it is decided to introduce another change between lines A1 and A2, and to delete A3, so the updated pull request looks like:
+
+```
+1   A1
+2 + C1
+3   A2
+4 - A3
+5   A4
+6 + B1
+7   A5
+```
+
+(Notice how the deleted line still counts in the diff offset.)
+
+So far so good. Any inline comments on line 1 would stay in place but any other on the second lines or below would be moved one line below by the new line. Except for the inline comment on A3 which would be marked as outdated.
+
+How do we know which lines does not change, which are deleted, and which are moved in the update? We compute the update diff itself, which only contains changes between the current diff (current pull request state) and the updated pull request (i.e. it contains only changes made for the update)
+
+In our example, since B1 change has already been introduced, the update diff looks like:
+
+```
+1   A1
+2 + C1
+3   A2
+4 - A3
+5   B1
+6   A4
+7   A5
+```
+
+What if we juxtapose the offset coordinates from the original diff on this one?
+
+```
+1 1   A1
+  2 + C1
+2 3   A2
+3 4 - A3
+4 5   B1
+5 6   A4
+6 7   A5
+```
+
+It looks like we are onto something. It is pretty easy to infer which lines were in the previous diff (kept and removed lines) and which ones are only in the new diff (added lines) - and thus, it is pretty easy to compute offsets for BOTH original and new diffs on the update diff. We can now translate offsets from one space to the other. To know what to do with an inline comment on an added or kept line, we can apply the following procedure:
+
+> 1. take the offset of the inline comment in the original diff
+> 2. look up the corresponding line in the update diff
+> 3. if line has been deleted by the update, mark the comment as outdated
+> 3bis. otherwise, move the comment to the new offset given by the update diff
+
+
 The Problem (and its Specification): Second Take
 ------------------------------------------------
 
