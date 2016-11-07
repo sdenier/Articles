@@ -162,7 +162,7 @@ What if we juxtapose the offset coordinates from the original diff on this one?
 6 7   A5
 ```
 
-It looks like we are onto something. It is pretty easy to infer which lines were in the previous diff (kept and removed lines) and which ones are only in the new diff (added lines) - and thus, it is pretty easy to compute offsets for BOTH original and new diffs on the update diff. We can now translate offsets from one space to the other. To know what to do with an inline comment on an added or kept line, we can apply the following procedure:
+It looks like we are onto something. It is pretty easy to infer which lines were in the previous diff (kept and removed lines) and which ones are only in the new diff (added lines) - and thus, it is pretty easy to compute offsets for BOTH original and new diffs on the update diff. We can now translate offsets from one space to the other. To know what to do with an inline comment on an added or kept line, we apply the following procedure:
 
 > 1. take the offset of the inline comment in the original diff
 > 2. look up the corresponding line in the update diff
@@ -299,6 +299,33 @@ Also, the updated (or 'final') pull request should now be computed against the n
 
 **must illustrate the problem with a concrete example**
 
+Original pull request:
+
+```
+1 1 1   A1
+2 2 2   A2
+3 3   - A3
+4 4 3   A4
+5 5   - A5
+```
+
+New base:
+
+```
+1 1 1   A1
+2 2   - A2
+3 3   - A3
+4 4 2   A4
+5 5 3   A5
+```
+
+Updated pull request:
+
+```
+1 1 1   A1
+2 2 2   A4
+3 3   - A5
+```
 
 Fortunately, by now we have a good grasp about the issue of matching and translating offsets between diffs. We have an original diff computed against an old base, and we have a new base which has probably change some offsets. What if we compute the diff from old base to the new base?
 
