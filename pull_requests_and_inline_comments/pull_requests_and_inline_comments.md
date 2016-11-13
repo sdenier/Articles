@@ -37,21 +37,21 @@ The Problem: First Approach
 
 Let's define our problem in more specific ways.
 
-More often than not, inline comments are linked to changes. So they are attached to a representation of changes. In this post we will focus on a Unidiff representation (because it will be simpler to visualize and reason about than the side-by-side diff). Here comes our first specification
+More often than not, inline comments are linked to changes. So they are attached to a representation of changes. In this post we will focus on a Unidiff representation (because it will be simpler to visualize and reason about than the side-by-side diff). Here comes our first specification:
 
 > An inline comment is a block of data (text) attached to a line in a unidiff.
 
-First example with file foo
+Here is a first example with a fake unidiff. `Ax` represents one line content. Deleted lines are prefixed by `-` and added lines by `+`. Let's say A3 has been added and you put an inline comment on it.
 
 ```
   A1
   A2
-+ A3
++ A3   ### your inline comment: say nothing nice/nasty about this change
   A4
   A5
 ```
 
-Let's say A3 has been added and you put an inline comment on it. Now some changes are made and the pull request is updated. What can happen? For example, you requested that A3 is no good and should be deleted:
+Now some changes are made and the pull request is updated. What can happen? For example, you requested that A3 is no good and should be deleted. The updated unidiff would look like:
 
 ```
   A1
@@ -68,17 +68,17 @@ Obviously, if line A3 still existed in the new update, we should have seen the i
 
 ```
   A1
-+ A1 bis
-+ A1 ter
++ B1
++ B2
   A2
 + A3
   A4
   A5
 ```
 
-Rather than changing the A3 line, the update provides two new lines A1 bis and A1 ter (which become parts of the global pull request, including A3). The system can not decide whether the change resolves or even affects the inline comment. Thus, it should still display the comment to let the reviewer decided whether it is relevant or not. Of course, it should still appear next to the A3 line, which means in this case the comment has "moved down" from the third line in the original unidiff to the fifth line in the new unidiff.
+Rather than changing the A3 line, the update provides two new lines B1 and B2 (which become parts of the global pull request, including A3). The system can not decide whether the change resolves or even affects the inline comment. Thus, it should still display the comment to let the reviewer decided whether it is relevant or not. Of course, it should still appear next to the A3 line, which means in this case the comment has "moved down" from the third line in the original unidiff to the fifth line in the new unidiff.
 
-> If the inline comment is still relevant wrt to the last update, it should move to follow the diff line to which it is attached.
+> If the inline comment is still relevant w.r.t to the last update, it should move to follow the diff line to which it is attached.
 
 As a side note, we can wonder what happen for an inline comment on line A4, which is kept from the original source. If we apply the same reasoning as above, we can infer straight away that the same rules apply. Also, nothing prevent us to add many inline comments to the same line. Let's rephrase the rules to clarify that:
 
