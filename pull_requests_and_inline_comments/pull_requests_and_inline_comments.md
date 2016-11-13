@@ -120,9 +120,15 @@ So the original unidiff, with offsets, for the pull request looks like:
 6   A5
 ```
 
+The review goes like this:
+
+![](figures/Basic%20before.png)
+
 After review, it is decided to introduce another change between lines A1 and A2, and to delete A3, so the updated pull request looks like:
 
-```
+![](figures/Basic%20after.png)
+
+<!-- ```
 1   A1
 2 + C1
 3   A2
@@ -130,13 +136,13 @@ After review, it is decided to introduce another change between lines A1 and A2,
 5   A4
 6 + B1
 7   A5
-```
+``` -->
 
 (Notice how the deleted line still counts in the diff offset.)
 
-So far so good. Any inline comments on line 1 would stay in place but any other on the second lines or below would be moved one line below by the new line. Except for the inline comment on A3 which would be marked as outdated.
+So far so good. Any inline comments on line 1 would stay in place but any other on the second lines or below would be moved one line below by the new line. The inline comment on A3 which would be marked as outdated.
 
-How do we know which lines does not change, which are deleted, and which are moved in the update? We compute the update diff itself, which only contains changes between the current diff (current pull request state) and the updated pull request (i.e. it contains only changes made for the update)
+How do we know which lines does not change, which are deleted, and which are moved in the update? We can compute the update diff itself, which only contains changes between the current diff (current pull request state) and the updated pull request (i.e. it contains only changes made for the update).
 
 In our example, since B1 change has already been introduced, the update diff looks like:
 
@@ -162,7 +168,11 @@ What if we juxtapose the offset coordinates from the original diff on this one?
 6 7   A5
 ```
 
-It looks like we are onto something. It is pretty easy to infer which lines were in the previous diff (kept and removed lines) and which ones are only in the new diff (added lines) - and thus, it is pretty easy to compute offsets for BOTH original and new diffs on the update diff. We can now translate offsets from one space to the other. To know what to do with an inline comment on an added or kept line, we apply the following procedure:
+It looks like we are onto something. It is pretty easy to infer which lines were in the previous diff (kept and removed lines) and which ones are only in the new diff (added lines) - and thus, it is pretty easy to compute offsets for BOTH original and new diffs on the update diff. We can now translate offsets from one space to the other.
+
+![](figures/Basic%20update.png)
+
+To know what to do with an inline comment on an added or kept line, we apply the following procedure:
 
 > 1. take the offset of the inline comment in the original diff
 > 2. look up the corresponding line in the update diff
@@ -173,7 +183,7 @@ It looks like we are onto something. It is pretty easy to infer which lines were
 When the Intuition Falls Down (but is a Good First Start Anyway)
 ----------------------------------------------------------------
 
-Right now we just talked about added and remaining lines in the diff. Let's make things a bit more complicated by having both added and deleted lines in the original pull request. What happens if we put inline comments on deleted lines?
+Right now we just talked about added and untouched lines in the diff. Let's make things a bit more complicated by having both added and deleted lines in the original pull request. What happens if we put inline comments on deleted lines?
 
 ```
 1   A1
@@ -270,7 +280,9 @@ With these rules for computing offsets, it is obvious that some offset columns o
 - The `Update[After]` column matches with the `Final[After]` column
 - The `Original[Before]` column matches with the `Final[Before]` column
 
-**Better definition for translate and lookup?**
+*Better definition for translate and lookup?*
+
+![](figures/SecondCase.png)
 
 Then we can redefine the rules to update inline comments. For added or kept lines in the original diff:
 
@@ -289,15 +301,25 @@ For removed lines, the rules play differently:
 
 It the rules seem a bit complicated, the visualization plays nicefully to understand the mechanism.
 
+![](figures/SecondCase2.png)
 
 Third Take: the General Problem and Solution
 --------------------------------------------
 
-So far so good, but did we really solve the complete problem? Actually, we made a strong hidden hypothesis: the pull request base, against which the original diff was computed, does not change. In other words, the pull request update was built upon the previous change and is just a fast forward. But this is not necessarily the case. It is pretty common in a pull request to ask the developer to **rebase** his changes against the latest source. Suddenly, the original diff against which inline comments were made does not reflect the state of the pull request before update. In other words, some comments may be outdated because the base itself has changed. Also, how does it affect our diffs for translation?
+So far so good, but did we really solve the complete problem? Actually, we made a strong hidden hypothesis: the pull request base, against which the original diff was computed, does not change. In other words, the pull request update was built upon the previous change and is just a fast forward. But this is not necessarily the case. It is pretty common in a pull request to ask the developer to **rebase** his changes against the latest source. Suddenly, the original diff against which inline comments were made does not reflect the state of the pull request before update. In other words, some comments may be outdated because the base itself has changed. Also, the updated (or 'final') pull request should now be computed against the new base to reflect the changes.
 
-Also, the updated (or 'final') pull request should now be computed against the new base to reflect the changes.
+![](figures/PR_update-rebase.png)
 
-**must illustrate the problem with a concrete example**
+Here is an example. We will focus on deleted lines to illustrate the problems.
+
+![](figures/PR_details.png)
+
+What has changed? The rebase has deleted two lines from the original base, including one which was also part of the pull request itself. This implies that any comment put on lines A2 and A3 are now outdated. Also some offsets should move around.
+
+- try without the base diff, with the update diff
+- show it works for added lines, not for deleted
+- notice that the base diff makes the link between the previous state and the new one
+- compute the base diff and show how it solves the issue with deleted lines
 
 Original pull request:
 
