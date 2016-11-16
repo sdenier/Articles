@@ -314,45 +314,33 @@ Here is an example. We will focus on deleted lines to illustrate the problems.
 
 ![](figures/PR_details.png)
 
-What has changed? The rebase has deleted two lines from the original base, including one which was also part of the pull request itself. This implies that any comment put on lines A2 and A3 are now outdated. Also some offsets should move around.
+What has changed? The rebase has deleted two lines from the original base, including one which was also part of the pull request itself. This implies that any comment put on lines A2 and A3 are now outdated. Also some offsets should move around. Let's apply our previous procedure with three diffs:
 
-- try without the base diff, with the update diff
-- show it works for added lines, not for deleted
-- notice that the base diff makes the link between the previous state and the new one
-- compute the base diff and show how it solves the issue with deleted lines
+![](figures/ThirdCase.png)
 
-Original pull request:
+It seems we can still apply the rules to outdate or move inline comments on added or kept lines, *even though* the final diff is computed against a different base. This happens because both the final and update diffs have the same final state (set of lines). However, we now have a problem with inline comments on deleted lines: especially the offset `Original[B]` does not match `Final[B]` for line A5. How can we translate the inline comment in this case?
 
-```
-1 1 1   A1
-2 2 2   A2
-3 3   - A3
-4 4 3   A4
-5 5   - A5
-```
+Fortunately, we now have a good grasp about how diffs can be used to translate offsets. From figure XXX, it is quite obvious that the *base diff* is the missing link between the old state and the new state. Let's plug it into our translation schema.
 
-New base:
+![](figures/ThirdCase2.png)
 
-```
-1 1 1   A1
-2 2   - A2
-3 3   - A3
-4 4 2   A4
-5 5 3   A5
-```
+Again, it is important to notice how offset columns match between diffs:
 
-Updated pull request:
+- The `Original[After]` column matches with the `Update[Before]` column
+- The `Update[After]` column matches with the `Final[After]` column
+- The `Original[Before]` column matches with the `Base[Before]` column since they share the same before state
+- The `Base[After]` column matches with the `Final[Before]` column since it represents the updated master state
 
-```
-1 1 1   A1
-2 2 2   A4
-3 3   - A5
-```
+We now have a complete coverage of offsets, which allows us to always translate between diffs. We can now update the definitive rules for removed lines (since rebase does not seem to affect added or kept lines, we do not change those rules):
 
-Fortunately, by now we have a good grasp about the issue of matching and translating offsets between diffs. We have an original diff computed against an old base, and we have a new base which has probably change some offsets. What if we compute the diff from old base to the new base?
+> 5. translate `Original[O] -> Original[B]` in the original diff
+> 6. look up the matching line `Original[B] = Base[B]` in the base diff
+> 7. (a) if the line is deleted in the base diff, mark the comment as outdated - STOP
+> 7. (b) otherwise, translate `Base[B] -> Base[A]` and look up `Base[A] = Final[B]` in the final diff
+> 8. (a) if the line is no longer in the final diff, mark as outdated
+> 8. (b) otherwise, translate `Final[B] -> Final[O]` to get the new offset in the final diff
 
-This base diff can tell us which lines are no longer valid in the new base.
-
+Notice that rules are now a bit more complicated for removed lines. In particular, there are two cases which mark comments as outdated. Rule (3a) invalidates comments on lines which are already deleted in the base (as for the A3 line in the example) and rule (5a) invalidates comments on lines which are reestablished in the final diff.
 
 Conclusion
 ----------
