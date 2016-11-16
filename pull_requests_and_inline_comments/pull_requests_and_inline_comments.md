@@ -345,4 +345,4 @@ Notice that rules are now a bit more complicated for removed lines. In particula
 Conclusion
 ----------
 
-Here is the gist: to create a working inline comments system, you need a space with some coordinates describing each changeset and rules to translate inline comments from one space to another.
+As it happens, the solution to our problem was not so trivial after all (we did not find it on the first iteration). Cases like rebase long baffled us and we were not sure we understood how it impacted inline comments. Yet, once we found the gist of it, it looks surprisingly natural: to create a working inline comments system, we just need to describe the space of each changeset with some coordinates, identify how thoses spaces connect to each other, and apply rules to translate coordinates between connected spaces.
