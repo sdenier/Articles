@@ -1,13 +1,11 @@
 Inline Comments: the Stuff that Pull Requests Are Made of
 =========================================================
 
-Once in a while, it is fun to stumble upon a nice, neatly delimited problem and you ask yourself - "I haven't seen this problem before - how should I handle it?"
-
-Remember when we talk about how important it is for a VCS (namely Git) to compute changesets (aka diffs) between any two commits? We will see it first hand in action with this post.
+Pull requests are hot stuff and many articles have probably been written about their practices and benefits for projects. So let's not discuss that and instead focus on a very specific technical problem: how do you implement a working inline comments system for pull requests? For once, it's good to focus on nitty gritty details and get some technical challenge. As we will see, the problem is not so obvious and requires some thoughts. In any case, it is good to remember that computing [changesets](http://sogilis.com/blog/demystifying-git-concepts-to-understand/) is an important capability of any good VCS, namely Git. It will be the cornerstone of our solution (in case you haven't, please go read the above post, it's short!).
 
 
-Context: what Problem Are We Talking about?
--------------------------------------------
+What Problem Are We Talking about?
+----------------------------------
 
 Thanks to platforms such as GitHub and the like, the practice of code review have become widespread. Even for small projects with teams of two (like we sometimes have), we do some review because we can already feel the benefits: catching errors, loopholes, or artificial complexity, sharing the knowledge of how code fulfills its feature, enforcing or teaching common guidelines and patterns, especially with new technologies...
 
@@ -279,8 +277,6 @@ With these rules for computing offsets, it is obvious that some offset columns o
 - The `Original[After]` column matches with the `Update[Before]` column
 - The `Update[After]` column matches with the `Final[After]` column
 - The `Original[Before]` column matches with the `Final[Before]` column
-
-*Better definition for translate and lookup?*
 
 ![](figures/SecondCase.png)
 
