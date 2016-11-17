@@ -26,7 +26,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2016-11-16 21:43:22 +0000</string>
+	<string>2016-11-17 13:28:40 +0000</string>
 	<key>Modifier</key>
 	<string>Simon Denier</string>
 	<key>NotesVisible</key>
@@ -55,7 +55,7 @@
 		<key>NSPaperSize</key>
 		<array>
 			<string>size</string>
-			<string>{595.28001499176025, 841.8900146484375}</string>
+			<string>{595, 842}</string>
 		</array>
 		<key>NSPrintReverseOrientation</key>
 		<array>
@@ -85,7 +85,7 @@
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
+				<string>{{0, 0}, {783, 559}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -674,7 +674,7 @@
 			<key>RowSpacing</key>
 			<real>36</real>
 			<key>SheetTitle</key>
-			<string>Basic before</string>
+			<string>PR_before_update</string>
 			<key>UniqueID</key>
 			<integer>2</integer>
 			<key>VPages</key>
@@ -688,7 +688,7 @@
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
+				<string>{{0, 0}, {783, 559}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -1429,7 +1429,7 @@
 			<key>RowSpacing</key>
 			<real>36</real>
 			<key>SheetTitle</key>
-			<string>Basic after</string>
+			<string>PR_after_update</string>
 			<key>UniqueID</key>
 			<integer>3</integer>
 			<key>VPages</key>
@@ -1443,7 +1443,7 @@
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
+				<string>{{0, 0}, {783, 559}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -3461,7 +3461,7 @@
 			<key>RowSpacing</key>
 			<real>36</real>
 			<key>SheetTitle</key>
-			<string>Basic update</string>
+			<string>PR_update</string>
 			<key>UniqueID</key>
 			<integer>4</integer>
 			<key>VPages</key>
@@ -3475,7 +3475,7 @@
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
+				<string>{{0, 0}, {783, 559}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -6356,7 +6356,7 @@ O B A}</string>
 			<key>RowSpacing</key>
 			<real>36</real>
 			<key>SheetTitle</key>
-			<string>SecondCase</string>
+			<string>Matching_columns</string>
 			<key>UniqueID</key>
 			<integer>5</integer>
 			<key>VPages</key>
@@ -6370,7 +6370,7 @@ O B A}</string>
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
+				<string>{{0, 0}, {783, 559}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -9105,7 +9105,7 @@ O B A}</string>
 			<key>RowSpacing</key>
 			<real>36</real>
 			<key>SheetTitle</key>
-			<string>SecondCase2</string>
+			<string>Matching_update</string>
 			<key>UniqueID</key>
 			<integer>6</integer>
 			<key>VPages</key>
@@ -9119,7 +9119,7 @@ O B A}</string>
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
+				<string>{{0, 0}, {783, 559}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -11193,7 +11193,7 @@ O B A}</string>
 			<key>RowSpacing</key>
 			<real>36</real>
 			<key>SheetTitle</key>
-			<string>PR update-rebase</string>
+			<string>Update_vs_rebase</string>
 			<key>UniqueID</key>
 			<integer>7</integer>
 			<key>VPages</key>
@@ -11207,7 +11207,7 @@ O B A}</string>
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
+				<string>{{0, 0}, {783, 559}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -13798,7 +13798,7 @@ O B A}</string>
 			<key>RowSpacing</key>
 			<real>36</real>
 			<key>SheetTitle</key>
-			<string>PR details</string>
+			<string>Rebase</string>
 			<key>UniqueID</key>
 			<integer>8</integer>
 			<key>VPages</key>
@@ -13812,7 +13812,7 @@ O B A}</string>
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
+				<string>{{0, 0}, {783, 559}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -15732,7 +15732,7 @@ O B A}</string>
 			<key>RowSpacing</key>
 			<real>36</real>
 			<key>SheetTitle</key>
-			<string>ThirdCase</string>
+			<string>Rebase_naive</string>
 			<key>UniqueID</key>
 			<integer>9</integer>
 			<key>VPages</key>
@@ -15746,7 +15746,7 @@ O B A}</string>
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
+				<string>{{0, 0}, {783, 559}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -18516,7 +18516,7 @@ O B A}</string>
 			<key>RowSpacing</key>
 			<real>36</real>
 			<key>SheetTitle</key>
-			<string>ThirdCase 2</string>
+			<string>Rebase_ok</string>
 			<key>UniqueID</key>
 			<integer>10</integer>
 			<key>VPages</key>
@@ -18550,53 +18550,53 @@ O B A}</string>
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{-25, -37}, {832, 635}}</string>
+		<string>{{-25, -38}, {832, 635}}</string>
 		<key>Zoom</key>
 		<real>1</real>
 		<key>ZoomValues</key>
 		<array>
 			<array>
-				<string>Basic before</string>
+				<string>PR_before_update</string>
 				<real>1</real>
 				<real>1</real>
 			</array>
 			<array>
-				<string>Basic after</string>
+				<string>PR_after_update</string>
 				<real>1</real>
 				<real>1</real>
 			</array>
 			<array>
-				<string>Basic update</string>
+				<string>PR_update</string>
 				<real>1</real>
 				<real>1</real>
 			</array>
 			<array>
-				<string>SecondCase</string>
+				<string>Matching_columns</string>
 				<real>1</real>
 				<real>1</real>
 			</array>
 			<array>
-				<string>SecondCase2</string>
+				<string>Matching_update</string>
 				<real>1</real>
 				<real>1</real>
 			</array>
 			<array>
-				<string>PR update-rebase</string>
+				<string>Update_vs_rebase</string>
 				<real>1</real>
 				<real>1</real>
 			</array>
 			<array>
-				<string>PR details</string>
+				<string>Rebase</string>
 				<real>1</real>
 				<real>1</real>
 			</array>
 			<array>
-				<string>ThirdCase</string>
+				<string>Rebase_naive</string>
 				<real>1</real>
 				<real>1</real>
 			</array>
 			<array>
-				<string>ThirdCase 2</string>
+				<string>Rebase_ok</string>
 				<real>1</real>
 				<real>1</real>
 			</array>

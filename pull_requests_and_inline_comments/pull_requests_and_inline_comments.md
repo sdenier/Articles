@@ -120,21 +120,11 @@ So the original unidiff, with offsets, for the pull request looks like:
 
 The review goes like this:
 
-![](figures/Basic%20before.png)
+![](figures/PR_before_update.png)
 
 After review, it is decided to introduce another change between lines A1 and A2, and to delete A3, so the updated pull request looks like:
 
-![](figures/Basic%20after.png)
-
-<!-- ```
-1   A1
-2 + C1
-3   A2
-4 - A3
-5   A4
-6 + B1
-7   A5
-``` -->
+![](figures/PR_after_update.png)
 
 (Notice how the deleted line still counts in the diff offset.)
 
@@ -168,7 +158,7 @@ What if we juxtapose the offset coordinates from the original diff on this one?
 
 It looks like we are onto something. It is pretty easy to infer which lines were in the previous diff (kept and removed lines) and which ones are only in the new diff (added lines) - and thus, it is pretty easy to compute offsets for BOTH original and new diffs on the update diff. We can now translate offsets from one space to the other.
 
-![](figures/Basic%20update.png)
+![](figures/PR_update.png)
 
 To know what to do with an inline comment on an added or kept line, we apply the following procedure:
 
@@ -278,7 +268,7 @@ With these rules for computing offsets, it is obvious that some offset columns o
 - The `Update[After]` column matches with the `Final[After]` column
 - The `Original[Before]` column matches with the `Final[Before]` column
 
-![](figures/SecondCase.png)
+![](figures/Matching_columns.png)
 
 Then we can redefine the rules to update inline comments. For added or kept lines in the original diff:
 
@@ -297,28 +287,28 @@ For removed lines, the rules play differently:
 
 It the rules seem a bit complicated, the visualization plays nicefully to understand the mechanism.
 
-![](figures/SecondCase2.png)
+![](figures/Matching_update.png)
 
 Third Take: the General Problem and Solution
 --------------------------------------------
 
 So far so good, but did we really solve the complete problem? Actually, we made a strong hidden hypothesis: the pull request base, against which the original diff was computed, does not change. In other words, the pull request update was built upon the previous change and is just a fast forward. But this is not necessarily the case. It is pretty common in a pull request to ask the developer to **rebase** his changes against the latest source. Suddenly, the original diff against which inline comments were made does not reflect the state of the pull request before update. In other words, some comments may be outdated because the base itself has changed. Also, the updated (or 'final') pull request should now be computed against the new base to reflect the changes.
 
-![](figures/PR_update-rebase.png)
+![](figures/Update_vs_rebase.png)
 
 Here is an example. We will focus on deleted lines to illustrate the problems.
 
-![](figures/PR_details.png)
+![](figures/Rebase.png)
 
 What has changed? The rebase has deleted two lines from the original base, including one which was also part of the pull request itself. This implies that any comment put on lines A2 and A3 are now outdated. Also some offsets should move around. Let's apply our previous procedure with three diffs:
 
-![](figures/ThirdCase.png)
+![](figures/Rebase_naive.png)
 
 It seems we can still apply the rules to outdate or move inline comments on added or kept lines, *even though* the final diff is computed against a different base. This happens because both the final and update diffs have the same final state (set of lines). However, we now have a problem with inline comments on deleted lines: especially the offset `Original[B]` does not match `Final[B]` for line A5. How can we translate the inline comment in this case?
 
 Fortunately, we now have a good grasp about how diffs can be used to translate offsets. From figure XXX, it is quite obvious that the *base diff* is the missing link between the old state and the new state. Let's plug it into our translation schema.
 
-![](figures/ThirdCase2.png)
+![](figures/Rebase_ok.png)
 
 Again, it is important to notice how offset columns match between diffs:
 
