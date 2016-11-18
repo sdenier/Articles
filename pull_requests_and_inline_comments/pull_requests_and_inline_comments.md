@@ -1,13 +1,11 @@
 Inline Comments: the Stuff that Pull Requests Are Made of
 =========================================================
 
-Pull requests are hot stuff and many articles have probably been written about their practices and benefits for projects. So let's not discuss that and instead focus on a very specific technical problem: how do you implement a working inline comments system for pull requests? For once, it's good to focus on nitty gritty details and get some technical challenge. As we will see, the problem is not so obvious and requires some thoughts. In any case, it is good to remember that computing [changesets](http://sogilis.com/blog/demystifying-git-concepts-to-understand/) is an important capability of any good VCS, namely Git. It will be the cornerstone of our solution (in case you haven't, please go read the above post, it's short!).
+Thanks to GitHub and the like, the practice of code review have become widespread. Even for small projects, one can feel the benefits: catching errors, loopholes, or artificial complexity, sharing the knowledge of how code fulfills its feature, enforcing or teaching common guidelines and patterns, especially with new technologies... So many articles have been written already about best practices and benefits for project development. So let's not (re)discuss that and instead focus on a very specific problem: how do you implement an inline comments system for pull requests? As we will see, this is not so obvious and requires some thoughts. But it will serve as a good illustration of the power of [changesets](http://sogilis.com/blog/demystifying-git-concepts-to-understand/) for any capable VCS (namely Git), as it is an important cornerstone of our solution.
 
 
 What Problem Are We Talking about?
 ----------------------------------
-
-Thanks to platforms such as GitHub and the like, the practice of code review have become widespread. Even for small projects with teams of two (like we sometimes have), we do some review because we can already feel the benefits: catching errors, loopholes, or artificial complexity, sharing the knowledge of how code fulfills its feature, enforcing or teaching common guidelines and patterns, especially with new technologies...
 
 In the general picture, the whole process goes something like this:
 
