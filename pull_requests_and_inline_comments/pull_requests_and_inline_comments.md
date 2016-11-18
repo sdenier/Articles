@@ -21,7 +21,11 @@ In the past, code review was mainly patch-based. But now many code review system
 - "I find this part is complicated and not sure I understand all the details - can we rewrite it?"
 - "Cool! That's a neat way to solve this issue. I will be sure to apply it next time I have the same problem."
 
+![](figures/Github_inline_comment.png)
+
 And then you proceed to the next chunk of code which you feel is either unsatisfactory/confusing/cool... Later you get a full review of your comments and associated diffs, provide a global comment and request changes before approval. Then the changeset gets updated by the original developer, and you can see at first sight which of your comments are still relevant and which ones are outdated, showing progress in the review process. Sometimes it just feels good...
+
+![](figures/Github_show_outdated.png)
 
 Wait! What just happens when we talked about outdated comments? How does GitHub knows whether my comment is still relevant or not? As is often the case in a complex system, complicated issues can hide in plain sight (1). Let's dive into the intricacies of keeping inline comments up to date during a code review process.
 
