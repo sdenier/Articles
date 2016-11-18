@@ -26,7 +26,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2016-11-17 13:28:40 +0000</string>
+	<string>2016-11-18 21:53:30 +0000</string>
 	<key>Modifier</key>
 	<string>Simon Denier</string>
 	<key>NotesVisible</key>
@@ -55,7 +55,7 @@
 		<key>NSPaperSize</key>
 		<array>
 			<string>size</string>
-			<string>{595, 842}</string>
+			<string>{595.28001499176025, 841.8900146484375}</string>
 		</array>
 		<key>NSPrintReverseOrientation</key>
 		<array>
@@ -85,7 +85,7 @@
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {783, 559}}</string>
+				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -688,7 +688,7 @@
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {783, 559}}</string>
+				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -1443,7 +1443,7 @@
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {783, 559}}</string>
+				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -3475,7 +3475,7 @@
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {783, 559}}</string>
+				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -3794,7 +3794,9 @@
 					<key>Points</key>
 					<array>
 						<string>{103.49999839067459, 288}</string>
+						<string>{135, 306}</string>
 						<string>{324, 315}</string>
+						<string>{504, 306}</string>
 						<string>{531, 288}</string>
 					</array>
 					<key>Style</key>
@@ -6370,7 +6372,7 @@ O B A}</string>
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {783, 559}}</string>
+				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -9119,7 +9121,7 @@ O B A}</string>
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {783, 559}}</string>
+				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -11207,7 +11209,7 @@ O B A}</string>
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {783, 559}}</string>
+				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -13812,7 +13814,7 @@ O B A}</string>
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {783, 559}}</string>
+				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -15746,7 +15748,7 @@ O B A}</string>
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {783, 559}}</string>
+				<string>{{0, 0}, {782.8900146484375, 559.28001499176025}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
 				<key>ID</key>
@@ -18532,7 +18534,7 @@ O B A}</string>
 	<key>WindowInfo</key>
 	<dict>
 		<key>CurrentSheet</key>
-		<integer>8</integer>
+		<integer>3</integer>
 		<key>ExpandedCanvases</key>
 		<array/>
 		<key>Frame</key>
@@ -18550,7 +18552,7 @@ O B A}</string>
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{-25, -38}, {832, 635}}</string>
+		<string>{{-25, -37}, {832, 635}}</string>
 		<key>Zoom</key>
 		<real>1</real>
 		<key>ZoomValues</key>
