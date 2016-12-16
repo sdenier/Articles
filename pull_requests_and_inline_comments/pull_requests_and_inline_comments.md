@@ -13,7 +13,7 @@ In the general picture, the whole process goes something like this:
 - developer Kate reads the changes, and notifies acceptance or rejection of the request with proposals for updates
 - developer Jim updates its code following the remarks
 - developer Kate can see which comments have been fulfilled, whether there is remaining work to do, or if some new things call the attention
-- ... and so on until every body is satisfied with the changes
+- ... and so on until everybody is satisfied with the changes
 
 In the past, code review was mainly patch-based. But now many code review systems are web-based. The cornerstone of such online systems is the inline comments mechanism. Anybody knows the thrill of picking your first line to comment. It goes something like this:
 
@@ -44,7 +44,7 @@ Here is an example with a dummy unidiff. `Ax` represents one line content. Delet
 ```
   A1
   A2
-+ A3   ### your inline comment: say nothing nice/nasty about this change
++ A3   ### your inline comment: say something about this change
   A4
   A5
 ```
@@ -69,7 +69,7 @@ Obviously, if line A3 still existed in the new update, we should have seen the i
 + B1
 + B2
   A2
-+ A3   ### your inline comment: say nothing nice/nasty about this change
++ A3   ### your inline comment: say something about this change
   A4
   A5
 ```
@@ -305,16 +305,16 @@ What has changed? The rebase has deleted two lines from the original base, inclu
 
 It seems we can still apply the rules to outdate or move inline comments on added or kept lines, *even though* the final diff is computed against a different base. This happens because both the final and update diffs have the same final state. However, we now have a problem with inline comments on deleted lines: especially the offset `Original[B]` does not match `Final[B]` for line A5. How can we translate the inline comment in this case?
 
-Fortunately, we now have a good grasp about how diffs can be used to translate offsets. From the above *states and diffs* figure, it is quite obvious that the *base diff* is the missing link between the old master and the new master. Let's plug it into our translation schema.
+Fortunately, we now have a good grasp about how diffs can be used to translate offsets. From the full figure, it is quite obvious that the *base diff* is the missing link between the old master and the new master. Let's plug it into our translation schema.
 
 ![](figures/Rebase_ok.png)
 
 Again, it is important to notice how offset columns match between diffs:
 
-- The `Original[After]` column matches with the `Update[Before]` column
-- The `Update[After]` column matches with the `Final[After]` column
-- The `Original[Before]` column matches with the `Base[Before]` column since they share the same old master state
-- The `Base[After]` column matches with the `Final[Before]` column since it represents the new master state
+- the `Original[After]` column matches with the `Update[Before]` column
+- the `Update[After]` column matches with the `Final[After]` column
+- the `Original[Before]` column matches with the `Base[Before]` column since they share the same old master state
+- the `Base[After]` column matches with the `Final[Before]` column since it represents the new master state
 
 We have a complete coverage of offsets, which allows us to always translate between diffs. We define the definitive rules for removed lines (since rebase does not affect added or kept lines, we do not change those rules):
 
