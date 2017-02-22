@@ -93,7 +93,7 @@ Vient ensuite la seconde étape, qui consiste à évaluer le risque lié à chaq
 
 Quand un client pose une question, il est parfois difficile de formuler une réponse quand on est soi-même incertain. En tant que professionnels, ne pas être capable de répondre précisément (combien ça va coûter, combien de temps pour développer telle fonctionnalité) apparaît comme un aveu d'incompétence. Pourtant l'informatique est bien un domaine où il est difficile de tout connaître. Cette évaluation vous encourage à être honnête avec vous-même et votre porteur de projet : **les points durs se cachent derrière votre ignorance, donc identifier et reconnaître ceux-ci vous permettra de progresser plus vite vers la conclusion du projet.** C'est certainement l'aspect le plus intéressant de la méthode de Liz.
 
-![](http://media.tumblr.com/48c75893f76a24b9e9b23b051ff980ab/tumblr_inline_njb1ktCmMq1szbtyb.png)
+<img src="./capabilities.001.png">
 
 > Quelques mots-clés pour décrire les capacités, des flèches pour indiquer les dépendances principales, des chiffres pour indiquer le risque… La discussion peut commencer ! Cette commodité risquée à 4 peut-elle être simplifiée ou remplacée ? Quelle priorité donnée au spoiler ? Quelle relation entre ces deux différentiateurs qui semblent indépendants ? Peut-on en choisir celui qui a le plus de valeur ?
 
