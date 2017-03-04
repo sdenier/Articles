@@ -1,14 +1,12 @@
 In the previous article, we saw three essential concepts of revision tools: snapshot, graph, and changeset. In the following, we can apply these concepts to understand how Git commands operate on your project. This will teach us how to think like Git.
 
-[[MORE]]
-
 ## Updating the Working Copy (Switching between Branches, Pulling)
 
 When you switch to another branch, or update your current branch, you change your local working copy. But the working copy actually mirrors your latest commit in HEAD (minus local modifications). Which means that Git can compute the difference between your HEAD and any given commit, then apply the transformation to update your working copy.
 
 _When you update your working copy, you move the HEAD in the graph. Git computes the changeset between the current HEAD and the chosen one to just update files which need to change._
 
-![](https://36.media.tumblr.com/b8f5d1fa49c5307393f3bc2797945033/tumblr_inline_nn7e88Xt2r1szbtyb_540.png)
+![](./working_copy_update.png)
 
 Think about it: to change your working copy, Git could simply wipe out previous files and dump fresh new files. But for big projects with thousands of files, this would be way too costly. Instead it patches local files, which implies it only changes what needs to be updated to mirror the new state.
 
@@ -22,7 +20,7 @@ You make a cherry-pick when you want to retrieve some commits and changes from a
 
 _With `git cherry-pick B D`, you can copy changes from commits B and D into your current branch, without the change introduced by C. Notice that B’ and D’ are new commits: they just have the same data as their source but are independent otherwise._
 
-![](https://lh6.googleusercontent.com/-mCH6lljn2JI/VT5e0zYzqwI/AAAAAAAAC9Q/T3qNwT6FG4s/w200-h350-no/cherrypick.gif)
+![](./cherrypick.gif)
 
 Cherry-picking really embodies the whole changeset everywhere principle.
 
@@ -44,7 +42,7 @@ Here is the course of action when you launch a rebase:
 4.  When performing an interactive rebase, Git will also apply the action you selected for the commit (pick, edit, squash…).
 5.  If a conflict appears when applying a changeset, Git stops and asks you to resolve the conflict before continuing or cancelling the rebase.
 
-![](https://31.media.tumblr.com/ed5d37cef766122e18a3c63ceb53e31a/tumblr_inline_nn7eamVoQv1szbtyb_500.gif)
+![](./rebase.gif)
 
 With this workflow in mind, it is easy to understand two fringe cases which deter some people to use rebase: orphan commits coming back (for example, after a merge) and recurring conflicts during rebase.
 
@@ -54,7 +52,7 @@ Although rebasing is often explained as moving commits around, it is best to und
 
 _Rebasing creates new commits C' and D' from the source C and D, changing the ancestry from B to E. But source commits stay around and can come back as duplicates if someone keeps a reference on them._
 
-![](https://36.media.tumblr.com/5b23f531b1f9769e6451f578abd1910b/tumblr_inline_nn7eb8HeGW1szbtyb_540.png)
+![](./rebase_orphan.png)
 
 ### Advanced Git: Recurring Conflicts
 
@@ -74,7 +72,7 @@ Merging is conceptually a bit more complex as we need a fourth concept to explai
 
 _Since commit E is a snapshot and already contains changes brought by D, we just need to compute the difference (changeset) between the common ancestor B and commit E. Contrary to rebase which copies commit history, merge only takes into account consolidated changes from the latest commit/snapshot._
 
-![](https://lh4.googleusercontent.com/-0RfVCCEYIrs/VTeQVDnT6KI/AAAAAAAAC5c/h-edyQDmZXg/w497-h305-no/merge_step1.png)
+![](./merge_step1.png)
 
 With the above concepts, we have a simple plan for the merge operation.
 
@@ -84,7 +82,7 @@ With the above concepts, we have a simple plan for the merge operation.
 4.  Let user resolve conflicts if need be.
 5.  Create a merge commit with the two merge heads as parents.
 
-![](https://40.media.tumblr.com/b75b74d376b4600e0b8045b31329a873/tumblr_inline_nn7h819aHb1szbtyb_540.png)
+![](./merge_step2.png)
 
 ### Advanced Git: More Than One Ancestor?
 
@@ -92,13 +90,13 @@ The example above represents the most basic scenario. But as merges can be perfo
 
 _If we take the changeset from common ancestor B to G, it contains changes from D and G, but also from C through the previous merge E. But we do not want C changes since they are already in F. Instead, if we take the changeset from **latest** common ancestor C to G, it only contains changes from D, E, and G, consolidated in G snapshot._
 
-![](https://40.media.tumblr.com/a48b1b30698de0add452473fd8f5d540/tumblr_inline_nn7ee7XY1c1szbtyb_540.png)
+![](./merge_ancestors.png)
 
 More complex scenarios arise when merged branches start to cross each other, as in the demonstrative criss-cross merge. Then you can have multiple latest common ancestors.
 
 _Both C and D commits can be considered as latest common ancestors of G and H. If you take the diff from D to H, you get changes from C (through E) and H, but C is already in G. If you take the diff from C to H, you get changes from D and H, but D is already in G through F. The solution is to create a virtual merge of C+D and to compute changes against it, which yields changes from E and H only. On the long run, this strategy produces more intuitive merges and less conflicts._
 
-![](https://36.media.tumblr.com/9a3268af8f198983a549a6fda1697ff1/tumblr_inline_nn7eer0oHX1szbtyb_540.png)
+![](./merge_crisscross.png)
 
 Most revision tools fail to handle such cases correctly (Subversion cancels the merge by screaming “missing revisions” and let you handle the case manually; Mercurial makes an arbitrary choice among common ancestors). Git resolves this case with the so-called _recursive merge strategy_, which computes a virtual common ancestor (a virtual merge of common ancestors).
 
@@ -112,12 +110,6 @@ Now you should just go practice with your project. One good advice is to have a 
 
 _This gitk screenshot shows a before/after state of a repository following a rebase. The two MIN/MAX commits above `tp7-start` tag have been rebased on top of `functions-and-more` in the `tp7` branch. In this view, you can still see the old commits, which are now orphaned, and the two new commits, which are just copies of the old ones._
 
-![](https://lh6.googleusercontent.com/-b5cdsZ7O71g/VTeMQz45ebI/AAAAAAAAC44/9VtP2aWmFrE/w547-h138-no/gitk_rebase.png)
+![](./gitk_rebase.png)
 
-<div itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-  <img itemprop="image" src="http://www.gravatar.com/avatar/58778f8cc14e8a484568a663266c3029.png" alt="Simon Denier">
-  <a href="mailto:simon+blog@sogilis.com"><span itemprop="name" rel="author"><i class="fa fa-user" /> Simon Denier</span></a>
-  <a href="http://twitter.com/simondenier"><span class="share-link-twitter" rel="twitter"><i class="fa fa-twitter" /> simondenier</span></a>
-  <a href="https://github.com/sdenier"><span rel="github"><i class="fa fa-github" /> sdenier</span></a>
-  <a href="https://plus.google.com/100056946931947086533?rel=author"><span class="share-link-google-plus" rel="gplus"><i class="fa fa-google-plus" /> +SimonDenier</span></a>
-</div>
+_Simon Denier [@twitter](https://twitter.com/simondenier) - [@github](https://github.com/sdenier)_

@@ -4,8 +4,6 @@ But Git has actually a simple conceptual model and does not attempt to hide it a
 
 To begin with your apprenticeship of the Git model, you just need the concepts of snapshots, graph, and changesets.
 
-[[MORE]]
-
 > If you have already used other revision tools but think Git is too hard to learn for your needs, this article is for you! However, if you have never used a revision tool before, why not [try Git](https://try.Github.io/levels/1/challenges/1) first? Come back when you have played with the basic commands but want a better grasp about what is going on.
 
 ## Git Stores Snapshots (aka Commits) of your Project
@@ -18,21 +16,21 @@ With this guarantee, we can be sure that checking out a commit will give us that
 
 _Commit A points to a snapshot of all project files (files bar, foo, and zorg). Even if you only change the foo file (in yellow) to create a version v3 in commit A, Git will remember that you want zorg file in version 1 and bar file in version 2 for this snapshot._
 
-![](https://36.media.tumblr.com/25b5bfcc2f53de00929a66e127ddc654/tumblr_inline_nn7cyqEALF1szbtyb_540.png)
+![](./snapshot.png)
 
 ## Git Represents Relationships between Commits (aka History) as a Graph
 
 In any revision control system, commits do not exist in isolation but are linked through a parent-child relationship, which remembers where a commit comes from (what was the previous state before the commit).
 
-![](https://40.media.tumblr.com/8ebb2d4ca006cedb4da59d41055c0edd/tumblr_inline_nn7cznxFou1szbtyb_540.png)
+![](./graph.png)
 
 So you can start to view the history of your project as a line of successive states. The above figure presents a common representation of history in a Git repository, where the arrow indicates that commit B **knows** that its parent is commit A (in Git, parent commits do not know about their children, so the arrow points “backward”). In the same manner, commit C knows its parent B, and by transitivity its grandparent A…
 
-![](https://41.media.tumblr.com/e6c8296162bf84e00a8530c4e01cf1b6/tumblr_inline_nn7d0cxtU31szbtyb_540.png)
+![](./graph_branch.png)
 
 When two commits share the same parent, you start to have divergent branches. Each line can continue to grow in concurrent ways.
 
-![](https://41.media.tumblr.com/1961959265266dedc1c8252c1c03430b/tumblr_inline_nn7d11XS4Z1szbtyb_540.png)
+![](./graph_merge.png)
 
 When time has come to merge two branches together, Git creates a commit with two parents. The result is that the history is now a directed graph of commits.
 
@@ -46,7 +44,7 @@ When you create a commit B from commit A, you create a new snapshot. But you can
 
 _A snapshot stores the full state, independent of history: B commit points to files bar, foo, and zorg. A changeset only records what has changed: B changeset describes local patches (in yellow) in bar and zorg files. Both concepts are actually interchangeable and can be used to model the history graph._
 
-![](https://lh5.googleusercontent.com/-qvs8v8QQj2k/VT5NwyslI_I/AAAAAAAAC80/5Mj3vau2I7I/w483-h220-no/changeset.png)
+![](./changeset.png)
 
 ### What Is in a Changeset? And What to Do With It?
 
@@ -54,7 +52,7 @@ The interesting bit about changesets is that they can be used as blueprint to co
 
 _Applying the B changeset onto commit F will only modify files bar and zorg. It does not care that unmodified foo file from B is absent in F or that there is a yyy file in F._
 
-![](https://40.media.tumblr.com/d3a81a93baa464d2b044313674d7914e/tumblr_inline_nn7d3kbpAT1szbtyb_540.png)
+![](./changeset_applied.png)
 
 Git, for example, see changes at the level of lines in text files. When you view a patch in Git (which is the textual representation of a changeset), you see something like that:
 
@@ -95,7 +93,7 @@ Git needs only to match the target files, line positions and textual context to 
 
 _Changeset can update bar file, even if there is already a change in another place. But it can not update zorg file automatically, as the local context for the patch has changed. It will let you resolve the conflict._
 
-![](https://41.media.tumblr.com/26058fb37ea3bcaec6d9917b222624c2/tumblr_inline_nn7d45AGtd1szbtyb_540.png)
+![](./changeset_conflict.png)
 
 ### Changesets Anytime Anywhere
 
@@ -107,7 +105,7 @@ Things start to become interesting when you know that Git can compute changesets
 
 _You can read the `git diff` form as `git diff [from] X [to] Y`._
 
-![](https://41.media.tumblr.com/ea97234ba633c44e0e87fb0b1fbae2f7/tumblr_inline_nn7d5b8Roa1szbtyb_540.png)
+![](./graph_diff.png)
 
 In other words, Git is super effective in computing state transformations and applying such transformations elsewhere (well, most RCS can do the same, but some are more effective than others).
 
@@ -115,10 +113,4 @@ In other words, Git is super effective in computing state transformations and ap
 
 This brief introduction to three concepts of revision tools is enough to understand the essentials of Git. In the next article we will put this knowledge in action to explain how some Git commands operate on your project.
 
-<div itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-  <img itemprop="image" src="http://www.gravatar.com/avatar/58778f8cc14e8a484568a663266c3029.png" alt="Simon Denier">
-  <a href="mailto:simon+blog@sogilis.com"><span itemprop="name" rel="author"><i class="fa fa-user" /> Simon Denier</span></a>
-  <a href="http://twitter.com/simondenier"><span class="share-link-twitter" rel="twitter"><i class="fa fa-twitter" /> simondenier</span></a>
-  <a href="https://github.com/sdenier"><span rel="github"><i class="fa fa-github" /> sdenier</span></a>
-  <a href="https://plus.google.com/100056946931947086533?rel=author"><span class="share-link-google-plus" rel="gplus"><i class="fa fa-google-plus" /> +SimonDenier</span></a>
-</div>
+_Simon Denier [@twitter](https://twitter.com/simondenier) - [@github](https://github.com/sdenier)_
