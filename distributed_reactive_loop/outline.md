@@ -6,7 +6,6 @@ This is both
 - a technical story about a simple solution to the resiliency problem in distributed systems (how to recover when something bad happens - CAP theorem)
 - an educational story about strong constraints leading to simple solutions
 
-*Tradeoffs of CAP vary depending on system perspectives: in some place you sacrifice consistency for availability, in some other availability for consistency - but you can always have partition on the internet.*
 
 
 Context
@@ -87,3 +86,5 @@ Conclusion
 *Achieve resiliency without a name*
 
 En fait, c'est peut-être pas juste faire un système distribué avec des composants non-standard, c'est designer un système distribué en prenant en compte au plus juste ses règles customisées.
+
+Your mileage may vary. With our current experience, we may not make the same choice today. However, do not forget the power of imagination when trying to design and think about a distributed system.
