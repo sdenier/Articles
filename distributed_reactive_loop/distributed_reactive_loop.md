@@ -9,7 +9,7 @@ Once upon a time, a small team of developers in the wild wild web were tasked wi
 Challenges of 3D printing (in a distributed context)
 ----------------------------------------------------
 
-**need a figure somewhere to simply illustrate the system**
+![](figures/3d_printing_cloud.png)
 
 - jobs take a long time, very long in term of nowadays computer time: from a few minutes for the smallest object to well over a day for big jobs, with many objects taking at least a few hours.
 - printers are still new things, a bit fragile, with failures happening from time to time.
@@ -23,9 +23,11 @@ How (not) to design and think of a distributed system
 
 Every now and then, when thinking about distributed systems, engineers go all the rage with plenty of services and love to throw together a bunch of servers, load balancers, job queues, storage nodes to build a highly-available, highly-resilient, highly-scalable systems. With modern days conception, there are bonus points for using micro-services, each micro-service "customarily" holding a single responsibility, easier to understand, easier to deploy, easier to maintain.
 
-However, there have been many warnings over the last years, even "horror stories", that micro-services systems are not *easier* to design and understand. Especially as for each micro-service, you have to think of the ways it will communicate with other services, but also the ways such communication would fail. In a graph vision, this means you have to think about the n nodes of your system, but also about the m ways nodes communicate between them (with m somewhere between n-1 and n*(n-1)/2). "In other words, the more you add micro-services, the more you multiply how they interact and fail with each other."
+However, there have been many warnings over the last years, even "horror stories", that micro-services systems are not *easier* to design and understand. Especially as for each micro-service, you have to think of the ways it will communicate with other services, but also the ways such communication would fail.
 
-**figure to show nodes and edges, see how edges can easily multiply in a distributed system**
+![](figures/nodes_connections.png)
+
+In a graph vision, this means you have to think about the n nodes of your system, but also about the m ways nodes communicate between them (with m somewhere between n-1 and n\*(n-1)/2). "In other words, the more you add micro-services, the more you multiply how they interact and fail with each other."
 
 For the reasons given above, it was obvious from the start that our main challenge would not be system availability or scalability, but rather the resiliency to fault in the system: job failure, but also communication failure, for example when a connection would be lost and a printer could not receive or send messages to the pooling system. Having to deal with such a constraint was new to us.
 
@@ -37,13 +39,13 @@ A thought framework for our case: the distributed reactive loop
 
 What do you do when you are wandering into unknown territories, with some budget constraints so that you have limited time to think about the system. You simplify things and use your imagination to make it easier to reason about your system.
 
-**figure showing supervisor and worker communication?**
+![](figures/architecture_overview.png)
 
 In our case this imply limiting the number of intermediaries between our two main resources: the supervisor node, which would sends commands and receive updates, and the worker nodes, which would receives commands and sends updates. Simply, we make it the simplest possible by having a direct communication channel (without, for example, message queues intermediaries).
 
 Then, we design a reactive loop where each time the two nodes (the supervisor and the printer worker) would communicate, they would exchange a bit of information so that they would refresh their respective state if need be, and send (or receive) appropriate commands and updates. --- The core tenet of our framework is that each time both nodes would communicate, they would make a round-trip loop exchanging commands and information, so that the supervisor could properly react to the state of the worker, considered locally consistent.
 
-**figure showing the principles of the reactive loop**
+![](figures/reactive_loop.png)
 
 Together, those design decisions make it easier to reason about the system by having a simple **thought framework**, with basically distributed decisions being made in one place - the supervisor. It also imposed a clear separation of concerns between worker and supervisor, with the worker focusing on keeping its own state consistent (with regards to job processing in the printer), while the supervisor focused on worker commands and state reconciliation whenever it could communicate with workers. Overall, it makes it easier to reason about failure and recovery modes.
 
@@ -73,3 +75,5 @@ digression about the CAP theorem
 
 Conclusion
 ----------
+
+[Icons by Icons8](https://icons8.com)
