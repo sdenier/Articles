@@ -1,7 +1,7 @@
 Resiliency without a Name: the Distributed Reactive Loop
 ========================================================
 
-Or *how I stopped worrying about micro-services and learned to love distributed systems.*
+Or *how I learned to stop worrying and love distributed systems.*
 
 
 Once upon a time, a small team of developers in the wild wild web were tasked with designing a pooling system for 3D printers over the internet - basically, it would work like a classic distributed system dispatching print jobs across workers. The task was "interesting", as the team was mostly ignorant about the challenges/customaries of 3D printing, and challenging, as the budget was tight - what we really ought to build was a proof of concept, able to handle the customaries of 3D printers.
@@ -54,9 +54,25 @@ The reactive loop, illustrated
 
 What does a reactive loop looks like in our case. Take a look with most case.
 
-- Nominal case: send job / start job
-- Delayed/deferred job
-- starting a deffered job
+*Printer as a Finite-State Machine.*
+
+When print orders are sent, the server takes care of creating and dispatching print jobs on selected 3D printers. Each print job is first registered as todo in the printer queue. Then the server eventually takes care to notify connected printers, if any.
+
+### Nominal Case: Start a Job Immediately
+
+A job request is received by the server. The printer is connected so its status is requested. The printer answers "ready to print" so the supervisor looks one job to do in the current printer queue and sends it to the printer.
+
+### Postponing a Job
+
+The printer might already be printing another job when contacted, so in this case the server simply does nothing. The job is already in queue and saved for later processing.
+
+### Finishing a Job and Starting a Deffered Job
+
+Once the printer has finished printing, it gets itself into a waiting state, because the object must be extracted by a human operator before the next operation. When receiving this update, the server takes care of updating the job status in the database. The operator can then use an interface to signal the server the item has been effectively retrieved. At the next round-trip, when the printer indicates it is still waiting for retrieval, the server can check the job status and sends the command has been effectively retrieved. The printer goes back to ready status, then the server can dispatch the next job.
+
+### Starting after Connection
+
+
 - state reconciliation
 - error detection, error recovery
 
