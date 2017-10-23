@@ -3,8 +3,14 @@ Resiliency without a Name: the Distributed Reactive Loop
 
 Or *how I learned to stop worrying and love distributed systems.*
 
+TODO
+- figure for the printer FSM
+- figures for the use cases
+- streamline all sections to focus on the "thought framework" idea for reasoning, and no other project concern (budget...)
+- normalize state/status ? (job/printer)
+- rethink the title?
 
-Once upon a time, a small team of developers in the wild wild web were tasked with designing a pooling system for 3D printers over the internet - basically, it would work like a classic distributed system dispatching print jobs across workers. The task was "interesting", as the team was mostly ignorant about the challenges/customaries of 3D printing, and challenging, as the budget was tight - what we really ought to build was a proof of concept, able to handle the customaries of 3D printers.
+Once upon a time, a small team of developers were tasked with designing a pooling system for 3D printers over the internet - something akin to a system dispatching print jobs across printers. It was an interesting challenge as we knew nothing of the customaries of 3D printers: how it works, how it fails, what kind of communication to expect. After the initial probe & discovery stage, it becames more and more obvious that we had to design a distributed system in a not so common way. Because 3D printers are dealing with physical process, which takes a certain time and needs some manual operation, we had to get back to the basics and design our system around two properties: keeping things consistent in the right place and making the overall system resilient in face of inconsistency.
 
 Challenges of 3D printing (in a distributed context)
 ----------------------------------------------------
@@ -29,9 +35,10 @@ However, there have been many warnings over the last years, even "horror stories
 
 In a graph vision, this means you have to think about the n nodes of your system, but also about the m ways nodes communicate between them (with m somewhere between n-1 and n\*(n-1)/2). "In other words, the more you add micro-services, the more you multiply how they interact and fail with each other."
 
+"more details about the resiliency challenge - choose/merge, first for idea, second more practical"
+
 For the reasons given above, it was obvious from the start that our main challenge would not be system availability or scalability, but rather the resiliency to fault in the system: job failure, but also communication failure, for example when a connection would be lost and a printer could not receive or send messages to the pooling system. Having to deal with such a constraint was new to us.
 
-"more details about the resiliency challenge"
 We had to design fully autonomous worker, able to perform their job of monitoring the printer while processing an item, even with a long loss of connection/communication. And we had to design a supervisor, which could fully retrieve and reconciliate the state when communication would be back with the worker.
 
 A thought framework for our case: the distributed reactive loop
@@ -49,37 +56,69 @@ Then, we design a reactive loop where each time the two nodes (the supervisor an
 
 Together, those design decisions make it easier to reason about the system by having a simple **thought framework**, with basically distributed decisions being made in one place - the supervisor. It also imposed a clear separation of concerns between worker and supervisor, with the worker focusing on keeping its own state consistent (with regards to job processing in the printer), while the supervisor focused on worker commands and state reconciliation whenever it could communicate with workers. Overall, it makes it easier to reason about failure and recovery modes.
 
-The reactive loop, illustrated
+Printer Automata
+----------------
+
+From the supervisor point of view, the worker actually is a finite-state machine. Different states indicating what is going on on the printer and therefore the supervisor can decide which commands make sense(there is also a validity control on the worker side). For the purpose of this paper, we will keep a simplified FSM with 3 normal states and 1 error state (which can be recovered).
+
+The printer normally starts in the ready state (after an internal boot sequence). This is the normal state to wait for print jobs from the server.
+
+When the printer starts a job, the worker goes into an printing state, actively polling the printer until it has finished. It can also send progress update to the supervisor.
+
+Once the job is done, the printer is not readily available as the item must be retrieved from the printer case. The worker transitions into the "waiting for retrieval" state. It can not accept a new job in this state. It simply waits for a signal that the human operator has retrieved the item and clean up the box if necessary.
+
+We can consider a special "offline" state when supervisor-worker communication is impossible. The worker may simply be "off-the-grid", either because the printer is turned off, or because the connection is temporarily lost. This implies that job orders should not be lost when printer is offline, but also that both supervisor and worker must synchronize when coming back online.
+
+Things may go wrong for many reasons when processing a job. Whenever the worker detects such a case, it goes into the error state, waiting for recovery. Indeed, when the printer fails, the item is most often in an unknown condition. An operator must look into the printer box, extract and discard the item, clean up the mess. Then only he can signal that the printer is ready for new job. As a special case, if ones pulls the plug (for emergency stop)) while printing, after coming back online the worker will be in error state. indeed, an interrupted printing can not be resumed, so a manual check is necessary before signaling the printer ready.
+
+
+The Reactive Loop, Illustrated
 ------------------------------
 
-What does a reactive loop looks like in our case. Take a look with most case.
+To reason with the reactive loop, the simplest way is just to imagine some use cases and play them through the loop. The below examples will illustrate most of what can happen in the system.
 
-*Printer as a Finite-State Machine.*
+The reactive loop is characterized by a roundtrip between the worker and the supervisor, where the worker sends its current status and the supervisor reacts accordingly and sends a response if need be. But what triggers the roundtrip? There are two sources of events: external events, like a customer order or an operator action, and internal transition in the worker automata.
 
-When print orders are sent, the server takes care of creating and dispatching print jobs on selected 3D printers. Each print job is first registered as todo in the printer queue. Then the server eventually takes care to notify connected printers, if any.
+So to start with, the prerequisite for anything to happen is a print order by a customer. When print orders are received, the server takes care of creating and dispatching print jobs on a subset of 3D printers. Each print job is first registered as todo, regardless of the printer status. This way, the job becomes part of the printer queue. It will be consumed when the printer is ready, depending on one of the following use case.
+
 
 ### Nominal Case: Start a Job Immediately
 
-A job request is received by the server. The printer is connected so its status is requested. The printer answers "ready to print" so the supervisor looks one job to do in the current printer queue and sends it to the printer.
+When a job request is created on the server, the server checks whether the printer is connected and sends a request for status. The printer answers "ready to print" so the supervisor looks one job to do in the current printer queue and sends it to the printer.
 
 ### Postponing a Job
 
 The printer might already be printing another job when contacted, so in this case the server simply does nothing. The job is already in queue and saved for later processing.
 
-### Finishing a Job and Starting a Deffered Job
+### Finishing a Job and Starting a Job from the queue
+
+"Consuming a Job queue."
 
 Once the printer has finished printing, it gets itself into a waiting state, because the object must be extracted by a human operator before the next operation. When receiving this update, the server takes care of updating the job status in the database. The operator can then use an interface to signal the server the item has been effectively retrieved. At the next round-trip, when the printer indicates it is still waiting for retrieval, the server can check the job status and sends the command has been effectively retrieved. The printer goes back to ready status, then the server can dispatch the next job.
 
-### Starting after Connection
+### Starting after a Reconnection
 
+When the printer comes back online in the ready state, how does he get deffered jobs? In such a case, a simple round-trip to the supervisor indicates the printer is ready and can trigger a job command if one is available in the queue.
 
-- state reconciliation
-- error detection, error recovery
+### State Reconciliation
+
+Update and transition messages may be lost when the connection is down. But an interrupted connection should not alter the printer processing. For example, the printer might finish its job and go to the "waiting retrieval" state. Meanwhile the job is still marked in progress in the supervisor. Next steps can not happen until state has been reconciled. After reconnection, a status exchange is enough so that the supervisor updates the job state. Only then can the process proceed normally with the retrieval stage before going back to ready.
+
+### Error Detection and Recovery
+
+Failure can happen anytime during a printing process: the model might be faulty, the mechanimc can break, or the printer could simply power off when someone pulls the plug. In most case, it is impossible to resume a failed 3D process, because of the physical properties of the material. When this happens, the worker simply goes into an error state. This can happen whether the printer is online or offline. Once the printer is online again, the roundtrip is enough for the supervisor to detect the error state and notify the job as failed. The process is then similar to the "waiting retrieval" state. The operator cleans up the mess, checks the printer is operational, then signals the job as "recovering" for the supervisor. At the next roundtrip, when the printer sends the error state and the supervisor sees the job as recovering, it can send the recover signal to the printer. This signal puts the printer back in ready state, which can then start over.
+
 
 More principles/properties of the reactive loop?
 ------------------------------------------------
 
 "limit the redundancy of data between nodes, so that state would be easier to reconcile in case of inconsistencies."
+
+Progress/Liveliness: some times both system can work independently (i.e. disconnected), for example when printing is going on. But overall both systems need to be online together to make progress.
+
+Comparison with an independant queue system:
+- can use well-tested, reliable/available system (esp. SAAS): this means other systems relies on it for synchronization. Depending on the design, the system could make progress without supervisor and worker being simultaneously online.
+- more systems to synchronize, more state to reason about: supervisor state and job queue. A job should not be started on another printer if we are not sure it has been cancelled on the first one.
 
 **note about the extensibility of the system/thought framework**
 - do we need a new state in worker?
