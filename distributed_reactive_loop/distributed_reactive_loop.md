@@ -4,7 +4,7 @@ Resiliency without a Name: the Distributed Reactive Loop
 Or *how I learned to stop worrying and love distributed systems.*
 
 TODO
-- figure for the printer FSM
+- proofread the abstract description of the reactive loop before describing the use cases?
 - figures for the use cases
 - streamline all sections to focus on the "thought framework" idea for reasoning, and no other project concern (budget...)
 - normalize state/status ? (job/printer)
@@ -59,17 +59,19 @@ Together, those design decisions make it easier to reason about the system by ha
 Printer Automata
 ----------------
 
-From the supervisor point of view, the worker actually is a finite-state machine. Different states indicating what is going on on the printer and therefore the supervisor can decide which commands make sense(there is also a validity control on the worker side). For the purpose of this paper, we will keep a simplified FSM with 3 normal states and 1 error state (which can be recovered).
+The worker is easily modelled as a finite-state machine. Each state indicates what the printer is currently doing, which action to take or monitor, and which messages sent by the supervisor are valid. The supervisor also requests the state on different opportunities, which allows it to perform update and send commands. The figure below shows a simplified version of the FSM: there are three normal states, which models the regular process; one special state catches errors to allow the worker to recover.
 
-The printer normally starts in the ready state (after an internal boot sequence). This is the normal state to wait for print jobs from the server.
+![](figures/automata.png)
 
-When the printer starts a job, the worker goes into an printing state, actively polling the printer until it has finished. It can also send progress update to the supervisor.
+After the initial startup, the worker goes by default to the ready state. This is the normal state to wait for print jobs from the server.
 
-Once the job is done, the printer is not readily available as the item must be retrieved from the printer case. The worker transitions into the "waiting for retrieval" state. It can not accept a new job in this state. It simply waits for a signal that the human operator has retrieved the item and clean up the box if necessary.
+When a print message is received, the worker goes into an printing state, monitoring the physical printer until it has finished. It sends progress update to the supervisor but does not accept any message.
 
-We can consider a special "offline" state when supervisor-worker communication is impossible. The worker may simply be "off-the-grid", either because the printer is turned off, or because the connection is temporarily lost. This implies that job orders should not be lost when printer is offline, but also that both supervisor and worker must synchronize when coming back online.
+Once the job is done, the printer is not readily available as the item must be retrieved from the printer box. The worker transitions into a "waiting for retrieval" state. It can not accept a new job in this state. It simply waits for a signal that the human operator has retrieved the item.
 
-Things may go wrong for many reasons when processing a job. Whenever the worker detects such a case, it goes into the error state, waiting for recovery. Indeed, when the printer fails, the item is most often in an unknown condition. An operator must look into the printer box, extract and discard the item, clean up the mess. Then only he can signal that the printer is ready for new job. As a special case, if ones pulls the plug (for emergency stop)) while printing, after coming back online the worker will be in error state. indeed, an interrupted printing can not be resumed, so a manual check is necessary before signaling the printer ready.
+Whenever the worker detects an issue with the printer, it goes into the error state, waiting for recovery. Indeed, when the printer fails, the item is most often in an unknown condition. An operator must look into the printer box, extract and discard the item, and clean up the mess. Then he can signal that the printer is ready for a new job. Notice also how there is a path at startup to the error state: if ones pulls the plug while printing (for an emergency stop), the worker will go and stay in error state when coming back online.
+
+This automata represents the internal workings of the printer. But from the point of view of the supervisor, the worker can also be in an "offline" state, meaning communication is impossible. The worker may simply be turned off, or it may have lost the connection. The loss of server connection does not prevent it from performing some task. For example it might continue to print an item. This case has implications about what happens when a printer is offline but also when it comes back online.
 
 
 The Reactive Loop, Illustrated
