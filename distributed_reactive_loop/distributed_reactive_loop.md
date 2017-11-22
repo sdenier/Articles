@@ -4,7 +4,6 @@ Resiliency without a Name: the Distributed Reactive Loop
 Or *how I learned to stop worrying and love distributed systems.*
 
 TODO
-- proofread the abstract description of the reactive loop before describing the use cases?
 - figures for the use cases
 - streamline all sections to focus on the "thought framework" idea for reasoning, and no other project concern (budget...)
 - normalize state/status ? (job/printer)
@@ -41,16 +40,16 @@ For the reasons given above, it was obvious from the start that our main challen
 
 We had to design fully autonomous worker, able to perform their job of monitoring the printer while processing an item, even with a long loss of connection/communication. And we had to design a supervisor, which could fully retrieve and reconciliate the state when communication would be back with the worker.
 
-A thought framework for our case: the distributed reactive loop
----------------------------------------------------------------
+A Thought Framework for Resiliency: the Distributed Reactive Loop
+-----------------------------------------------------------------
 
-What do you do when you are wandering into unknown territories, with some budget constraints so that you have limited time to think about the system. You simplify things and use your imagination to make it easier to reason about your system.
+Since we are wandering into unknown territories, the most sensible thing to do is to simplify the system, simply to make it easier to reason about. To this end, we remove any intermediary (such as message queues) between the supervisor node and the worker node. Both nodes communicate directly through a full-duplex channel. When removing intermediaries, we also take care of limiting data redundancy between nodes, so that state is easier to reconcile in case of inconsistencies.
 
 ![](figures/architecture_overview.png)
 
-In our case this imply limiting the number of intermediaries between our two main resources: the supervisor node, which would sends commands and receive updates, and the worker nodes, which would receives commands and sends updates. Simply, we make it the simplest possible by having a direct communication channel (without, for example, message queues intermediaries).
+Each node has a primary objective and property which it strives to fulfill, regardless of the system status. The supervisor handles requests from customers and updates from workers. It must be available at all time, even if its response are outdated. On the contrary, the worker focus on consistency with its current job. It monitors and mirrors precisely the state of the printer job, and continue to do so even in case of network failure. For the worker, there is no need or no rush to send updates about the job, as long as it keeps things consistent.
 
-Then, we design a reactive loop where each time the two nodes (the supervisor and the printer worker) would communicate, they would exchange a bit of information so that they would refresh their respective state if need be, and send (or receive) appropriate commands and updates. --- The core tenet of our framework is that each time both nodes would communicate, they would make a round-trip loop exchanging commands and information, so that the supervisor could properly react to the state of the worker, considered locally consistent.
+We have simplified the structure and stated the primary role of each node. Now we must explain how both nodes communicate with each other. The communication protocol defines how progress can happen overall the system. The core tenet of our framework is that each time both nodes are connected and have an opportunity for communication, they would make a round-trip, exchanging data and commands. This framework is called a **reactive loop** because it always starts with a request for the current printer/worker status (considered locally consistent), so that the supervisor properly reacts to it. This small exchange is enough to let the supervisor refresh its internal state, and to send new commands to the worker for the next thing to do.
 
 ![](figures/reactive_loop.png)
 
@@ -59,7 +58,7 @@ Together, those design decisions make it easier to reason about the system by ha
 Printer Automata
 ----------------
 
-The worker is easily modelled as a finite-state machine. Each state indicates what the printer is currently doing, which action to take or monitor, and which messages sent by the supervisor are valid. The supervisor also requests the state on different opportunities, which allows it to perform update and send commands. The figure below shows a simplified version of the FSM: there are three normal states, which models the regular process; one special state catches errors to allow the worker to recover.
+Before we move to the description of the reactive loop, we must specify how the worker represents the printer state. The worker is easily modelled as a finite-state machine. Each state indicates what the printer is currently doing, which action to take or monitor, and which messages sent by the supervisor are valid. The supervisor also requests the state on different opportunities, which allows it to perform update and send commands. The figure below shows a simplified version of the FSM: there are three normal states, which models the regular process; one special state catches errors to allow the worker to recover.
 
 ![](figures/automata.png)
 
