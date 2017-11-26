@@ -58,34 +58,31 @@ Together, those design decisions make it easier to reason about the system by ha
 Printer Automata
 ----------------
 
-Before we move to the description of the reactive loop, we must specify how the worker represents the printer state. The worker is easily modelled as a finite-state machine. Each state indicates what the printer is currently doing, which action to take or monitor, and which messages sent by the supervisor are valid. The supervisor also requests the state on different opportunities, which allows it to perform update and send commands. The figure below shows a simplified version of the FSM: there are three normal states, which models the regular process; one special state catches errors to allow the worker to recover.
+Before we move to the use cases for the reactive loop, we must describe how the worker represents the printer state. The worker is easily modelled as a finite-state machine. Each state indicates what the printer is currently doing, which action to take or monitor, and which messages sent by the supervisor are valid. The supervisor also requests the state on different opportunities, which allows it to perform update and send commands. The figure below shows a simplified version of the FSM: there are three normal states, which models the regular process; one special state catches errors to allow the worker to recover.
 
-![](figures/automata.png)
+![](figures/full_fsm.png)
 
-After the initial startup, the worker goes by default to the ready state. This is the normal state to wait for print jobs from the server.
+After the initial startup, the worker goes by default to the **ready state**. This is the normal state to wait for print jobs from the server. When a print message is received, the worker goes into an **printing state**, monitoring the physical printer until it has finished. It sends progress update to the supervisor but does not accept any message. Once the job is done, the printer is not readily available as the item must be retrieved from the printer box. The worker transitions into a **waiting for retrieval** state. It can not accept a new job in this state. It simply waits for a signal that the human operator has retrieved the item.
 
-When a print message is received, the worker goes into an printing state, monitoring the physical printer until it has finished. It sends progress update to the supervisor but does not accept any message.
+Whenever the worker detects an issue with the printer, it goes into the **error state**, waiting for recovery. Indeed, when the printer fails, the item is most often in an unknown condition. An operator must look into the printer box, extract and discard the item, and clean up the mess. Then he can signal that the printer is ready for a new job. Notice also how there is a path at startup to the error state: if ones pulls the plug while printing (for an emergency stop), the worker will go and stay in error state when coming back online.
 
-Once the job is done, the printer is not readily available as the item must be retrieved from the printer box. The worker transitions into a "waiting for retrieval" state. It can not accept a new job in this state. It simply waits for a signal that the human operator has retrieved the item.
-
-Whenever the worker detects an issue with the printer, it goes into the error state, waiting for recovery. Indeed, when the printer fails, the item is most often in an unknown condition. An operator must look into the printer box, extract and discard the item, and clean up the mess. Then he can signal that the printer is ready for a new job. Notice also how there is a path at startup to the error state: if ones pulls the plug while printing (for an emergency stop), the worker will go and stay in error state when coming back online.
-
-This automata represents the internal workings of the printer. But from the point of view of the supervisor, the worker can also be in an "offline" state, meaning communication is impossible. The worker may simply be turned off, or it may have lost the connection. The loss of server connection does not prevent it from performing some task. For example it might continue to print an item. This case has implications about what happens when a printer is offline but also when it comes back online.
+This automata represents the internal workings of the printer. But from the point of view of the supervisor, the worker can also be in an **offline state**, meaning communication is impossible. The worker may simply be turned off, or it may have lost the connection. The loss of server connection does not prevent the printer from performing some task. For example it might continue to print an item. This case has implications about what happens when a printer is offline but also when it comes back online.
 
 
 The Reactive Loop, Illustrated
 ------------------------------
 
-To reason with the reactive loop, the simplest way is just to imagine some use cases and play them through the loop. The below examples will illustrate most of what can happen in the system.
+Thinking with the reactive loop is as simple as imagining a use case and playing it through the loop. The below examples will illustrate most of what can happen in the system.
 
-The reactive loop is characterized by a roundtrip between the worker and the supervisor, where the worker sends its current status and the supervisor reacts accordingly and sends a response if need be. But what triggers the roundtrip? There are two sources of events: external events, like a customer order or an operator action, and internal transition in the worker automata.
+### Prerequisite: Print Job Creation
 
-So to start with, the prerequisite for anything to happen is a print order by a customer. When print orders are received, the server takes care of creating and dispatching print jobs on a subset of 3D printers. Each print job is first registered as todo, regardless of the printer status. This way, the job becomes part of the printer queue. It will be consumed when the printer is ready, depending on one of the following use case.
-
+To set things into motion, a customer should of course issue a print order. The server takes care of creating and dispatching print jobs on a subset of 3D printers to fulfill the print order. Each print job is first registered as to do, regardless of the printer status. This way, the job becomes part of the printer queue. It will be consumed when the printer is ready, depending on one of the following use case.
 
 ### Nominal Case: Start a Job Immediately
 
 When a job request is created on the server, the server checks whether the printer is connected and sends a request for status. The printer answers "ready to print" so the supervisor looks one job to do in the current printer queue and sends it to the printer.
+
+![](figures/nominal_path.png)
 
 ### Postponing a Job
 
@@ -112,6 +109,8 @@ Failure can happen anytime during a printing process: the model might be faulty,
 
 More principles/properties of the reactive loop?
 ------------------------------------------------
+
+*The reactive loop is characterized by a roundtrip between the worker and the supervisor. But this roundtrip needs to be triggererd by some events. On the supervisor side, this can a customer order or an operator action. On the worker side, this can be a transition in the worker automata.*
 
 "limit the redundancy of data between nodes, so that state would be easier to reconcile in case of inconsistencies."
 
