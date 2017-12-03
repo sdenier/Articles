@@ -1,8 +1,6 @@
 Resiliency without a Name: the Distributed Reactive Loop
 ========================================================
 
-Or *how I learned to stop worrying and love distributed systems.*
-
 TODO
 - figures for the use cases
 - streamline all sections to focus on the "thought framework" idea for reasoning, and no other project concern (budget...)
@@ -49,7 +47,7 @@ Since we are wandering into unknown territories, the most sensible thing to do i
 
 Each node has a primary objective and property which it strives to fulfill, regardless of the system status. The supervisor handles requests from customers and updates from workers. It must be available at all time, even if its response are outdated. On the contrary, the worker focus on consistency with its current job. It monitors and mirrors precisely the state of the printer job, and continue to do so even in case of network failure. For the worker, there is no need or no rush to send updates about the job, as long as it keeps things consistent.
 
-We have simplified the structure and stated the primary role of each node. Now we must explain how both nodes communicate with each other. The communication protocol defines how progress can happen overall the system. The core tenet of our framework is that each time both nodes are connected and have an opportunity for communication, they would make a round-trip, exchanging data and commands. This framework is called a **reactive loop** because it always starts with a request for the current printer/worker status (considered locally consistent), so that the supervisor properly reacts to it. This small exchange is enough to let the supervisor refresh its internal state, and to send new commands to the worker for the next thing to do.
+We have simplified the structure and stated the primary role of each node. Now we must explain how both nodes communicate with each other. The communication protocol defines how progress can happen overall the system. The core tenet of our framework is that each time both nodes are connected and have an opportunity for communication, they would make a round-trip, exchanging data and commands. This framework is called a **reactive loop** because it always starts with a request for the current worker state (considered locally consistent), so that the supervisor properly reacts to it. This small exchange is enough to let the supervisor refresh its internal state, and to send new commands to the worker for the next thing to do.
 
 ![](figures/reactive_loop.png)
 
@@ -76,35 +74,47 @@ Thinking with the reactive loop is as simple as imagining a use case and playing
 
 ### Prerequisite: Print Job Creation
 
-To set things into motion, a customer should of course issue a print order. The server takes care of creating and dispatching print jobs on a subset of 3D printers to fulfill the print order. Each print job is first registered as to do, regardless of the printer status. This way, the job becomes part of the printer queue. It will be consumed when the printer is ready, depending on one of the following use case.
+To set things into motion, a customer should of course issue a print order. The server takes care of creating and dispatching print jobs on a subset of 3D printers to fulfill the print order. Each print job is first registered as to do, regardless of the printer state. This way, the job becomes part of the printer queue. It will be consumed when the printer is ready, depending on one of the following use case.
 
 ### Nominal Case: Start a Job Immediately
 
-When a job request is created on the server, the server checks whether the printer is connected and sends a request for status. The printer answers "ready to print" so the supervisor looks one job to do in the current printer queue and sends it to the printer.
+When a job request is created on the server, the server checks whether the printer is connected and sends a request for state. The printer answers "ready to print" so the supervisor looks one job to do in the current printer queue and sends it to the printer.
 
 ![](figures/nominal_path.png)
 
 ### Postponing a Job
 
-The printer might already be printing another job when contacted, so in this case the server simply does nothing. The job is already in queue and saved for later processing.
+When the server requests the state, the printer might be processing another job. In this case, the round-trip stops immediately with a no-op. Since the job is already in queue, it will be processed later.
 
-### Finishing a Job and Starting a Job from the queue
+![](figures/postponing.png)
 
-"Consuming a Job queue."
+### Consuming a Job Queue
+
+Finishing a Job and Starting a Job from the queue.
 
 Once the printer has finished printing, it gets itself into a waiting state, because the object must be extracted by a human operator before the next operation. When receiving this update, the server takes care of updating the job status in the database. The operator can then use an interface to signal the server the item has been effectively retrieved. At the next round-trip, when the printer indicates it is still waiting for retrieval, the server can check the job status and sends the command has been effectively retrieved. The printer goes back to ready status, then the server can dispatch the next job.
 
-### Starting after a Reconnection
+![](figures/consuming_queue.png)
+
+### Starting after Wakeup/Reconnection
 
 When the printer comes back online in the ready state, how does he get deffered jobs? In such a case, a simple round-trip to the supervisor indicates the printer is ready and can trigger a job command if one is available in the queue.
+
+![](figures/deferred_start.png)
 
 ### State Reconciliation
 
 Update and transition messages may be lost when the connection is down. But an interrupted connection should not alter the printer processing. For example, the printer might finish its job and go to the "waiting retrieval" state. Meanwhile the job is still marked in progress in the supervisor. Next steps can not happen until state has been reconciled. After reconnection, a status exchange is enough so that the supervisor updates the job state. Only then can the process proceed normally with the retrieval stage before going back to ready.
 
+![](figures/reconciliation.png)
+
 ### Error Detection and Recovery
 
-Failure can happen anytime during a printing process: the model might be faulty, the mechanimc can break, or the printer could simply power off when someone pulls the plug. In most case, it is impossible to resume a failed 3D process, because of the physical properties of the material. When this happens, the worker simply goes into an error state. This can happen whether the printer is online or offline. Once the printer is online again, the roundtrip is enough for the supervisor to detect the error state and notify the job as failed. The process is then similar to the "waiting retrieval" state. The operator cleans up the mess, checks the printer is operational, then signals the job as "recovering" for the supervisor. At the next roundtrip, when the printer sends the error state and the supervisor sees the job as recovering, it can send the recover signal to the printer. This signal puts the printer back in ready state, which can then start over.
+Failure can happen anytime during a printing process: the model might be faulty, the mechanimc can break, or the printer could simply power off when someone pulls the plug. In most case, it is impossible to resume a failed 3D process, because of the physical properties of the material. When this happens, the worker simply goes into an error state. This can happen whether the printer is online or offline. Once the printer is online again, the roundtrip is enough for the supervisor to detect the error state and notify the job as failed.The process is then similar to the "waiting retrieval" state. The operator cleans up the mess, checks the printer is operational, then signals the job as "recovering" for the supervisor. At the next roundtrip, when the printer sends the error state and the supervisor sees the job as recovering, it can send the recover signal to the printer. This signal puts the printer back in ready state, which can then start over.
+
+![](figures/error_notification.png)
+
+![](figures/error_recovery.png)
 
 
 More principles/properties of the reactive loop?
