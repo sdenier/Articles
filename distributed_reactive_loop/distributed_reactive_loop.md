@@ -2,53 +2,59 @@ The Distributed Reactive Loop: Handling Resiliency with a Simple Thought Framewo
 =========
 
 TODO
-- streamline all sections to focus on the "thought framework" idea for reasoning, and no other project concern (budget...)
-- normalize state/status ? (job/printer)
-- also server/supervisor
+- discussion
+- conclusion
+- normalize vocabulary: state/status, job/printer/worker, server/supervisor
+- proofread!
 
-Once upon a time, a small team of developers were tasked with designing a pooling system for 3D printers over the internet - something akin to a system dispatching print jobs across printers. It was an interesting challenge as we knew nothing of the customaries of 3D printers: how it works, how it fails, what kind of communication to expect. After the initial probe & discovery stage, it becames more and more obvious that we had to design a distributed system in a not so common way. Because 3D printers are dealing with physical process, which takes a certain time and needs some manual operation, we had to get back to the basics and design our system around two properties: keeping things consistent in the right place and making the overall system resilient in face of inconsistency.
+Once upon a time, we were tasked with designing a distributed system for 3D printers across the internet - something like a pool of workers for processing jobs in parallel. A the time we knew little of the customaries of 3D printing: how it works, how it fails, what kind of communication to expect. After the initial probe & discovery stage, it becames obvious we had to design a distributed system in a not so common way. Because 3D printers are dealing with a physical process, taking some time to complete and requiring manual operation, we went back to basics and focused on two properties: keeping things consistent locally and making the overall system resilient in face of inconsistency. This is the story of how we designed our system to handle such properties.
 
-Challenges of 3D printing (in a distributed context)
+Challenges of 3D Printing - in a Distributed Context
 ----------------------------------------------------
+
+From a faraway point of view, distributed 3D printing is not different from the job parallelization we often stumble upon in the cloud. Given one model and some quantities, create some jobs and dispatch them on available workers.
 
 ![](figures/3d_printing_cloud.png)
 
-- jobs take a long time, very long in term of nowadays computer time: from a few minutes for the smallest object to well over a day for big jobs, with many objects taking at least a few hours.
-- printers are still new things, a bit fragile, with failures happening from time to time.
-- so job failures might happen but can be costly: you lost hours of machine time, and you have to clean up the mess before taking a new job.
-- Even after each job, a human operator needs to extract the piece, check it and clean up the printer before the next task.
+But when tackling the customaries of 3D printing, we quickly had to face the following evidence.
 
-So we are not exactly in the realm of pure software jobs, which takes a few minutes, can fail quickly, cleaned up and redispatched on another worker - nor in the realm of industrial-ready, fault-resilient machines, which would handles most maintenance tasks by themselves and even be able to clean up a failed job.
+- 3D jobs take a long time, very long in term of computer time: from a few minutes for the smallest items to well over a day for big ones, with many regular objects taking at least a few hours.
+- 3D printers are still a new thing, fragile machineries, with failures happening from time to time.
+- Job failures can and will happen, and they can be costly: you lose hours of printer time, and you have to clean up the mess before taking a new job.
+- Even after a successful job, a human operator is required to extract the item before the next job can be taken.
 
-How (not) to design and think of a distributed system
------------------------------------------------------
+This is different from what we often expect when it comes to job processing in distributed context: fast jobs, cheap processing, "cost-free" mistake, automatic retry, and a pool of standard, virtual workers, running without manual intervention.
 
-Every now and then, when thinking about distributed systems, engineers go all the rage with plenty of services and love to throw together a bunch of servers, load balancers, job queues, storage nodes to build a highly-available, highly-resilient, highly-scalable systems. With modern days conception, there are bonus points for using micro-services, each micro-service "customarily" holding a single responsibility, easier to understand, easier to deploy, easier to maintain.
+We had to design a system for long-running jobs, which would closely mirror what was going on, so that no precious processing time is lost because of inaccurate reporting and nothing harmful could happen. This means, for example:
 
-However, there have been many warnings over the last years, even "horror stories", that micro-services systems are not *easier* to design and understand. Especially as for each micro-service, you have to think of the ways it will communicate with other services, but also the ways such communication would fail.
+- ensuring we had -eventually- an accurate status of whether the job has succeeded or not;
+- ensuring the printer would not take another job while the previous item was still in its enclosure (obviously, a full-speed encounter between the printer head and a previous piece of hard plastic could result in some catastrophic damage).
+
+How (not) to Think and Design a Distributed System
+--------------------------------------------------
+
+When thinking about distributed systems, developers love to throw together a bunch of servers, load balancers, job queues, storage nodes to build a highly-available, highly-resilient, highly-scalable system. With modern days conception, there are bonus points for splitting the tasks across multiple micro-services, each micro-service customarily holding a single responsibility, easier to implement, easier to deploy.
+
+But given the above reasons, it was obvious that our main challenge would not be availability or scalability, but rather resiliency to fault in the system: job failure, but also communication failure, could happen any time, for example when a connection would be lost and a printer could not receive or send messages to the system.
+
+There have been many warnings over the last years, even "horror stories", that micro-services systems are not *easier* to design and understand, because you have to handle the cost of communication. From a graph point of view, you have to think about the *n* nodes of your system, but also about the *m* ways nodes communicate between them (with *m* somewhere between *n-1* and *n\*(n-1)/2*). In other words, the more you add micro-services, the more you multiply how they can interact and fail with each other.
 
 ![](figures/nodes_connections.png)
 
-In a graph vision, this means you have to think about the n nodes of your system, but also about the m ways nodes communicate between them (with m somewhere between n-1 and n\*(n-1)/2). "In other words, the more you add micro-services, the more you multiply how they interact and fail with each other."
-
-"more details about the resiliency challenge - choose/merge, first for idea, second more practical"
-
-For the reasons given above, it was obvious from the start that our main challenge would not be system availability or scalability, but rather the resiliency to fault in the system: job failure, but also communication failure, for example when a connection would be lost and a printer could not receive or send messages to the pooling system. Having to deal with such a constraint was new to us.
-
-We had to design fully autonomous worker, able to perform their job of monitoring the printer while processing an item, even with a long loss of connection/communication. And we had to design a supervisor, which could fully retrieve and reconciliate the state when communication would be back with the worker.
+Since we were wandering into unknown territories, the most sensible thing to do was to simplify the system, make it easier to reason about. To this end, we removed intermediaries (such as message queues), starting with just the core nodes required to perform the task: a server/supervisor and some workers.
 
 A Thought Framework for Resiliency: the Distributed Reactive Loop
 -----------------------------------------------------------------
 
-Since we are wandering into unknown territories, the most sensible thing to do is to simplify the system, make it easier to reason about. To this end, we remove any intermediary (such as message queues) between the supervisor node and the worker node. Both nodes communicate directly through a full-duplex channel. When removing intermediaries, we also take care of limiting data redundancy between nodes, so that state is easier to reconcile in case of inconsistencies.
+We consider two primary nodes in our system: a supervisor in charge of dispatching and monitoring jobs overall, and a worker in charge of monitoring a printer. Both nodes communicate directly through a full-duplex channel. By removing intermediaries, we also take care of limiting data redundancy between nodes, so that state is easier to reconcile in case of inconsistencies.
 
 ![](figures/architecture_overview.png)
 
-Each node has a purpose which it follows, regardless of the system status. The supervisor handles requests from customers and updates from workers. It must be available at all time, even if its response are outdated. On the contrary, the worker targets job consistency. It monitors and mirrors precisely the state of the printer job, and continue to do so even in case of network failure. For the worker, there is no need or no rush to send updates about the job, as long as it keeps things consistent.
+Each node has a purpose which it follows, regardless of the system status. The supervisor handles requests from customers and updates from workers. It must be available at all time, even if its responses are outdated. On the contrary, the worker targets job consistency. It monitors and mirrors precisely the state of the printer, and continue to do so even in case of network failure. For the worker, there is no need or no rush to send updates about the job, as long as it keeps things consistent.
 
-We have simplified the structure and stated the purpose of each node. Now we must explain how both nodes communicate with each other. The communication protocol defines how progress can happen overall the system. The core tenet of our framework is that each time both nodes are connected and have an opportunity for communication, they would make a roundtrip, exchanging data and commands. This framework is called a **reactive loop** because it always starts with a request for the current worker state (considered locally consistent), so that the supervisor properly reacts to it. This small exchange is enough to let the supervisor refresh its internal state, and to send new commands to the worker for the next thing to do.
+We have simplified the structure and stated the purpose of each node. Now we must explain how both nodes communicate with each other. The communication protocol defines how progress can happen overall the system. The core tenet of our protocol is that each time both nodes are connected and have an opportunity for communication, they would make a roundtrip, exchanging data and commands. The roundtrip is triggered by some events: on the supervisor side, this is a human interaction, such as a customer order or an operator action; on the worker side, this can be a transition in the worker automata, or simply the worker going online.
 
-*KEEP? The reactive loop is characterized by a roundtrip between the worker and the supervisor. But this roundtrip needs to be triggererd by some events. On the supervisor side, this can a customer order or an operator action. On the worker side, this can be a transition in the worker automata.*
+We called this protocol a **reactive loop** because it always starts with a request for the current worker state (considered locally consistent), so that the supervisor properly reacts to it. This small exchange is enough to let the supervisor refresh its internal state, and to send new commands to the worker for the next thing to do.
 
 ![](figures/reactive_loop.png)
 
@@ -57,7 +63,7 @@ Together, those design decisions make it easier to reason about the system by ha
 Printer Automata
 ----------------
 
-Before illustrating the reactive loop with use cases, we should describe how the worker represents the printer state. The printer is easily modelled as a finite-state machine. Each state indicates what the printer is currently doing, which action to take or monitor, and which messages sent by the supervisor are valid. The supervisor requests the state on different opportunities, which allows it to update its own state and send commands. The figure below shows a simplified version of the FSM: there are three normal states, which models the regular process; one special state catches errors to allow the worker to recover.
+Before illustrating the reactive loop with use cases, we should describe how the worker represents the printer state. The printer is easily modelled as a finite-state machine. Each state indicates what the printer is currently doing, which action to take or monitor, and which messages sent by the supervisor are valid. The figure below shows a simplified version of the FSM: there are three normal states, which models the regular process; one special state catches errors to allow the worker to recover.
 
 ![](figures/full_fsm.png)
 
