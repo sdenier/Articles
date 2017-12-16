@@ -1,12 +1,10 @@
-Resiliency without a Name: the Distributed Reactive Loop
-========================================================
+The Distributed Reactive Loop: Handling Resiliency with a Simple Thought Framework
+=========
 
 TODO
-- figures for the use cases
 - streamline all sections to focus on the "thought framework" idea for reasoning, and no other project concern (budget...)
 - normalize state/status ? (job/printer)
 - also server/supervisor
-- rethink the title?
 
 Once upon a time, a small team of developers were tasked with designing a pooling system for 3D printers over the internet - something akin to a system dispatching print jobs across printers. It was an interesting challenge as we knew nothing of the customaries of 3D printers: how it works, how it fails, what kind of communication to expect. After the initial probe & discovery stage, it becames more and more obvious that we had to design a distributed system in a not so common way. Because 3D printers are dealing with physical process, which takes a certain time and needs some manual operation, we had to get back to the basics and design our system around two properties: keeping things consistent in the right place and making the overall system resilient in face of inconsistency.
 
@@ -49,6 +47,8 @@ Since we are wandering into unknown territories, the most sensible thing to do i
 Each node has a purpose which it follows, regardless of the system status. The supervisor handles requests from customers and updates from workers. It must be available at all time, even if its response are outdated. On the contrary, the worker targets job consistency. It monitors and mirrors precisely the state of the printer job, and continue to do so even in case of network failure. For the worker, there is no need or no rush to send updates about the job, as long as it keeps things consistent.
 
 We have simplified the structure and stated the purpose of each node. Now we must explain how both nodes communicate with each other. The communication protocol defines how progress can happen overall the system. The core tenet of our framework is that each time both nodes are connected and have an opportunity for communication, they would make a roundtrip, exchanging data and commands. This framework is called a **reactive loop** because it always starts with a request for the current worker state (considered locally consistent), so that the supervisor properly reacts to it. This small exchange is enough to let the supervisor refresh its internal state, and to send new commands to the worker for the next thing to do.
+
+*KEEP? The reactive loop is characterized by a roundtrip between the worker and the supervisor. But this roundtrip needs to be triggererd by some events. On the supervisor side, this can a customer order or an operator action. On the worker side, this can be a transition in the worker automata.*
 
 ![](figures/reactive_loop.png)
 
@@ -119,29 +119,29 @@ The process is then similar to the "waiting retrieval" state. The operator clean
 
 ![](figures/error_recovery.png)
 
-
-More principles/properties of the reactive loop?
+Discussion: Some Properties of the Reactive Loop
 ------------------------------------------------
 
-*The reactive loop is characterized by a roundtrip between the worker and the supervisor. But this roundtrip needs to be triggererd by some events. On the supervisor side, this can a customer order or an operator action. On the worker side, this can be a transition in the worker automata.*
+*Limited redundancy/reduced inconsistencies vs Progress/Liveliness*
+limit the redundancy of data between nodes, so that state would be easier to reconcile in case of inconsistencies.
 
-"limit the redundancy of data between nodes, so that state would be easier to reconcile in case of inconsistencies."
+some times both system can work independently (i.e. disconnected), for example when printing is going on. But overall both systems need to be online together to make progress.
 
-Progress/Liveliness: some times both system can work independently (i.e. disconnected), for example when printing is going on. But overall both systems need to be online together to make progress.
+--> Comparison with an independant queue system
 
-Comparison with an independant queue system:
 - can use well-tested, reliable/available system (esp. SAAS): this means other systems relies on it for synchronization. Depending on the design, the system could make progress without supervisor and worker being simultaneously online.
 - more systems to synchronize, more state to reason about: supervisor state and job queue. A job should not be started on another printer if we are not sure it has been cancelled on the first one.
 
-**note about the extensibility of the system/thought framework**
+*note about the extensibility of the system/thought framework*
+
 - do we need a new state in worker?
 - which message need to be exchanged? status update, command
 - how the supervisor would react to this new state given prior knowledge (nominal case, fault detection, fault recovery) : state update/reconciliation, next command
 
-digression about the CAP theorem
---------------------------------
-
 Conclusion
 ----------
+
+- thought framework: simplify the system, make it easy to reason about, esp. with use case
+- digression about the CAP theorem?
 
 [Icons by Icons8](https://icons8.com)
