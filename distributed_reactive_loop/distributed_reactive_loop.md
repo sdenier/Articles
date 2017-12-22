@@ -1,12 +1,6 @@
 The Distributed Reactive Loop: Handling Resiliency with a Simple Thought Framework
 =========
 
-TODO
-- discussion
-- conclusion
-- normalize vocabulary: state/status, job/printer/worker, server/supervisor
-- proofread!
-
 Once upon a time, we were tasked with designing a distributed system for 3D printers across the internet - something like a pool of workers for processing jobs in parallel. A the time we knew little of the customaries of 3D printing: how it works, how it fails, what kind of communication to expect. After the initial probe & discovery stage, it becames obvious we had to design a distributed system in a not so common way. Because 3D printers are dealing with a physical process, taking some time to complete and requiring manual operation, we went back to basics and focused on two properties: keeping things consistent locally and making the overall system resilient in face of inconsistency. This is the story of how we designed our system to handle such properties.
 
 Challenges of 3D Printing - in a Distributed Context
@@ -128,26 +122,27 @@ The process is then similar to the "waiting retrieval" state. The operator clean
 Discussion: Some Properties of the Reactive Loop
 ------------------------------------------------
 
-*Limited redundancy/reduced inconsistencies vs Progress/Liveliness*
-limit the redundancy of data between nodes, so that state would be easier to reconcile in case of inconsistencies.
+Simplicity and ease of reasoning were the primary drivers for the reactive loop design. But it is fair to think about other properties and limitations.
 
-some times both system can work independently (i.e. disconnected), for example when printing is going on. But overall both systems need to be online together to make progress.
+### Liveness versus Reduced Inconsistencies/Resiliency
 
---> Comparison with an independant queue system
+We could have made the obvious choice to use an independent job queue system. Many of them have been created, for different usage. Some are available as SAAS, which removes partly the maintenance burden. Given their high reliability and availability, it is interesting to use them as the backbone for the system communication. In particular, they enable a better tolerance for network partitioning. For example, the supervisor and the worker may not need to be online at the same time to make some progress. On the contrary, the reactive loop implies that both nodes be connected at the same time to eventually make progress - even if they can work independently of each other most of the time. This is of course a reasonable assumption if the supervisor is designed to be available - the worker just needs some communication window from time to time to make progress.
 
-- can use well-tested, reliable/available system (esp. SAAS): this means other systems relies on it for synchronization. Depending on the design, the system could make progress without supervisor and worker being simultaneously online.
-- more systems to synchronize, more state to reason about: supervisor state and job queue. A job should not be started on another printer if we are not sure it has been cancelled on the first one.
+One disadvantage of the independent queue system is that it involves an intermediate storage, which implies some redundancy in the data. As stated before, by limiting data redundancy between nodes, state is easier to reconcile in case of inconsistencies with the reactive loop. When a problem arise and the system needs recovery, it is easier to fix the state across two subsystems than across three.
 
-*note about the extensibility of the system/thought framework*
+Resiliency is often achieved through automatic job retry or visibility timeout with queue systems. However, given the cost of 3D printing, we hardly want the system to start an apparently failed job on another printer, if we are not sure it has been cancelled on the first one. So while an independent queue system would offer better liveness, we favor the simple resiliency offered by the reactive loop.
 
-- do we need a new state in worker?
-- which message need to be exchanged? status update, command
-- how the supervisor would react to this new state given prior knowledge (nominal case, fault detection, fault recovery) : state update/reconciliation, next command
+### Extensibility of the Reactive Loop
+
+An important property of any framework is how easy it is to extend. Especially in the course of incremental development, new use cases arise and involve changes in the communication protocol. We had the opportunity to test extensibility during some further evolution and the process is rather easy.
+
+The first step to consider is whether a new state is involved in the printer automata, how it connects with other states, and what are its failure modes. Once the FSM is clarified, we can think of the communication protocol: we specify the status update and the commands to be exchanged. Finally, the supervisor needs to define proper behaviors in reaction to this state. Such behaviors often depend on inspecting the database content to determine the right path: are we in the nominal case, what is the next command, do we need to update or reconcile state, can we detect or recover a fault?
 
 Conclusion
 ----------
 
-- thought framework: simplify the system, make it easy to reason about, esp. with use case
-- digression about the CAP theorem?
+Most often we rely on existing solutions because they are proven and most problems fall back to the same. However, it is also easy to take everything as a nail when all you have is a hammer. It is good to recognize such cases and be able to go back to the design board. With the reactive loop, we focus on resiliency and ease of reasoning because we were discovering a new domain.
 
-[Icons by Icons8](https://icons8.com)
+It is also important to realize we designed the reactive loop because we had plenty of times. On the contrary, we were acting on a limited budget so designing something simple was paramount. In the end, having a simple thought framework made us more confident when changes were brought in the system.
+
+Some figures made with [Icons by Icons8](https://icons8.com)
