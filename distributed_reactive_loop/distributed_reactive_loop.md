@@ -122,7 +122,7 @@ The process is then similar to the "waiting retrieval" state. The operator clean
 Discussion: Some Properties of the Reactive Loop
 ------------------------------------------------
 
-Simplicity and ease of reasoning were the primary drivers for the reactive loop design. But it is fair to think about other properties and limitations.
+Distributed systems are full of loopholes and it is easy to make mistakes. This article primarily focus on the foundations of the reactive loop, driven by simplicity and ease of reasoning. However, other thoughts were in our mind when developing this project. This section intends to offer complementary points of view about the properties and limitations of the reactive loop design.
 
 ### Liveness versus Reduced Inconsistencies/Resiliency
 
@@ -132,17 +132,46 @@ One disadvantage of the independent queue system is that it involves an intermed
 
 Resiliency is often achieved through automatic job retry or visibility timeout with queue systems. However, given the cost of 3D printing, we hardly want the system to start an apparently failed job on another printer, if we are not sure it has been cancelled on the first one. So while an independent queue system would offer better liveness, we favor the simple resiliency offered by the reactive loop.
 
+### How do We Handle Communication Issues (Delivery Issue, Inconsistent Messages)? And a Note on State Design
+
+Basically, the reactive loop framework favors some functional mindset/command-query separation (state updates happening independently of commands). Nodes process messages they receive but do not care if a sent message is processed on the other side. This implies that undelivered messages are simply lost. They are not stored in a queue for later delivery. Simply the loop will retry the next time it has an opportunity to run. In the same spirit, if a message would be delivered a bit late and become "stale" with respect to the printer status, the printer would simply reject it. Again, the message would be lost but it does not matter. The supervisor takes a new message as an opportunity to reconcile its internal state.
+
+Care must be taken when designing printer FSM and transitions. Basically, we have two classes of printer state:
+
+- either an "active" state (for example, printing), from which the printer will transition automatically when need be (and during which it does not accept supervisor commands).
+- or a "blocking" state (for example, "waiting for retrieval"), from which the printer can not transition until the right supervisor command is received.
+
+In other words, in the current design, the supervisor only sends a command when the printer is in a blocking state. There is no nominal case where an "active" state change happens while the supervisor sends a command related to the previous state. It could still happen for example if the printer would go into error state (then, see the description for the error case). Overall, this mindset greatly reduces cases where printer could receive inconsistent messages.
+
+This also impacts the design of item status on the supervisor/database side, which should represent just what happened with "micro-statuses". A good example of this is the "waiting for retrieval" state:
+
+- when the supervisor receives the update for this state, it flags the item as being ready for retrieval. In this case, the supervisor can do nothing more and does not send any command to the printer.
+- once an operator has effectively notified the supervisor that the item is retrieved, the item status is flagged as done.
+- next time the supervisor and the printer perform a loop run (which happens immediately after the above action if they are connected), the combination of "item done" + "waiting for retrieval" status triggers the supervisor to send the command "done", which enables the transition back to the ready state.
+
+Here, an event-driven approach works best to model the status through which an item goes. It prevents the model to become inconsistent, by having micro-steps which have a single source of transition.
+
+### Discovery and Scalability
+
+A typical concern for distributed systems is how "dynamic" they can be. Can we add new nodes to the system easily? How does it scale?
+
+When printers come online (after power up or reconnection), they registered themselves dynamically on the supervisor. However, service discovery is not the primary purpose of the reactive loop and could be delegated to a dedicated service if need be.
+
+The supervisor model presented here is a bit of a simplification with respect to the current implementation. The supervisor node creates a websocket handler for each printer, which enables full duplex communication. So in reality, the reactive loop is implemented at the level of the websocket handler and the printer client. There are as many reactive loops on a supervisor node as there are connected printers. While this article focus on the reactive loop implemented by the handler-printer relationship, the supervisor node has other responsibilities, like dispatching some actions on target handler(s), and answering client requests through a regular REST API.
+
+Second, to support resiliency and scalability, supervisor reactions should be "stateless", in the same sense as a REST server. A handler only stores the state of the connection, no data about the printer status or job. Whenever a loop run implies some state, the supervisor will look up the data in the database - as for any web system, state synchronization ultimately relies on the database. A practical limit for a supervisor node would be the number of simultaneous websocket connections it can handle. Then, stateless supervisors can be easily duplicated as a service and moved behind a load balancer to scale up.
+
 ### Extensibility of the Reactive Loop
 
 An important property of any framework is how easy it is to extend. Especially in the course of incremental development, new use cases arise and involve changes in the communication protocol. We had the opportunity to test extensibility during some further evolution and the process is rather easy.
 
 The first step to consider is whether a new state is involved in the printer automata, how it connects with other states, and what are its failure modes. Once the FSM is clarified, we can think of the communication protocol: we specify the status update and the commands to be exchanged. Finally, the supervisor needs to define proper behaviors in reaction to this state. Such behaviors often depend on inspecting the database content to determine the right path: are we in the nominal case, what is the next command, do we need to update or reconcile state, can we detect or recover a fault?
 
-Conclusion
-----------
+Final Thoughts before We Part
+-----------------------------
 
 Most often we rely on existing solutions because they are proven and most problems fall back to the same. However, it is also easy to take everything as a nail when all you have is a hammer. It is good to recognize such cases and be able to go back to the design board. With the reactive loop, we focus on resiliency and ease of reasoning because we were discovering a new domain.
 
-It is also important to realize we designed the reactive loop because we had plenty of times. On the contrary, we were acting on a limited budget so designing something simple was paramount. In the end, having a simple thought framework made us more confident when changes were brought in the system.
+Finally, we would like to point out we did not design the reactive loop as some kind of mental toy or funny experiment in engineering. On the contrary, we were acting on a limited budget so designing something simple was paramount. In the end, having a simple thought framework made us more confident when changes were brought in the system.
 
 Some figures made with [Icons by Icons8](https://icons8.com)
