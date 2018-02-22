@@ -1,7 +1,7 @@
 The Distributed Reactive Loop: Handling Resiliency with a Simple Thought Framework
 =========
 
-Once upon a time, we were tasked with designing a distributed system for 3D printers across the internet - something like a pool of workers for processing jobs in parallel. A the time we knew little of the customaries of 3D printing: how it works, how it fails, what kind of communication to expect. After the initial probe & discovery stage, it becames obvious we had to design a distributed system in a not so common way. Because 3D printers are dealing with a physical process, taking some time to complete and requiring manual operation, we went back to basics and focused on two properties: keeping things consistent locally and making the overall system resilient in face of inconsistency. This is the story of how we designed our system to handle such properties.
+Once upon a time, we were tasked with designing a distributed system for 3D printers across the internet - something like a pool of workers for processing jobs in parallel. A the time we knew little of the customaries of 3D printing: how it works, how it fails, what kind of communication to expect. After the initial probe & discovery stage, it became obvious we had to design a distributed system in a not so common way. Because 3D printers are dealing with a physical process, taking some time to complete and requiring manual operation, we went back to basics and focused on two properties: keeping things consistent locally and making the overall system resilient in the face of inconsistency. This is the story of how we designed our system to handle such properties.
 
 Challenges of 3D Printing - in a Distributed Context
 ----------------------------------------------------
@@ -17,7 +17,7 @@ But when tackling the customaries of 3D printing, we quickly had to face the fol
 - Job failures can and will happen, and they can be costly: you lose hours of printer time, and you have to clean up the mess before taking a new job.
 - Even after a successful job, a human operator is required to extract the item before the next job can be taken.
 
-This is different from what we often expect when it comes to job processing in distributed context: fast jobs, cheap processing, "cost-free" mistake, automatic retry, and a pool of standard, virtual workers, running without manual intervention.
+This is different from what we often expect when it comes to job processing in a distributed context: fast jobs, cheap processing, "cost-free" mistakes, automatic retry, and a pool of standard, virtual workers, running without manual intervention.
 
 We had to design a system for long-running jobs, which would closely mirror what was going on, so that no precious processing time is lost because of inaccurate reporting and nothing harmful could happen. This means, for example:
 
@@ -61,9 +61,9 @@ Before illustrating the reactive loop with use cases, we should describe how the
 
 ![](figures/full_fsm.png)
 
-After the initial startup, the worker goes by default to the **ready state**. This is the normal state to wait for print jobs from the server. When a print message is received, the worker goes into an **printing state**, monitoring the physical printer until it has finished. It sends progress update to the supervisor but does not accept any message. Once the job is done, the printer is not readily available as the item must be retrieved from the printer box. Instead, the worker transitions into a **waiting for retrieval** state. It simply waits for a signal that the human operator has retrieved the item, so that it can finally go back to the **ready state** and accept a new job.
+After the initial startup, the worker goes by default to the **ready state**. This is the normal state to wait for print jobs from the server. When a print message is received, the worker goes into a **printing state**, monitoring the physical printer until it has finished. It sends progress updates to the supervisor but does not accept any messages. Once the job is done, the printer is not readily available as the item must be retrieved from the printer box. Instead, the worker transitions into a **waiting for retrieval** state. It simply waits for a signal that the human operator has retrieved the item, so that it can finally go back to the **ready state** and accept a new job.
 
-Whenever the worker detects an issue with the printer, it goes into the **error state**, waiting for recovery. Indeed, when the printer fails, the item is most often in an unknown condition. An operator must look into the box, extract and discard the item, and clean up the printer. Then he can signal that the recovery is done, which resets the job and moves the printer to the **ready state**. Notice also there is startup path directly to the error state: if ones pulls the plug while printing (for an emergency stop), the worker will go and stay in error state when coming back online.
+Whenever the worker detects an issue with the printer, it goes into the **error state**, waiting for recovery. Indeed, when the printer fails, the item is most often in an unknown condition. An operator must look into the box, extract and discard the item, and clean up the printer. Then he can signal that the recovery is done, which resets the job and moves the printer to the **ready state**. Notice also there is a startup path directly to the error state: if one pulls the plug while printing (for an emergency stop), the worker will go and stay in the error state when coming back online.
 
 This automata represents the internal workings of the printer. But from the point of view of the supervisor, the worker can also be in an **offline state**, meaning communication is impossible. The worker may simply be turned off, or it may have lost the connection. The loss of server connection does not prevent the printer from performing some task. For example it might continue to print an item. This case has implications about what happens when a printer is offline but also when it comes back online.
 
@@ -75,7 +75,7 @@ Thinking with the reactive loop is as simple as imagining a use case and playing
 
 ### Prerequisite: Print Job Creation
 
-To set things into motion, a customer should of course issue a print order. The server takes care of creating and dispatching print jobs on a subset of 3D printers to fulfill the print order. Each print job is first registered as to do, regardless of the printer state. This way, the job becomes part of the printer queue. It will be consumed when the printer is ready, depending on one of the following use case.
+To set things into motion, a customer should of course issue a print order. The server takes care of creating and dispatching print jobs on a subset of 3D printers to fulfill the print order. Each print job is first registered as **to do**, regardless of the printer state. This way, the job becomes part of the printer queue. It will be consumed when the printer is ready, depending on one of the following use cases.
 
 ### Nominal Case: Start a Job Immediately
 
@@ -85,13 +85,13 @@ When a job request is created on the server, the server checks whether the print
 
 ### Postponing a Job
 
-When the server requests the state, the printer might be processing another job. In this case, the roundtrip stops immediately with a no-op. Since the job is already in queue, it will be processed later.
+When the server requests the state, the printer might be processing another job. In this case, the roundtrip stops immediately with a no-op. Since the job is already in the queue, it will be processed later.
 
 ![](figures/postponing.png)
 
 ### Consuming a Job Queue
 
-Because a manual operation is required to retrieve the item from the box, the printer can not automatically takes another job once finished printing. Instead it follows a two-step process through the supervisor to ensure that the current item status is finally done before taking another job.
+Because a manual operation is required to retrieve the item from the box, the printer can not automatically take another job once finished printing. Instead it follows a two-step process through the supervisor to ensure that the current item status is finally done before taking another job.
 
 Once finished printing, the printer goes into the waiting state. When receiving this state, the supervisor updates the job status in its database, and notifies the operator that the item is ready. Then the operator can signal the supervisor that the item has been effectively retrieved, marking the job as done in the database. This happens whether or not the printer is online. When the next roundtrip happens, and the printer is still waiting for retrieval, the supervisor checks the job status and signals it has been effectively retrieved. The printer can finally go back to the ready state, where another roundtrip triggers the next job in queue.
 
@@ -99,7 +99,7 @@ Once finished printing, the printer goes into the waiting state. When receiving 
 
 ### Starting after Wakeup/Reconnection
 
-When the printer comes back online in the ready state, how does it get deffered jobs? A simple roundtrip to the supervisor indicates the printer is ready and can trigger a job command if one is available in the queue.
+When the printer comes back online in the ready state, how does it get deferred jobs? A simple roundtrip to the supervisor indicates the printer is ready and can trigger a job command if one is available in the queue.
 
 ![](figures/deferred_start.png)
 
@@ -111,7 +111,7 @@ Update messages may be lost when the connection is down. But an interrupted conn
 
 ### Error Detection and Recovery
 
-Failure can happen anytime during a printing process: the model might be faulty, the mechanism can derail, or the printer could simply be powered off because someone pulls the plug. In most case, it is impossible to resume a failed job, because of the physical properties of the material. When this happens, the worker simply goes into an error state. This can happen whether the printer is online or offline with the supervisor. Once the printer is online again, a roundtrip is enough for the supervisor to detect the error state and notify the job as failed.
+Failure can happen anytime during a printing process: the model might be faulty, the mechanism can derail, or the printer could simply be powered off because someone pulls the plug. In most cases, it is impossible to resume a failed job, because of the physical properties of the material. When this happens, the worker simply goes into an error state. This can happen whether the printer is online or offline with the supervisor. Once the printer is online again, a roundtrip is enough for the supervisor to detect the error state and notify the job as failed.
 
 ![](figures/error_notification.png)
 
@@ -128,7 +128,7 @@ Distributed systems are full of loopholes and it is easy to make mistakes. This 
 
 We could have made the obvious choice to use an independent job queue system. Many of them have been created, for different usage. Some are available as SAAS, which removes partly the maintenance burden. Given their high reliability and availability, it is interesting to use them as the backbone for the system communication. In particular, they enable a better tolerance for network partitioning. For example, the supervisor and the worker may not need to be online at the same time to make some progress. On the contrary, the reactive loop implies that both nodes be connected at the same time to eventually make progress - even if they can work independently of each other most of the time. This is of course a reasonable assumption if the supervisor is designed to be available - the worker just needs some communication window from time to time to make progress.
 
-One disadvantage of the independent queue system is that it involves an intermediate storage, which implies some redundancy in the data. As stated before, by limiting data redundancy between nodes, state is easier to reconcile in case of inconsistencies with the reactive loop. When a problem arise and the system needs recovery, it is easier to fix the state across two subsystems than across three.
+One disadvantage of the independent queue system is that it involves an intermediate storage, which implies some redundancy in the data. As stated before, by limiting data redundancy between nodes, state is easier to reconcile in case of inconsistencies with the reactive loop. When problems arise and the system needs recovery, it is easier to fix the state across two subsystems than across three.
 
 Resiliency is often achieved through automatic job retry or visibility timeout with queue systems. However, given the cost of 3D printing, we hardly want the system to start an apparently failed job on another printer, if we are not sure it has been cancelled on the first one. So while an independent queue system would offer better liveness, we favor the simple resiliency offered by the reactive loop.
 
@@ -149,7 +149,7 @@ This also impacts the design of item status on the supervisor/database side, whi
 - once an operator has effectively notified the supervisor that the item is retrieved, the item status is flagged as done.
 - next time the supervisor and the printer perform a loop run (which happens immediately after the above action if they are connected), the combination of "item done" + "waiting for retrieval" status triggers the supervisor to send the command "done", which enables the transition back to the ready state.
 
-Here, an event-driven approach works best to model the status through which an item goes. It prevents the model to become inconsistent, by having micro-steps which have a single source of transition.
+Here, an event-driven approach works best to model the status through which an item goes. It prevents the model from becoming inconsistent, by having micro-steps which have a single source of transition.
 
 ### Discovery and Scalability
 
@@ -170,8 +170,8 @@ The first step to consider is whether a new state is involved in the printer aut
 Final Thoughts before We Part
 -----------------------------
 
-Most often we rely on existing solutions because they are proven and most problems fall back to the same. However, it is also easy to take everything as a nail when all you have is a hammer. It is good to recognize such cases and be able to go back to the design board. With the reactive loop, we focus on resiliency and ease of reasoning because we were discovering a new domain.
+Most often we rely on existing solutions because they are proven and most problems follow the same path. However, it is also easy to take everything as a nail when all you have is a hammer. It is good to recognize such cases and be able to go back to the design board. With the reactive loop, we focused on resiliency and ease of reasoning because we were discovering a new domain.
 
-Finally, we would like to point out we did not design the reactive loop as some kind of mental toy or funny experiment in engineering. On the contrary, we were acting on a limited budget so designing something simple was paramount. In the end, having a simple thought framework made us more confident when changes were brought in the system.
+Finally, we would like to point out that we did not design the reactive loop as some kind of mental toy or funny experiment in engineering. On the contrary, we were acting on a limited budget so designing something simple was paramount. In the end, having a simple thought framework made us more confident when changes were brought into the system.
 
 Some figures made with [Icons by Icons8](https://icons8.com)
