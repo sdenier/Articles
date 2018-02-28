@@ -132,7 +132,7 @@ One disadvantage of the independent queue system is that it involves an intermed
 
 Resiliency is often achieved through automatic job retry or visibility timeout with queue systems. However, given the cost of 3D printing, we hardly want the system to start an apparently failed job on another printer, if we are not sure it has been cancelled on the first one. So while an independent queue system would offer better liveness, we favor the simple resiliency offered by the reactive loop.
 
-### How do We Handle Communication Issues (Delivery Issue, Inconsistent Messages)? And a Note on State Design
+### How Do We Handle Communication Issues (Delivery Issue, Inconsistent Messages)? And a Note on State Design
 
 Basically, the reactive loop framework favors some functional mindset/command-query separation (state updates happening independently of commands). Nodes process messages they receive but do not care if a sent message is processed on the other side. This implies that undelivered messages are simply lost. They are not stored in a queue for later delivery. Simply the loop will retry the next time it has an opportunity to run. In the same spirit, if a message would be delivered a bit late and become "stale" with respect to the printer status, the printer would simply reject it. Again, the message would be lost but it does not matter. The supervisor takes a new message as an opportunity to reconcile its internal state.
 
