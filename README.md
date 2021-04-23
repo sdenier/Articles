@@ -1,7 +1,7 @@
-Articles Sogilis
-================
+Articles
+========
 
-This repository contains the source code for my technical articles (starting with my work at Sogilis, on which [blog](http://blog.sogilis.com) they were originally published). They are fully readable here thanks to GitHub Markdown formatting.
+This repository contains sources for my technical articles (starting with my work at Sogilis, on which [blog](http://blog.sogilis.com) they were originally published). They are fully readable here thanks to GitHub Markdown formatting.
 
 Table of Contents
 -----------------

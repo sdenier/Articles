@@ -14,7 +14,7 @@ Une story map est un atelier rassemblant différents acteurs d'un projet (*Produ
 
 La story map est un processus itératif : les activités et cas d'utilisation sont raffinés au fur et à mesure de l'atelier. A l'issue du processus, les cas d'utilisation seront déclinés en stories pour décrire les fonctionnalités et rentreront dans le backlog suivant la priorité décidée par les lots.
 
-Si vous ignorez tout des story maps et que vous voulez lire la suite de cet article, je vous recommande [« The new user story backlog is a map »](http://www.agileproductdesign.com/blog/the_new_backlog.html). Vous en saurez plus sur l'origine de l'idée, les étapes à suivre, et l'usage que l'on peut en faire en gestion de projet agile.
+Si vous ignorez tout des story maps et que vous voulez lire la suite de cet article, je vous recommande [« The new user story backlog is a map »](https://www.jpattonassociates.com/the-new-backlog/). Vous en saurez plus sur l'origine de l'idée, les étapes à suivre, et l'usage que l'on peut en faire en gestion de projet agile.
 
 
 ## La story map comme outil de découverte d'un projet ?
@@ -97,20 +97,12 @@ Malgré ces inconvénients, nous croyons quand même dans la valeur de la story 
 - Est-ce que la story map correspond à la liste des fonctionnalités ? Qu'est-ce qui va rentrer dans le périmètre final ?
 - Combien ça va coûter ?
 
-Bizarrement, cette dernière question provoquait toujours chez nous une sensation de malaise. Une story map ne permet pas de fournir une meilleure estimation qu'une autre méthode (tout au plus favorise-t-elle la comparaison pour un chiffrage relatif [^1]). Il nous manquait toujours des informations cruciales au moment du chiffrage pour être serein. **Au final, nous nous sentions piégés dans les vieilles habitudes de chiffrage du cahier des charges.** De plus, la story map ne nous offrait pas toujours une vision claire sur la prochaine étape : peut-on commencer tout de suite ? Y a-t-il d'autres étapes non techniques à valider d'abord ?
+Bizarrement, cette dernière question provoquait toujours chez nous une sensation de malaise. Une story map ne permet pas de fournir une meilleure estimation qu'une autre méthode (tout au plus favorise-t-elle la comparaison pour un chiffrage relatif [1]). Il nous manquait toujours des informations cruciales au moment du chiffrage pour être serein. **Au final, nous nous sentions piégés dans les vieilles habitudes de chiffrage du cahier des charges.** De plus, la story map ne nous offrait pas toujours une vision claire sur la prochaine étape : peut-on commencer tout de suite ? Y a-t-il d'autres étapes non techniques à valider d'abord ?
 
 ## La story map est-elle utile ?
 
 On dit « si tu as un marteau dans la tête, alors toutes les vis ressemblent à un clou ». Quand on a un bel outil en main, il est facile de regarder tous les problèmes par son prisme, même quand il est inadapté à la situation. C'est ce qui se passe avec la story map pour la découverte d'un projet. **Elle ne permet bien souvent pas de répondre aux questions essentielles du porteur de projet en phase de découverte** : est-ce que mon projet marche dans la réalité ? Est-ce qu'on a identifié les problèmes clés ? Combien investir et comment procéder pour tester au mieux les idées ?
 
-Bien sûr, il ne s'agit pas de remettre en cause la story map comme outil de planification de projet, quand celui-ci devient plus mature, que le périmètre des fonctionnalités se dessine et que les priorités sont identifiées. Simplement, elle ne peut pas venir trop tôt dans la découverte d'un projet, car **elle risque de figer des décisions sur les fonctionnalités à un moment où celles-ci sont encore méconnues.** Nous verrons dans le prochain article une approche qui se focalise sur les capacités et les risques du projet, afin de trouver une organisation plus pragmatique du développement.
+Bien sûr, il ne s'agit pas de remettre en cause la story map comme outil de planification de projet, quand celui-ci devient plus mature, que le périmètre des fonctionnalités se dessine et que les priorités sont identifiées. Simplement, elle ne peut pas venir trop tôt dans la découverte d'un projet, car **elle risque de figer des décisions sur les fonctionnalités à un moment où celles-ci sont encore méconnues.** Nous verrons dans le [prochain article](./article_capabilities.md) une approche qui se focalise sur les capacités et les risques du projet, afin de trouver une organisation plus pragmatique du développement.
 
-[^1]: A propos des estimations, comment les faire, les exploiter intelligemment et les éviter quand ce n'est pas utile, je recommande Dan North ([The Perils of Estimation](http://dannorth.net/2009/07/01/the-perils-of-estimation/), [Blink Estimation](http://dannorth.net/2013/08/08/blink-estimation/)) et aussi tout ce qui touche au mouvement NoEstimates. Mais c'est un autre sujet.
-
-<div itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-  <img itemprop="image" src="http://www.gravatar.com/avatar/58778f8cc14e8a484568a663266c3029.png" alt="Simon Denier">
-  <a href="mailto:simon+blog@sogilis.com"><span itemprop="name" rel="author"><i class="fa fa-user" /> Simon Denier</span></a>
-  <a href="http://twitter.com/simondenier"><span class="share-link-twitter" rel="twitter"><i class="fa fa-twitter" /> simondenier</span></a>
-  <a href="https://github.com/sdenier"><span rel="github"><i class="fa fa-github" /> sdenier</span></a>
-  <a href="https://plus.google.com/100056946931947086533?rel=author"><span class="share-link-google-plus" rel="gplus"><i class="fa fa-google-plus" /> +SimonDenier</span></a>
-</div>
+[1] A propos des estimations, comment les faire, les exploiter intelligemment et les éviter quand ce n'est pas utile, je recommande Dan North ([The Perils of Estimation](http://dannorth.net/2009/07/01/the-perils-of-estimation/), [Blink Estimation](http://dannorth.net/2013/08/08/blink-estimation/)) et aussi tout ce qui touche au mouvement NoEstimates. Mais c'est un autre sujet.

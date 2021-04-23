@@ -1,8 +1,6 @@
 # Découverte et amorçage de projet : qu'avons-nous appris de la planification par capacités ?
 
-Dans ce dernier article, nous allons revoir les [problèmes rencontrés avec les story maps](http://blog.sogilis.com/post/109977013776/decouverte-et-amorcage-de-projet-le-probleme) et expliquer comment la planification par capacités apporte des réponses plus pertinentes dans notre contexte. Cette rétrospective nous montrera que l'essentiel n'est pas dans la méthode de Liz, mais bien dans sa façon d'approcher et de prioriser les problèmes - favoriser [« les individus et leurs interactions plus que les processus et les outils »](http://www.agilemanifesto.org/iso/fr/). Ceci nous mènera naturellement à une petite réflexion sur notre approche de l'agilité avec nos porteurs de projet.
-
-[[MORE]]
+Dans ce dernier article, nous allons revoir les [problèmes rencontrés avec les story maps](./article_storymap.md) et expliquer comment la planification par capacités apporte des réponses plus pertinentes dans notre contexte. Cette rétrospective nous montrera que l'essentiel n'est pas dans la méthode de Liz, mais bien dans sa façon d'approcher et de prioriser les problèmes - favoriser [« les individus et leurs interactions plus que les processus et les outils »](http://agilemanifesto.org/iso/fr/manifesto.html). Ceci nous mènera naturellement à une petite réflexion sur notre approche de l'agilité avec nos porteurs de projet.
 
 ## Quelques leçons tirées de la cartographie par capacité
 
@@ -86,11 +84,3 @@ C'est pourquoi choisir une approche moins structurée que la story map, comme la
 Mais dans l'approche de Liz Keogh, l'aspect le plus intéressant et révélateur est certainement la prise en considération de sa propre ignorance et des risques associés. D'abord parce qu'elle met l'accent sur le non-dit des projets au forfait, typique des SSII : sur quelles bases et quelles estimations la proposition de forfait a-t-elle été faite ? Quels risques ont été pris en compte ? Comment l'équipe va-t-elle gérer et communiquer sur ces risques ? En règle générale, les risques ne sont considérés que comme un facteur multiplicateur dans l'estimation (car le temps est court pour faire une proposition) et les risques seront gérés comme ils arrivent, et parfois dans l'urgence de la crise.
 
 Le risque, l'inconnu est un paramètre essentiel de n'importe quel projet, en particulier pour une start-up. C'est pourquoi nous voulons le mettre au centre de notre approche. Pour un porteur de projet, notre première proposition est donc un accompagnement. La réponse que nous apportons n'est pas forcément une estimation de son projet mais plutôt une projection : que pouvons-nous faire, quelle est la prochaine étape ? Notre métier n'est pas que de développer des fonctionnalités, mais **d'accompagner les porteurs à travers des étapes en proposant des solutions à moindre risque**.
-
-<div itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-  <img itemprop="image" src="http://www.gravatar.com/avatar/58778f8cc14e8a484568a663266c3029.png" alt="Simon Denier">
-  <a href="mailto:simon+blog@sogilis.com"><span itemprop="name" rel="author"><i class="fa fa-user" /> Simon Denier</span></a>
-  <a href="http://twitter.com/simondenier"><span class="share-link-twitter" rel="twitter"><i class="fa fa-twitter" /> simondenier</span></a>
-  <a href="https://github.com/sdenier"><span rel="github"><i class="fa fa-github" /> sdenier</span></a>
-  <a href="https://plus.google.com/100056946931947086533?rel=author"><span class="share-link-google-plus" rel="gplus"><i class="fa fa-google-plus" /> +SimonDenier</span></a>
-</div>

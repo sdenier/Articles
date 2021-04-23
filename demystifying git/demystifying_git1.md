@@ -1,3 +1,5 @@
+# Demystifying Git: 3 Concepts to Understand the Git Model
+
 Git has a reputation for being a geeky tool with a steep learning curve, including a CLI with lots of options, and more concepts (staging, remote, push/pull, …) to start with than classic revision control tools.
 
 But Git has actually a simple conceptual model and does not attempt to hide it as implementation details. Learning this model and how Git operates on it will greatly speed up your apprenticeship of the tool. In other words, you will start to think like Git, and then finding or mixing commands will become much easier, with the occasional dive into the online help to get the right option.
@@ -111,6 +113,4 @@ In other words, Git is super effective in computing state transformations and ap
 
 ## A Conceptual Model to Understand Git in Action
 
-This brief introduction to three concepts of revision tools is enough to understand the essentials of Git. In the next article we will put this knowledge in action to explain how some Git commands operate on your project.
-
-_Simon Denier [@twitter](https://twitter.com/simondenier) - [@github](https://github.com/sdenier)_
+This brief introduction to three concepts of revision tools is enough to understand the essentials of Git. In the [next article](./demystifying_git2.md) we will put this knowledge in action to explain how some Git commands operate on your project.

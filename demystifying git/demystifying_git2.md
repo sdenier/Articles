@@ -1,4 +1,6 @@
-In the previous article, we saw three essential concepts of revision tools: snapshot, graph, and changeset. In the following, we can apply these concepts to understand how Git commands operate on your project. This will teach us how to think like Git.
+# Demystifying Git: 3 Concepts to Do Everything with Git
+
+In the [previous article](./demystifying_git1.md), we saw three essential concepts of revision tools: snapshot, graph, and changeset. In the following, we can apply these concepts to understand how Git commands operate on your project. This will teach us how to think like Git.
 
 ## Updating the Working Copy (Switching between Branches, Pulling)
 
@@ -111,5 +113,3 @@ Now you should just go practice with your project. One good advice is to have a 
 _This gitk screenshot shows a before/after state of a repository following a rebase. The two MIN/MAX commits above `tp7-start` tag have been rebased on top of `functions-and-more` in the `tp7` branch. In this view, you can still see the old commits, which are now orphaned, and the two new commits, which are just copies of the old ones._
 
 ![](./gitk_rebase.png)
-
-_Simon Denier [@twitter](https://twitter.com/simondenier) - [@github](https://github.com/sdenier)_
