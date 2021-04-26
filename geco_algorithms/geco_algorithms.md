@@ -119,7 +119,19 @@ If we take a look at the course we have 7 controls but a max LCS length of 6, wh
 
 Can you guess what happened? The course is one combination of a Phi-loop, but it looks like the competitor misses control 35 on the second part of the loop (and took instead control 34 again, which is an example of substitution). But control 35 appears as added as the beginning. This can be understood as the competitor running the Phi-loop in the wrong order. Still, regardless of what really happened in the terrain, the LCS algorithm minimizes the number of mispunches and count only 1 mispunch for this run. This is one of the great force of this algorithm - to expect the best from the competitor, even when he magnificently screws up (which can happen quite often with the stress and fatigue of competition). In this case this could be simply that the runner did not understand in which order to run the Phi-loop, or took a map with the wrong Phi-loop combination for himself. But more strange things can happen in real competition, such as this one time when a competitor took a loop *backwards* during a final stage (this can give the organizer some headscratching/panick attack, because it gives lots of mispunches and added punches but all with the right course controls).
 
-## Next challenge: Courses with multiple sections
+### New Feature Unlocked: Automatic Course Detection
+
+The fun thing when you have a trustful algorithm is that you can start to build new features and workflow on top of it. For Geco such a feature is the automatic detection of course for any competitor.
+
+Classically one would need a list of competitors and their chosen course to be registered in the system before the race, so that the algorithm can check punches against the course chosen by competitor. But if you check punches for each course of the race, the algorithm can compute the number of mispunches for each. In good faith, you can then [select the one with the less mispunches](https://github.com/sdenier/Geco/blob/master/src/net/geco/control/ecardmodes/CourseDetector.java#L121) as the most likely course ran by the competitor. Best case (and most likely) is that you find one course with 0 mispunch, because the competitor just performed normally.
+
+Besides the algorithmic fun, the best thing is that you can reinvent/simplify the organization process. Instead of a full pre-registration effort, you can just go with minimal setup (the configuration of courses is the bare minimum) and just let things happen once competitors come back from their race. An archive of known competitors can help to fill in identity details when punches are read from their electronic card. In Geco, this was embodied in the [Automatic process](http://sdenier.github.io/Geco/workflows/auto.html) and was actually used in race from dozens to hundreds of competitors.
+
+---
+
+As exemplified by the figure, the real process is a bit more involved as it handles edge cases such as anonymous card or duplicate reading.
+
+## The Next Step: Courses with Multiple Sections (Adventure Racing)
 
 - Raid Orient'alpin
 - multiple sections, different checking : classic (inline), free order
