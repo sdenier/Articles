@@ -1,10 +1,12 @@
-# Punched - Checked - Traced: how Geco Deals with Punches for Orienteering Races
+# Punched - Checked - Traced: how to Deal with Punches for Orienteering Races (the Geco Development History)
 
 From 2008 to 2015, I spent a lot of my personal time developing Geco, a software to manage orienteering races. What began as an algorithmic challenge for an edge case in a peculiar race (called Orient'Show) for a niche sport, would take up many thoughts as new challenges and features came around.
 
 ## A Bit of Backstory: Orient'Show and Geco
 
 In 2006 I was glad to participate in the first ever Orient'Show organized in France, near Lille. If you can picture orienteering, you have a detailed map of the terrain around, with a course drawn on it, and you use your navigation skills to run around and find course controls. In general, you must find controls in order and if you forget/jump one, you are either disqualified or given a time penalty depending on race rule. This is often called a mispunch (MP, missing punch). Orienteering races typically takes place in natural terrain, from 30 minutes to much longer time. Orient'Show (nowadays it is more often called Ultrasprint) is designed as a very short event, with races ranging from 30s to 5 minutes, in multiple rounds, on semi-artificial terrain (including labyrinthic features). Given the high number of controls and the fast pace, runners do not check they punch the right control - they must be confident enough - but they take a time penalty if they mispunch - for example if they take one control for another.
+
+https://en.wikipedia.org/wiki/Orienteering#Ultrasprint
 
 Nowadays electronic punching is common at all orienteering events. Each runner carries a chip which records control number and split time. After the finish one can read the chip and let the software checks whether the runner is OK or MP (mispunched) and computes the final time (including penalties).
 
@@ -133,8 +135,34 @@ As exemplified by the figure, the real process is a bit more involved as it hand
 
 ## The Next Step: Courses with Multiple Sections (Adventure Racing)
 
-- Raid Orient'alpin
-- multiple sections, different checking : classic (inline), free order
+The one thing some organisers love the most is inventing new race format, especially in [adventure racing](https://en.wikipedia.org/wiki/Adventure_racing). They usually comprise multiple sections with different sports (running, biking, paddling), and for some sections (if not all), competitors must make their own route choice and navigate by themselves. Of course the organizers should set up checkpoints so that competitors prove their passing, as in an orienteering race.
+
+As one uses electronic punching to check such race results, one must take into account the rules. One such race organized by my club is the [Raid Orient'Alpin](https://orientalp.fr/raidorientalpin/). It comprises in general half a dozen sections. Each section can be seen as a single course with its own controls. But while most sections should be run "inline" (meaning controls must be taken in a specific order), some might be run in "free order" (meaning competitors can choose the order in which to take controls, adding some tactical challenge and helping to scatter teams across the map).
+
+From an organisational point of view, it would be impractical to stop competitors after each section, read their electronic card to check punches, then reset it for the next section. So what you usually have is a unique read station after the race, where competitors read their one card with all punches from all sections. It is up to you to figure out whether they have mispunches or not, and in case of mispunch which control, so that you can apply the right time penalty depending on the section. Of course, it is often the case that the course contains loops, meaning a control number might appear multiple times in the course. Given race length and physical hardness, it is also often the case that competitors mispunch by error or simply drop some controls due to tiredness - so as an organizer you can see many strange things happening in the trace.
+
+To sum up inputs and requirements, we have:
+
+- a course organized in many sections (or many subcourses/sections organized in a single course) and possibly repeating control numbers
+- for each competitor, a single collection of punches, which contain data from all successive sections
+- the need for an accurate trace with mispunches to compute time penalties
+- sections with different checking rules, inline or free order
+- as a bonus, competitors love to have section times, i.e. the time spent for each section, to compare where they win or lose time
+
+The first three points are actually no different than what we have seen for the Orient'Show format. So the LCS/trace algorithm seems perfect for that. However the hiccup comes from the last two, especially the free order rule. Free order implies a different checking rule, which although much simpler (a [Set difference](https://mathworld.wolfram.com/SetDifference.html)), can not be fulfilled by LCS which expects a sequence as implied by its name.
+
+Thus the intuition which comes to mind here is to perform some [Divide-and-Conquer](https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm) approach, meaning identifying a subsequence of punches for each section, then running the specific checking algorithm for each section (LCS or Set Difference). In other words, we want to cut the whole sequence of punches into subsequences, and for that we must identify probable section limits first.
+
+I have long doubted whether it was even feasible/possible to compute an accurate trace (i.e. which makes sense for the competitor and provide best results) for such a case, without resorting to some kind of training/learning process (e.g. some Bayesian network). But apart from the fact that I am not a strong specialist of probabilist tricks, I was at unease that it was not deterministic - and I wanted something which would give the same results whether it was the first time it performs or whether I had hundreds of trace to compare to.
+
+### Multi-Sections Checking: an Annotated Example
+
+Now that we have passed the long problem exposition, let's dive into a concrete example to see the solution as implemented in Geco. The process involves four steps.
+
+---
+
+Can we identify such section limits without an accurate algorithm for section checking? It turns out that you can, using some heuristics. Although I must say I am less confident that this heuristics is 100% accurate (i.e. provide the best plausible trace for any given series of punches, even improbable ones).
+
 
 ## Aside: the end of Geco development
 
