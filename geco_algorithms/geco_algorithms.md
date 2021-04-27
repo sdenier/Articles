@@ -1,8 +1,8 @@
-# Punched - Checked - Traced: how to Deal with Punches for Orienteering Races (the Geco Development History)
+# Punched - Checked - Traced: how to Deal with Punches for Orienteering Races
 
 From 2008 to 2015, I spent a lot of my personal time developing Geco, a software to manage orienteering races. What began as an algorithmic challenge for an edge case in a peculiar race (called Orient'Show) for a niche sport, would take up many thoughts as new challenges and features came around.
 
-## A Bit of Backstory: Orient'Show and Geco
+## Backstory: Orient'Show and Geco
 
 In 2006 I was glad to participate in the first ever Orient'Show organized in France, near Lille. If you can picture orienteering, you have a detailed map of the terrain around, with a course drawn on it, and you use your navigation skills to run around and find course controls. In general, you must find controls in order and if you forget/jump one, you are either disqualified or given a time penalty depending on race rule. This is often called a mispunch (MP, missing punch). Orienteering races typically takes place in natural terrain, from 30 minutes to much longer time. Orient'Show (nowadays it is more often called Ultrasprint) is designed as a very short event, with races ranging from 30s to 5 minutes, in multiple rounds, on semi-artificial terrain (including labyrinthic features). Given the high number of controls and the fast pace, runners do not check they punch the right control - they must be confident enough - but they take a time penalty if they mispunch - for example if they take one control for another.
 
@@ -10,7 +10,7 @@ https://en.wikipedia.org/wiki/Orienteering#Ultrasprint
 
 Nowadays electronic punching is common at all orienteering events. Each runner carries a chip which records control number and split time. After the finish one can read the chip and let the software checks whether the runner is OK or MP (mispunched) and computes the final time (including penalties).
 
-## Problem Definition
+## Ultrasprint Orienteering and Butterfly Course
 
 ![Basic course with a start, 4 controls in line with codes 31, 32, 33, 34, and a finish](./basic_course.png)
 
@@ -35,9 +35,7 @@ In the example above, we can compute the three different outputs as follow:
 
 So far this seems very basic with no algorithmic difficulty. But course setters in orienteering like to be creative and with the advance of electronic punching, new course schemas became available: butterfly loop and phi loop.
 
-![Butterfly course with 3 loops over control 31, with up to 6 combinations](./butterfly_course.png)
-
-![Phi loop course with 2 combinations, either 31 directly to 32 then the full circle 33, 34, back to 31, 35, 32, or 31 to 35, 32, 33, 34, back to 31, then to 32](./philoop_course.png)
+![Butterfly course with 3 loops over control 31, with up to 6 combinations. Phi loop course with 2 combinations, either 31 directly to 32 then the full circle 33, 34, back to 31, 35, 32, or 31 to 35, 32, 33, 34, back to 31, then to 32](./butterfly_philoop.png)
 
 Basically, this means that some controls can be reused in a course, which create loops in the course design. Loops are used mostly in mass start events to split packs of runners: runner would run loops in different orders but at the end, they would cover the same distance and face the same orienteering choices from control to control so variations in loop order are considered equal.
 
@@ -101,7 +99,7 @@ On the next cell control and punch 32 match. Then we have no more punches to ite
 
 This looks like a simple example yet still shows how the LCS heuristic performs locally to choose a plausible trace.
 
-### Another Example with Substitution
+### An Example with Substitution
 
 One case which we did not cover in the previous example is when the max LCS shows up in the diagonal cell: this means we have both an added punch in the row and a missing control in the column, which we call a substitution marked -31+32 (for example). In other words, the competitor most likely punches the added control instead of the right one without checking the code. If you want, take your time to dive into the matrix, see how it is built and how to backtrace. What can you tell about it?
 
@@ -117,7 +115,7 @@ One case which we did not cover in the previous example is when the max LCS show
 | 34|  0|  1|  2|  3|  4|  5|  5|  5|
 | 32|  0|  1|  2|  3|  4|  5|  5|  6|
 
-If we take a look at the course we have 7 controls but a max LCS length of 6, which implies we have one mispunch. But if we compute the trace we have a much more precise picture: 31,+35,32,33,34,31,-35+34,32.
+If we take a look at the course we have 7 controls but a max LCS length of 6, which implies we have one mispunch. But if we compute the trace we have a much more precise picture: 31, +35, 32, 33, 34, 31, -35+34, 32.
 
 Can you guess what happened? The course is one combination of a Phi-loop, but it looks like the competitor misses control 35 on the second part of the loop (and took instead control 34 again, which is an example of substitution). But control 35 appears as added as the beginning. This can be understood as the competitor running the Phi-loop in the wrong order. Still, regardless of what really happened in the terrain, the LCS algorithm minimizes the number of mispunches and count only 1 mispunch for this run. This is one of the great force of this algorithm - to expect the best from the competitor, even when he magnificently screws up (which can happen quite often with the stress and fatigue of competition). In this case this could be simply that the runner did not understand in which order to run the Phi-loop, or took a map with the wrong Phi-loop combination for himself. But more strange things can happen in real competition, such as this one time when a competitor took a loop *backwards* during a final stage (this can give the organizer some headscratching/panick attack, because it gives lots of mispunches and added punches but all with the right course controls).
 
@@ -129,7 +127,7 @@ Classically one would need a list of competitors and their chosen course to be r
 
 Besides the algorithmic fun, the best thing is that you can reinvent/simplify the organization process. Instead of a full pre-registration effort, you can just go with minimal setup (the configuration of courses is the bare minimum) and just let things happen once competitors come back from their race. An archive of known competitors can help to fill in identity details when punches are read from their electronic card. In Geco, this was embodied in the [Automatic process](http://sdenier.github.io/Geco/workflows/auto.html) and was actually used in race from dozens to hundreds of competitors.
 
----
+![Schema for Geco Automatic Workflow](./autoworkflow.png)
 
 As exemplified by the figure, the real process is a bit more involved as it handles edge cases such as anonymous card or duplicate reading.
 
@@ -138,6 +136,8 @@ As exemplified by the figure, the real process is a bit more involved as it hand
 The one thing some organisers love the most is inventing new race format, especially in [adventure racing](https://en.wikipedia.org/wiki/Adventure_racing). They usually comprise multiple sections with different sports (running, biking, paddling), and for some sections (if not all), competitors must make their own route choice and navigate by themselves. Of course the organizers should set up checkpoints so that competitors prove their passing, as in an orienteering race.
 
 As one uses electronic punching to check such race results, one must take into account the rules. One such race organized by my club is the [Raid Orient'Alpin](https://orientalp.fr/raidorientalpin/). It comprises in general half a dozen sections. Each section can be seen as a single course with its own controls. But while most sections should be run "inline" (meaning controls must be taken in a specific order), some might be run in "free order" (meaning competitors can choose the order in which to take controls, adding some tactical challenge and helping to scatter teams across the map).
+
+![Synoptic of a Multi-Sections Course](./sections_schema.png)
 
 From an organisational point of view, it would be impractical to stop competitors after each section, read their electronic card to check punches, then reset it for the next section. So what you usually have is a unique read station after the race, where competitors read their one card with all punches from all sections. It is up to you to figure out whether they have mispunches or not, and in case of mispunch which control, so that you can apply the right time penalty depending on the section. Of course, it is often the case that the course contains loops, meaning a control number might appear multiple times in the course. Given race length and physical hardness, it is also often the case that competitors mispunch by error or simply drop some controls due to tiredness - so as an organizer you can see many strange things happening in the trace.
 
@@ -259,7 +259,9 @@ The final step is even more simpler as we merge all individual traces into a sin
 Can we identify such section limits without an accurate algorithm for section checking? It turns out that you can, using some heuristics. Although I must say I am less confident that this heuristics is 100% accurate (i.e. provide the best plausible trace for any given series of punches, even improbable ones).
 
 
-## Aside: the end of Geco development
+## A Parting Word
+
+- the UX aspect in Geco
 
 - what did work and what didn't
 - what would I do differently now?
