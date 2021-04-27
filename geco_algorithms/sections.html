@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Geco Multi-Sections Viz</title>
+  <style type="text/css">
+    .row {
+      display: flex;
+      margin: 2px;
+    }
+
+    .section {
+      display: flex;
+      border-radius: 15px;
+    }
+
+    .sectionA {
+      background-color: lightblue;
+    }
+
+    .sectionB {
+      background-color: lightpink;
+    }
+
+    .sectionC {
+      background-color: lightgreen;
+    }
+
+    .control, .punch {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 30px;
+      width: 30px;
+      border-radius: 15px;
+      border: 1px solid black;
+      text-align: center;
+      margin: 2px;
+    }
+
+    .added {
+      background-color: white;
+    }
+
+    .missing {
+      background-color: salmon;
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <div class="course-def">
+      <h2>Course Definition</h2>
+      <div class="row">
+        <div>
+          <div>Inline</div>
+          <div class="section sectionA">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+            <div class="punch">13</div>
+            <div class="punch">14</div>
+            <div class="punch">15</div>
+          </div>
+        </div>
+        <div>
+          <div>Free Order</div>
+          <div class="section sectionB">
+            <div class="punch">21</div>
+            <div class="punch">22</div>
+            <div class="punch">23</div>
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+          </div>
+        </div>
+        <div>
+          <div>Inline</div>
+          <div class="section sectionC">
+            <div class="punch">31</div>
+            <div class="punch">32</div>
+            <div class="punch">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-punches">
+      <h2>Control Punches</h2>
+      <div>
+        <div class="row">
+          <div class="punch">11</div>
+          <div class="punch">12</div>
+          <div class="punch">21</div>
+          <div class="punch">13</div>
+          <div class="punch">14</div>
+          <div class="punch">22</div>
+          <div class="punch">23</div>
+          <div class="punch">15</div>
+          <div class="punch">24</div>
+          <div class="punch">25</div>
+          <div class="punch">40</div>
+          <div class="punch">32</div>
+          <div class="punch">33</div>
+          <div class="punch">21</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-punches">
+      <h3>[Step 1] greedy loose tracer: Section A Punches</h3>
+      <div>
+        <div class="row">
+          <div class="punch sectionA">11</div>
+          <div class="punch sectionA">12</div>
+          <div class="punch">21</div>
+          <div class="punch sectionA">13</div>
+          <div class="punch sectionA">14</div>
+          <div class="punch">22</div>
+          <div class="punch">23</div>
+          <div class="punch sectionA">15</div>
+          <div class="punch">24</div>
+          <div class="punch">25</div>
+          <div class="punch">40</div>
+          <div class="punch">32</div>
+          <div class="punch">33</div>
+          <div class="punch">21</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-punches">
+      <h3>[Step 1] greedy loose tracer: Section B Punches</h3>
+      <div>
+        <div class="row">
+          <div class="punch">11</div>
+          <div class="punch">12</div>
+          <div class="punch sectionB">21</div>
+          <div class="punch">13</div>
+          <div class="punch">14</div>
+          <div class="punch sectionB">22</div>
+          <div class="punch sectionB">23</div>
+          <div class="punch">15</div>
+          <div class="punch sectionB">24</div>
+          <div class="punch sectionB">25</div>
+          <div class="punch">40</div>
+          <div class="punch">32</div>
+          <div class="punch">33</div>
+          <div class="punch sectionB">21</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-punches">
+      <h3>[Step 1] greedy loose tracer: Section C Punches</h3>
+      <div>
+        <div class="row">
+          <div class="punch">11</div>
+          <div class="punch">12</div>
+          <div class="punch">21</div>
+          <div class="punch">13</div>
+          <div class="punch">14</div>
+          <div class="punch">22</div>
+          <div class="punch">23</div>
+          <div class="punch">15</div>
+          <div class="punch">24</div>
+          <div class="punch">25</div>
+          <div class="punch">40</div>
+          <div class="punch sectionC">32</div>
+          <div class="punch sectionC">33</div>
+          <div class="punch sectionC">21</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-punches">
+      <h3>[Step 1] results: overlapping sections</h3>
+      <div>
+        <div class="row">
+          <div class="section sectionA">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+            <div class="punch added">21</div>
+            <div class="punch">13</div>
+            <div class="punch">14</div>
+            <div class="punch added">22</div>
+            <div class="punch added">23</div>
+            <div class="punch">15</div>
+          </div>
+          <div class="section">
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+            <div class="punch">40</div>
+            <div class="punch">32</div>
+            <div class="punch">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="section">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+          </div>
+          <div class="section sectionB">
+            <div class="punch">21</div>
+            <div class="punch added">13</div>
+            <div class="punch added">14</div>
+            <div class="punch">22</div>
+            <div class="punch">23</div>
+            <div class="punch added">15</div>
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+            <div class="punch added">40</div>
+            <div class="punch added">32</div>
+            <div class="punch added">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="section">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+            <div class="punch">21</div>
+            <div class="punch">13</div>
+            <div class="punch">14</div>
+            <div class="punch">22</div>
+            <div class="punch">23</div>
+            <div class="punch">15</div>
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+            <div class="punch">40</div>
+          </div>
+          <div class="section sectionC">
+            <div class="punch">32</div>
+            <div class="punch">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-punches">
+      <h3>[Step 2.a] split/partition punches for overlapping sections A/B</h3>
+      <div>
+        <div class="row">
+          <div class="section sectionA">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+            <div class="punch added">21</div>
+            <div class="punch">13</div>
+            <div class="punch">14</div>
+            <div class="punch added">22</div>
+            <div class="punch added">23</div>
+            <div class="punch">15</div>
+          </div>
+          <div class="section">
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+            <div class="punch">40</div>
+            <div class="punch">32</div>
+            <div class="punch">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="section">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+          </div>
+          <div class="section sectionB">
+            <div class="punch">21</div>
+            <div class="punch added">13</div>
+            <div class="punch added">14</div>
+            <div class="punch">22</div>
+            <div class="punch">23</div>
+            <div class="punch added">15</div>
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+            <div class="punch added">40</div>
+            <div class="punch added">32</div>
+            <div class="punch added">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="control-punches">
+      <h4>[Step 2.a] iteration 1: section A prevails over section B so section B folds to the right</h4>
+      <div>
+        <div class="row">
+          <div class="section sectionA">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+            <div class="punch added">21</div>
+            <div class="punch">13</div>
+            <div class="punch">14</div>
+            <div class="punch added">22</div>
+            <div class="punch added">23</div>
+            <div class="punch">15</div>
+          </div>
+          <div class="section">
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+            <div class="punch">40</div>
+            <div class="punch">32</div>
+            <div class="punch">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="section">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+            <div class="punch">21</div>
+            <div class="punch">13</div>
+            <div class="punch">14</div>
+          </div>
+          <div class="section sectionB">
+            <div class="punch">22</div>
+            <div class="punch">23</div>
+            <div class="punch added">15</div>
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+            <div class="punch added">40</div>
+            <div class="punch added">32</div>
+            <div class="punch added">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-punches">
+      <h4>[Step 2.a] iteration 2: section B prevails over section A so section A folds to the left. No more overlap between sections A and B </h4>
+      <div>
+        <div class="row">
+          <div class="section sectionA">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+            <div class="punch added">21</div>
+            <div class="punch">13</div>
+            <div class="punch">14</div>
+          </div>
+          <div class="section">
+            <div class="punch">22</div>
+            <div class="punch">23</div>
+            <div class="punch">15</div>
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+            <div class="punch">40</div>
+            <div class="punch">32</div>
+            <div class="punch">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="section">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+            <div class="punch">21</div>
+            <div class="punch">13</div>
+            <div class="punch">14</div>
+          </div>
+          <div class="section sectionB">
+            <div class="punch">22</div>
+            <div class="punch">23</div>
+            <div class="punch added">15</div>
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+            <div class="punch added">40</div>
+            <div class="punch added">32</div>
+            <div class="punch added">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-punches">
+      <h3>[Step 2.a] split/partition punches for overlapping sections B/C</h3>
+      <div>
+        <div class="row">
+          <div class="section">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+            <div class="punch">21</div>
+            <div class="punch">13</div>
+            <div class="punch">14</div>
+          </div>
+          <div class="section sectionB">
+            <div class="punch">22</div>
+            <div class="punch">23</div>
+            <div class="punch added">15</div>
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+            <div class="punch added">40</div>
+            <div class="punch added">32</div>
+            <div class="punch added">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row">
+          <div class="section">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+            <div class="punch">21</div>
+            <div class="punch">13</div>
+            <div class="punch">14</div>
+            <div class="punch">22</div>
+            <div class="punch">23</div>
+            <div class="punch">15</div>
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+            <div class="punch">40</div>
+          </div>
+          <div class="section sectionC">
+            <div class="punch">32</div>
+            <div class="punch">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-punches">
+      <h4>[Step 2.a] iteration 3: section C prevails over section B so section B folds to the left. No more overlap</h4>
+      <div>
+        <div class="row">
+          <div class="section">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+            <div class="punch">21</div>
+            <div class="punch">13</div>
+            <div class="punch">14</div>
+          </div>
+          <div class="section sectionB">
+            <div class="punch">22</div>
+            <div class="punch">23</div>
+            <div class="punch added">15</div>
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+          </div>
+          <div class="section">
+            <div class="punch">40</div>
+            <div class="punch">32</div>
+            <div class="punch">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row">
+          <div class="section">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+            <div class="punch">21</div>
+            <div class="punch">13</div>
+            <div class="punch">14</div>
+            <div class="punch">22</div>
+            <div class="punch">23</div>
+            <div class="punch">15</div>
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+            <div class="punch">40</div>
+          </div>
+          <div class="section sectionC">
+            <div class="punch">32</div>
+            <div class="punch">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-punches">
+      <h3>[Step 2.b] rejoin sections (no orphan punch)</h3>
+      <div>
+        <div class="row">
+          <div class="section sectionA">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+            <div class="punch added">21</div>
+            <div class="punch">13</div>
+            <div class="punch">14</div>
+          </div>
+          <div class="section sectionB">
+            <div class="punch">22</div>
+            <div class="punch">23</div>
+            <div class="punch added">15</div>
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+            <div class="punch added">40</div>
+          </div>
+          <div class="section sectionC">
+            <div class="punch">32</div>
+            <div class="punch">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-punches">
+      <h3>[Step 3.a] refine trace for each section</h3>
+      <div>
+        <div class="row">
+          <div class="section sectionA">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+            <div class="punch added">21</div>
+            <div class="punch">13</div>
+            <div class="punch">14</div>
+            <div class="punch missing">15</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row">
+          <div class="section">
+            <div class="punch"></div>
+            <div class="punch"></div>
+            <div class="punch"></div>
+            <div class="punch"></div>
+            <div class="punch"></div>
+            <div class="punch"></div>
+          </div>
+          <div class="section sectionB">
+            <div class="punch missing">21</div>
+            <div class="punch">22</div>
+            <div class="punch">23</div>
+            <div class="punch added">15</div>
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+            <div class="punch added">40</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row">
+          <div class="section">
+            <div class="punch"></div>
+            <div class="punch"></div>
+            <div class="punch"></div>
+            <div class="punch"></div>
+            <div class="punch"></div>
+            <div class="punch"></div>
+            <div class="punch"></div>
+            <div class="punch"></div>
+            <div class="punch"></div>
+            <div class="punch"></div>
+            <div class="punch"></div>
+            <div class="punch"></div>
+            <div class="punch"></div>
+          </div>
+          <div class="section sectionC">
+            <div class="punch missing">31</div>
+            <div class="punch">32</div>
+            <div class="punch">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-punches">
+      <h3>[Step 3.b] merge traces from all sections</h3>
+      <div>
+        <div class="row">
+          <div class="section sectionA">
+            <div class="punch">11</div>
+            <div class="punch">12</div>
+            <div class="punch added">21</div>
+            <div class="punch">13</div>
+            <div class="punch">14</div>
+            <div class="punch missing">15</div>
+          </div>
+          <div class="section sectionB">
+            <div class="punch missing">21</div>
+            <div class="punch">22</div>
+            <div class="punch">23</div>
+            <div class="punch added">15</div>
+            <div class="punch">24</div>
+            <div class="punch">25</div>
+            <div class="punch added">40</div>
+          </div>
+          <div class="section sectionC">
+            <div class="punch missing">31</div>
+            <div class="punch">32</div>
+            <div class="punch">33</div>
+            <div class="punch">21</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
