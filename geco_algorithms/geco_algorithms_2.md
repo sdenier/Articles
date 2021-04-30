@@ -21,7 +21,7 @@ To sum up inputs and requirements, we have:
 - sections with different checking rules, inline or free order
 - as a bonus, competitors love to have section times, i.e. the time spent for each section, to compare where they win or lose time
 
-The first three points are actually no different than what we have seen for the Orient'Show format. So the [LCS/Backtrack algorithm](./geco_algorithm_1.md) seems perfect for that. However the hiccup comes from the last two, especially the free order rule. Free order implies a different checking rule, which although much simpler (a [Set difference](https://mathworld.wolfram.com/SetDifference.html)), can not be fulfilled by LCS which expects a sequence (as implied by its name).
+The first three points are actually no different than what we have seen for the Orient'Show format. So the [LCS/Backtrack algorithm](./geco_algorithms_1.md) seems perfect for that. However the hiccup comes from the last two, especially the free order rule. Free order implies a different checking rule, which although much simpler (a [Set difference](https://mathworld.wolfram.com/SetDifference.html)), can not be fulfilled by LCS which expects a sequence (as implied by its name).
 
 The intuition which comes to mind is to perform some [Divide-and-Conquer](https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm) approach, meaning identifying a subsequence of punches for each section, then running the specific checking algorithm for each section (LCS or Set Difference). In other words, we want to cut the whole sequence of punches into subsequences, and for that we must identify probable section limits first.
 

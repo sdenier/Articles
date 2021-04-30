@@ -59,18 +59,7 @@ If we take a look back at our inputs, we have two sequences of codes: one for th
 
 Let's take the following sequences of punches corresponding to the butterfly course: 32, 31, 33, 31, 34, 35, 31, 36. Remember that before and after each loop, the runner should have punched control 31. Here is the matrix for this sample (you can find the [detailed algorithm here](https://github.com/sdenier/Geco/blob/master/src/net/geco/control/checking/InlineTracer.java#L45)).
 
-|   |  S| 31| 32| 33| 31| 34| 31| 35| 31| 36|
-|---|---|---|---|---|---|---|---|---|---|---|
-|  S|  0|  0|  0|  0|  0|  0|  0|  0|  0|  0|
-| 32|  0|  0|  1|  1|  1|  1|  1|  1|  1|  1|
-| 31|  0|  1|  1|  1|  2|  2|  2|  2|  2|  2|
-| 33|  0|  1|  1|  2|  2|  2|  2|  2|  2|  2|
-| 31|  0|  1|  1|  2|  3|  3|  3|  3|  3|  3|
-| 34|  0|  1|  1|  2|  3|  4|  4|  4|  4|  4|
-| 35|  0|  1|  1|  2|  3|  4|  4|  5|  5|  5|
-| 31|  0|  1|  1|  2|  3|  4|  5|  5|  6|  6|
-| 36|  0|  1|  1|  2|  3|  4|  5|  5|  6|  7|
-
+![LCS matrix for the running example with a butterfly course](./geco_backtrack_original.png)  
 *LCS matrix for the running example with a butterfly course. The **top row** shows course control; the **left column** shows runner punches.*
 
 The length of the longest common subsequence (LCS) is given by the number in the last cell (lower right) in the matrix: here we can see that 7 controls are common between the course and the punches. Since the course sequence has 9 controls, this gives us 2 mispunches - but which ones? Using the subsequence length computed in each cell, we can browse the matrix to find a correct interpretation.
@@ -111,21 +100,11 @@ One case which we did not cover in the previous example is when the max LCS show
 
 If you want, take your time to dive into the matrix below, see how it is built and how to backtrace. What can you tell about it?
 
-|   |  S| 31| 32| 33| 34| 31| 35| 32|
-|---|---|---|---|---|---|---|---|---|
-|  S|  0|  0|  0|  0|  0|  0|  0|  0|
-| 31|  0|  1|  1|  1|  1|  1|  1|  1|
-| 35|  0|  1|  1|  1|  1|  1|  2|  2|
-| 32|  0|  1|  2|  2|  2|  2|  2|  3|
-| 33|  0|  1|  2|  3|  3|  3|  3|  3|
-| 34|  0|  1|  2|  3|  4|  4|  4|  4|
-| 31|  0|  1|  2|  3|  4|  5|  5|  5|
-| 34|  0|  1|  2|  3|  4|  5|  5|  5|
-| 32|  0|  1|  2|  3|  4|  5|  5|  6|
+![LCS matrix for the Phi loop example](./lcss_philoop.png)
 
 If we take a look at the course we have 7 controls but a max LCS length of 6, which implies we have one mispunch. If we backtrack through the matrix to compute the trace, we have a much more precise picture: 31, +35, 32, 33, 34, 31, -35+34, 32.
 
-![Backtrace in the Philoop matrix](./lcss_backtrack-Philoop.png)
+![Backtrace in the Phi loop matrix](./lcss_backtrack-Philoop.png)
 
 Can you guess what happened? The course is one combination of a Phi loop, but it looks like the competitor misses control 35 on the second part of the loop (and took instead control 34 again, which is an example of substitution). But control 35 appears as added as the beginning. This can be understood as the competitor running the Phi loop in the wrong order. Still, regardless of what really happened in the terrain, the LCS algorithm minimizes the number of mispunches and count only 1 mispunch for this run.
 
