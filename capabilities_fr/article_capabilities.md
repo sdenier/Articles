@@ -1,5 +1,7 @@
 # Découverte et amorçage de projet : planifier des capacités et des risques
 
+*Publié initialement le 10/02/2015.*
+
 Face à un porteur de projet en phase de démarrage, nous avons besoin d'outils pour :
 
 1. comprendre son idée et sa valeur,

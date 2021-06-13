@@ -1,5 +1,7 @@
 # Demystifying Git: 3 Concepts to Do Everything with Git
 
+*Initially published on 2015-05-12.*
+
 In the [previous article](./demystifying_git1.md), we saw three essential concepts of revision tools: snapshot, graph, and changeset. In the following, we can apply these concepts to understand how Git commands operate on your project. This will teach us how to think like Git.
 
 ## Updating the Working Copy (Switching between Branches, Pulling)

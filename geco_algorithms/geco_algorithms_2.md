@@ -1,6 +1,6 @@
 # Punched - Checked - Traced: Computing Accurate Traces for Orienteering Events (2)
 
-*This is a two-part series about algorithms for orienteering events. There were a crucial focus of [Geco](http://sdenier.github.io/Geco/begin/index.html), a software I wrote from 2008 to 2015. You can find the [first part here](./geco_algorithms_1.md).*
+*This is a two-part series about algorithms for orienteering events. There were a crucial focus of [Geco](http://sdenier.github.io/Geco/begin/index.html), a software I wrote from 2008 to 2015. You can find the [first part here](./geco_algorithms_1.md). Published on 2021-04-30.*
 
 ## The Next Step: Courses with Multiple Sections (Adventure Racing)
 

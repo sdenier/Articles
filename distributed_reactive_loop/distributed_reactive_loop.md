@@ -1,6 +1,8 @@
 The Distributed Reactive Loop: Handling Resiliency with a Simple Thought Framework
 =========
 
+*Initially published on 2018-03-01.*
+
 Once upon a time, we were tasked with designing a distributed system for 3D printers across the internet - something like a pool of workers for processing jobs in parallel. A the time we knew little of the customaries of 3D printing: how it works, how it fails, what kind of communication to expect. After the initial probe & discovery stage, it became obvious we had to design a distributed system in a not so common way. Because 3D printers are dealing with a physical process, taking some time to complete and requiring manual operation, we went back to basics and focused on two properties: keeping things consistent locally and making the overall system resilient in the face of inconsistency. This is the story of how we designed our system to handle such properties.
 
 Challenges of 3D Printing - in a Distributed Context

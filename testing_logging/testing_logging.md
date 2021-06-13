@@ -1,6 +1,8 @@
 Mixing Testing and Logging for a Better Developer Experience
 ============================================================
 
+*Initially published on 2016-06-16.*
+
 People love a great article about a new programming paradigm/vision/motto which change the way you architect/develop/maintain your system. This is not one of those articles. I am gonna talk about the stupid daily life of a programmer - and the problems you don't hear so much about because they seem so dull and obvious: getting the right feedback through logs and tests.
 
 

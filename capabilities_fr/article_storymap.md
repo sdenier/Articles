@@ -1,5 +1,7 @@
 # Découverte et amorçage de projet : le problème avec les story maps
 
+*Publié initialement le 3/02/2015.*
+
 Tout projet commence par une phase d'élaboration et de maturation des idées, que ce soit sur la problématique et les objectifs, le financement, la commercialisation, et bien sûr la technique. L'équipe technique se retrouve alors confrontée à la question de la réalisation : que doit-on faire, quels sont les délais, combien ça va coûter ? Un des outils mis en avant pour planifier un projet en mode agile est la story map. Or notre expérience avec cet outil s'est révélée très hétérogène voire paradoxale. En effet, elle n'est pas forcément pertinente pour répondre aux questions essentielles en tout début de projet : combien investir et quelle est la prochaine étape ? Ce premier article fouille quelques-uns des défauts constatés avec l'approche story map, avant d'aborder la prochaine fois une autre approche basée sur les capacités et les risques.
 
 ## Petit rappel : ce qu'est une story map

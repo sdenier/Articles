@@ -1,5 +1,7 @@
 # Découverte et amorçage de projet : qu'avons-nous appris de la planification par capacités ?
 
+*Publié initialement le 19/02/2015.*
+
 Dans ce dernier article, nous allons revoir les [problèmes rencontrés avec les story maps](./article_storymap.md) et expliquer comment la planification par capacités apporte des réponses plus pertinentes dans notre contexte. Cette rétrospective nous montrera que l'essentiel n'est pas dans la méthode de Liz, mais bien dans sa façon d'approcher et de prioriser les problèmes - favoriser [« les individus et leurs interactions plus que les processus et les outils »](http://agilemanifesto.org/iso/fr/manifesto.html). Ceci nous mènera naturellement à une petite réflexion sur notre approche de l'agilité avec nos porteurs de projet.
 
 ## Quelques leçons tirées de la cartographie par capacité
